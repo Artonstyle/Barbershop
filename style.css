@@ -32,27 +32,27 @@ body{
 .site-header{backdrop-filter: blur(6px);background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);border-bottom:1px solid rgba(255,255,255,0.03)}
 .header-inner{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
 
-/* NEUE REGELN FÜR DEN BANNER (Fix für die Bildgröße) */
+/* BANNER FIX: NEUE REGELN FÜR KORREKTE GRÖSSE DES LOGOS */
 .header-banner {
   width: 100%;
-  height: 300px; /* Feste Höhe, passen Sie diesen Wert bei Bedarf an */
+  height: 300px; /* Feste Höhe, damit das Bild nicht überragt. */
   overflow: hidden; 
   display: flex;
   justify-content: center; /* Zentriert das Bild horizontal */
   align-items: center; /* Zentriert das Bild vertikal */
-  background: var(--bg);
+  background: var(--bg); 
   border-bottom: 2px solid var(--brand); 
 }
 
 .header-banner img {
-  max-width: 100%; /* Wichtig: Bild darf nicht breiter als sein Container sein */
-  max-height: 100%; /* Wichtig: Bild darf nicht höher als sein Container sein */
-  object-fit: contain; /* Stellt sicher, dass das Bild ohne Verzerrung skaliert wird */
+  max-width: 100%; 
+  max-height: 100%; 
+  object-fit: contain; /* Skaliert das Bild ohne Verzerrung in den Container */
   height: auto;
   filter: brightness(1.2) contrast(1.1);
   border: none;
 }
-/* ENDE DER NEUEN BANNER-REGELN */
+/* ENDE BANNER FIX */
 
 .logo{font-weight:700;color:var(--text);text-decoration:none;font-size:1.05rem}
 .nav-toggle{display:none;background:none;border:0;font-size:1.4rem;color:var(--text)}
