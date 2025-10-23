@@ -7,7 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
 /* ------------------------------------------------------------------ */
-/* ORIGINALER CSS-CODE + BANNER FIX + NEUE 3D-EFFEKTE */
+/* ORIGINALER CSS-CODE + BANNER FIX + 3D-EFFEKTE + NEUE GALERIE CSS */
 /* ------------------------------------------------------------------ */
 
 body { 
@@ -16,7 +16,6 @@ body {
     color:#fff; 
     margin:0; 
     padding:0; 
-    /* Wichtig für 3D-Effekte: Definiert die Tiefe des Raumes */
     perspective: 1200px; 
 }
 p { margin:0; }
@@ -24,22 +23,18 @@ p { margin:0; }
 h2 { text-align:center; margin-bottom:30px; font-weight:700; text-shadow:0 0 15px rgba(255,255,255,0.8); }
 .pricing { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:25px; }
 
-/* 🚀 NEUER 3D-EFFEKT AUF PREIS-KARTEN */
+/* 3D-EFFEKT AUF PREIS-KARTEN */
 .category { 
     background: rgba(255,255,255,0.05); 
     padding:25px; 
     border-radius:15px; 
     backdrop-filter: blur(10px); 
-    box-shadow:0 15px 40px rgba(0,0,0,0.8), 0 0 20px rgba(255,255,255,0.3); /* Tieferer Schatten */
+    box-shadow:0 15px 40px rgba(0,0,0,0.8), 0 0 20px rgba(255,255,255,0.3); 
     transition:all 0.5s ease-in-out; 
-    
-    /* 3D-Start: Element leicht kippen, als würde es im Raum schweben */
     transform: rotateX(5deg) rotateY(-2deg) translateZ(0);
 }
 .category:hover { 
     box-shadow:0 0 50px rgba(255,255,255,0.9); 
-    
-    /* 3D-Hover: Element kommt nach vorne und wird aufrechter */
     transform: rotateX(0deg) rotateY(0deg) translateZ(20px);
 }
 .category h3 { text-align:center; margin-bottom:15px; font-weight:600; }
@@ -53,7 +48,7 @@ h2 { text-align:center; margin-bottom:30px; font-weight:700; text-shadow:0 0 15p
 }
 
 /* *************************************************************** */
-/* BANNER FIX (Die einzigen notwendigen Änderungen) */
+/* BANNER FIX */
 /* *************************************************************** */
 .header-banner { 
     width:100%; 
@@ -74,7 +69,7 @@ h2 { text-align:center; margin-bottom:30px; font-weight:700; text-shadow:0 0 15p
     filter:brightness(1.2) contrast(1.1); 
     border:none; 
 }
-/* 🚀 3D-Effekt auch auf Willkommens-Sektion */
+/* 3D-Effekt auf Willkommens-Sektion */
 .welcome-section { 
     text-align:center; 
     padding:30px 20px; 
@@ -84,13 +79,11 @@ h2 { text-align:center; margin-bottom:30px; font-weight:700; text-shadow:0 0 15p
     border-radius:15px; 
     box-shadow:0 10px 30px rgba(0,0,0,0.7), 0 0 25px rgba(255,255,255,0.2);
     max-width:900px; 
-    
-    /* 3D-Start: Element leicht nach hinten schieben */
     transform: translateZ(-10px);
     transition: transform 0.5s ease-in-out;
 }
 .welcome-section:hover {
-    transform: translateZ(5px); /* Beim Hover leicht nach vorne holen */
+    transform: translateZ(5px); 
 }
 
 .welcome-section h1 { font-size:2em; margin-bottom:10px; text-shadow:0 0 20px rgba(255,255,255,0.8); color: #fff; }
@@ -107,15 +100,78 @@ footer a:hover { text-decoration:underline; }
 .social-links img { width:28px; height:28px; filter:brightness(1.2); transition:transform 0.3s ease; }
 .social-links img:hover { transform:scale(1.2); filter:brightness(1.5); }
 
-/* MOBILE FIX */
+/* *************************************************************** */
+/* NEUE REGELN FÜR DIE BILDER-GALERIE */
+/* *************************************************************** */
+.gallery-section {
+    padding: 60px 0; /* Abstand oben und unten */
+    background: rgba(255,255,255,0.02); /* Leichter Hintergrund, um sich abzuheben */
+    border-radius: 15px;
+    margin: 40px auto;
+    max-width: 1200px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.7), 0 0 25px rgba(255,255,255,0.2);
+    transform: translateZ(-10px); /* Leichter 3D-Effekt */
+    transition: transform 0.5s ease-in-out;
+}
+.gallery-section:hover {
+    transform: translateZ(5px);
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* 3 Bilder auf größeren Bildschirmen */
+    gap: 20px; /* Abstand zwischen den Bildern */
+    margin-top: 30px;
+    padding: 0 20px; /* Innenabstand für das Grid */
+}
+
+.gallery-item {
+    background: rgba(255,255,255,0.03);
+    border-radius: 10px;
+    overflow: hidden; /* Sicherstellen, dass das Bild innerhalb des Radius bleibt */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.6);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    text-align: center;
+    padding-bottom: 15px;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 300px; /* Feste Höhe für alle Bilder */
+    object-fit: cover; /* Bilder füllen den Bereich aus und werden beschnitten */
+    display: block;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.gallery-item p {
+    margin-top: 15px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px) scale(1.02); /* Bild schwebt leicht und wird größer */
+    box-shadow: 0 10px 25px rgba(255,255,255,0.4);
+}
+
+
+/* MOBILE FIX (Galerie anpassen & 3D deaktivieren) */
 @media (max-width:768px) {
   .header-banner { height: 200px; box-shadow:none; border:none; }
   .header-banner img { max-width:100%; max-height:100%; filter:brightness(1.3) contrast(1.2); }
   
   /* 3D-Effekt auf Mobile deaktivieren, damit es nicht seltsam aussieht */
-  .category, .category:hover, .welcome-section, .welcome-section:hover {
+  .category, .category:hover, 
+  .welcome-section, .welcome-section:hover,
+  .gallery-section, .gallery-section:hover { /* Auch für Galerie */
       transform: none !important;
       box-shadow: 0 0 20px rgba(255,255,255,0.3);
+  }
+  .gallery-grid {
+    grid-template-columns: 1fr; /* Einzelne Spalte auf sehr kleinen Bildschirmen */
+  }
+  .gallery-item img {
+    height: 250px; /* Etwas kleinere Bilder auf Mobile */
   }
 }
 </style>
@@ -150,6 +206,35 @@ footer a:hover { text-decoration:underline; }
   </div>
 </div>
 
+<div class="container gallery-section">
+  <h2>✂️ Unsere Stylings</h2>
+  <div class="gallery-grid">
+    <div class="gallery-item">
+      <img src="https://via.placeholder.com/300x400/121212/fff?text=Klassischer+Schnitt" alt="Klassischer Haarschnitt">
+      <p>Klassischer Schnitt</p>
+    </div>
+    <div class="gallery-item">
+      <img src="https://via.placeholder.com/300x400/121212/fff?text=Moderner+Fade" alt="Moderner Fade Haarschnitt">
+      <p>Moderner Fade</p>
+    </div>
+    <div class="gallery-item">
+      <img src="https://via.placeholder.com/300x400/121212/fff?text=Bart+Trim" alt="Bartpflege">
+      <p>Präziser Bart-Trim</p>
+    </div>
+    <div class="gallery-item">
+      <img src="https://via.placeholder.com/300x400/121212/fff?text=Side+Part" alt="Side Part Haarschnitt">
+      <p>Eleganter Side Part</p>
+    </div>
+    <div class="gallery-item">
+      <img src="https://via.placeholder.com/300x400/121212/fff?text=Texturierter+Crop" alt="Texturierter Crop Haarschnitt">
+      <p>Texturierter Crop</p>
+    </div>
+    <div class="gallery-item">
+      <img src="https://via.placeholder.com/300x400/121212/fff?text=Skin+Fade" alt="Skin Fade Haarschnitt">
+      <p>Extremer Skin Fade</p>
+    </div>
+  </div>
+</div>
 <div class="container opening-hours">
   <h2>📍 Kontakt</h2>
   <p>Bachgasse 68, 69502 Hemsbach</p>
