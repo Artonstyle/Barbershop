@@ -76,7 +76,7 @@ footer a:hover { text-decoration:underline; }
 .social-links img:hover { transform:scale(1.2); filter:brightness(1.5); }
 
 /* *************************************************************** */
-/* NEUER CSS FÜR DAS PREISLISTEN-BILD */
+/* NEUER CSS FÜR DAS PREISLISTEN-BILD (ANPASSUNG HIER) */
 /* *************************************************************** */
 .image-price-section {
     text-align: center;
@@ -94,7 +94,8 @@ footer a:hover { text-decoration:underline; }
 }
 
 .image-price-section img {
-    max-width: 100%;
+    max-width: 500px; /* Reduzierte maximale Breite für Desktops */
+    width: 90%; /* Sorgt dafür, dass es auf kleineren Bildschirmen skaliert */
     height: auto;
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(255,255,255,0.2);
@@ -182,7 +183,7 @@ footer a:hover { text-decoration:underline; }
   /* Zusätzliche Anpassung für das Preislisten-Bild auf Mobile: 
      Stellt sicher, dass das Bild auch auf sehr kleinen Screens gut sichtbar bleibt. */
   .image-price-section img {
-      max-width: 90%; 
+      max-width: 95%; /* Etwas mehr Platz an den Rändern für sehr kleine Screens */
   }
 }
 </style>
