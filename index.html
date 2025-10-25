@@ -7,7 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
 /* ------------------------------------------------------------------ */
-/* ORIGINALER CSS-CODE + BANNER FIX + 3D-EFFEKTE + GALERIE CSS */
+/* ORIGINALER CSS-CODE + BEREINIGTE CSS OHNE GALERIE-REGELN */
 /* ------------------------------------------------------------------ */
 
 body { 
@@ -76,7 +76,7 @@ footer a:hover { text-decoration:underline; }
 .social-links img:hover { transform:scale(1.2); filter:brightness(1.5); }
 
 /* *************************************************************** */
-/* NEUER CSS FÜR DAS PREISLISTEN-BILD (ANPASSUNG HIER) */
+/* NEUER CSS FÜR DAS PREISLISTEN-BILD (ANPASSUNG BEIBEHALTEN) */
 /* *************************************************************** */
 .image-price-section {
     text-align: center;
@@ -107,61 +107,8 @@ footer a:hover { text-decoration:underline; }
 }
 
 /* *************************************************************** */
-/* REGELN FÜR DIE BILDER-GALERIE */
+/* MOBILE FIX (3D deaktivieren) */
 /* *************************************************************** */
-.gallery-section {
-    padding: 60px 0; 
-    background: rgba(255,255,255,0.02); 
-    border-radius: 15px;
-    margin: 40px auto;
-    max-width: 1200px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.7), 0 0 25px rgba(255,255,255,0.2);
-    transform: translateZ(-10px); 
-    transition: transform 0.5s ease-in-out;
-}
-.gallery-section:hover {
-    transform: translateZ(5px);
-}
-
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-    gap: 20px; 
-    margin-top: 30px;
-    padding: 0 20px; 
-}
-
-.gallery-item {
-    background: rgba(255,255,255,0.03);
-    border-radius: 10px;
-    overflow: hidden; 
-    box-shadow: 0 5px 15px rgba(0,0,0,0.6);
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    text-align: center;
-    padding-bottom: 15px;
-}
-
-.gallery-item img {
-    width: 100%;
-    height: 300px; 
-    object-fit: cover; 
-    display: block;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-}
-
-.gallery-item p {
-    margin-top: 15px;
-    font-weight: 600;
-    color: #fff;
-}
-
-.gallery-item:hover {
-    transform: translateY(-5px) scale(1.02); 
-    box-shadow: 0 10px 25px rgba(255,255,255,0.4);
-}
-
-
-/* MOBILE FIX (Galerie anpassen & 3D deaktivieren) */
 @media (max-width:768px) {
   .header-banner { height: 200px; box-shadow:none; border:none; }
   .header-banner img { max-width:100%; max-height:100%; filter:brightness(1.3) contrast(1.2); }
@@ -169,21 +116,13 @@ footer a:hover { text-decoration:underline; }
   /* 3D-Effekt auf Mobile deaktivieren, damit es nicht seltsam aussieht */
   .category, .category:hover, 
   .welcome-section, .welcome-section:hover,
-  .gallery-section, .gallery-section:hover,
   .image-price-section, .image-price-section:hover { 
       transform: none !important;
       box-shadow: 0 0 20px rgba(255,255,255,0.3);
   }
-  .gallery-grid {
-    grid-template-columns: 1fr; 
-  }
-  .gallery-item img {
-    height: 250px; 
-  }
-  /* Zusätzliche Anpassung für das Preislisten-Bild auf Mobile: 
-     Stellt sicher, dass das Bild auch auf sehr kleinen Screens gut sichtbar bleibt. */
+  /* Anpassung für das Preislisten-Bild auf Mobile */
   .image-price-section img {
-      max-width: 95%; /* Etwas mehr Platz an den Rändern für sehr kleine Screens */
+      max-width: 95%; 
   }
 }
 </style>
@@ -203,36 +142,6 @@ footer a:hover { text-decoration:underline; }
   <h2>💇‍♂️ Unsere Preisliste</h2>
   <img src="images/preisliste_barbershop.png" alt="Aktuelle Preisliste des C&D Barbershops" style="max-width: 600px; margin: 0 auto;">
 </div>
-<div class="container gallery-section">
-  <h2>✂️ Unsere Stylings</h2>
-  <div class="gallery-grid">
-    <div class="gallery-item">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e0/Close_Up_Of_A_Barber_Giving_A_Man_A_Haircut.jpg" alt="Moderner Fade Haarschnitt">
-      <p>Moderner Fade</p>
-    </div>
-    <div class="gallery-item">
-      <img src="https://cdn.pixabay.com/photo/2016/06/17/14/53/man-1463990_1280.jpg" alt="Klassischer Haarschnitt">
-      <p>Klassischer Schnitt</p>
-    </div>
-    <div class="gallery-item">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/5/52/Barber_trimming_a_customer%27s_beard.jpg" alt="Bartpflege">
-      <p>Präziser Bart-Trim</p>
-    </div>
-    <div class="gallery-item">
-      <img src="https://cdn.pixabay.com/photo/2020/09/20/19/21/barber-5587783_1280.jpg" alt="Eleganter Side Part Haarschnitt">
-      <p>Eleganter Side Part</p>
-    </div>
-    <div class="gallery-item">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e0/Barber_with_clippers_and_customer.jpg" alt="Extremer Skin Fade Haarschnitt">
-      <p>Extremer Skin Fade</p>
-    </div>
-    <div class="gallery-item">
-      <img src="https://cdn.pixabay.com/photo/2023/04/09/16/09/man-7911685_1280.jpg" alt="Texturierter Crop Haarschnitt">
-      <p>Texturierter Crop</p>
-    </div>
-  </div>
-</div>
-
 <div class="container opening-hours">
   <h2>📍 Kontakt</h2>
   <p>Bachgasse 68, 69502 Hemsbach</p>
