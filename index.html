@@ -7,7 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
 /* ------------------------------------------------------------------ */
-/* ORIGINALER CSS-CODE + BEREINIGTE CSS OHNE GALERIE-REGELN */
+/* ORIGINALER CSS-CODE */
 /* ------------------------------------------------------------------ */
 
 body { 
@@ -76,7 +76,7 @@ footer a:hover { text-decoration:underline; }
 .social-links img:hover { transform:scale(1.2); filter:brightness(1.5); }
 
 /* *************************************************************** */
-/* NEUER CSS FÜR DAS PREISLISTEN-BILD (ANPASSUNG BEIBEHALTEN) */
+/* NEUER CSS FÜR DAS PREISLISTEN-BILD */
 /* *************************************************************** */
 .image-price-section {
     text-align: center;
@@ -107,6 +107,73 @@ footer a:hover { text-decoration:underline; }
 }
 
 /* *************************************************************** */
+/* CSS FÜR DAS GÄSTEBUCH */
+/* *************************************************************** */
+.guestbook-section {
+    padding: 40px 20px;
+    margin: 40px auto;
+    background: rgba(255,255,255,0.05); 
+    border-radius: 15px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.7), 0 0 25px rgba(255,255,255,0.2);
+    transform: translateZ(-10px);
+    transition: transform 0.5s ease-in-out;
+    max-width: 700px;
+}
+.guestbook-section:hover {
+    transform: translateZ(5px);
+}
+
+.guestbook-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.guestbook-form input[type="text"], 
+.guestbook-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 8px;
+    background: rgba(0,0,0,0.5);
+    color: #fff;
+    font-size: 1em;
+    box-sizing: border-box; /* Wichtig für die korrekte Breite */
+    transition: border-color 0.3s;
+}
+
+.guestbook-form input[type="text"]:focus, 
+.guestbook-form textarea:focus {
+    border-color: #fdd835; /* Gold-Akzent beim Fokussieren */
+    outline: none;
+}
+
+.guestbook-form textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.guestbook-form button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background-color: #fdd835; /* Goldener Button */
+    color: #000;
+    font-size: 1.1em;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+.guestbook-form button:hover {
+    background-color: #ffeb3b;
+    transform: translateY(-2px);
+}
+/* *************************************************************** */
 /* MOBILE FIX (3D deaktivieren) */
 /* *************************************************************** */
 @media (max-width:768px) {
@@ -114,9 +181,9 @@ footer a:hover { text-decoration:underline; }
   .header-banner img { max-width:100%; max-height:100%; filter:brightness(1.3) contrast(1.2); }
   
   /* 3D-Effekt auf Mobile deaktivieren, damit es nicht seltsam aussieht */
-  .category, .category:hover, 
   .welcome-section, .welcome-section:hover,
-  .image-price-section, .image-price-section:hover { 
+  .image-price-section, .image-price-section:hover,
+  .guestbook-section, .guestbook-section:hover { 
       transform: none !important;
       box-shadow: 0 0 20px rgba(255,255,255,0.3);
   }
@@ -141,6 +208,24 @@ footer a:hover { text-decoration:underline; }
 <div class="container image-price-section">
   <h2>💇‍♂️ Unsere Preisliste</h2>
   <img src="images/preisliste_barbershop.png" alt="Aktuelle Preisliste des C&D Barbershops" style="max-width: 600px; margin: 0 auto;">
+</div>
+<div class="container guestbook-section">
+    <h2>⭐ Ihr Feedback</h2>
+    <p style="text-align: center; margin-bottom: 25px; color: #aaa;">Wir freuen uns über Ihre Meinung und Ihren Besuch!</p>
+    
+    <form class="guestbook-form" action="guestbook_save.php" method="POST">
+        <label for="guestName">Ihr Name:</label>
+        <input type="text" id="guestName" name="name" required>
+        
+        <label for="guestText">Ihr Beitrag:</label>
+        <textarea id="guestText" name="text" required></textarea>
+        
+        <button type="submit">Beitrag abschicken</button>
+    </form>
+    
+    <h3 style="margin-top: 40px; text-align: center; color: #fdd835;">
+        (Hier werden später die Einträge angezeigt)
+    </h3>
 </div>
 <div class="container opening-hours">
   <h2>📍 Kontakt</h2>
