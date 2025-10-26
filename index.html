@@ -6,10 +6,6 @@
 <title>💈 C&D Barbershop – Black Edition</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
-/* ------------------------------------------------------------------ */
-/* ORIGINALER CSS-CODE */
-/* ------------------------------------------------------------------ */
-
 body { 
     font-family:'Poppins', sans-serif; 
     background-color:#000; 
@@ -22,9 +18,7 @@ p { margin:0; }
 .container { width:90%; max-width:1200px; margin:0 auto; padding:20px; }
 h2 { text-align:center; margin-bottom:30px; font-weight:700; text-shadow:0 0 15px rgba(255,255,255,0.8); }
 
-/* *************************************************************** */
-/* BANNER FIX */
-/* *************************************************************** */
+/* BANNER */
 .header-banner { 
     width:100%; 
     height: 300px; 
@@ -39,12 +33,12 @@ h2 { text-align:center; margin-bottom:30px; font-weight:700; text-shadow:0 0 15p
     width: auto; 
     max-width: 100%; 
     max-height: 100%; 
-    height: auto; 
     object-fit:contain; 
     filter:brightness(1.2) contrast(1.1); 
     border:none; 
 }
-/* 3D-Effekt auf Willkommens-Sektion */
+
+/* Willkommen */
 .welcome-section { 
     text-align:center; 
     padding:30px 20px; 
@@ -57,12 +51,45 @@ h2 { text-align:center; margin-bottom:30px; font-weight:700; text-shadow:0 0 15p
     transform: translateZ(-10px);
     transition: transform 0.5s ease-in-out;
 }
-.welcome-section:hover {
-    transform: translateZ(5px); 
-}
-
+.welcome-section:hover { transform: translateZ(5px); }
 .welcome-section h1 { font-size:2em; margin-bottom:10px; text-shadow:0 0 20px rgba(255,255,255,0.8); color: #fff; }
 .welcome-section p { font-size:1.1em; color:#ddd; line-height:1.6; }
+
+/* Preisliste */
+.image-price-section {
+    text-align: center;
+    padding: 20px 0;
+    margin-bottom: 50px;
+    background: rgba(255,255,255,0.03); 
+    border-radius: 15px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.7), 0 0 25px rgba(255,255,255,0.2);
+    transform: translateZ(-10px);
+    transition: transform 0.5s ease-in-out;
+}
+.image-price-section:hover { transform: translateZ(5px); }
+.image-price-section img { max-width: 500px; width: 90%; height: auto; border-radius: 10px; box-shadow: 0 0 15px rgba(255,255,255,0.2); transition: transform 0.3s ease; }
+.image-price-section img:hover { transform: scale(1.01); }
+
+/* Gästebuch */
+.guestbook-section {
+    padding: 40px 20px;
+    margin: 40px auto;
+    background: rgba(255,255,255,0.05); 
+    border-radius: 15px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.7), 0 0 25px rgba(255,255,255,0.2);
+    transform: translateZ(-10px);
+    transition: transform 0.5s ease-in-out;
+    max-width:700px;
+}
+.guestbook-section:hover { transform: translateZ(5px); }
+.guestbook-section label { display:block; margin-bottom:5px; font-weight:600; color:#fff; }
+.guestbook-section input[type="text"], .guestbook-section textarea { width:100%; padding:10px; margin-bottom:20px; border:1px solid rgba(255,255,255,0.15); border-radius:8px; background:rgba(0,0,0,0.5); color:#fff; font-size:1em; box-sizing:border-box; transition:border-color 0.3s; }
+.guestbook-section input[type="text"]:focus, .guestbook-section textarea:focus { border-color:#fdd835; outline:none; }
+.guestbook-section textarea { resize:vertical; min-height:120px; }
+.guestbook-section button { display:block; width:100%; padding:12px; border:none; border-radius:8px; background-color:#fdd835; color:#000; font-size:1.1em; font-weight:700; cursor:pointer; transition:background-color 0.3s, transform 0.1s; }
+.guestbook-section button:hover { background-color:#ffeb3b; transform:translateY(-2px); }
+
+/* Öffnungszeiten & Footer */
 .opening-hours { margin-top:20px; text-align:center; }
 .opening-hours ul { list-style:none; padding:0; display:inline-block; text-align:left; color:#ddd; }
 .opening-hours li { padding:5px 0; border-bottom:1px solid rgba(255,255,255,0.1); }
@@ -75,121 +102,12 @@ footer a:hover { text-decoration:underline; }
 .social-links img { width:28px; height:28px; filter:brightness(1.2); transition:transform 0.3s ease; }
 .social-links img:hover { transform:scale(1.2); filter:brightness(1.5); }
 
-/* *************************************************************** */
-/* NEUER CSS FÜR DAS PREISLISTEN-BILD */
-/* *************************************************************** */
-.image-price-section {
-    text-align: center;
-    padding: 20px 0;
-    margin-bottom: 50px;
-    background: rgba(255,255,255,0.03); 
-    border-radius: 15px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.7), 0 0 25px rgba(255,255,255,0.2);
-    transform: translateZ(-10px);
-    transition: transform 0.5s ease-in-out;
-}
-
-.image-price-section:hover {
-    transform: translateZ(5px);
-}
-
-.image-price-section img {
-    max-width: 500px;
-    width: 90%;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(255,255,255,0.2);
-    transition: transform 0.3s ease;
-}
-
-.image-price-section img:hover {
-    transform: scale(1.01);
-}
-
-/* *************************************************************** */
-/* CSS FÜR DAS GÄSTEBUCH */
-/* *************************************************************** */
-.guestbook-section {
-    padding: 40px 20px;
-    margin: 40px auto;
-    background: rgba(255,255,255,0.05); 
-    border-radius: 15px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.7), 0 0 25px rgba(255,255,255,0.2);
-    transform: translateZ(-10px);
-    transition: transform 0.5s ease-in-out;
-    max-width: 700px;
-}
-.guestbook-section:hover {
-    transform: translateZ(5px);
-}
-
-.guestbook-section label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: 600;
-    color: #fff;
-}
-
-.guestbook-section input[type="text"], 
-.guestbook-section textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid rgba(255,255,255,0.15);
-    border-radius: 8px;
-    background: rgba(0,0,0,0.5);
-    color: #fff;
-    font-size: 1em;
-    box-sizing: border-box;
-    transition: border-color 0.3s;
-}
-
-.guestbook-section input[type="text"]:focus, 
-.guestbook-section textarea:focus {
-    border-color: #fdd835;
-    outline: none;
-}
-
-.guestbook-section textarea {
-    resize: vertical;
-    min-height: 120px;
-}
-
-.guestbook-section button {
-    display: block;
-    width: 100%;
-    padding: 12px;
-    border: none;
-    border-radius: 8px;
-    background-color: #fdd835;
-    color: #000;
-    font-size: 1.1em;
-    font-weight: 700;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.1s;
-}
-
-.guestbook-section button:hover {
-    background-color: #ffeb3b;
-    transform: translateY(-2px);
-}
-
-/* *************************************************************** */
-/* MOBILE FIX (3D deaktivieren) */
-/* *************************************************************** */
+/* Mobile Fix */
 @media (max-width:768px) {
-  .header-banner { height: 200px; box-shadow:none; border:none; }
+  .header-banner { height:200px; box-shadow:none; border:none; }
   .header-banner img { max-width:100%; max-height:100%; filter:brightness(1.3) contrast(1.2); }
-  .welcome-section, .welcome-section:hover,
-  .image-price-section, .image-price-section:hover,
-  .guestbook-section, .guestbook-section:hover { 
-      transform: none !important;
-      box-shadow: 0 0 20px rgba(255,255,255,0.3);
-  }
-  .image-price-section img {
-      max-width: 100%;
-      width: 100%;
-  }
+  .welcome-section, .welcome-section:hover, .image-price-section, .image-price-section:hover, .guestbook-section, .guestbook-section:hover { transform:none !important; box-shadow:0 0 20px rgba(255,255,255,0.3); }
+  .image-price-section img { max-width:100%; width:100%; }
 }
 </style>
 </head>
@@ -209,12 +127,10 @@ footer a:hover { text-decoration:underline; }
   <img src="images/Barbershop-preisliste.png" alt="Aktuelle Preisliste des C&D Barbershops">
 </div>
 
-<!-- GÄSTEBUCH MIT GOOGLE SHEETS -->
+<!-- Gästebuch -->
 <div class="container guestbook-section" id="guestbook">
   <h2>⭐ Ihr Feedback</h2>
-  <p style="text-align: center; margin-bottom: 25px; color: #aaa;">
-    Wir freuen uns über Ihre Meinung und Ihren Besuch!
-  </p>
+  <p style="text-align: center; margin-bottom: 25px; color: #aaa;">Wir freuen uns über Ihre Meinung und Ihren Besuch!</p>
 
   <form id="guestbookForm">
     <label for="guestName">Ihr Name:</label>
@@ -226,9 +142,7 @@ footer a:hover { text-decoration:underline; }
     <button type="submit">Beitrag abschicken</button>
   </form>
 
-  <p id="successMsg" style="display:none; color:#0f0; text-align:center; margin-top:15px;">
-    ✅ Vielen Dank für Ihren Eintrag!
-  </p>
+  <p id="successMsg" style="display:none; color:#0f0; text-align:center; margin-top:15px;">✅ Vielen Dank für Ihren Eintrag!</p>
 
   <div id="guestEntries" style="margin-top:40px;"></div>
 </div>
@@ -248,4 +162,23 @@ footer a:hover { text-decoration:underline; }
     <li><strong>Samstag:</strong><br>09:00 – 18:00 Uhr</li>
     <li><strong>Sonntag:</strong><br>Geschlossen ⛔</li>
   </ul>
-  <p><a href="https://www.google.com/maps/dir/?api=1&destination=Bachgasse+68,+69502+Hemsbach" target="_blank" style="
+  <p><a href="https://www.google.com/maps/dir/?api=1&destination=Bachgasse+68,+69502+Hemsbach" target="_blank" style="color:#fff;">Route starten mit Google Maps</a></p>
+</div>
+
+<footer>
+  © 2025 C&D Barbershop | Black Edition & Style<br>
+  <a href="#">Datenschutzerklärung</a> | <a href="#">Impressum</a>
+</footer>
+
+<script>
+const sheetURL = "https://script.google.com/macros/s/AKfycbwIlAbzl1HratCEkaMUsK_JLXwF_kP0jo53dKV1TAsIIwgzBnGTix4KyhHiYw0FY5nz7w/exec";
+
+// Einträge laden und anzeigen
+async function loadEntries() {
+  const res = await fetch(sheetURL);
+  const entries = await res.json();
+
+  const list = document.getElementById("guestEntries");
+  list.innerHTML = entries.reverse().map(e => `
+    <div style="background:rgba(255,255,255,0.08); padding:15px; border-radius:10px; margin-bottom:15px; box-shadow:0 0 10px rgba(255,255,255,0.1);">
+      <strong style="color:#fdd835;">${e.name}</strong
