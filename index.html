@@ -94,8 +94,8 @@ footer a:hover { text-decoration:underline; }
 }
 
 .image-price-section img {
-    max-width: 500px; /* Reduzierte maximale Breite für Desktops */
-    width: 90%; /* Sorgt dafür, dass es auf kleineren Bildschirmen skaliert */
+    max-width: 500px;
+    width: 90%;
     height: auto;
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(255,255,255,0.2);
@@ -123,15 +123,15 @@ footer a:hover { text-decoration:underline; }
     transform: translateZ(5px);
 }
 
-.guestbook-form label {
+.guestbook-section label {
     display: block;
     margin-bottom: 5px;
     font-weight: 600;
     color: #fff;
 }
 
-.guestbook-form input[type="text"], 
-.guestbook-form textarea {
+.guestbook-section input[type="text"], 
+.guestbook-section textarea {
     width: 100%;
     padding: 10px;
     margin-bottom: 20px;
@@ -140,28 +140,28 @@ footer a:hover { text-decoration:underline; }
     background: rgba(0,0,0,0.5);
     color: #fff;
     font-size: 1em;
-    box-sizing: border-box; /* Wichtig für die korrekte Breite */
+    box-sizing: border-box;
     transition: border-color 0.3s;
 }
 
-.guestbook-form input[type="text"]:focus, 
-.guestbook-form textarea:focus {
-    border-color: #fdd835; /* Gold-Akzent beim Fokussieren */
+.guestbook-section input[type="text"]:focus, 
+.guestbook-section textarea:focus {
+    border-color: #fdd835;
     outline: none;
 }
 
-.guestbook-form textarea {
+.guestbook-section textarea {
     resize: vertical;
     min-height: 120px;
 }
 
-.guestbook-form button {
+.guestbook-section button {
     display: block;
     width: 100%;
     padding: 12px;
     border: none;
     border-radius: 8px;
-    background-color: #fdd835; /* Goldener Button */
+    background-color: #fdd835;
     color: #000;
     font-size: 1.1em;
     font-weight: 700;
@@ -169,28 +169,26 @@ footer a:hover { text-decoration:underline; }
     transition: background-color 0.3s, transform 0.1s;
 }
 
-.guestbook-form button:hover {
+.guestbook-section button:hover {
     background-color: #ffeb3b;
     transform: translateY(-2px);
 }
+
 /* *************************************************************** */
 /* MOBILE FIX (3D deaktivieren) */
 /* *************************************************************** */
 @media (max-width:768px) {
   .header-banner { height: 200px; box-shadow:none; border:none; }
   .header-banner img { max-width:100%; max-height:100%; filter:brightness(1.3) contrast(1.2); }
-  
-  /* 3D-Effekt auf Mobile deaktivieren, damit es nicht seltsam aussieht */
   .welcome-section, .welcome-section:hover,
   .image-price-section, .image-price-section:hover,
   .guestbook-section, .guestbook-section:hover { 
       transform: none !important;
       box-shadow: 0 0 20px rgba(255,255,255,0.3);
   }
-  /* Anpassung für das Preislisten-Bild auf Mobile */
   .image-price-section img {
-      max-width: 100%; /* HIER GEÄNDERT: Volle Breite im Container */
-      width: 100%;     /* HIER GEÄNDERT: Volle Breite im Container */
+      max-width: 100%;
+      width: 100%;
   }
 }
 </style>
@@ -210,24 +208,31 @@ footer a:hover { text-decoration:underline; }
   <h2>💇‍♂️ Unsere Preisliste</h2>
   <img src="images/Barbershop-preisliste.png" alt="Aktuelle Preisliste des C&D Barbershops">
 </div>
-<div class="container guestbook-section">
-    <h2>⭐ Ihr Feedback</h2>
-    <p style="text-align: center; margin-bottom: 25px; color: #aaa;">Wir freuen uns über Ihre Meinung und Ihren Besuch!</p>
-    
-    <form class="guestbook-form" action="guestbook_save.php" method="POST">
-        <label for="guestName">Ihr Name:</label>
-        <input type="text" id="guestName" name="name" required>
-        
-        <label for="guestText">Ihr Beitrag:</label>
-        <textarea id="guestText" name="text" required></textarea>
-        
-        <button type="submit">Beitrag abschicken</button>
-    </form>
-    
-    <h3 style="margin-top: 40px; text-align: center; color: #fdd835;">
-        (Hier werden später die Einträge angezeigt)
-    </h3>
+
+<!-- GÄSTEBUCH MIT GOOGLE SHEETS -->
+<div class="container guestbook-section" id="guestbook">
+  <h2>⭐ Ihr Feedback</h2>
+  <p style="text-align: center; margin-bottom: 25px; color: #aaa;">
+    Wir freuen uns über Ihre Meinung und Ihren Besuch!
+  </p>
+
+  <form id="guestbookForm">
+    <label for="guestName">Ihr Name:</label>
+    <input type="text" id="guestName" name="name" required>
+
+    <label for="guestText">Ihr Beitrag:</label>
+    <textarea id="guestText" name="text" required></textarea>
+
+    <button type="submit">Beitrag abschicken</button>
+  </form>
+
+  <p id="successMsg" style="display:none; color:#0f0; text-align:center; margin-top:15px;">
+    ✅ Vielen Dank für Ihren Eintrag!
+  </p>
+
+  <div id="guestEntries" style="margin-top:40px;"></div>
 </div>
+
 <div class="container opening-hours">
   <h2>📍 Kontakt</h2>
   <p>Bachgasse 68, 69502 Hemsbach</p>
@@ -243,13 +248,4 @@ footer a:hover { text-decoration:underline; }
     <li><strong>Samstag:</strong><br>09:00 – 18:00 Uhr</li>
     <li><strong>Sonntag:</strong><br>Geschlossen ⛔</li>
   </ul>
-  <p><a href="https://www.google.com/maps/dir/?api=1&destination=Bachgasse+68,+69502+Hemsbach" target="_blank" style="color:#fff;">Route starten mit Google Maps</a></p>
-</div>
-
-<footer>
-  © 2025 C&D Barbershop | Black Edition & Style<br>
-  <a href="#">Datenschutzerklärung</a> | <a href="#">Impressum</a>
-</footer>
-
-</body>
-</html>
+  <p><a href="https://www.google.com/maps/dir/?api=1&destination=Bachgasse+68,+69502+Hemsbach" target="_blank" style="
