@@ -1,132 +1,146 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>C&D Barbershop – Gästebuch</title>
-<style>
-body {
-  font-family: Arial, sans-serif;
-  background: #000;
-  color: #fff;
-  margin: 0;
-  padding: 0;
-}
-.container {
-  width: 90%;
-  max-width: 700px;
-  margin: 40px auto;
-  background: rgba(255,255,255,0.05);
-  border-radius: 15px;
-  padding: 30px;
-  box-shadow: 0 0 20px rgba(255,255,255,0.1);
-}
-label { font-weight: bold; display:block; margin-top:15px; }
-input, textarea {
-  width: 100%; padding: 10px; border-radius: 8px; border:none;
-  margin-top:5px; font-size: 1em;
-}
-button {
-  margin-top: 20px; padding: 12px; border:none; border-radius:8px;
-  background:#fdd835; color:#000; font-weight:700; cursor:pointer;
-}
-button:hover { background:#ffeb3b; }
-.entry {
-  background: rgba(255,255,255,0.1);
-  border-left: 4px solid #fdd835;
-  padding: 10px;
-  margin-top: 15px;
-  border-radius: 8px;
-}
-.entry small { color: #aaa; }
-.url-box {
-  margin-top: 20px;
-  font-size: 0.9em;
-  color: #ccc;
-  text-align: center;
-}
-.url-box a { color: #fdd835; word-break: break-all; }
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>💈 C&D Barbershop – Black Edition</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #000;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+    h2 { text-align:center; margin-bottom:20px; font-weight:700; }
+
+    .guestbook-section {
+      max-width:700px;
+      margin:50px auto;
+      padding:20px;
+      background:rgba(255,255,255,0.05);
+      border-radius:12px;
+      box-shadow:0 0 20px rgba(255,255,255,0.15);
+    }
+
+    .guestbook-section input,
+    .guestbook-section textarea {
+      width:100%;
+      padding:10px;
+      margin-bottom:15px;
+      border-radius:6px;
+      border:1px solid rgba(255,255,255,0.3);
+      background:rgba(0,0,0,0.6);
+      color:#fff;
+    }
+
+    .guestbook-section button {
+      width:100%;
+      padding:12px;
+      background:#fdd835;
+      color:#000;
+      font-weight:700;
+      border:none;
+      border-radius:8px;
+      cursor:pointer;
+    }
+
+    #guestEntries div {
+      background:rgba(255,255,255,0.08);
+      border-left:4px solid #fdd835;
+      margin-bottom:15px;
+      padding:10px 15px;
+      border-radius:8px;
+    }
+
+    #successMsg {
+      color:#0f0;
+      text-align:center;
+      display:none;
+      margin-top:10px;
+    }
+  </style>
 </head>
 <body>
 
-<div class="container">
-  <h1>⭐ Gästebuch – C&D Barbershop</h1>
-  <p>Tragen Sie sich gerne ein – Ihr Feedback ist uns wichtig!</p>
+  <div class="guestbook-section">
+    <h2>⭐ Ihr Feedback</h2>
+    <form id="guestbookForm">
+      <label for="guestName">Ihr Name:</label>
+      <input type="text" id="guestName" required>
 
-  <form id="guestbookForm">
-    <label for="guestName">Name:</label>
-    <input type="text" id="guestName" name="name" required>
+      <label for="guestText">Ihr Beitrag:</label>
+      <textarea id="guestText" required></textarea>
 
-    <label for="guestText">Nachricht:</label>
-    <textarea id="guestText" name="text" required></textarea>
+      <button type="submit">Beitrag abschicken</button>
+    </form>
 
-    <button type="submit">Eintrag senden</button>
-  </form>
+    <p id="successMsg">✅ Vielen Dank für Ihren Eintrag!</p>
 
-  <p id="successMsg" style="display:none; color:#0f0; margin-top:15px;">✅ Vielen Dank für Ihren Eintrag!</p>
-
-  <h2 style="margin-top:40px;">Einträge</h2>
-  <div id="guestEntries">Lade Einträge...</div>
-
-  <div class="url-box">
-    <p>📡 Aktuelle Script-URL:</p>
-    <a href="DEINE_WEB_APP_URL_HIER" target="_blank">DEINE_WEB_APP_URL_HIER</a>
+    <div id="guestEntries"></div>
   </div>
-</div>
 
-<script>
-const sheetURL = "DEINE_WEB_APP_URL_HIER";
-const guestEntriesDiv = document.getElementById('guestEntries');
-const form = document.getElementById('guestbookForm');
-const successMsg = document.getElementById('successMsg');
+  <script>
+    // 🔗 Deine eigene Google Script URL hier einsetzen:
+    const sheetURL = "https://script.google.com/macros/s/AKfycbwIlAbzl1HratCEkaMUsK_JLXwF_kP0jo53dKV1TAsIIwgzBnGTix4KyhHiYw0FY5nz7w/exec";
 
-// === Einträge laden ===
-async function loadEntries() {
-  try {
-    const res = await fetch(sheetURL);
-    const data = await res.json();
-    if (!data.length) {
-      guestEntriesDiv.innerHTML = "<p>Noch keine Einträge vorhanden.</p>";
-      return;
+    const guestEntriesDiv = document.getElementById("guestEntries");
+    const form = document.getElementById("guestbookForm");
+    const successMsg = document.getElementById("successMsg");
+
+    // === Einträge laden ===
+    async function loadEntries() {
+      try {
+        const res = await fetch(sheetURL);
+        const entries = await res.json();
+
+        if (!entries || !entries.length) {
+          guestEntriesDiv.innerHTML = '<p style="text-align:center;color:#aaa;">Noch keine Einträge vorhanden.</p>';
+          return;
+        }
+
+        guestEntriesDiv.innerHTML = entries.reverse().map(e => {
+          const d = new Date(e.date);
+          const dateString = d.toLocaleString('de-DE');
+          return `
+            <div>
+              <strong>${e.name}</strong> <span style="color:#aaa;">(${dateString})</span>
+              <p style="color:#ccc;">${e.text}</p>
+            </div>`;
+        }).join('');
+      } catch (err) {
+        console.error(err);
+        guestEntriesDiv.innerHTML = '<p style="color:red;text-align:center;">Fehler beim Laden.</p>';
+      }
     }
-    guestEntriesDiv.innerHTML = data.reverse().map(e => `
-      <div class="entry">
-        <strong>${e.name}</strong><br>
-        <small>${new Date(e.date).toLocaleString('de-DE')}</small>
-        <p>${e.text}</p>
-      </div>
-    `).join('');
-  } catch (err) {
-    guestEntriesDiv.innerHTML = "<p style='color:red;'>Fehler beim Laden der Einträge.</p>";
-    console.error(err);
-  }
-}
 
-// === Formular absenden ===
-form.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const name = document.getElementById('guestName').value.trim();
-  const text = document.getElementById('guestText').value.trim();
+    // === Formular absenden ===
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const name = document.getElementById("guestName").value.trim();
+      const text = document.getElementById("guestText").value.trim();
+      if (!name || !text) return;
 
-  if (!name || !text) return alert('Bitte alle Felder ausfüllen.');
+      try {
+        const formData = new FormData();
+        formData.append("name", name);
+        formData.append("text", text);
 
-  const formData = new FormData();
-  formData.append('name', name);
-  formData.append('text', text);
+        await fetch(sheetURL, { method: "POST", body: formData });
 
-  try {
-    await fetch(sheetURL, { method: 'POST', body: formData });
-    successMsg.style.display = 'block';
-    form.reset();
-    setTimeout(() => { successMsg.style.display = 'none'; loadEntries(); }, 1500);
-  } catch (err) {
-    alert('Fehler beim Absenden.');
-    console.error(err);
-  }
-});
+        form.reset();
+        successMsg.style.display = "block";
+        setTimeout(() => successMsg.style.display = "none", 3000);
+        loadEntries();
+      } catch (error) {
+        console.error("Fehler:", error);
+        alert("Fehler beim Senden.");
+      }
+    });
 
-document.addEventListener('DOMContentLoaded', loadEntries);
-</script>
+    document.addEventListener("DOMContentLoaded", loadEntries);
+  </script>
+
 </body>
 </html>
