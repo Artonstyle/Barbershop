@@ -261,7 +261,7 @@ footer a:hover { text-decoration:underline; }
 
 <script>
 // ✅ AKTUALISIERT: IHRE NEUESTE KORREKTE URL FÜR DIE 3-FELDER-LOGIK
-const sheetURL = "https://script.google.com/macros/s/AKfycbwIlAbzl1HratCEkaMUsK_JLXwF_kP0jo53dKV1TAsIIwgzBnGTix4KyhHiYw0FY5nz7w/exec";
+const sheetURL = "https://script.google.com/macros/s/AKfycbzAg4516b8lJqIjwzfRttGgA2yM8a5Nk-rdUkpvBWukw3vCHwOL38Wton7aa4Vpl0Bw/exec";
 
 const guestEntriesDiv = document.getElementById('guestEntries');
 const form = document.getElementById("guestbookForm");
@@ -307,9 +307,6 @@ async function loadEntries() {
           </div>
           
           <p style="color:#ddd; margin-top:8px; font-style: italic;">"${e.text}"</p>
-          
-          <div style="text-align:right; margin-top:10px;">
-            </div>
         </div>
         `;
       }).join('');
@@ -318,6 +315,7 @@ async function loadEntries() {
     }
   } catch (error) {
     console.error("Fehler beim Laden der Einträge:", error);
+    // Nur bei einem echten Fehler anzeigen
     guestEntriesDiv.innerHTML = '<p style="color: red; text-align: center;">Einträge konnten nicht geladen werden.</p>';
   }
 }
