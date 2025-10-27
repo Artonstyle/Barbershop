@@ -299,6 +299,8 @@ async function loadEntries() {
         });
         // ------------------------------------------------------------------
         
+        // Die Zeilennummer im Google Sheet (wichtig für den Lösch-Link)
+        // Wir gehen davon aus, dass die Einträge in umgekehrter Reihenfolge geladen werden (reverse)
         const sheetRowNumber = entries.length - index + 1; 
 
         // Kodieren der unsichtbaren Daten für den Mailto-Link
