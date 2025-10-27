@@ -260,7 +260,7 @@ footer a:hover { text-decoration:underline; }
 </footer>
 
 <script>
-// ⚠️ DIES IST IHRE NEUE PERSÖNLICHE URL FÜR DIE KOMMUNIKATION MIT GOOGLE SHEETS
+// ⚠️ IHRE AKTUELLE URL FÜR GOOGLE APPS SCRIPT
 const sheetURL = "https://script.google.com/macros/s/AKfycbwSdRsz_cB6JKISJDXGUwuMFcn0UCldmyYV2WkzXww-E7fukY8HOeC-HAk-7x9ZwxZf/exec";
 
 const guestEntriesDiv = document.getElementById('guestEntries');
@@ -274,7 +274,22 @@ async function loadEntries() {
     const entries = await res.json(); 
 
     if (entries && entries.length) {
-      guestEntriesDiv.innerHTML = entries.reverse().map(e => `
+      guestEntriesDiv.innerHTML = entries.reverse().map((e, index) => {
+        
+        // --- KORREKTUR FÜR DIE DATUMSANZEIGE (FORMAT: TT.MM.JJJJ, HH:MM) ---
+        let rawDate = new Date(e.date);
+        const formattedDate = rawDate.toLocaleString('de-DE', {
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit'
+        });
+        // ------------------------------------------------------------------
+        
+        const sheetRowNumber = entries.length - index + 1; 
+
+        return `
         <div style="
           border-left: 4px solid #fdd835;
           padding: 15px;
@@ -282,11 +297,22 @@ async function loadEntries() {
           background: rgba(255,255,255,0.05);
           border-radius: 8px;
         ">
-          <strong style="color:#fff;">${e.name || 'Anonym'}</strong>
-          <span style="color:#888; font-size:0.9em;"> (${e.date})</span>
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <strong style="color:#fff;">${e.name || 'Anonym'}</strong>
+            <span style="color:#888; font-size:0.9em;"> (${formattedDate})</span>
+          </div>
+          
           <p style="color:#ddd; margin-top:8px; font-style: italic;">"${e.text}"</p>
+          
+          <div style="text-align:right; margin-top:10px;">
+            <a href="mailto:IHRE_E-MAIL_ADRESSE_HIER?subject=Lösch-Anfrage%20Eintrag%20${sheetRowNumber}&body=Hallo,%0Aich%20bitte%20um%20die%20Löschung%20des%20Eintrags%20(${e.name}%20vom%20${formattedDate}).%0A" 
+               style="color:#fdd835; font-size:0.8em; text-decoration:none;">
+               Lösch-Anfrage senden
+            </a>
+          </div>
         </div>
-      `).join('');
+        `;
+      }).join('');
     } else {
       guestEntriesDiv.innerHTML = '<p style="text-align: center; color: #888;">Noch keine Einträge vorhanden.</p>';
     }
