@@ -266,8 +266,8 @@ footer a:hover { text-decoration:underline; }
 </footer>
 
 <script>
-// ⚠️ IHRE AKTUELLE URL FÜR GOOGLE APPS SCRIPT
-const sheetURL = "https://script.google.com/macros/s/AKfycbwSdRsz_cB6JKISJDXGUwuMFcn0UCldmyYV2WkzXww-E7fukY8HOeC-HAk-7x9ZwxZf/exec";
+// ✅ AKTUALISIERT: IHRE NEUE URL FÜR GOOGLE APPS SCRIPT
+const sheetURL = "https://script.google.com/macros/s/AKfycbz0SHyxg1PJWSBkKfa5pGOItRzaR9KB1widxC1ogvShk3Tu420fEosGb_Kj2KhixsTx/exec";
 
 const guestEntriesDiv = document.getElementById('guestEntries');
 const form = document.getElementById("guestbookForm");
@@ -277,6 +277,12 @@ const successMsg = document.getElementById("successMsg");
 async function loadEntries() {
   try {
     const res = await fetch(sheetURL);
+    // Behandeln Sie leere Antworten, um Abstürze zu vermeiden
+    if (res.status === 204 || res.headers.get('content-length') === '0') {
+      guestEntriesDiv.innerHTML = '<p style="text-align: center; color: #888;">Noch keine Einträge vorhanden.</p>';
+      return;
+    }
+    
     const entries = await res.json(); 
 
     if (entries && entries.length) {
@@ -295,7 +301,7 @@ async function loadEntries() {
         
         const sheetRowNumber = entries.length - index + 1; 
 
-        // NEU: Kodieren der Sicherheitsantwort für den Mailto-Link (unsichtbar)
+        // Kodieren der unsichtbaren Daten für den Mailto-Link
         const contactInfo = encodeURIComponent(e.contact || 'Nicht angegeben');
         const securityAnswer = encodeURIComponent(e.securityAnswer || 'Nicht angegeben');
 
@@ -340,13 +346,13 @@ form.addEventListener("submit", async (e) => {
   
   const name = document.getElementById("guestName").value.trim();
   const contact = document.getElementById("guestContact").value.trim(); 
-  const securityAnswer = document.getElementById("guestSecurityAnswer").value.trim(); // NEU
+  const securityAnswer = document.getElementById("guestSecurityAnswer").value.trim(); 
   const text = document.getElementById("guestText").value.trim();
   
   if (!name || !text) return;
 
   try {
-    // Sende alle Daten (inkl. Sicherheitsfrage) an das Google Script
+    // Sende alle 5 Datenfelder an das Google Script
     await fetch(sheetURL, {
       method: "POST",
       mode: "no-cors", 
