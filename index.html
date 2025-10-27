@@ -219,12 +219,6 @@ footer a:hover { text-decoration:underline; }
     <label for="guestName">Ihr Name:</label>
     <input type="text" id="guestName" name="name" required>
 
-    <label for="guestContact">Ihre E-Mail oder Handynummer (Kontakt bei Rückfragen, nicht öffentlich):</label>
-    <input type="text" id="guestContact" name="contact" placeholder="z.B. max@muster.de oder 0171...">
-
-    <label for="guestSecurityAnswer">Sicherheitsfrage (Wo sind Sie geboren? Nur für den Löschvorgang):</label>
-    <input type="text" id="guestSecurityAnswer" name="securityAnswer" placeholder="Ort eingeben (z.B. Berlin)">
-
     <label for="guestText">Ihr Beitrag:</label>
     <textarea id="guestText" name="text" required></textarea>
 
@@ -266,8 +260,8 @@ footer a:hover { text-decoration:underline; }
 </footer>
 
 <script>
-// ✅ AKTUALISIERT: IHRE NEUESTE KORREKTE URL FÜR GOOGLE APPS SCRIPT
-const sheetURL = "https://script.google.com/macros/s/AKfycbz0SHyxg1PJWSBkKfa5pGOItRzaR9KB1widxC1ogvShk3Tu420fEosGb_Kj2KhixsTx/exec";
+// ✅ AKTUALISIERT: IHRE NEUESTE KORREKTE URL FÜR DIE 3-FELDER-LOGIK
+const sheetURL = "https://script.google.com/macros/s/AKfycbwIlAbzl1HratCEkaMUsK_JLXwF_kP0jo53dKV1TAsIIwgzBnGTix4KyhHiYw0FY5nz7w/exec";
 
 const guestEntriesDiv = document.getElementById('guestEntries');
 const form = document.getElementById("guestbookForm");
@@ -277,7 +271,7 @@ const successMsg = document.getElementById("successMsg");
 async function loadEntries() {
   try {
     const res = await fetch(sheetURL);
-    // Behandeln Sie leere Antworten, um Abstürze zu vermeiden
+    // Behandeln Sie leere Antworten
     if (res.status === 204 || res.headers.get('content-length') === '0') {
       guestEntriesDiv.innerHTML = '<p style="text-align: center; color: #888;">Noch keine Einträge vorhanden.</p>';
       return;
@@ -299,14 +293,6 @@ async function loadEntries() {
         });
         // ------------------------------------------------------------------
         
-        // Die Zeilennummer im Google Sheet (wichtig für den Lösch-Link)
-        // Wir gehen davon aus, dass die Einträge in umgekehrter Reihenfolge geladen werden (reverse)
-        const sheetRowNumber = entries.length - index + 1; 
-
-        // Kodieren der unsichtbaren Daten für den Mailto-Link
-        const contactInfo = encodeURIComponent(e.contact || 'Nicht angegeben');
-        const securityAnswer = encodeURIComponent(e.securityAnswer || 'Nicht angegeben');
-
         return `
         <div style="
           border-left: 4px solid #fdd835;
@@ -323,11 +309,7 @@ async function loadEntries() {
           <p style="color:#ddd; margin-top:8px; font-style: italic;">"${e.text}"</p>
           
           <div style="text-align:right; margin-top:10px;">
-            <a href="mailto:IHRE_E-MAIL_ADRESSE_HIER?subject=Lösch-Anfrage%20Eintrag%20${sheetRowNumber}&body=Hallo Admin,%0A%0AIch%20bitte%20um%20die%20Löschung%20des%20folgenden%20Eintrags%20(Zeile%20${sheetRowNumber}):%0A%0A--- Bestätigungsdaten ---%0AVerwendete%20E-Mail/Telefonnummer:%20${contactInfo}%0AAntwort%20auf%20Sicherheitsfrage%20(Wo%20geboren?):%20${securityAnswer}%0A---%0A" 
-               style="color:#fdd835; font-size:0.8em; text-decoration:none;">
-               Lösch-Anfrage senden
-            </a>
-          </div>
+            </div>
         </div>
         `;
       }).join('');
@@ -347,21 +329,19 @@ form.addEventListener("submit", async (e) => {
   successMsg.style.display = "none";
   
   const name = document.getElementById("guestName").value.trim();
-  const contact = document.getElementById("guestContact").value.trim(); 
-  const securityAnswer = document.getElementById("guestSecurityAnswer").value.trim(); 
   const text = document.getElementById("guestText").value.trim();
   
   if (!name || !text) return;
 
   try {
-    // Sende alle 5 Datenfelder an das Google Script
+    // Sende nur Name und Text an das Google Script
     await fetch(sheetURL, {
       method: "POST",
       mode: "no-cors", 
       headers: { 
         "Content-Type": "application/json" 
       },
-      body: JSON.stringify({ name, text, contact, securityAnswer }),
+      body: JSON.stringify({ name, text }),
     });
 
     form.reset();
