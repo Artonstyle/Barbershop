@@ -305,7 +305,7 @@ async function loadEntries() {
           <p style="color:#ddd; margin-top:8px; font-style: italic;">"${e.text}"</p>
           
           <div style="text-align:right; margin-top:10px;">
-            <a href="mailto:IHRE_E-MAIL_ADRESSE_HIER?subject=Lösch-Anfrage%20Eintrag%20${sheetRowNumber}&body=Hallo,%0Aich%20bitte%20um%20die%20Löschung%20des%20Eintrags%20(${e.name}%20vom%20${formattedDate}).%0A" 
+            <a href="mailto:artonstyle@hotmail.fr?subject=Lösch-Anfrage%20Gästebucheintrag&body=Hallo,%0Aich%20bitte%20um%20die%20Löschung%20des%20Eintrags%20(${e.name}%20vom%20${formattedDate}).%0A" 
                style="color:#fdd835; font-size:0.8em; text-decoration:none;">
                Lösch-Anfrage senden
             </a>
@@ -346,7 +346,7 @@ form.addEventListener("submit", async (e) => {
     form.reset();
     successMsg.style.display = "block";
     
-    // Nach 3 Sekunden die Meldung ausblenden und Einträge neu laden
+    // Nach 1 Sekunden die Meldung ausblenden und Einträge neu laden
     setTimeout(() => {
         successMsg.style.display = "none";
         loadEntries();
