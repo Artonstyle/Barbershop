@@ -219,6 +219,12 @@ footer a:hover { text-decoration:underline; }
     <label for="guestName">Ihr Name:</label>
     <input type="text" id="guestName" name="name" required>
 
+    <label for="guestContact">Ihre E-Mail oder Handynummer (Kontakt bei Rückfragen, nicht öffentlich):</label>
+    <input type="text" id="guestContact" name="contact" placeholder="z.B. max@muster.de oder 0171...">
+
+    <label for="guestSecurityAnswer">Sicherheitsfrage (Wo sind Sie geboren? Nur für den Löschvorgang):</label>
+    <input type="text" id="guestSecurityAnswer" name="securityAnswer" placeholder="Ort eingeben (z.B. Berlin)">
+
     <label for="guestText">Ihr Beitrag:</label>
     <textarea id="guestText" name="text" required></textarea>
 
@@ -289,6 +295,10 @@ async function loadEntries() {
         
         const sheetRowNumber = entries.length - index + 1; 
 
+        // NEU: Kodieren der Sicherheitsantwort für den Mailto-Link (unsichtbar)
+        const contactInfo = encodeURIComponent(e.contact || 'Nicht angegeben');
+        const securityAnswer = encodeURIComponent(e.securityAnswer || 'Nicht angegeben');
+
         return `
         <div style="
           border-left: 4px solid #fdd835;
@@ -305,7 +315,7 @@ async function loadEntries() {
           <p style="color:#ddd; margin-top:8px; font-style: italic;">"${e.text}"</p>
           
           <div style="text-align:right; margin-top:10px;">
-            <a href="mailto:artonstyle@hotmail.fr?subject=Lösch-Anfrage%20Gästebucheintrag&body=Hallo,%0Aich%20bitte%20um%20die%20Löschung%20des%20Eintrags%20(${e.name}%20vom%20${formattedDate}).%0A" 
+            <a href="mailto:IHRE_E-MAIL_ADRESSE_HIER?subject=Lösch-Anfrage%20Eintrag%20${sheetRowNumber}&body=Hallo Admin,%0A%0AIch%20bitte%20um%20die%20Löschung%20des%20folgenden%20Eintrags%20(Zeile%20${sheetRowNumber}):%0A%0A--- Bestätigungsdaten ---%0AVerwendete%20E-Mail/Telefonnummer:%20${contactInfo}%0AAntwort%20auf%20Sicherheitsfrage%20(Wo%20geboren?):%20${securityAnswer}%0A---%0A" 
                style="color:#fdd835; font-size:0.8em; text-decoration:none;">
                Lösch-Anfrage senden
             </a>
@@ -329,24 +339,27 @@ form.addEventListener("submit", async (e) => {
   successMsg.style.display = "none";
   
   const name = document.getElementById("guestName").value.trim();
+  const contact = document.getElementById("guestContact").value.trim(); 
+  const securityAnswer = document.getElementById("guestSecurityAnswer").value.trim(); // NEU
   const text = document.getElementById("guestText").value.trim();
   
   if (!name || !text) return;
 
   try {
+    // Sende alle Daten (inkl. Sicherheitsfrage) an das Google Script
     await fetch(sheetURL, {
       method: "POST",
       mode: "no-cors", 
       headers: { 
         "Content-Type": "application/json" 
       },
-      body: JSON.stringify({ name, text }),
+      body: JSON.stringify({ name, text, contact, securityAnswer }),
     });
 
     form.reset();
     successMsg.style.display = "block";
     
-    // Nach 1 Sekunden die Meldung ausblenden und Einträge neu laden
+    // Nach 3 Sekunden die Meldung ausblenden und Einträge neu laden
     setTimeout(() => {
         successMsg.style.display = "none";
         loadEntries();
