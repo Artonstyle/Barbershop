@@ -261,7 +261,7 @@ footer a:hover { text-decoration:underline; }
 
 <script>
 // ✅ AKTUALISIERT: IHRE NEUESTE KORREKTE URL FÜR DIE 3-FELDER-LOGIK
-const sheetURL = "https://script.google.com/macros/s/AKfycbyEdBJ454thG-tdL12tbZczgBW3J_Aszz4WV4fXdIRH9Gyx4F_kdDdyOAc5zKzY3Iqr/exec";
+const sheetURL = "https://script.google.com/macros/s/AKfycbx-MmXEQuTij8xhVIR5RUUN91EOH5bTM4QkjeVx5OQhg6cPFZmUZkT79jCWi-RITY-v/exec";
 
 const guestEntriesDiv = document.getElementById('guestEntries');
 const form = document.getElementById("guestbookForm");
@@ -283,7 +283,6 @@ async function loadEntries() {
       guestEntriesDiv.innerHTML = entries.reverse().map((e, index) => {
         
         // --- KORREKTUR FÜR DIE DATUMSANZEIGE (FORMAT: TT.MM.JJJJ, HH:MM) ---
-        // Das Datum wird vom Script als String oder Date-Objekt übergeben und hier formatiert.
         let rawDate = new Date(e.date);
         const formattedDate = rawDate.toLocaleString('de-DE', {
             year: 'numeric',
