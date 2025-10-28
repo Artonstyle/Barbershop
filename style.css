@@ -1,26 +1,32 @@
 /* Grundfarben & Typografie */
 :root{
-  --brand:#c0392b;
-  --brand-2:#ff6b61;
-  --bg:#0b0f14; /* dunkles, modernes Theme */
-  --card:#0f1720;
-  --surface:#0b1116;
-  --text:#e6eef6;
-  --muted:#9aa6b2;
-  --glass:rgba(255,255,255,0.03);
-  --max-width:1200px;
-  --radius:10px;
-  font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --brand:#c0392b;
+  --brand-2:#ff6b61;
+  --bg:#0b0f14; /* dunkles, modernes Theme */
+  --card:#0f1720;
+  --surface:#0b1116;
+  --text:#e6eef6;
+  --muted:#9aa6b2;
+  --glass:rgba(255,255,255,0.03);
+  --max-width:1200px;
+  --radius:10px;
+  
+  /* NEUE GOLD-FARBDEFINITIONEN FÜR GÄSTEBUCH */
+  --gold: #FFD700;
+  --gold-light: #fdd835;
+  --gold-shadow: rgba(253, 216, 53, 0.4);
+
+  font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
 }
 *{box-sizing:border-box}
 html,body{height:100%}
 body{
-  margin:0;
-  background:linear-gradient(180deg,var(--bg),rgba(0,0,0,0.03));
-  color:var(--text);
-  line-height:1.5;
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
+  margin:0;
+  background:linear-gradient(180deg,var(--bg),rgba(0,0,0,0.03));
+  color:var(--text);
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
 }
 .container{max-width:var(--max-width);margin:0 auto;padding:0 16px}
 
@@ -34,23 +40,23 @@ body{
 
 /* BANNER FIX: NEUE REGELN FÜR KORREKTE GRÖSSE DES LOGOS */
 .header-banner {
-  width: 100%;
-  height: 300px; /* Feste Höhe, damit das Bild nicht überragt. */
-  overflow: hidden; 
-  display: flex;
-  justify-content: center; /* Zentriert das Bild horizontal */
-  align-items: center; /* Zentriert das Bild vertikal */
-  background: var(--bg); 
-  border-bottom: 2px solid var(--brand); 
+  width: 100%;
+  height: 300px; /* Feste Höhe, damit das Bild nicht überragt. */
+  overflow: hidden; 
+  display: flex;
+  justify-content: center; /* Zentriert das Bild horizontal */
+  align-items: center; /* Zentriert das Bild vertikal */
+  background: var(--bg); 
+  border-bottom: 2px solid var(--brand); 
 }
 
 .header-banner img {
-  max-width: 100%; 
-  max-height: 100%; 
-  object-fit: contain; /* Skaliert das Bild ohne Verzerrung in den Container */
-  height: auto;
-  filter: brightness(1.2) contrast(1.1);
-  border: none;
+  max-width: 100%; 
+  max-height: 100%; 
+  object-fit: contain; /* Skaliert das Bild ohne Verzerrung in den Container */
+  height: auto;
+  filter: brightness(1.2) contrast(1.1);
+  border: none;
 }
 /* ENDE BANNER FIX */
 
@@ -109,24 +115,137 @@ body{
 .cookie-banner{position:fixed;left:16px;right:16px;bottom:16px;background:var(--card);padding:12px;border-radius:10px;box-shadow:0 8px 30px rgba(0,0,0,0.24);display:flex;justify-content:space-between;gap:12px;align-items:center}
 .cookie-actions{display:flex;gap:8px}
 
+/* NEUE & GEÄNDERTE STYLES FÜR GÄSTEBUCH (BLACK & GOLD EDITION) */
+/* Überschreibt die Standard-Styles des Gästebuchs */
+.guestbook-section {
+    padding: 40px 20px; 
+    margin: 40px auto; 
+    background: var(--bg); /* Schwarzer Hintergrund für den Bereich */
+    max-width: 950px; /* Breiter für die Figuren */
+    position: relative;
+    box-sizing: border-box;
+    min-height: 700px;
+    box-shadow: none; /* Entfernt den globalen Box-Shadow */
+}
+
+.guestbook-section h2 {
+    font-size: 3em;
+    margin-bottom: 5px;
+    color: var(--gold-light);
+    text-shadow: 0 0 15px var(--gold-shadow);
+}
+.guestbook-section p {
+    text-align: center;
+    color: var(--muted);
+    margin-bottom: 25px;
+}
+
+.guestbook-wrapper {
+    background: var(--card); /* Dunkler Kartenhintergrund für das Formular */
+    border: 1px solid rgba(253, 216, 53, 0.4); /* Gold-Rahmen */
+    border-radius: 15px;
+    padding: 30px;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 0 40px var(--gold-shadow);
+    position: relative;
+    z-index: 10;
+}
+
+/* Positionierung der freigestellten Figuren */
+.barber-figure {
+    position: absolute;
+    width: 350px; /* Große Figuren */
+    height: auto;
+    object-fit: contain;
+    bottom: 50px;
+    z-index: 5;
+    /* Optional: Gold-Glow an der Figur (hängt vom verwendeten Bild ab) */
+    /* filter: drop-shadow(0 0 10px rgba(253, 216, 53, 0.6)); */
+}
+.barber-figure.left {
+    left: 0;
+}
+.barber-figure.right {
+    right: 0;
+}
+
+/* Schere und Kamm Icons */
+.scissors-icon, .comb-icon {
+    font-size: 60px;
+    color: var(--gold-light);
+    position: absolute;
+    top: 35%;
+    z-index: 5;
+    opacity: 0.8;
+}
+.scissors-icon {
+    left: 20px;
+    transform: rotate(30deg);
+}
+.comb-icon {
+    right: 20px;
+    transform: scaleX(-1) rotate(-30deg);
+}
+
+/* Formular Styles */
+.guestbook-section input, .guestbook-section textarea{
+    border: 1px solid rgba(253, 216, 53, 0.4); /* Gold-Rand */
+    background: rgba(0, 0, 0, 0.6);
+    color: var(--text);
+}
+.guestbook-section input::placeholder, .guestbook-section textarea::placeholder {
+    color: var(--muted);
+    font-style: italic;
+}
+
+.guestbook-section button{
+    background: linear-gradient(180deg, var(--gold-light), var(--gold)); /* Gold-Button */
+    color: #111; /* Dunkler Text auf Gold */
+    box-shadow: 0 4px 15px var(--gold-shadow);
+    transition: background 0.3s, transform 0.2s;
+}
+.guestbook-section button:hover{
+    background: var(--gold); 
+    transform: translateY(-1px);
+}
+.guestbook-section #guestEntries div{
+    border-left: 4px solid var(--gold-light); /* Goldener Balken */
+}
+
+
 /* Responsive */
 @media(max-width:980px){
-  .hero-grid{grid-template-columns:1fr}
-  .service-grid{grid-template-columns:repeat(2,1fr)}
-  .gallery-grid{grid-template-columns:repeat(2,1fr)}
-  .team-grid{grid-template-columns:1fr 1fr}
-  .contact-grid{grid-template-columns:1fr;grid-auto-rows:min-content}
+  .hero-grid{grid-template-columns:1fr}
+  .service-grid{grid-template-columns:repeat(2,1fr)}
+  .gallery-grid{grid-template-columns:repeat(2,1fr)}
+  .team-grid{grid-template-columns:1fr 1fr}
+  .contact-grid{grid-template-columns:1fr;grid-auto-rows:min-content}
+  
+  /* Anpassung der Figuren auf Medium-Screens */
+  .barber-figure{width: 300px; bottom: 100px;}
+  .barber-figure.left{left: -30px;}
+  .barber-figure.right{right: -30px;}
 }
 @media(max-width:640px){
-  .main-nav{display:none}
-  .nav-toggle{display:block}
-  .service-grid{grid-template-columns:1fr}
-  .gallery-grid{grid-template-columns:1fr}
-  .team-grid{grid-template-columns:1fr}
-  .cookie-banner{left:8px;right:8px;flex-direction:column;align-items:flex-start}
+  .main-nav{display:none}
+  .nav-toggle{display:block}
+  .service-grid{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:1fr}
+  .team-grid{grid-template-columns:1fr}
+  .cookie-banner{left:8px;right:8px;flex-direction:column;align-items:flex-start}
+  
+  /* NEU: Höhe des Banners auf Mobilgeräten reduzieren */
+  .header-banner {
+    height: 200px; /* Kleinere Höhe auf Handys */
+  }
   
-  /* NEU: Höhe des Banners auf Mobilgeräten reduzieren */
-  .header-banner {
-    height: 200px; /* Kleinere Höhe auf Handys */
+  /* Anpassung der Figuren auf kleinen Geräten */
+  .barber-figure{display: none;} /* Figuren auf kleinen Geräten ausblenden */
+  .scissors-icon, .comb-icon {display: none;}
+  .guestbook-section {min-height: auto; max-width: 100%;}
+  .guestbook-wrapper {
+    max-width: 100%;
+    margin: 0 10px; /* Kleiner Abstand zu den Rändern */
   }
 }
