@@ -15,10 +15,10 @@ body {
 }
 .container{width:90%;max-width:1200px;margin:0 auto;padding:20px;}
 h2{text-align:center;margin-bottom:30px;font-weight:700;text-shadow:0 0 15px rgba(255,255,255,0.8);}
-/* ANPASSUNG DESKTOP: Höhe des Banners erhöht */
+/* ANPASSUNG 1: Höhe des Banners erhöht (für Desktop) */
 .header-banner{width:100%;height:450px;display:flex;justify-content:center;align-items:center;background:#000;overflow:hidden;}
-/* ANPASSUNG DESKTOP: Max-Breite des Logos gelockert */
-.header-banner img{max-width:120%;height:auto;object-fit:contain;filter:brightness(1.2) contrast(1.1);}
+/* ANPASSUNG 2: Max-Breite auf 100% beibehalten, Höhe auf auto für Skalierung */
+.header-banner img{max-width:100%;height:auto;object-fit:contain;filter:brightness(1.2) contrast(1.1);}
 .welcome-section{padding:30px 20px;background:rgba(255,255,255,0.05);border-radius:15px;max-width:900px;margin:40px auto;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,0.7);}
 .welcome-section h1{font-size:2em;margin-bottom:10px;}
 .welcome-section p{color:#ddd;line-height:1.6;}
@@ -35,7 +35,7 @@ h2{text-align:center;margin-bottom:30px;font-weight:700;text-shadow:0 0 15px rgb
 .opening-hours li{padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.1);}
 footer{text-align:center;padding:15px 0;background:#050505;color:#888;margin-top:50px;border-top:1px solid rgba(255,255,255,0.1);}
 .social-links a img{width:28px;height:28px;margin:0 8px;}
-/* ANPASSUNG MOBILE: Höhe des Banners erhöht, damit das Logo auf Handys größer ist */
+/* ANPASSUNG MOBILE: Höhe des Banners erhöht (für Mobile) */
 @media(max-width:768px){.header-banner{height:300px;}.image-price-section img{max-width:100%;}}
 </style>
 </head>
