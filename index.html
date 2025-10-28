@@ -93,7 +93,9 @@ footer{text-align:center;padding:15px 0;background:#050505;color:#888;margin-top
 </footer>
 
 <script>
+// ✅ AKTUELLE GOOGLE-SCRIPT-URL
 const sheetURL = "https://script.google.com/macros/s/AKfycbx-MmXEQuTij8xhVIR5RUUN91EOH5bTM4QkjeVx5OQhg6cPFZmUZkT79jCWi-RITY-v/exec";
+
 const form=document.getElementById("guestbookForm");
 const guestEntriesDiv=document.getElementById("guestEntries");
 const successMsg=document.getElementById("successMsg");
@@ -107,17 +109,15 @@ async function loadEntries(){
       guestEntriesDiv.innerHTML='<p style="text-align:center;color:#888;">Noch keine Einträge.</p>';
       return;
     }
-    guestEntriesDiv.innerHTML=entries
-      .sort((a,b)=>new Date(b.date)-new Date(a.date)) // 🔥 Neueste oben
-      .map(e=>{
-        const d=new Date(e.date);
-        const dateString=d.toLocaleString('de-DE',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'});
-        return `<div>
-          <strong>${e.name||'Anonym'}</strong>
-          <span style="color:#888;font-size:0.9em;"> (${dateString})</span>
-          <p style="color:#ccc;margin-top:5px;">${e.text}</p>
-        </div>`;
-      }).join('');
+    guestEntriesDiv.innerHTML=entries.reverse().map(e=>{
+      const d=new Date(e.date);
+      const dateString=d.toLocaleString('de-DE',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'});
+      return `<div>
+        <strong>${e.name||'Anonym'}</strong>
+        <span style="color:#888;font-size:0.9em;"> (${dateString})</span>
+        <p style="color:#ccc;margin-top:5px;">${e.text}</p>
+      </div>`;
+    }).join('');
   }catch(err){
     console.error(err);
     guestEntriesDiv.innerHTML='<p style="text-align:center;color:red;">Fehler beim Laden der Einträge.</p>';
@@ -147,5 +147,6 @@ form.addEventListener("submit",async e=>{
 
 document.addEventListener("DOMContentLoaded",loadEntries);
 </script>
+
 </body>
 </html>
