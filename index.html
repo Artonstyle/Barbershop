@@ -7,16 +7,18 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
 body {
-  font-family:'Poppins',sans-serif;
-  background:#000;
-  color:#fff;
-  margin:0;
-  padding:0;
+  font-family:'Poppins',sans-serif;
+  background:#000;
+  color:#fff;
+  margin:0;
+  padding:0;
 }
 .container{width:90%;max-width:1200px;margin:0 auto;padding:20px;}
 h2{text-align:center;margin-bottom:30px;font-weight:700;text-shadow:0 0 15px rgba(255,255,255,0.8);}
-.header-banner{width:100%;height:300px;display:flex;justify-content:center;align-items:center;background:#000;overflow:hidden;}
-.header-banner img{max-width:100%;max-height:100%;object-fit:contain;filter:brightness(1.2) contrast(1.1);}
+/* ANPASSUNG DESKTOP: Höhe des Banners erhöht */
+.header-banner{width:100%;height:450px;display:flex;justify-content:center;align-items:center;background:#000;overflow:hidden;}
+/* ANPASSUNG DESKTOP: Max-Breite des Logos gelockert */
+.header-banner img{max-width:120%;height:auto;object-fit:contain;filter:brightness(1.2) contrast(1.1);}
 .welcome-section{padding:30px 20px;background:rgba(255,255,255,0.05);border-radius:15px;max-width:900px;margin:40px auto;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,0.7);}
 .welcome-section h1{font-size:2em;margin-bottom:10px;}
 .welcome-section p{color:#ddd;line-height:1.6;}
@@ -33,63 +35,58 @@ h2{text-align:center;margin-bottom:30px;font-weight:700;text-shadow:0 0 15px rgb
 .opening-hours li{padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.1);}
 footer{text-align:center;padding:15px 0;background:#050505;color:#888;margin-top:50px;border-top:1px solid rgba(255,255,255,0.1);}
 .social-links a img{width:28px;height:28px;margin:0 8px;}
-@media(max-width:768px){.header-banner{height:200px;}.image-price-section img{max-width:100%;}}
+/* ANPASSUNG MOBILE: Höhe des Banners erhöht, damit das Logo auf Handys größer ist */
+@media(max-width:768px){.header-banner{height:300px;}.image-price-section img{max-width:100%;}}
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
 <div class="header-banner">
-  <img src="https://raw.githubusercontent.com/Artonstyle/Barbershop/main/images/Barbershop-logo7.png" alt="C&D Barbershop Banner">
+  <img src="https://raw.githubusercontent.com/Artonstyle/Barbershop/main/images/Barbershop-logo7.png" alt="C&D Barbershop Banner">
 </div>
 
-<!-- WILLKOMMEN -->
 <div class="welcome-section">
-  <h1>Willkommen bei C&D Barbershop</h1>
-  <p>Schön, dass Sie hier sind! C&D Barbershop steht für Qualität, Stil und Persönlichkeit. In einer modernen Atmosphäre bieten wir individuelle Beratung, trendige Schnitte und hochwertige Pflege – für Ihr perfektes Haar- und Bartgefühl.</p>
+  <h1>Willkommen bei C&D Barbershop</h1>
+  <p>Schön, dass Sie hier sind! C&D Barbershop steht für Qualität, Stil und Persönlichkeit. In einer modernen Atmosphäre bieten wir individuelle Beratung, trendige Schnitte und hochwertige Pflege – für Ihr perfektes Haar- und Bartgefühl.</p>
 </div>
 
-<!-- PREISLISTE -->
 <div class="container image-price-section">
-  <h2>💇‍♂️ Unsere Preisliste</h2>
-  <img src="images/Barbershop-preisliste.png" alt="Aktuelle Preisliste">
+  <h2>💇‍♂️ Unsere Preisliste</h2>
+  <img src="images/Barbershop-preisliste.png" alt="Aktuelle Preisliste">
 </div>
 
-<!-- GÄSTEBUCH -->
 <div class="container guestbook-section">
-  <h2>⭐ Ihr Feedback</h2>
-  <p style="text-align:center;color:#aaa;">Wir freuen uns über Ihre Meinung!</p>
-  <form id="guestbookForm">
-    <label for="guestName">Ihr Name:</label>
-    <input type="text" id="guestName" required>
-    <label for="guestText">Ihr Beitrag:</label>
-    <textarea id="guestText" required></textarea>
-    <button type="submit">Beitrag absenden</button>
-  </form>
-  <p id="successMsg">✅ Vielen Dank für Ihren Eintrag!</p>
-  <div id="guestEntries"></div>
+  <h2>⭐ Ihr Feedback</h2>
+  <p style="text-align:center;color:#aaa;">Wir freuen uns über Ihre Meinung!</p>
+  <form id="guestbookForm">
+    <label for="guestName">Ihr Name:</label>
+    <input type="text" id="guestName" required>
+    <label for="guestText">Ihr Beitrag:</label>
+    <textarea id="guestText" required></textarea>
+    <button type="submit">Beitrag absenden</button>
+  </form>
+  <p id="successMsg">✅ Vielen Dank für Ihren Eintrag!</p>
+  <div id="guestEntries"></div>
 </div>
 
-<!-- KONTAKT -->
 <div class="container opening-hours">
-  <h2>📍 Kontakt</h2>
-  <p>Bachgasse 68, 69502 Hemsbach</p>
-  <p>📞 0176 70794224</p>
-  <div class="social-links">
-    <a href="#" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram"></a>
-  </div>
-  <h3>Öffnungszeiten</h3>
-  <ul>
-    <li><strong>Montag – Freitag:</strong><br>09:00 – 19:00 Uhr</li>
-    <li><strong>Samstag:</strong><br>09:00 – 18:00 Uhr</li>
-    <li><strong>Sonntag:</strong><br>Geschlossen ⛔</li>
-  </ul>
-  <p><a href="https://www.google.com/maps/dir/?api=1&destination=Bachgasse+68,+69502+Hemsbach" target="_blank" style="color:#fdd835;">Route auf Google Maps öffnen</a></p>
+  <h2>📍 Kontakt</h2>
+  <p>Bachgasse 68, 69502 Hemsbach</p>
+  <p>📞 0176 70794224</p>
+  <div class="social-links">
+    <a href="#" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram"></a>
+  </div>
+  <h3>Öffnungszeiten</h3>
+  <ul>
+    <li><strong>Montag – Freitag:</strong><br>09:00 – 19:00 Uhr</li>
+    <li><strong>Samstag:</strong><br>09:00 – 18:00 Uhr</li>
+    <li><strong>Sonntag:</strong><br>Geschlossen ⛔</li>
+  </ul>
+  <p><a href="https://www.google.com/maps/dir/?api=1&destination=Bachgasse+68,+69502+Hemsbach" target="_blank" style="color:#fdd835;">Route auf Google Maps öffnen</a></p>
 </div>
 
-<!-- FOOTER -->
 <footer>
-  © 2025 C&D Barbershop | Black Edition
+  © 2025 C&D Barbershop | Black Edition
 </footer>
 
 <script>
@@ -102,47 +99,47 @@ const successMsg=document.getElementById("successMsg");
 
 // --- Einträge laden (GET) ---
 async function loadEntries(){
-  try{
-    const res=await fetch(sheetURL);
-    const entries=await res.json();
-    if(!entries||!entries.length){
-      guestEntriesDiv.innerHTML='<p style="text-align:center;color:#888;">Noch keine Einträge.</p>';
-      return;
-    }
-    guestEntriesDiv.innerHTML=entries.reverse().map(e=>{
-      const d=new Date(e.date);
-      const dateString=d.toLocaleString('de-DE',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'});
-      return `<div>
-        <strong>${e.name||'Anonym'}</strong>
-        <span style="color:#888;font-size:0.9em;"> (${dateString})</span>
-        <p style="color:#ccc;margin-top:5px;">${e.text}</p>
-      </div>`;
-    }).join('');
-  }catch(err){
-    console.error(err);
-    guestEntriesDiv.innerHTML='<p style="text-align:center;color:red;">Fehler beim Laden der Einträge.</p>';
-  }
+  try{
+    const res=await fetch(sheetURL);
+    const entries=await res.json();
+    if(!entries||!entries.length){
+      guestEntriesDiv.innerHTML='<p style="text-align:center;color:#888;">Noch keine Einträge.</p>';
+      return;
+    }
+    guestEntriesDiv.innerHTML=entries.reverse().map(e=>{
+      const d=new Date(e.date);
+      const dateString=d.toLocaleString('de-DE',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'});
+      return `<div>
+        <strong>${e.name||'Anonym'}</strong>
+        <span style="color:#888;font-size:0.9em;"> (${dateString})</span>
+        <p style="color:#ccc;margin-top:5px;">${e.text}</p>
+      </div>`;
+    }).join('');
+  }catch(err){
+    console.error(err);
+    guestEntriesDiv.innerHTML='<p style="text-align:center;color:red;">Fehler beim Laden der Einträge.</p>';
+  }
 }
 
 // --- Formular absenden (POST) ---
 form.addEventListener("submit",async e=>{
-  e.preventDefault();
-  const name=document.getElementById("guestName").value.trim();
-  const text=document.getElementById("guestText").value.trim();
-  if(!name||!text)return;
-  try{
-    const data=new FormData();
-    data.append("name",name);
-    data.append("text",text);
-    await fetch(sheetURL,{method:"POST",body:data});
-    form.reset();
-    successMsg.style.display="block";
-    setTimeout(()=>successMsg.style.display="none",3000);
-    loadEntries();
-  }catch(err){
-    console.error(err);
-    alert("Fehler beim Senden!");
-  }
+  e.preventDefault();
+  const name=document.getElementById("guestName").value.trim();
+  const text=document.getElementById("guestText").value.trim();
+  if(!name||!text)return;
+  try{
+    const data=new FormData();
+    data.append("name",name);
+    data.append("text",text);
+    await fetch(sheetURL,{method:"POST",body:data});
+    form.reset();
+    successMsg.style.display="block";
+    setTimeout(()=>successMsg.style.display="none",3000);
+    loadEntries();
+  }catch(err){
+    console.error(err);
+    alert("Fehler beim Senden!");
+  }
 });
 
 document.addEventListener("DOMContentLoaded",loadEntries);
