@@ -38,7 +38,6 @@ body {
   -moz-osx-font-smoothing:grayscale;
 }
 .container{max-width:1200px;margin:0 auto;padding:0 16px}
-/* ... (Skip Link und andere Basis-Elemente können ignoriert werden) ... */
 
 /* Allgemeine Styles */
 h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-light); text-shadow: 0 0 15px var(--gold-shadow);} 
@@ -80,8 +79,7 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
 }
 
 .guestbook-section-custom {
-    /* **WICHTIG: ERSETZEN SIE DIESE URL MIT DER KORREKTEN, ÖFFENTLICHEN BILD-URL!** */
-    background-image: url('https://raw.githubusercontent.com/Artonstyle/Barbershop/main/images/Gästebuch.png'); 
+    background-image: url('https://raw.githubusercontent.com/Artonstyle/Barbershop/main/images/Gaestebuch_neu.png'); 
     background-size: cover; 
     background-position: center center;
     background-repeat: no-repeat;
@@ -91,8 +89,7 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
     margin: 40px auto 0; 
     max-width: 1200px; 
     box-sizing: border-box;
-    /* Dunkle Overlay */
-    box-shadow: inset 0 0 0 100vw rgba(0, 0, 0, 0.4); 
+    box-shadow: inset 0 0 0 100vw rgba(0, 0, 0, 0.4); /* Dunkle Overlay */
     min-height: 750px; 
 }
 
@@ -100,7 +97,6 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
     content: "";
     position: absolute;
     inset: 0;
-    /* Subtiler Gold-Effekt */
     background-image: 
       repeating-linear-gradient(45deg, rgba(255,215,0,0.02) 0px, rgba(255,215,0,0.02) 2px, transparent 2px, transparent 20px),
       repeating-linear-gradient(-45deg, rgba(255,215,0,0.02) 0px, rgba(255,215,0,0.02) 2px, transparent 2px, transparent 20px);
@@ -264,24 +260,46 @@ footer{
 /* RESPONSIVE ANPASSUNGEN (HANDY-ANSICHT) */
 /* ========================================================== */
 @media(max-width: 768px){
-    /* ... (Responsive Anpassungen für Mobile) ... */
+    .header-banner { height: 200px; }
+    .image-price-section img { max-width: 100%; }
 
-    /* WICHTIG: Hintergrundbild im Mobile-Modus entfernen */
+    /* **WICHTIGE ANPASSUNG HIER:** Hintergrundbild auf Mobile beibehalten */
     .guestbook-section-custom {
-        background-image: none !important;
-        min-height: auto;
-        padding: 40px 10px;
-        background: var(--bg); /* Wichtig: Stellt sicher, dass Mobile schwarz ist */
+        background-image: url('https://raw.githubusercontent.com/Artonstyle/Barbershop/main/images/Gaestebuch_neu.png'); /* Bild wieder aktivieren */
+        background-size: cover; 
+        background-position: center bottom; /* Position für Handy anpassen, um relevanten Teil zu zeigen */
+        min-height: 500px; /* Kleinere Mindesthöhe für Mobile */
+        padding: 20px 0; /* Padding anpassen */
+        box-shadow: inset 0 0 0 100vw rgba(0, 0, 0, 0.6); /* Dunklere Overlay für bessere Lesbarkeit */
     }
     
     /* Content muss auf Mobile normal fließen */
     .guestbook-main-content {
-        position: static;
+        position: static; /* Relative Position, damit es normal im Fluss ist */
         flex-direction: column;
+        height: auto; /* Höhe flexibel halten */
+        padding-top: 20px; /* Etwas Abstand nach oben */
     }
-    .guestbook-form-wrapper { background: var(--card); max-width: 100%; margin: 0 10px; padding: 20px; }
+    /* Formular auf Mobile direkt über dem Bild. Hintergrund wird vom Bild verdeckt, aber Ränder bleiben */
+    .guestbook-form-wrapper { 
+        max-width: 90%; 
+        margin: 20px auto; 
+        padding: 20px; 
+        background: rgba(0, 0, 0, 0.7); /* Deutlicherer Hintergrund für Lesbarkeit */
+        border: 1px solid var(--gold); /* Gold-Rahmen hinzufügen */
+        border-radius: 15px;
+        box-shadow: 0 0 20px var(--gold-shadow);
+        transform: none; /* Kein translateY auf Mobile */
+    }
     
-    /* ... (weitere Responsive Anpassungen) ... */
+    .guestbook-messages-section {
+        margin-top: 20px; 
+        padding-top: 0;
+    }
+
+    .messages-grid { grid-template-columns: 1fr; }
+    .contact-section-deluxe { margin: 40px 10px; padding: 30px 15px; }
+    .container {padding: 0 10px;}
 }
 </style> 
 </head> 
