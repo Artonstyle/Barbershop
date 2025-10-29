@@ -3,27 +3,47 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>💈 C&D Barbershop – Black Edition</title>
+<title>💈 C&D Barbershop – Black & Gold Edition</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
 /* ------------------------------------------------------------------ */
-/* ORIGINALER CSS-CODE */
+/* BLACK & GOLD DELUXE STYLES */
 /* ------------------------------------------------------------------ */
+
+/* Farbvariablen für das konsistente Design */
+:root {
+  --gold: #FFD700;
+  --gold-light: #fdd835;
+  --gold-shadow: rgba(253, 216, 53, 0.4);
+  --bg: #000000; /* Reines Schwarz */
+  --card: #0a0a0a; /* Sehr dunkle Kartenfarbe */
+  --surface: #050505; /* Noch dunkler für Footer/Ränder */
+  --text: #e6eef6;
+  --muted: #9aa6b2;
+}
 
 body { 
     font-family:'Poppins', sans-serif; 
-    background-color:#000; 
-    color:#fff; 
+    background-color:var(--bg); 
+    color:var(--text); 
     margin:0; 
     padding:0; 
     perspective: 1200px; 
 }
 p { margin:0; }
 .container { width:90%; max-width:1200px; margin:0 auto; padding:20px; }
-h2 { text-align:center; margin-bottom:30px; font-weight:700; text-shadow:0 0 15px rgba(255,255,255,0.8); }
+
+/* H2 Überschrift: Gold mit starkem Schatten */
+h2 { 
+    text-align:center; 
+    margin-bottom:30px; 
+    font-weight:700; 
+    color: var(--gold-light); /* Goldfarbe */
+    text-shadow: 0 0 15px var(--gold-shadow); /* Gold-Schatten */
+}
 
 /* *************************************************************** */
-/* BANNER FIX */
+/* BANNER & WILLKOMMENS-SEKTION */
 /* *************************************************************** */
 .header-banner { 
     width:100%; 
@@ -33,7 +53,8 @@ h2 { text-align:center; margin-bottom:30px; font-weight:700; text-shadow:0 0 15p
     justify-content:center; 
     align-items:center; 
     position:relative; 
-    background:#000; 
+    background:var(--bg); 
+    border-bottom: 2px solid var(--gold); /* Goldene Linie */
 }
 .header-banner img { 
     width: auto; 
@@ -44,61 +65,62 @@ h2 { text-align:center; margin-bottom:30px; font-weight:700; text-shadow:0 0 15p
     filter:brightness(1.2) contrast(1.1); 
     border:none; 
 }
-/* 3D-Effekt auf Willkommens-Sektion */
+
+/* Willkommens-Sektion: Dunkler Hintergrund, Gold-Schatten */
 .welcome-section { 
     text-align:center; 
     padding:30px 20px; 
-    background:rgba(255,255,255,0.05); 
-    backdrop-filter:blur(8px); 
+    background:var(--card); /* Dunkler Hintergrund */
     margin:0 auto 40px auto; 
     border-radius:15px; 
-    box-shadow:0 10px 30px rgba(0,0,0,0.7), 0 0 25px rgba(255,255,255,0.2);
+    /* Goldener Box-Schatten */
+    box-shadow:0 10px 30px rgba(0,0,0,0.7), 0 0 25px var(--gold-shadow); 
     max-width:900px; 
     transform: translateZ(-10px);
-    transition: transform 0.5s ease-in-out;
+    transition: transform 0.5s ease-in-out, box-shadow 0.3s;
+    border: 1px solid rgba(255,215,0,0.2);
 }
 .welcome-section:hover {
     transform: translateZ(5px); 
+    box-shadow:0 10px 30px rgba(0,0,0,0.7), 0 0 40px var(--gold-shadow); 
 }
 
-.welcome-section h1 { font-size:2em; margin-bottom:10px; text-shadow:0 0 20px rgba(255,255,255,0.8); color: #fff; }
-.welcome-section p { font-size:1.1em; color:#ddd; line-height:1.6; }
-.opening-hours { margin-top:20px; text-align:center; }
-.opening-hours ul { list-style:none; padding:0; display:inline-block; text-align:left; color:#ddd; }
-.opening-hours li { padding:5px 0; border-bottom:1px solid rgba(255,255,255,0.1); }
-.opening-hours li strong { color:#fff; }
-footer { text-align:center; padding:15px 0; background:#050505; color:#888; margin-top:50px; border-top:1px solid rgba(255,255,255,0.1); }
-footer a { color:#fff; text-decoration:none; margin:0 10px; }
-footer a:hover { text-decoration:underline; }
-.social-links { margin-top:15px; }
-.social-links a { display:inline-block; margin:0 8px; }
-.social-links img { width:28px; height:28px; filter:brightness(1.2); transition:transform 0.3s ease; }
-.social-links img:hover { transform:scale(1.2); filter:brightness(1.5); }
+.welcome-section h1 { 
+    font-size:2em; 
+    margin-bottom:10px; 
+    text-shadow:0 0 15px var(--gold-shadow); 
+    color: var(--gold-light); /* Goldfarbe */
+}
+.welcome-section p { font-size:1.1em; color:var(--muted); line-height:1.6; }
+
 
 /* *************************************************************** */
-/* NEUER CSS FÜR DAS PREISLISTEN-BILD */
+/* PREISLISTEN-BILD */
 /* *************************************************************** */
 .image-price-section {
     text-align: center;
     padding: 20px 0;
     margin-bottom: 50px;
-    background: rgba(255,255,255,0.03); 
+    background: var(--card); /* Dunkler Hintergrund */
     border-radius: 15px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.7), 0 0 25px rgba(255,255,255,0.2);
+    /* Goldener Box-Schatten */
+    box-shadow:0 10px 30px rgba(0,0,0,0.7), 0 0 25px var(--gold-shadow);
     transform: translateZ(-10px);
-    transition: transform 0.5s ease-in-out;
+    transition: transform 0.5s ease-in-out, box-shadow 0.3s;
+    border: 1px solid rgba(255,215,0,0.2);
 }
 
 .image-price-section:hover {
     transform: translateZ(5px);
+    box-shadow:0 10px 30px rgba(0,0,0,0.7), 0 0 40px var(--gold-shadow);
 }
 
 .image-price-section img {
-    max-width: 500px; /* Reduzierte maximale Breite für Desktops */
-    width: 90%; /* Sorgt dafür, dass es auf kleineren Bildschirmen skaliert */
+    max-width: 500px; 
+    width: 90%; 
     height: auto;
     border-radius: 10px;
-    box-shadow: 0 0 15px rgba(255,255,255,0.2);
+    box-shadow: 0 0 15px rgba(255,215,0,0.3); /* Goldener Bildschatten */
     transition: transform 0.3s ease;
 }
 
@@ -107,46 +129,50 @@ footer a:hover { text-decoration:underline; }
 }
 
 /* *************************************************************** */
-/* CSS FÜR DAS GÄSTEBUCH */
+/* GÄSTEBUCH & FORMULAR */
 /* *************************************************************** */
 .guestbook-section {
     padding: 40px 20px;
     margin: 40px auto;
-    background: rgba(255,255,255,0.05); 
+    background: var(--card); /* Dunkler Hintergrund */
     border-radius: 15px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.7), 0 0 25px rgba(255,255,255,0.2);
+    /* Goldener Box-Schatten */
+    box-shadow:0 10px 30px rgba(0,0,0,0.7), 0 0 25px var(--gold-shadow);
     transform: translateZ(-10px);
-    transition: transform 0.5s ease-in-out;
+    transition: transform 0.5s ease-in-out, box-shadow 0.3s;
     max-width: 700px;
+    border: 2px solid var(--gold);
 }
 .guestbook-section:hover {
     transform: translateZ(5px);
+    box-shadow:0 10px 30px rgba(0,0,0,0.7), 0 0 40px var(--gold-shadow);
 }
 
 .guestbook-form label {
     display: block;
     margin-bottom: 5px;
     font-weight: 600;
-    color: #fff;
+    color: var(--gold-light); /* Gold für Labels */
 }
 
 .guestbook-form input[type="text"], 
 .guestbook-form textarea {
     width: 100%;
-    padding: 10px;
+    padding: 12px; /* Etwas größer gemacht */
     margin-bottom: 20px;
-    border: 1px solid rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,215,0,0.3); /* Gold-Rand */
     border-radius: 8px;
-    background: rgba(0,0,0,0.5);
+    background: #1a1a1a; /* Sehr dunkler Input-Hintergrund */
     color: #fff;
     font-size: 1em;
-    box-sizing: border-box; /* Wichtig für die korrekte Breite */
+    box-sizing: border-box; 
     transition: border-color 0.3s;
 }
 
 .guestbook-form input[type="text"]:focus, 
 .guestbook-form textarea:focus {
-    border-color: #fdd835; /* Gold-Akzent beim Fokussieren */
+    border-color: var(--gold-light); /* Gold-Akzent beim Fokussieren */
+    box-shadow: 0 0 10px var(--gold-shadow);
     outline: none;
 }
 
@@ -161,18 +187,77 @@ footer a:hover { text-decoration:underline; }
     padding: 12px;
     border: none;
     border-radius: 8px;
-    background-color: #fdd835; /* Goldener Button */
+    background: linear-gradient(to right, var(--gold), #E6D090); /* Goldener Button */
     color: #000;
     font-size: 1.1em;
     font-weight: 700;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.1s;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
 }
 
 .guestbook-form button:hover {
-    background-color: #ffeb3b;
+    background: linear-gradient(to right, #ffeb3b, #FFD700);
     transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.6);
 }
+
+/* HINWEIS-TEXT */
+.guestbook-section h3 {
+    margin-top: 40px; 
+    text-align: center; 
+    color: var(--gold-light); /* Goldfarbe */
+}
+
+/* *************************************************************** */
+/* KONTAKT & ÖFFNUNGSZEITEN */
+/* *************************************************************** */
+.opening-hours { margin-top:20px; text-align:center; }
+.opening-hours ul { list-style:none; padding:0; display:inline-block; text-align:left; color:var(--text); }
+.opening-hours li { 
+    padding:8px 0; 
+    border-bottom:1px solid rgba(255,215,0,0.1); /* Goldene Trennlinie */
+}
+.opening-hours li strong { color:var(--gold-light); } /* Gold für Hervorhebung */
+
+.container p a { 
+    color: var(--gold-light) !important; /* Wichtig für den Google Maps Link */
+    text-decoration:none;
+    font-weight: 600;
+}
+.container p a:hover { text-decoration: underline; }
+
+/* Social Links */
+.social-links { margin-top:15px; }
+.social-links a { display:inline-block; margin:0 8px; }
+.social-links img { 
+    width:32px; /* Etwas größer */
+    height:32px; /* Etwas größer */
+    filter:grayscale(10%) brightness(1.1); /* Etwas weniger hell */
+    transition:transform 0.3s ease; 
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--gold-shadow);
+}
+.social-links img:hover { 
+    transform:scale(1.2); 
+    filter:brightness(1.5); 
+    box-shadow: 0 0 20px var(--gold-shadow);
+}
+
+
+/* FOOTER */
+footer { 
+    text-align:center; 
+    padding:15px 0; 
+    background:var(--surface); 
+    color:#888; 
+    margin-top:50px; 
+    border-top:1px solid rgba(255,215,0,0.1); /* Goldene obere Linie */
+}
+footer a { color:var(--gold-light); text-decoration:none; margin:0 10px; }
+footer a:hover { text-decoration:underline; }
+
+
 /* *************************************************************** */
 /* MOBILE FIX (3D deaktivieren) */
 /* *************************************************************** */
@@ -185,12 +270,14 @@ footer a:hover { text-decoration:underline; }
   .image-price-section, .image-price-section:hover,
   .guestbook-section, .guestbook-section:hover { 
       transform: none !important;
-      box-shadow: 0 0 20px rgba(255,255,255,0.3);
+      /* Box-Schatten auf Mobile reduzieren und dunkler machen */
+      box-shadow: 0 0 20px rgba(0,0,0,0.8);
   }
+  
   /* Anpassung für das Preislisten-Bild auf Mobile */
   .image-price-section img {
-      max-width: 100%; /* HIER GEÄNDERT: Volle Breite im Container */
-      width: 100%;     /* HIER GEÄNDERT: Volle Breite im Container */
+      max-width: 100%; 
+      width: 100%;     
   }
 }
 </style>
@@ -212,7 +299,7 @@ footer a:hover { text-decoration:underline; }
 </div>
 <div class="container guestbook-section">
     <h2>⭐ Ihr Feedback</h2>
-    <p style="text-align: center; margin-bottom: 25px; color: #aaa;">Wir freuen uns über Ihre Meinung und Ihren Besuch!</p>
+    <p style="text-align: center; margin-bottom: 25px; color: var(--gold-light);">Wir freuen uns über Ihre Meinung und Ihren Besuch!</p>
     
     <form class="guestbook-form" action="guestbook_save.php" method="POST">
         <label for="guestName">Ihr Name:</label>
@@ -224,7 +311,7 @@ footer a:hover { text-decoration:underline; }
         <button type="submit">Beitrag abschicken</button>
     </form>
     
-    <h3 style="margin-top: 40px; text-align: center; color: #fdd835;">
+    <h3 style="margin-top: 40px; text-align: center;">
         (Hier werden später die Einträge angezeigt)
     </h3>
 </div>
@@ -243,7 +330,7 @@ footer a:hover { text-decoration:underline; }
     <li><strong>Samstag:</strong><br>09:00 – 18:00 Uhr</li>
     <li><strong>Sonntag:</strong><br>Geschlossen ⛔</li>
   </ul>
-  <p><a href="https://www.google.com/maps/dir/?api=1&destination=Bachgasse+68,+69502+Hemsbach" target="_blank" style="color:#fff;">Route starten mit Google Maps</a></p>
+  <p><a href="https://www.google.com/maps/dir/?api=1&destination=Bachgasse+68,+69502+Hemsbach" target="_blank">Route starten mit Google Maps</a></p>
 </div>
 
 <footer>
