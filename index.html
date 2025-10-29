@@ -51,14 +51,14 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
     padding: 0;
     margin: 40px auto;
     background: transparent;
-    max-width: var(--max-width); /* Nutze die Variable für konsistente Breite */
+    max-width: var(--max-width);
     position: relative;
     box-shadow: none;
-    overflow: hidden; /* Wichtig für die Poles/Icons */
-    min-height: 600px; /* Um Platz für Dekorationen zu schaffen */
+    overflow: hidden;
+    min-height: 600px;
 }
 
-/* Hintergrundmuster (wie im Bild) */
+/* Hintergrundmuster */
 .guestbook-section-custom::before {
     content: '';
     position: absolute;
@@ -67,7 +67,7 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
         /* Zwei goldene Radials (oben links/rechts, wie Lichtflecken) */
         radial-gradient(circle at 10% 10%, rgba(255, 215, 0, 0.04) 0%, transparent 25%),
         radial-gradient(circle at 90% 10%, rgba(255, 215, 0, 0.04) 0%, transparent 25%),
-        radial-gradient(circle at 50% 100%, rgba(255, 215, 0, 0.02) 0%, transparent 40%), /* Dezenter Lichtkegel unten */
+        radial-gradient(circle at 50% 100%, rgba(255, 215, 0, 0.02) 0%, transparent 40%),
         /* Feines Gittermuster */
         linear-gradient(to right, rgba(255, 215, 0, 0.015) 1px, transparent 1px) 0 0,
         linear-gradient(to bottom, rgba(255, 215, 0, 0.015) 1px, transparent 1px) 0 0;
@@ -85,7 +85,7 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
     position: relative;
     z-index: 10;
     padding: 50px 0;
-    height: 100%; /* Wichtig für vertikale Zentrierung der Dekorationen */
+    height: 100%;
 }
 
 .guestbook-form-wrapper {
@@ -94,7 +94,7 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
     border-radius: 15px;
     padding: 30px;
     width: 100%;
-    max-width: 480px; /* Etwas schmaler für den Fokus */
+    max-width: 480px;
     box-shadow: 0 0 40px var(--gold-shadow);
     text-align: center;
     position: relative;
@@ -117,8 +117,7 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
 }
 
 /* --- Formular Felder und Button --- */
-.guestbook-form-wrapper input[type="text"],
-.guestbook-form-wrapper textarea {
+.guestbook-form-wrapper input[type="text"] {
     width: 100%;
     padding: 12px;
     margin-bottom: 15px;
@@ -126,6 +125,14 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
     border: 1px solid #444;
     color: #fff;
     border-radius: 8px;
+}
+/* Spezifischer Stil für die Fragen-Prompts */
+.form-prompt {
+    font-size: 0.9em;
+    color: var(--gold-light);
+    text-align: left;
+    margin: 0 0 5px;
+    font-weight: 600;
 }
 
 /* Submit Button */
@@ -172,7 +179,7 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
 
 
 /* -------------------------------------- */
-/* 💈 DEKORATION (POLES, SCHERE, KÖPFE) */
+/* 💈 DEKORATION */
 /* -------------------------------------- */
 
 /* Positionierung der dekorativen Icons/SVGs */
@@ -180,54 +187,53 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
     position: absolute;
     z-index: 5;
     opacity: 0.9;
-    /* Gold-Schatten für alle dekorativen Elemente */
     filter: drop-shadow(0 0 5px var(--gold-shadow));
 }
 
 /* Schere und Kamm Icons (mit Font Awesome) */
 .scissors-drawing {
-    left: calc(50% - 400px); /* Relative Positionierung zur Mitte */
+    left: calc(50% - 400px);
     top: 50%;
     transform: translateY(-50%) rotate(30deg);
-    font-size: 120px; /* Grösser gemacht */
+    font-size: 120px;
     color: var(--gold);
     text-shadow: 0 0 15px var(--gold-shadow);
 }
 .comb-drawing {
-    right: calc(50% - 400px); /* Relative Positionierung zur Mitte */
+    right: calc(50% - 400px);
     top: 50%;
     transform: translateY(-50%) scaleX(-1) rotate(-30deg);
-    font-size: 120px; /* Grösser gemacht */
+    font-size: 120px;
     color: var(--gold);
     text-shadow: 0 0 15px var(--gold-shadow);
 }
 
 /* Barber Pole (CSS-Generiert und Animiert) */
 .barber-pole {
-    width: 90px; /* Etwas breiter */
-    height: 300px; /* Etwas höher */
+    width: 90px;
+    height: 300px;
     background: repeating-linear-gradient(
-        20deg, /* Leichterer Winkel für die Streifen */
+        20deg,
         var(--pole-white) 0%, var(--pole-white) 15%,
         var(--pole-red) 15%, var(--pole-red) 35%,
         var(--pole-blue) 35%, var(--pole-blue) 55%
     );
-    background-size: 100% 120px; /* Wichtig für die Animation */
+    background-size: 100% 120px;
     border-radius: 5px;
     overflow: hidden;
-    box-shadow: 0 0 20px var(--gold-shadow); /* Stärkerer Schatten */
-    animation: rotatePole 2.5s linear infinite; /* Leichter verlangsamt */
+    box-shadow: 0 0 20px var(--gold-shadow);
+    animation: rotatePole 2.5s linear infinite;
 }
 
 @keyframes rotatePole {
     0% { background-position: 0 0; }
-    100% { background-position: 0 120px; /* Streifen bewegen sich nach unten */ }
+    100% { background-position: 0 120px; }
 }
 
 .barber-pole::before, .barber-pole::after {
     content: '';
     position: absolute;
-    left: 0; width: 100%; height: 25px; /* Etwas höhere Kappen */
+    left: 0; width: 100%; height: 25px;
     background: var(--gold);
     box-shadow: 0 0 12px var(--gold-shadow);
 }
@@ -235,23 +241,22 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
 .barber-pole::after { bottom: 0; border-radius: 0 0 5px 5px; }
 
 .barber-pole.left {
-    left: calc(50% - 580px); /* Deutlich weiter links */
+    left: calc(50% - 580px);
     top: 50%;
     transform: translateY(-50%);
 }
 .barber-pole.right {
-    right: calc(50% - 580px); /* Deutlich weiter rechts */
+    right: calc(50% - 580px);
     top: 50%;
     transform: translateY(-50%);
 }
 
 /* Köpfe: Inline-SVG als Maske */
-/* Da ich keine Bilder generieren kann, füge ich hier ein SVG ein, das den Stil im Bild gut trifft */
 .barber-head-drawing {
-    width: 280px; /* Grösser gemacht */
+    width: 280px;
     height: 280px;
-    opacity: 0.1; /* Sehr dezent halten */
-    background-color: var(--gold); /* Farbe der Strichzeichnung */
+    opacity: 0.1;
+    background-color: var(--gold);
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -259,13 +264,13 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
 }
 
 .barber-head-drawing.left {
-    left: calc(50% - 350px); /* Näher am Formular */
+    left: calc(50% - 350px);
     -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><defs><linearGradient id="goldGradient" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:rgb(255,215,0);stop-opacity:1" /><stop offset="100%" style="stop-color:rgb(230,210,0);stop-opacity:1" /></linearGradient></defs><path fill="url(%23goldGradient)" stroke="none" d="M100 10 C60 10 30 50 30 90 C30 130 60 170 100 170 C140 170 170 130 170 90 C170 50 140 10 100 10 Z M100 170 C80 170 60 150 60 130 L60 120 C60 110 70 100 80 100 L120 100 C130 100 140 110 140 120 L140 130 C140 150 120 170 100 170 Z M75 70 C75 60 80 55 85 55 C90 55 95 60 95 70 C95 80 90 85 85 85 C80 85 75 80 75 70 Z M125 70 C125 60 120 55 115 55 C110 55 105 60 105 70 C105 80 110 85 115 85 C120 85 125 80 125 70 Z M70 135 L130 135 C135 135 138 138 138 143 C138 148 135 151 130 151 L70 151 C65 151 62 148 62 143 C62 138 65 135 70 135 Z"/></svg>') no-repeat center / contain;
     mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><defs><linearGradient id="goldGradient" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:rgb(255,215,0);stop-opacity:1" /><stop offset="100%" style="stop-color:rgb(230,210,0);stop-opacity:1" /></linearGradient></defs><path fill="url(%23goldGradient)" stroke="none" d="M100 10 C60 10 30 50 30 90 C30 130 60 170 100 170 C140 170 170 130 170 90 C170 50 140 10 100 10 Z M100 170 C80 170 60 150 60 130 L60 120 C60 110 70 100 80 100 L120 100 C130 100 140 110 140 120 L140 130 C140 150 120 170 100 170 Z M75 70 C75 60 80 55 85 55 C90 55 95 60 95 70 C95 80 90 85 85 85 C80 85 75 80 75 70 Z M125 70 C125 60 120 55 115 55 C110 55 105 60 105 70 C105 80 110 85 115 85 C120 85 125 80 125 70 Z M70 135 L130 135 C135 135 138 138 138 143 C138 148 135 151 130 151 L70 151 C65 151 62 148 62 143 C62 138 65 135 70 135 Z"/></svg>') no-repeat center / contain;
-    transform: translateY(-50%) scaleX(-1); /* Spiegeln */
+    transform: translateY(-50%) scaleX(-1);
 }
 .barber-head-drawing.right {
-    right: calc(50% - 350px); /* Näher am Formular */
+    right: calc(50% - 350px);
     -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><defs><linearGradient id="goldGradient" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:rgb(255,215,0);stop-opacity:1" /><stop offset="100%" style="stop-color:rgb(230,210,0);stop-opacity:1" /></linearGradient></defs><path fill="url(%23goldGradient)" stroke="none" d="M100 10 C60 10 30 50 30 90 C30 130 60 170 100 170 C140 170 170 130 170 90 C170 50 140 10 100 10 Z M100 170 C80 170 60 150 60 130 L60 120 C60 110 70 100 80 100 L120 100 C130 100 140 110 140 120 L140 130 C140 150 120 170 100 170 Z M75 70 C75 60 80 55 85 55 C90 55 95 60 95 70 C95 80 90 85 85 85 C80 85 75 80 75 70 Z M125 70 C125 60 120 55 115 55 C110 55 105 60 105 70 C105 80 110 85 115 85 C120 85 125 80 125 70 Z M70 135 L130 135 C135 135 138 138 138 143 C138 148 135 151 130 151 L70 151 C65 151 62 148 62 143 C62 138 65 135 70 135 Z"/></svg>') no-repeat center / contain;
     mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><defs><linearGradient id="goldGradient" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:rgb(255,215,0);stop-opacity:1" /><stop offset="100%" style="stop-color:rgb(230,210,0);stop-opacity:1" /></linearGradient></defs><path fill="url(%23goldGradient)" stroke="none" d="M100 10 C60 10 30 50 30 90 C30 130 60 170 100 170 C140 170 170 130 170 90 C170 50 140 10 100 10 Z M100 170 C80 170 60 150 60 130 L60 120 C60 110 70 100 80 100 L120 100 C130 100 140 110 140 120 L140 130 C140 150 120 170 100 170 Z M75 70 C75 60 80 55 85 55 C90 55 95 60 95 70 C95 80 90 85 85 85 C80 85 75 80 75 70 Z M125 70 C125 60 120 55 115 55 C110 55 105 60 105 70 C105 80 110 85 115 85 C120 85 125 80 125 70 Z M70 135 L130 135 C135 135 138 138 138 143 C138 148 135 151 130 151 L70 151 C65 151 62 148 62 143 C62 138 65 135 70 135 Z"/></svg>') no-repeat center / contain;
 }
@@ -299,6 +304,8 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
     text-align: left;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
     transition: transform 0.2s;
+    /* Neue Anpassung für Nachrichtenanzeige */
+    white-space: pre-wrap; /* Wichtig, um Zeilenumbrüche aus dem JS zu behalten */
 }
 .message-card:hover {
     transform: translateY(-3px);
@@ -309,7 +316,7 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
 .message-card .card-stars i { color: var(--gold-light); font-size: 16px; margin-right: 2px; }
 
 /* -------------------------------------- */
-/* 📸 SOCIAL MEDIA ICON GRÖSSE (KORRIGIERT) */
+/* 📸 SOCIAL MEDIA ICON GRÖSSE */
 /* -------------------------------------- */
 
 .social-links {
@@ -317,11 +324,11 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
     text-align: center;
 }
 .social-links a img {
-    width: 24px; /* Von 32px auf 24px reduziert */
-    height: 24px; /* Von 32px auf 24px reduziert */
+    width: 24px;
+    height: 24px;
     margin: 0 10px;
     vertical-align: middle;
-    border-radius: 50%; /* Sicherstellen, dass es ein Kreis ist */
+    border-radius: 50%;
     box-shadow: 0 0 10px rgba(253, 216, 53, 0.4);
     transition: transform 0.2s;
 }
@@ -334,7 +341,6 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
 /* -------------------------------------- */
 
 @media (max-width: 1280px) {
-    /* Anpassungen für mittelgroße Bildschirme */
     .barber-pole.left { left: 20px; margin-left: 0; }
     .barber-pole.right { right: 20px; margin-right: 0; }
     .scissors-drawing { left: 40px; font-size: 80px; }
@@ -344,18 +350,16 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
 }
 
 @media(max-width: 900px){
-    /* Dekorationselemente für Tablets/kleinere Desktops ausblenden */
     .barber-pole, .scissors-drawing, .comb-drawing, .barber-head-drawing { display: none; }
     .messages-grid { padding: 0 20px; }
-    .guestbook-section-custom { min-height: auto; } /* Min-Height zurücksetzen wenn Deko weg ist */
+    .guestbook-section-custom { min-height: auto; }
 }
 
 @media(max-width: 768px){
-    /* Gästebuch: ALLE ILLUSTRATIVEN ELEMENTE auf Handys ausblenden */
     .guestbook-section-custom { min-height: auto; max-width: 100%; }
     .guestbook-form-wrapper { max-width: 100%; margin: 0 10px; padding: 20px; }
     .messages-overview { margin-top: 50px; }
-    .messages-grid { grid-template-columns: 1fr; /* Eine Spalte auf Handys */ }
+    .messages-grid { grid-template-columns: 1fr; }
     .container {padding: 0 10px;}
 }
 </style>
@@ -392,17 +396,26 @@ für Ihr perfektes Haar- und Bartgefühl.</p>
         <div class="barber-pole right"></div>
         <i class="fas fa-cut scissors-drawing"></i>
         <i class="fas fa-solid fa-tooth comb-drawing"></i>
-        <div class="barber-head-drawing left"></div>
+        
+<div class="barber-head-drawing left"></div>
         <div class="barber-head-drawing right"></div>
 
         <div class="guestbook-form-wrapper">
             <i class="fas fa-crown crown-icon"></i>
             <h3>GÄSTEBUCH</h3>
-            <p class="slogan">Teile deine Wünsche mit</p>
+            <p class="slogan">Teile deine Erfahrungen mit uns</p>
 
             <form id="guestbookForm">
               <input type="text" id="guestName" placeholder="DEIN NAME" required>
-              <textarea id="guestText" placeholder="DEINE NACHRICHT" required></textarea>
+              
+              <p class="form-prompt">Der beste Schnitt, den ich je bei C&D hatte:</p>
+              <input type="text" id="prompt1" placeholder="Meine Story / mein Lob" required>
+              
+              <p class="form-prompt">Mein goldener Tipp für den nächsten Besuch:</p>
+              <input type="text" id="prompt2" placeholder="Zum Beispiel: Was ich gerne sehen würde" required>
+              
+              <p class="form-prompt">Ein Wort, das C&D am besten beschreibt:</p>
+              <input type="text" id="prompt3" placeholder="Z.B. 'Perfekt', 'Stilvoll', 'Königlich'" required>
 
               <div class="star-rating">
                   <span data-rating="1"><i class="far fa-star"></i></span>
@@ -548,18 +561,28 @@ async function loadEntries(){
 form.addEventListener("submit",async e=>{
   e.preventDefault();
   const name=document.getElementById("guestName").value.trim();
-  const text=document.getElementById("guestText").value.trim();
-
-  if(!name||!text||selectedRating === 0) {
+  const p1=document.getElementById("prompt1").value.trim();
+  const p2=document.getElementById("prompt2").value.trim();
+  const p3=document.getElementById("prompt3").value.trim();
+  
+  // Überprüfen, ob alle Fragen beantwortet wurden (müssen nicht lang sein, aber gefüllt)
+  if(!name||!p1||!p2||!p3||selectedRating === 0) {
       alert("Bitte füllen Sie alle Felder aus und geben Sie eine Sterne-Bewertung ab!");
       return;
   }
+  
+  // Alle Antworten in ein Textfeld zusammenfassen (da das Google Script nur ein Text-Feld erwartet)
+  const combinedText = 
+    `Bester Schnitt: ${p1}\n` + 
+    `Goldener Tipp: ${p2}\n` + 
+    `Ein Wort: ${p3}`;
 
   try{
     const data=new FormData();
     data.append("name",name);
-    data.append("text",text);
-    data.append("rating", selectedRating); // Füge die Bewertung hinzu
+    // Das zusammengefasste Textfeld senden
+    data.append("text", combinedText); 
+    data.append("rating", selectedRating); 
 
     const submitBtn = document.querySelector('.submit-btn');
     submitBtn.textContent = 'Wird gesendet...';
@@ -569,7 +592,7 @@ form.addEventListener("submit",async e=>{
 
     // Zurücksetzen nach erfolgreichem Senden
     form.reset();
-    selectedRating = 0; // Rating zurücksetzen
+    selectedRating = 0;
     document.querySelectorAll('.star-rating span i').forEach(icon => {
         icon.classList.remove('fas');
         icon.classList.add('far');
