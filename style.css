@@ -1,7 +1,51 @@
-/* ... [CSS VOR DEM GÄSTEBUCH-ABSCHNITT BLEIBT UNVERÄNDERT] ... */
+/* ========================================================== */
+/* BASIS & GLOBALE STYLES */
+/* ========================================================== */
+:root {
+  --brand:#c0392b;
+  --brand-2:#ff6b61;
+  --bg:#0b0f14; 
+  --card:#0f1720;
+  --surface:#0b1116;
+  --text:#e6eef6; 
+  --muted:#9aa6b2;
+  --glass:rgba(255,255,255,0.03);
+  --max-width:1200px;
+  --radius:10px;
+
+  /* GOLD-FARBDEFINITIONEN FÜR DELUXE EDITION */
+  --gold: #FFD700;
+  --gold-light: #fdd835;
+  --gold-shadow: rgba(253, 216, 53, 0.4);
+
+  font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body {
+  margin:0;
+  background:linear-gradient(180deg,var(--bg),rgba(0,0,0,0.03)); 
+  color:var(--text); 
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+.container{max-width:var(--max-width);margin:0 auto;padding:0 16px}
+.skip-link{position:absolute;left:-9999px;top:auto;overflow:hidden}
+.skip-link:focus{left:16px;top:16px;z-index:999;background:var(--card);padding:8px;border-radius:6px;color:var(--text)}
+
+/* Allgemeine Styles */
+h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-light); text-shadow: 0 0 15px rgba(253, 216, 53, 0.4);} 
+.header-banner{width: 100%; height: 300px; display: flex; justify-content: center; align-items: center; background: var(--bg); overflow: hidden; border-bottom: 2px solid var(--gold-light);}
+.header-banner img{max-width: 100%; max-height: 100%; object-fit: contain; filter: brightness(1.2) contrast(1.1);} 
+.welcome-section{padding: 30px 20px; background: rgba(255, 255, 255, 0.05); border-radius: 15px; max-width: 900px; margin: 40px auto; text-align: center; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);} 
+.welcome-section h1{font-size: 2em; margin-bottom: 10px; color: var(--gold-light);} 
+.welcome-section p{color: var(--muted); line-height: 1.6;} 
+.image-price-section{text-align: center; padding: 20px 0; margin-bottom: 50px; background: rgba(255, 255, 255, 0.03); border-radius: 15px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);} 
+.image-price-section img{max-width: 500px; width: 90%; border-radius: 10px; box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);} 
 
 /* ========================================================== */
-/* GÄSTEBUCH DELUXE STYLES (HINTERGRUNDBILD WIRD AKTUALISIERT) */
+/* GÄSTEBUCH DELUXE STYLES (HINTERGRUNDBILD & FORMULAR ÜBERLAGERUNG) */
 /* ========================================================== */
 
 @keyframes goldPulse {
@@ -12,7 +56,6 @@
 
 .guestbook-section-custom {
     /* **WICHTIG: ERSETZEN SIE DIESE URL MIT DER NEUEN GITHUB-URL VON '1000110222.png'** */
-    /* Platzhalter-URL: */
     background-image: url('https://raw.githubusercontent.com/Artonstyle/Barbershop/main/images/Gaestebuch_neu.png'); 
     background-size: cover; 
     background-position: center center;
@@ -23,15 +66,23 @@
     margin: 40px auto 0; 
     max-width: 1200px; 
     box-sizing: border-box;
-    /* Dunkler Overlay, falls das Bild nicht ganz so dunkel ist wie der Hintergrund */
     box-shadow: inset 0 0 0 100vw rgba(0, 0, 0, 0.4); 
     min-height: 750px; 
 }
 
-/* ... [Rest der Puls-Animation (.guestbook-section-custom::before) bleibt gleich] ... */
+.guestbook-section-custom::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: 
+      repeating-linear-gradient(45deg, rgba(255,215,0,0.02) 0px, rgba(255,215,0,0.02) 2px, transparent 2px, transparent 20px),
+      repeating-linear-gradient(-45deg, rgba(255,215,0,0.02) 0px, rgba(255,215,0,0.02) 2px, transparent 2px, transparent 20px);
+    animation: goldPulse 5s ease-in-out infinite;
+    z-index: 1;
+    opacity: 0.8; 
+}
 
-
-/* Der Content-Wrapper muss absolut im Container positioniert werden, um zentriert zu sein */
+/* Content-Wrapper für die Formular-Zentrierung */
 .guestbook-main-content {
     display: flex;
     justify-content: center;
@@ -39,44 +90,44 @@
     position: absolute; 
     inset: 0;
     z-index: 10;
-    /* Zentrierung für das Formular: */
     padding-top: 0;
 }
 
-/* Figuren/Icons/Header sind jetzt im Bild und werden ausgeblendet (BLEIBT GLEICH) */
-.guestbook-header { display: none; }
-.barber-figure, .scissors-icon, .comb-icon { display: none !important; }
+/* Elemente, die jetzt im Bild sind, ausblenden */
+.guestbook-header, .barber-figure, .scissors-icon, .comb-icon { display: none !important; }
 
-/* Formular Wrapper: Muss JETZT transparent sein, da der Kasten im Bild ist! */
+/* Formular Wrapper: MUSS TRANSPARENT SEIN und nur die Eingabefelder anzeigen */
 .guestbook-form-wrapper {
-    /* WICHTIG: Hintergrund entfernen, Border entfernen, damit nur die Eingabefelder über dem Bild schweben */
     background: transparent; 
     border: none; 
     border-radius: 20px;
-    padding: 40px 10px; /* Padding angepasst, um die Elemente zu zentrieren */
+    padding: 40px 10px;
     max-width: 450px; 
-    /* Schatten entfernen, da der Gold-Schatten nun Teil des Hintergrundbildes ist */
     box-shadow: none; 
     text-align: center;
     position: relative;
     z-index: 10;
     margin: 0; 
-    
-    /* Positionierung über dem Formular-Kasten im Bild (Fein-Tuning) */
-    transform: translateY(-5px); /* Geringe Korrektur nach oben */
+    transform: translateY(-5px); /* Fein-Tuning für die vertikale Position */
 }
 
-/* Formular Felder */
+/* Formular Header (Icon, H3, Slogan) sind im Bild und werden ausgeblendet */
+.guestbook-form-wrapper .crown-icon,
+.guestbook-form-wrapper h3,
+.guestbook-form-wrapper .slogan {
+    display: none !important;
+}
+
+
+/* Formular Felder: Halten den Platz und sind leicht transparent */
 .guestbook-form-wrapper input[type="text"],
 .guestbook-form-wrapper textarea {
     width: 100%; padding: 12px; margin-bottom: 15px; 
-    /* Input-Hintergrund in leicht dunkler Transparenz, um sich vom Bild abzuheben */
     background: rgba(25, 25, 25, 0.7); 
     border: 1px solid rgba(255, 215, 0, 0.2); 
     color: #fff; border-radius: 8px; box-sizing: border-box;
-    box-shadow: inset 0 0 5px rgba(0,0,0,0.5); /* Tiefer Schatten für 3D-Effekt */
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.5); 
 }
-
 .guestbook-form-wrapper input[type="text"]:focus,
 .guestbook-form-wrapper textarea:focus {
   border-color: var(--gold);
@@ -86,30 +137,148 @@
 .guestbook-form-wrapper textarea { resize: vertical; min-height: 100px; }
 
 
-/* Formular H3, P und Crown-Icon MÜSSEN nun ausgeblendet werden, da sie im Bild sind! */
-.guestbook-form-wrapper .crown-icon,
-.guestbook-form-wrapper h3,
-.guestbook-form-wrapper .slogan {
-    display: none !important;
-}
-
-/* Sterne-Bewertung: Platzierung anpassen */
+/* Sterne-Bewertung */
 .star-rating { 
     font-size: 30px; 
-    margin: 0 0 20px; /* Abstand oben und unten angepasst */
+    margin: 0 0 20px; 
     color: #888; 
     cursor: pointer;
     display: inline-block; 
 }
 .star-rating span i.fas { color: var(--gold-light); }
 
-/* Submit Button: Platzierung anpassen */
+/* Submit Button */
 .submit-btn { 
   background: linear-gradient(90deg, #FFD700, #E5C100); color: #000; font-weight: 700; border: none;
   border-radius: 10px; padding: 12px 40px; cursor: pointer; transition: all 0.2s ease;
   box-shadow: 0 0 20px rgba(255, 215, 0, 0.4); width: 100%; max-width: 250px; 
-  margin-top: 0; /* Abstand nach oben entfernt, da er im Bild perfekt platziert ist */
+  margin-top: 0; 
 }
 .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 0 35px rgba(255, 215, 0, 0.6); }
 
-/* ... [Rest des CSS (Nachrichten, Kontakt, Footer) bleibt UNVERÄNDERT] ... */
+
+/* ========================================================== */
+/* NACHRICHTEN ÜBERSICHT STYLES (SEPARAT) */
+/* ========================================================== */
+
+.guestbook-messages-section {
+    /* Stellt sicher, dass die Nachrichten unter dem großen Bild beginnen */
+    margin-top: 50px; 
+    padding-top: 50px;
+}
+
+.messages-overview { text-align: center; position: relative; z-index: 10; }
+.messages-overview h3 { font-size: 24px; margin-bottom: 40px; color: var(--gold-light); letter-spacing: 1px; }
+.messages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 20px;
+    padding: 0 50px;
+}
+
+.message-card {
+    background: rgba(15, 15, 15, 0.9); 
+    border: 1px solid rgba(255, 215, 0, 0.3); 
+    border-radius: 12px;
+    padding: 20px;
+    text-align: left;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.1); 
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    border-left: 4px solid var(--gold-light); 
+}
+.message-card:hover { transform: translateY(-4px); box-shadow: 0 0 25px rgba(255, 215, 0, 0.25); }
+.message-card .card-header { font-weight: bold; color: var(--gold-light); margin-bottom: 8px; }
+.message-card .card-info { font-size: 0.9em; color: var(--muted); margin-bottom: 10px; }
+.message-card .card-stars i { color: var(--gold-light); font-size: 16px; margin-right: 2px; }
+
+
+/* ========================================================== */
+/* KONTAKT & ÖFFNUNGSZEITEN DELUXE STYLES */
+/* ========================================================== */
+
+.contact-section-deluxe {
+    text-align: center;
+    padding: 50px 20px;
+    margin: 60px auto; 
+    max-width: 900px;
+    background: rgba(15, 15, 15, 0.9); 
+    border: 2px solid var(--gold); 
+    border-radius: 20px;
+    box-shadow: 0 0 40px rgba(255, 215, 0, 0.4); 
+    position: relative;
+    z-index: 5;
+}
+
+.contact-section-deluxe h2 { font-size: 28px; margin-bottom: 30px; }
+.contact-info p { font-size: 1.1em; color: var(--text); margin: 10px 0; }
+.contact-info .address-line { color: var(--muted); }
+.contact-info .phone-number { font-weight: bold; color: var(--gold-light); }
+
+.opening-hours-list {
+    list-style: none; padding: 0; display: inline-block; text-align: left; margin-top: 20px;
+}
+.opening-hours-list li {
+    padding: 8px 0; font-size: 1.05em; color: var(--text);
+    border-bottom: 1px solid rgba(255,215,0,0.2); 
+}
+.opening-hours-list li:last-child { border-bottom: none; }
+.opening-hours-list strong { color: var(--gold-light); display: inline-block; width: 150px; }
+.opening-hours-list .closed { color: var(--brand-2); font-weight: 600; }
+
+.contact-section-deluxe a {
+    color: var(--gold-light) !important; text-decoration: none; font-weight: bold;
+    display: block; margin-top: 25px; transition: color 0.2s;
+}
+.contact-section-deluxe a:hover { color: #fff !important; }
+
+/* Social Links */
+.social-links { margin: 30px 0 20px; text-align: center;}
+.social-links a img {
+    width: 32px; height: 32px; margin: 0 10px; vertical-align: middle;
+    border-radius: 50%; box-shadow: 0 0 10px rgba(253, 216, 53, 0.4); 
+    transition: transform 0.2s;
+}
+.social-links a img:hover { transform: scale(1.1); }
+
+/* FOOTER */
+footer{
+    text-align:center; padding:20px 0; background:#000000; color:#555;
+    margin-top:50px; border-top:1px solid rgba(255,215,0,0.1); font-size: 0.9em;
+} 
+
+/* ========================================================== */
+/* RESPONSIVE ANPASSUNGEN (HANDY-ANSICHT) */
+/* ========================================================== */
+
+@media (max-width: 900px) {
+    .messages-grid { padding: 0 20px; }
+}
+
+@media(max-width: 768px){
+    .header-banner { height: 200px; }
+    .image-price-section img { max-width: 100%; }
+
+    /* WICHTIG: Hintergrundbild im Mobile-Modus entfernen */
+    .guestbook-section-custom {
+        background-image: none !important;
+        min-height: auto;
+        padding: 40px 10px;
+    }
+    
+    /* Content muss auf Mobile normal fließen */
+    .guestbook-main-content {
+        position: static;
+        flex-direction: column;
+    }
+
+    .guestbook-form-wrapper { max-width: 100%; margin: 0 10px; padding: 20px; }
+    
+    .guestbook-messages-section {
+        margin-top: 20px; 
+        padding-top: 0;
+    }
+
+    .messages-grid { grid-template-columns: 1fr; }
+    .contact-section-deluxe { margin: 40px 10px; padding: 30px 15px; }
+    .container {padding: 0 10px;}
+}
