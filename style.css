@@ -1,1 +1,256 @@
+/* ========================================================== */
+/* BASIS & GLOBALE STYLES (GOLD EDITION) */
+/* ========================================================== */
+:root {
+  --brand:#c0392b;
+  --brand-2:#ff6b61;
+  --bg:#000000;
+  --card:#0a0a0a;
+  --surface:#050505;
+  --text:#e6eef6;
+  --muted:#9aa6b2;
+  --glass:rgba(255,255,255,0.03);
+  --max-width:1200px;
+  --radius:10px;
+
+  --gold:#FFD700;
+  --gold-light:#fdd835;
+  --gold-shadow:rgba(253,216,53,0.4);
+
+  font-family:"Poppins",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body {
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+.container{max-width:var(--max-width);margin:0 auto;padding:0 16px}
+.skip-link{position:absolute;left:-9999px;top:auto;overflow:hidden}
+.skip-link:focus{left:16px;top:16px;z-index:999;background:var(--card);padding:8px;border-radius:6px;color:var(--text)}
+h2{text-align:center;margin-bottom:30px;font-weight:700;color:var(--gold-light);text-shadow:0 0 15px var(--gold-shadow);}
+.header-banner{width:100%;height:300px;display:flex;justify-content:center;align-items:center;background:var(--bg);overflow:hidden;border-bottom:2px solid var(--gold-light);}
+.header-banner img{max-width:100%;max-height:100%;object-fit:contain;filter:brightness(1.2) contrast(1.1);}
+
+/* ====================================== */
+/* WILLKOMMEN & PREISSEKTION */
+/* ====================================== */
+.welcome-section,.image-price-section{
+  padding:30px 20px;
+  background:var(--card);
+  border-radius:15px;
+  max-width:900px;
+  margin:40px auto;
+  text-align:center;
+  box-shadow:0 10px 30px rgba(0,0,0,0.7),0 0 20px var(--gold-shadow,rgba(0,0,0,0.1));
+}
+.welcome-section h1{font-size:2em;margin-bottom:10px;color:var(--gold-light);}
+.welcome-section p{color:var(--muted);line-height:1.6;}
+.image-price-section img{max-width:500px;width:90%;border-radius:10px;box-shadow:0 0 15px rgba(255,215,0,0.3);}
+
+/* ====================================== */
+/* GÄSTEBUCH-STYLES (Black & Gold Fix) */
+/* ====================================== */
+
+@keyframes goldPulse {
+  0% { opacity: 0.5; }
+  50% { opacity: 0.9; }
+  100% { opacity: 0.5; }
+}
+
+.guestbook-section-custom {
+  background-image: url('https://raw.githubusercontent.com/Artonstyle/Barbershop/main/images/Gästebuch.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  margin: 40px auto;
+  max-width: 1200px;
+  min-height: 750px;
+  box-shadow: inset 0 0 0 100vw rgba(0,0,0,0.45);
+}
+
+.guestbook-section-custom::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(45deg, rgba(255,215,0,0.02) 0px, rgba(255,215,0,0.02) 2px, transparent 2px, transparent 20px),
+    repeating-linear-gradient(-45deg, rgba(255,215,0,0.02) 0px, rgba(255,215,0,0.02) 2px, transparent 2px, transparent 20px);
+  animation: goldPulse 6s ease-in-out infinite;
+  z-index: 1;
+  opacity: 0.7;
+}
+
+/* zentrierter Container */
+.guestbook-main-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+}
+
+/* Formular-Box */
+.guestbook-form-wrapper {
+  background: rgba(0, 0, 0, 0.75);
+  border: 2px solid var(--gold);
+  border-radius: 20px;
+  padding: 40px 35px;
+  width: 100%;
+  max-width: 440px;
+  box-shadow: 0 0 45px var(--gold-shadow);
+  text-align: center;
+  z-index: 10;
+  backdrop-filter: blur(3px);
+  animation: goldPulse 3s ease-in-out infinite alternate;
+  transform: translateY(0);
+}
+
+/* Eingabefelder */
+.guestbook-form-wrapper input[type="text"],
+.guestbook-form-wrapper textarea {
+  width: 100%;
+  padding: 14px 12px;
+  margin-bottom: 20px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,215,0,0.2);
+  border-radius: 6px;
+  color: #fff;
+  font-size: 15px;
+  transition: all 0.2s ease;
+}
+.guestbook-form-wrapper input:focus,
+.guestbook-form-wrapper textarea:focus {
+  border-color: var(--gold-light);
+  box-shadow: 0 0 8px var(--gold-shadow);
+  outline: none;
+}
+.guestbook-form-wrapper textarea {
+  min-height: 100px;
+  resize: none;
+}
+
+/* Sternebewertung */
+.star-rating {
+  font-size: 34px;
+  margin: 10px 0 25px;
+  color: #666;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+.star-rating span { transition: transform 0.15s; }
+.star-rating span:hover { transform: scale(1.15); }
+.star-rating i.fas { color: var(--gold-light); }
+
+/* Button */
+.submit-btn {
+  background: linear-gradient(180deg, var(--gold-light), var(--gold));
+  color: #000;
+  font-weight: 700;
+  border: none;
+  border-radius: 30px;
+  padding: 14px 40px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 80%;
+  max-width: 250px;
+  box-shadow: 0 0 20px rgba(255,215,0,0.4);
+  transition: all 0.25s ease;
+}
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(255,215,0,0.6);
+}
+
+#successMsg {
+  margin-top: 10px;
+  font-weight: 600;
+  color: var(--gold-light);
+}
+
+/* ====================================== */
+/* GÄSTEBUCH-EINTRÄGE */
+/* ====================================== */
+.messages-overview {
+  text-align:center;
+  position:relative;
+  z-index:10;
+  padding-top:50px;
+}
+.messages-overview h3 {
+  font-size:24px;
+  margin-bottom:40px;
+  color:var(--gold-light);
+}
+.messages-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:20px;
+  padding:0 50px;
+}
+.message-card {
+  background:var(--card);
+  border:1px solid rgba(255,215,0,0.3);
+  border-left:4px solid var(--gold-light);
+  border-radius:12px;
+  padding:20px;
+  text-align:left;
+  transition:transform 0.2s,box-shadow 0.3s;
+  box-shadow:0 0 15px rgba(255,215,0,0.1);
+}
+.message-card:hover {
+  transform:translateY(-4px);
+  box-shadow:0 0 25px rgba(255,215,0,0.25);
+}
+.message-card .card-header{font-weight:bold;color:var(--gold-light);}
+.message-card .card-info{font-size:0.9em;color:var(--muted);margin-bottom:10px;}
+.message-card .card-stars i{color:var(--gold-light);}
+.message-card p{font-size:14px;color:var(--text);line-height:1.4;margin-top:10px;}
+
+/* ====================================== */
+/* MOBILE RESPONSIVE FIX */
+/* ====================================== */
+@media(max-width:768px){
+  .header-banner{height:200px;}
+  .guestbook-section-custom{
+    background-image:none!important;
+    background:var(--bg);
+    min-height:auto;
+    padding:40px 10px;
+  }
+  .guestbook-main-content{
+    position:static;
+    flex-direction:column;
+    height:auto;
+    padding:0;
+  }
+  .guestbook-form-wrapper{
+    background:var(--card);
+    border:2px solid var(--gold);
+    box-shadow:0 0 25px var(--gold-shadow);
+    padding:25px 20px;
+    margin:20px auto;
+    width:90%;
+    animation:none;
+  }
+  .guestbook-form-wrapper::before{
+    content:"GUESTBOOK";
+    display:block;
+    color:var(--gold-light);
+    font-size:22px;
+    font-weight:700;
+    margin-bottom:20px;
+    text-shadow:0 0 5px var(--gold-shadow);
+  }
+  .submit-btn{width:100%;max-width:none;}
+  .messages-grid{grid-template-columns:1fr;padding:0 10px;}
+}
+footer{text-align:center;padding:15px 0;background:var(--surface);color:#888;margin-top:50px;border-top:1px solid rgba(255,215,0,0.1);}
 
