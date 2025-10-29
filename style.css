@@ -48,8 +48,7 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
     max-width: 900px; 
     margin: 40px auto; 
     text-align: center; 
-    /* Goldener Schatten hinzugefügt */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 20px var(--gold-shadow, rgba(0,0,0,0.1)); 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 20px var(--gold-shadow, rgba(0,0,0,0.1));
 } 
 .welcome-section h1{font-size: 2em; margin-bottom: 10px; color: var(--gold-light);} 
 .welcome-section p{color: var(--muted); line-height: 1.6;} 
@@ -66,7 +65,7 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
 }
 
 .guestbook-section-custom {
-    /* HINTERGRUNDBILD */
+    /* HINTERGRUNDBILD (Wird auf Desktop verwendet) */
     background-image: url('https://raw.githubusercontent.com/Artonstyle/Barbershop/main/images/Gästebuch.png'); 
     background-size: cover; 
     background-position: center center;
@@ -103,21 +102,20 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
     z-index: 10;
 }
 
-/* Formular Wrapper: Liegt über dem Formular im Bild */
+/* Formular Wrapper: Liegt über dem Formular im Bild (Desktop) */
 .guestbook-form-wrapper {
-    background: transparent; /* Muss transparent sein */
+    background: transparent;
     border: none;
     border-radius: 20px;
-    /* Vertikales Padding angepasst, um die Kopfzeile im Bild zu überspringen und die Felder zu platzieren */
     padding: 180px 40px 40px; 
-    max-width: 440px; /* Breite angepasst an das Formular im Bild */
-    height: 520px; /* Höhe angepasst an das Formular im Bild */
+    max-width: 440px; 
+    height: 520px; 
     box-shadow: none; 
     text-align: center;
     position: relative;
     z-index: 10;
     
-    /* Feinanpassung der vertikalen Position über dem Bild */
+    /* Feinanpassung der vertikalen Position */
     transform: translateY(-20px); 
 }
 
@@ -128,7 +126,7 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
     padding: 15px 12px; 
     margin-bottom: 25px; 
     
-    background: rgba(80, 80, 80, 0.9); /* Dunkelgrauer Hintergrund wie im Bild */
+    background: rgba(80, 80, 80, 0.9); /* Dunkelgrauer Hintergrund */
     border: none; 
     border-radius: 5px; 
     color: #fff; 
@@ -177,7 +175,7 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
   color: #000; 
   font-weight: 700; 
   border: none;
-  border-radius: 30px; /* Oval */
+  border-radius: 30px; 
   padding: 15px 50px; 
   cursor: pointer; 
   transition: all 0.2s ease;
@@ -241,11 +239,11 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
 .opening-hours-list .closed { color: var(--brand-2); font-weight: 600; }
 .contact-section-deluxe a { color: var(--gold-light) !important; text-decoration: none; font-weight: bold; display: block; margin-top: 25px; transition: color 0.2s; }
 
-/* Social Links - Größe ist 32x32px */
+/* Social Links - Instagram Icon (32x32px) */
 .social-links { margin: 30px 0 20px; text-align: center;}
 .social-links a img { 
-    width: 32px; /* Größe beibehalten */
-    height: 32px; /* Größe beibehalten */
+    width: 32px; 
+    height: 32px; 
     margin: 0 10px; 
     vertical-align: middle; 
     border-radius: 50%; 
@@ -256,36 +254,51 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
 footer{text-align:center;padding:15px 0;background:var(--surface);color:#888;margin-top:50px;border-top:1px solid rgba(255,215,0,0.1);} 
 
 /* -------------------------------------- */
-/* RESPONSIVE ANPASSUNGEN (Mobile) */
+/* RESPONSIVE ANPASSUNGEN (Mobile) - FIX FÜR SICHTBARKEIT */
 /* -------------------------------------- */
 @media(max-width: 768px){
     .header-banner { height: 200px; }
     .image-price-section img { max-width: 100%; }
 
+    /* 1. Gästebuch Sektion: Hintergrundbild ausschalten */
     .guestbook-section-custom {
-        background-image: none !important; /* Hintergrundbild auf Mobile ausschalten */
+        background-image: none !important; /* Wichtig: Bild auf Mobile entfernen */
         min-height: auto;
         padding: 40px 10px;
-        background: var(--bg);
+        background: var(--bg); /* Stellt sicher, dass der Container schwarz ist */
     }
     
     .guestbook-main-content {
-        position: static;
+        position: static; /* Position zurücksetzen */
         flex-direction: column;
         height: auto;
         padding-top: 0;
     }
     
-    /* Formular-Hintergrund auf Mobile sichtbar machen, da das Bild fehlt */
+    /* 2. Formular-Wrapper: Hintergrund und Abstand für Mobile setzen */
     .guestbook-form-wrapper { 
-        background: var(--card); 
+        background: var(--card); /* Formular erhält Hintergrund, da Bild fehlt */
+        
         max-width: 95%; 
-        margin: 20px auto; 
-        padding: 20px; /* Weniger Padding */
+        margin: 20px auto; /* Zentriert und Abstand oben/unten */
+        padding: 20px; /* Kompaktes Padding für Mobile */
+        
         border: 2px solid var(--gold); 
         box-shadow: 0 0 20px var(--gold-shadow);
-        transform: none; 
-        height: auto;
+        
+        transform: none; /* Positionierung zurücksetzen */
+        height: auto; 
+    }
+
+    /* 3. Überschrift für Mobile hinzufügen (da sie im Bild versteckt war) */
+    .guestbook-form-wrapper::before {
+        content: "GUESTBOOK";
+        display: block;
+        color: var(--gold-light);
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        text-shadow: 0 0 5px var(--gold-shadow);
     }
     
     .submit-btn {
