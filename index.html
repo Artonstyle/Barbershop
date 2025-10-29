@@ -39,7 +39,6 @@ body {
     -moz-osx-font-smoothing:grayscale;
 }
 .container{max-width:var(--max-width);margin:0 auto;padding:0 16px}
-/* ... (Deine bestehenden allgemeinen Styles) ... */
 
 h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-light); text-shadow: 0 0 10px var(--gold-shadow);}
 #successMsg { display: none; margin-top: 20px; color: var(--gold); font-weight: bold; }
@@ -292,6 +291,27 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
 .message-card .card-stars i { color: var(--gold-light); font-size: 16px; margin-right: 2px; }
 
 /* -------------------------------------- */
+/* 📸 SOCIAL MEDIA ICON GRÖSSE (KORRIGIERT) */
+/* -------------------------------------- */
+
+.social-links {
+    margin: 20px 0;
+    text-align: center;
+}
+.social-links a img {
+    width: 24px; /* Von 32px auf 24px reduziert */
+    height: 24px; /* Von 32px auf 24px reduziert */
+    margin: 0 10px;
+    vertical-align: middle;
+    border-radius: 50%; /* Sicherstellen, dass es ein Kreis ist */
+    box-shadow: 0 0 10px rgba(253, 216, 53, 0.4);
+    transition: transform 0.2s;
+}
+.social-links a img:hover {
+    transform: scale(1.2);
+}
+
+/* -------------------------------------- */
 /* 📱 RESPONSIVE ANPASSUNGEN */
 /* -------------------------------------- */
 
@@ -301,13 +321,13 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
 }
 
 @media(max-width: 900px){
-    /* Dekorationselemente für Tablets/kleinere Desktops */
+    /* Dekorationselemente für Tablets/kleinere Desktops ausblenden */
     .barber-pole, .scissors-drawing, .comb-drawing, .barber-head-drawing { display: none; }
     .messages-grid { padding: 0 20px; }
 }
 
 @media(max-width: 768px){
-    /* Gästebuch: ALLE ILLUSTRATIVEN ELEMENTE ausblenden */
+    /* Gästebuch: ALLE ILLUSTRATIVEN ELEMENTE auf Handys ausblenden */
     .guestbook-section-custom { min-height: auto; max-width: 100%; }
     .guestbook-form-wrapper { max-width: 100%; margin: 0 10px; padding: 20px; }
     .messages-overview { margin-top: 50px; }
@@ -404,7 +424,7 @@ href="https://www.google.com/maps/dir/?api=1&destination=Bachgasse+68,+69502+Hem
   © 2025 C&D Barbershop | Black Edition
 </footer>
 <script>
-// ✅ AKTUELLE GOOGLE-SCRIPT-URL
+// ✅ AKTUALISIERTE GOOGLE-SCRIPT-URL
 const sheetURL =
 "https://script.google.com/macros/s/AKfycbzSBO9iha-NH0D4j3GfGjxsOdoko1AqwrEnM2ie-dy1zrfu2OtjNH4TvnZVIkWh0KDB/exec";
 
