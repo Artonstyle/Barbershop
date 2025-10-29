@@ -12,10 +12,10 @@
 /* ========================================================== */
 :root {
   --brand:#c0392b;
-  --brand-2:#ff6b61;
-  --bg:#000000;
-  --card:#0a0a0a;
-  --surface:#050505;
+  --brand-2:#ff6b61; /* Für 'Geschlossen' und Fehler */
+  --bg:#000000; /* REINES SCHWARZ */
+  --card:#0a0a0a; /* Sehr dunkle Farbe für Karten und Sektionen */
+  --surface:#050505; /* Noch dunkler, für subtile Schatten/Footer */
   --text:#e6eef6; 
   --muted:#9aa6b2;
   --glass:rgba(255,255,255,0.03);
@@ -48,6 +48,7 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
 .header-banner{width: 100%; height: 300px; display: flex; justify-content: center; align-items: center; background: var(--bg); overflow: hidden; border-bottom: 2px solid var(--gold-light);}
 .header-banner img{max-width: 100%; max-height: 100%; object-fit: contain; filter: brightness(1.2) contrast(1.1);} 
 
+/* Willkommen & Preisliste Sektionen */
 .welcome-section, .image-price-section {
     padding: 30px 20px; 
     background: var(--card);
@@ -72,7 +73,8 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
 }
 
 .guestbook-section-custom {
-    /* **WICHTIG: ERSETZEN SIE DIESE URL BEI BEDARF DURCH IHRE LOKALE DATEI ODER EINE NEUE CLOUD-URL** */
+    /* HINTERGRUNDBILD */
+    /* Dies ist die URL, die Sie in Ihrem GitHub-Repo verwenden */
     background-image: url('https://raw.githubusercontent.com/Artonstyle/Barbershop/main/images/Gästebuch.png'); 
     background-size: cover; 
     background-position: center center;
@@ -109,26 +111,24 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
     z-index: 10;
 }
 
-/* Formular Wrapper: WIRD JETZT ÜBER DAS DESIGN GELEGT */
+/* Formular Wrapper: Liegt über dem Formular im Bild */
 .guestbook-form-wrapper {
-    /* Die Größe und Position dieses Wrappers wird angepasst, um das Formular des Hintergrundbilds exakt zu überdecken */
-    background: transparent; /* MUSS TRANSPARENT SEIN */
-    border: none; /* KEIN RAHMEN MEHR */
+    background: transparent;
+    border: none;
     border-radius: 20px;
-    padding: 180px 40px 40px; /* Vertikales Padding angepasst, um die Kopfzeile im Bild zu überspringen */
-    max-width: 440px; /* Breite angepasst an das Formular im Bild */
-    height: 520px; /* Höhe angepasst an das Formular im Bild */
+    padding: 180px 40px 40px; 
+    max-width: 440px; 
+    height: 520px; 
     box-shadow: none; 
     text-align: center;
     position: relative;
     z-index: 10;
     
-    /* Feinanpassung der Position über dem Bild */
+    /* Feinanpassung der vertikalen Position über dem Bild */
     transform: translateY(-20px); 
-    /* margin: 0; */
 }
 
-/* Platzhalter-Texte (YOUR NAME, YOUR MESSAGE) */
+/* Formular Felder */
 .guestbook-form-wrapper input[type="text"],
 .guestbook-form-wrapper textarea {
     width: 100%; 
@@ -146,22 +146,29 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
     font-weight: 400;
 }
 
+/* Platzhalter (YOUR NAME, YOUR MESSAGE) */
 .guestbook-form-wrapper input::placeholder,
 .guestbook-form-wrapper textarea::placeholder {
-    color: #dddddd; /* Helleres Grau, wie im Designbild */
+    color: #dddddd; 
     font-size: 16px; 
     font-weight: 500;
     letter-spacing: 0.5px;
     opacity: 1; 
 }
 
+.guestbook-form-wrapper input[type="text"]:focus,
+.guestbook-form-wrapper textarea:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 10px rgba(255,215,0,0.2);
+  outline: none;
+}
 .guestbook-form-wrapper textarea { resize: vertical; min-height: 100px; }
 
 
-/* Sterne-Bewertung: Position und Größe */
+/* Sterne-Bewertung */
 .star-rating { 
     font-size: 35px; 
-    margin: 0 0 35px; /* Abstand nach unten zum Button */
+    margin: 0 0 35px; 
     color: #888; 
     cursor: pointer;
     display: block; 
@@ -171,13 +178,13 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
 .star-rating span i.fas { color: var(--gold-light); } 
 
 
-/* Submit Button: SUBMIT ENTRY */
+/* Submit Button (SUBMIT ENTRY) */
 .submit-btn { 
   background: linear-gradient(0deg, #CEB700, var(--gold)); 
   color: #000; 
   font-weight: 700; 
   border: none;
-  border-radius: 30px; /* Oval wie im Bild */
+  border-radius: 30px; /* Oval */
   padding: 15px 50px; 
   cursor: pointer; 
   transition: all 0.2s ease;
@@ -192,7 +199,7 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
 
 
 /* -------------------------------------- */
-/* MESSAGES & CONTACT STYLES (Unverändert) */
+/* NACHRICHTEN & KONTAKT STYLES */
 /* -------------------------------------- */
 .guestbook-messages-section { margin-top: 50px; padding-top: 50px; }
 .messages-overview { text-align: center; position: relative; z-index: 10; }
@@ -240,8 +247,18 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
 .opening-hours-list strong { color: var(--gold-light); display: inline-block; width: 150px; }
 .opening-hours-list .closed { color: var(--brand-2); font-weight: 600; }
 .contact-section-deluxe a { color: var(--gold-light) !important; text-decoration: none; font-weight: bold; display: block; margin-top: 25px; transition: color 0.2s; }
+
+/* Social Links - Größe ist 32x32px (wie zuvor bestätigt) */
 .social-links { margin: 30px 0 20px; text-align: center;}
-.social-links a img { width: 32px; height: 32px; margin: 0 10px; vertical-align: middle; border-radius: 50%; box-shadow: 0 0 10px var(--gold-shadow); transition: transform 0.2s; }
+.social-links a img { 
+    width: 32px; 
+    height: 32px; 
+    margin: 0 10px; 
+    vertical-align: middle; 
+    border-radius: 50%; 
+    box-shadow: 0 0 10px var(--gold-shadow); 
+    transition: transform 0.2s; 
+}
 
 footer{text-align:center;padding:15px 0;background:var(--surface);color:#888;margin-top:50px;border-top:1px solid rgba(255,215,0,0.1);} 
 
@@ -266,15 +283,15 @@ footer{text-align:center;padding:15px 0;background:var(--surface);color:#888;mar
         padding-top: 0;
     }
     
-    /* Formular-Hintergrund auf Mobile wieder sichtbar machen */
+    /* Formular-Hintergrund auf Mobile sichtbar machen, da das Bild fehlt */
     .guestbook-form-wrapper { 
         background: var(--card); 
         max-width: 95%; 
         margin: 20px auto; 
-        padding: 20px; /* Weniger Padding */
+        padding: 20px; 
         border: 2px solid var(--gold); 
         box-shadow: 0 0 20px var(--gold-shadow);
-        transform: none; /* Positionierung zurücksetzen */
+        transform: none; 
         height: auto;
     }
     
