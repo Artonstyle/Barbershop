@@ -1,32 +1,32 @@
 /* Grundfarben & Typografie */
 :root{
-  --brand:#c0392b;
-  --brand-2:#ff6b61;
-  --bg:#0b0f14; /* dunkles, modernes Theme */
-  --card:#0f1720;
-  --surface:#0b1116;
-  --text:#e6eef6;
-  --muted:#9aa6b2;
-  --glass:rgba(255,255,255,0.03);
-  --max-width:1200px;
-  --radius:10px;
-  
+  --brand:#c0392b;
+  --brand-2:#ff6b61;
+  --bg:#0b0f14; /* dunkles, modernes Theme */
+  --card:#0f1720;
+  --surface:#0b1116;
+  --text:#e6eef6;
+  --muted:#9aa6b2;
+  --glass:rgba(255,255,255,0.03);
+  --max-width:1200px;
+  --radius:10px;
+  
   /* NEUE GOLD-FARBDEFINITIONEN FÜR GÄSTEBUCH */
   --gold: #FFD700;
   --gold-light: #fdd835;
   --gold-shadow: rgba(253, 216, 53, 0.4);
 
-  font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
 }
 *{box-sizing:border-box}
 html,body{height:100%}
 body{
-  margin:0;
-  background:linear-gradient(180deg,var(--bg),rgba(0,0,0,0.03));
-  color:var(--text);
-  line-height:1.5;
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
+  margin:0;
+  background:linear-gradient(180deg,var(--bg),rgba(0,0,0,0.03));
+  color:var(--text);
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
 }
 .container{max-width:var(--max-width);margin:0 auto;padding:0 16px}
 
@@ -40,23 +40,23 @@ body{
 
 /* BANNER FIX: NEUE REGELN FÜR KORREKTE GRÖSSE DES LOGOS */
 .header-banner {
-  width: 100%;
-  height: 300px; /* Feste Höhe, damit das Bild nicht überragt. */
-  overflow: hidden; 
-  display: flex;
-  justify-content: center; /* Zentriert das Bild horizontal */
-  align-items: center; /* Zentriert das Bild vertikal */
-  background: var(--bg); 
-  border-bottom: 2px solid var(--brand); 
+  width: 100%;
+  height: 300px; /* Feste Höhe, damit das Bild nicht überragt. */
+  overflow: hidden; 
+  display: flex;
+  justify-content: center; /* Zentriert das Bild horizontal */
+  align-items: center; /* Zentriert das Bild vertikal */
+  background: var(--bg); 
+  border-bottom: 2px solid var(--brand); 
 }
 
 .header-banner img {
-  max-width: 100%; 
-  max-height: 100%; 
-  object-fit: contain; /* Skaliert das Bild ohne Verzerrung in den Container */
-  height: auto;
-  filter: brightness(1.2) contrast(1.1);
-  border: none;
+  max-width: 100%; 
+  max-height: 100%; 
+  object-fit: contain; /* Skaliert das Bild ohne Verzerrung in den Container */
+  height: auto;
+  filter: brightness(1.2) contrast(1.1);
+  border: none;
 }
 /* ENDE BANNER FIX */
 
@@ -115,41 +115,142 @@ body{
 .cookie-banner{position:fixed;left:16px;right:16px;bottom:16px;background:var(--card);padding:12px;border-radius:10px;box-shadow:0 8px 30px rgba(0,0,0,0.24);display:flex;justify-content:space-between;gap:12px;align-items:center}
 .cookie-actions{display:flex;gap:8px}
 
-/* NEUE & GEÄNDERTE STYLES FÜR GÄSTEBUCH (BLACK & GOLD EDITION) */
-/* Überschreibt die Standard-Styles des Gästebuchs */
-.guestbook-section {
-    padding: 40px 20px; 
-    margin: 40px auto; 
-    background: var(--bg); /* Schwarzer Hintergrund für den Bereich */
-    max-width: 950px; /* Breiter für die Figuren */
-    position: relative;
-    box-sizing: border-box;
-    min-height: 700px;
-    box-shadow: none; /* Entfernt den globalen Box-Shadow */
+---
+## 👑 NEUE & GEÄNDERTE STYLES FÜR GÄSTEBUCH (BLACK & GOLD DELUXE)
+**Beachte:** Um diese neuen Styles zu verwenden, musst du deine HTML-Klassen entsprechend anpassen (z.B. `guestbook-section` zu `guestbook-section-custom` und das Formular zu `guestbook-form-wrapper deluxe`).
+
+```css
+/* Animation für den pulsierenden Gold-Glow im Hintergrund */
+@keyframes goldPulse {
+  0% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+  100% { opacity: 0.4; }
 }
 
-.guestbook-section h2 {
+/* Hauptbereich des Gästebuchs mit radialem Verlauf und Überlauf-Versteckung */
+.guestbook-section-custom {
+  background: radial-gradient(circle at 50% 0%, rgba(255,215,0,0.07), transparent 70%), #0a0a0a;
+  position: relative;
+  padding: 60px 0;
+  overflow: hidden;
+  max-width: 950px; /* Breite beibehalten */
+  margin: 40px auto;
+  min-height: 700px; /* Höhe beibehalten */
+  box-sizing: border-box;
+}
+
+/* Pulsierendes goldenes Muster als Pseudo-Element */
+.guestbook-section-custom::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: 
+    repeating-linear-gradient(45deg, rgba(255,215,0,0.08) 0px, rgba(255,215,0,0.08) 2px, transparent 2px, transparent 20px),
+    repeating-linear-gradient(-45deg, rgba(255,215,0,0.08) 0px, rgba(255,215,0,0.08) 2px, transparent 2px, transparent 20px);
+  animation: goldPulse 5s ease-in-out infinite;
+  z-index: 1;
+}
+
+/* Formular-Wrapper mit goldenem Rahmen und weichem Glow */
+.guestbook-form-wrapper.deluxe {
+  background: rgba(15, 15, 15, 0.95);
+  border: 2px solid var(--gold);
+  border-radius: 20px;
+  padding: 40px;
+  max-width: 600px;
+  margin: 0 auto;
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.25), inset 0 0 15px rgba(255, 215, 0, 0.1);
+  position: relative;
+  z-index: 10;
+  text-align: center;
+}
+
+/* Überschriften-Styles für das Deluxe-Formular */
+.guestbook-form-wrapper.deluxe h2 { /* h2 für den Haupttitel im Bereich */
     font-size: 3em;
     margin-bottom: 5px;
     color: var(--gold-light);
     text-shadow: 0 0 15px var(--gold-shadow);
 }
-.guestbook-section p {
+.guestbook-form-wrapper.deluxe h3 { /* h3 für Titel im Formular-Wrapper */
+  color: var(--gold);
+  letter-spacing: 2px;
+  font-size: 28px;
+  margin-top: 0;
+}
+.guestbook-section-custom p {
     text-align: center;
     color: var(--muted);
     margin-bottom: 25px;
 }
 
-.guestbook-wrapper {
-    background: var(--card); /* Dunkler Kartenhintergrund für das Formular */
-    border: 1px solid rgba(253, 216, 53, 0.4); /* Gold-Rahmen */
-    border-radius: 15px;
-    padding: 30px;
-    max-width: 600px;
-    margin: 0 auto;
-    box-shadow: 0 0 40px var(--gold-shadow);
+/* Input- und Textarea-Styles */
+.guestbook-form-wrapper.deluxe input,
+.guestbook-form-wrapper.deluxe textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  margin-bottom: 15px; /* Abstand hinzugefügt */
+  border-radius: 10px;
+  background: #141414;
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  color: #fff;
+  box-shadow: inset 0 0 5px rgba(255,215,0,0.05);
+}
+.guestbook-form-wrapper.deluxe input::placeholder, 
+.guestbook-form-wrapper.deluxe textarea::placeholder {
+    color: var(--muted);
+    font-style: italic;
+}
+
+.guestbook-form-wrapper.deluxe input:focus,
+.guestbook-form-wrapper.deluxe textarea:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 10px rgba(255,215,0,0.2);
+  outline: none;
+}
+
+/* Knopf mit feinem Lichtschein (ersetzt .guestbook-section button) */
+.submit-btn.gold {
+  display:inline-block;
+  background: linear-gradient(90deg, #FFD700, #E5C100);
+  color: #000;
+  font-weight: 700;
+  border: none;
+  border-radius: 10px; /* Passt zum Standard-Button */
+  padding: 12px 40px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+.submit-btn.gold:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 35px rgba(255, 215, 0, 0.5);
+}
+
+/* Gästebuch-Einträge */
+.guestbook-entries-wrapper { /* Angenommene Wrapper-Klasse für die Einträge */
+    margin-top: 40px;
+    padding: 20px 0;
     position: relative;
     z-index: 10;
+}
+
+/* Gästebuch-Karten (ersetzt .guestbook-section #guestEntries div) */
+.message-card { 
+  background: rgba(15, 15, 15, 0.9);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.1);
+  color: #eee;
+  padding: 15px;
+  margin-bottom: 15px;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  border-left: 4px solid var(--gold); /* Goldener Balken beibehalten */
+}
+.message-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.25);
 }
 
 /* Positionierung der freigestellten Figuren */
@@ -160,8 +261,8 @@ body{
     object-fit: contain;
     bottom: 50px;
     z-index: 5;
-    /* Optional: Gold-Glow an der Figur (hängt vom verwendeten Bild ab) */
-    /* filter: drop-shadow(0 0 10px rgba(253, 216, 53, 0.6)); */
+    /* Figur mit Glow */
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.3));
 }
 .barber-figure.left {
     left: 0;
@@ -173,11 +274,13 @@ body{
 /* Schere und Kamm Icons */
 .scissors-icon, .comb-icon {
     font-size: 60px;
-    color: var(--gold-light);
     position: absolute;
     top: 35%;
     z-index: 5;
     opacity: 0.8;
+    /* Icons mit Text-Glow */
+    color: var(--gold);
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
 }
 .scissors-icon {
     left: 20px;
@@ -186,66 +289,4 @@ body{
 .comb-icon {
     right: 20px;
     transform: scaleX(-1) rotate(-30deg);
-}
-
-/* Formular Styles */
-.guestbook-section input, .guestbook-section textarea{
-    border: 1px solid rgba(253, 216, 53, 0.4); /* Gold-Rand */
-    background: rgba(0, 0, 0, 0.6);
-    color: var(--text);
-}
-.guestbook-section input::placeholder, .guestbook-section textarea::placeholder {
-    color: var(--muted);
-    font-style: italic;
-}
-
-.guestbook-section button{
-    background: linear-gradient(180deg, var(--gold-light), var(--gold)); /* Gold-Button */
-    color: #111; /* Dunkler Text auf Gold */
-    box-shadow: 0 4px 15px var(--gold-shadow);
-    transition: background 0.3s, transform 0.2s;
-}
-.guestbook-section button:hover{
-    background: var(--gold); 
-    transform: translateY(-1px);
-}
-.guestbook-section #guestEntries div{
-    border-left: 4px solid var(--gold-light); /* Goldener Balken */
-}
-
-
-/* Responsive */
-@media(max-width:980px){
-  .hero-grid{grid-template-columns:1fr}
-  .service-grid{grid-template-columns:repeat(2,1fr)}
-  .gallery-grid{grid-template-columns:repeat(2,1fr)}
-  .team-grid{grid-template-columns:1fr 1fr}
-  .contact-grid{grid-template-columns:1fr;grid-auto-rows:min-content}
-  
-  /* Anpassung der Figuren auf Medium-Screens */
-  .barber-figure{width: 300px; bottom: 100px;}
-  .barber-figure.left{left: -30px;}
-  .barber-figure.right{right: -30px;}
-}
-@media(max-width:640px){
-  .main-nav{display:none}
-  .nav-toggle{display:block}
-  .service-grid{grid-template-columns:1fr}
-  .gallery-grid{grid-template-columns:1fr}
-  .team-grid{grid-template-columns:1fr}
-  .cookie-banner{left:8px;right:8px;flex-direction:column;align-items:flex-start}
-  
-  /* NEU: Höhe des Banners auf Mobilgeräten reduzieren */
-  .header-banner {
-    height: 200px; /* Kleinere Höhe auf Handys */
-  }
-  
-  /* Anpassung der Figuren auf kleinen Geräten */
-  .barber-figure{display: none;} /* Figuren auf kleinen Geräten ausblenden */
-  .scissors-icon, .comb-icon {display: none;}
-  .guestbook-section {min-height: auto; max-width: 100%;}
-  .guestbook-wrapper {
-    max-width: 100%;
-    margin: 0 10px; /* Kleiner Abstand zu den Rändern */
-  }
 }
