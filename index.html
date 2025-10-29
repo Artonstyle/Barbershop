@@ -146,7 +146,7 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
     font-weight: 400;
 }
 
-/* Platzhalter (YOUR NAME, YOUR MESSAGE) */
+/* Platzhalter (DEUTSCH) */
 .guestbook-form-wrapper input::placeholder,
 .guestbook-form-wrapper textarea::placeholder {
     color: #dddddd; 
@@ -300,9 +300,9 @@ footer{text-align:center;padding:15px 0;background:var(--surface);color:#888;mar
         height: auto; 
     }
 
-    /* 3. Überschrift für Mobile hinzufügen (da sie im Bild versteckt war) */
+    /* 3. Überschrift für Mobile hinzufügen (Jetzt: GÄSTEBUCH) */
     .guestbook-form-wrapper::before {
-        content: "GUESTBOOK";
+        content: "GÄSTEBUCH";
         display: block;
         color: var(--gold-light);
         font-size: 24px;
@@ -347,8 +347,8 @@ für Ihr perfektes Haar- und Bartgefühl.</p>
         
         <div class="guestbook-form-wrapper">
             <form id="guestbookForm"> 
-              <input type="text" id="guestName" placeholder="YOUR NAME" required> 
-              <textarea id="guestText" placeholder="YOUR MESSAGE" required></textarea> 
+              <input type="text" id="guestName" placeholder="IHR NAME" required> 
+              <textarea id="guestText" placeholder="IHRE NACHRICHT" required></textarea> 
               
               <div class="star-rating" id="starRating">
                   <i class="fa-regular fa-star" data-value="1"></i>
@@ -358,7 +358,7 @@ für Ihr perfektes Haar- und Bartgefühl.</p>
                   <i class="fa-regular fa-star" data-value="5"></i>
               </div>
 
-              <button type="submit" class="submit-btn">SUBMIT ENTRY</button> 
+              <button type="submit" class="submit-btn">EINTRAG SENDEN</button> 
             </form> 
             <p id="successMsg" style="display:none; color: var(--gold-light);">✅ Vielen Dank für Ihren Eintrag!</p> 
         </div>
@@ -405,7 +405,7 @@ für Ihr perfektes Haar- und Bartgefühl.</p>
   © 2025 C&D Barbershop | Black Edition 
 </footer> 
 <script> 
-// ✅ AKTUELLE GOOGLE-SCRIPT-URL (Wurde auf Ihre Anfrage hin aktualisiert)
+// ✅ AKTUELLE GOOGLE-SCRIPT-URL
 const sheetURL = 
 "https://script.google.com/macros/s/AKfycbzSBO9iha-NH0D4j3GfGjxsOdoko1AqwrEnM2ie-dy1zrfu2OtjNH4TvnZVIkWh0KDB/exec";
  
@@ -455,12 +455,12 @@ async function loadEntries(){
         dynamicMessagesGrid.innerHTML = ''; 
         
         if(!entries || !entries.length){ 
-            dynamicMessagesGrid.innerHTML='<p style="text-align:center;color:var(--muted); grid-column: 1 / -1;">Noch keine Einträge vorhanden. Sei der Erste!</p>'; 
+            // Korrigierte Meldung
+            dynamicMessagesGrid.innerHTML='<p style="text-align:center;color:var(--muted); grid-column: 1 / -1;">Noch keine Einträge vorhanden. Schreiben Sie uns eine Nachricht!</p>'; 
             return; 
         } 
         
         dynamicMessagesGrid.innerHTML = entries.reverse().map(e=>{ 
-        // Die Logik unterstützt e.rating (neu) und e.bewertung (alt)
         const entryRating = parseInt(e.rating || e.bewertung || 0); 
         let starHtml = '';
         
@@ -471,7 +471,6 @@ async function loadEntries(){
 
         let dateString;
         try {
-            // Versucht, das Datum zu formatieren
             const dateValue = isNaN(new Date(e.date).getTime()) ? parseInt(e.date) : e.date;
             const d = new Date(dateValue);
             dateString = d.toLocaleString('de-DE',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'});
@@ -516,14 +515,14 @@ form.addEventListener("submit",async e=>{
     data.append("text",text); 
     data.append("rating", selectedRating); 
     
-    // Deaktivieren des Buttons, um Mehrfach-Senden zu verhindern
+    // Deaktivieren des Buttons und Text ändern
     submitBtn.disabled = true;
-    submitBtn.textContent = 'Sending...'; 
+    submitBtn.textContent = 'Wird gesendet...'; 
     
     await fetch(sheetURL,{method:"POST",body:data}); 
     
     submitBtn.disabled = false;
-    submitBtn.textContent = 'SUBMIT ENTRY'; 
+    submitBtn.textContent = 'EINTRAG SENDEN'; // Text zurücksetzen
 
     form.reset(); 
     // Sterne zurücksetzen
@@ -538,7 +537,7 @@ form.addEventListener("submit",async e=>{
     console.error(err); 
     alert("Fehler beim Senden!");
     submitBtn.disabled = false;
-    submitBtn.textContent = 'SUBMIT ENTRY'; 
+    submitBtn.textContent = 'EINTRAG SENDEN'; // Text zurücksetzen
   } 
 }); 
 document.addEventListener("DOMContentLoaded",loadEntries); 
