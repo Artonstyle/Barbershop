@@ -85,7 +85,8 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
     margin: 40px auto 0; 
     max-width: 1200px; 
     box-sizing: border-box;
-    box-shadow: inset 0 0 0 100vw rgba(0, 0, 0, 0.4); 
+    /* Reduzierte Opazität für den Überlappungsschatten */
+    box-shadow: inset 0 0 0 100vw rgba(0, 0, 0, 0.2); /* Weniger Deckkraft */
     min-height: 750px; 
 }
 
@@ -98,7 +99,7 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
       repeating-linear-gradient(-45deg, rgba(255,215,0,0.02) 0px, rgba(255,215,0,0.02) 2px, transparent 2px, transparent 20px);
     animation: goldPulse 5s ease-in-out infinite;
     z-index: 1;
-    opacity: 0.8; 
+    opacity: 0.6; /* Leichter pulsierender Effekt */
 }
 
 /* Content-Wrapper für die Formular-Zentrierung */
@@ -113,19 +114,22 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
 
 /* Formular Wrapper: Liegt über dem Formular im Bild (Desktop) */
 .guestbook-form-wrapper {
-    background: transparent;
+    /* Hintergrund auf transparent gesetzt */
+    background: rgba(0, 0, 0, 0.4); /* Leichter schwarzer Schleier, um Lesbarkeit zu verbessern */
     border: none;
     border-radius: 20px;
     padding: 180px 40px 40px; 
     max-width: 440px; 
     height: 520px; 
-    box-shadow: none; 
+    /* Schatten reduziert, damit es weniger "aufgesetzt" wirkt */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
     text-align: center;
     position: relative;
     z-index: 10;
     
-    /* Feinanpassung der vertikalen Position */
     transform: translateY(-20px); 
+    /* Border hinzugefügt, um den Bereich zu definieren */
+    border: 1px solid rgba(255, 215, 0, 0.2); 
 }
 
 /* Formular Felder */
@@ -135,7 +139,8 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
     padding: 15px 12px; 
     margin-bottom: 25px; 
     
-    background: rgba(80, 80, 80, 0.9); /* Dunkelgrauer Hintergrund */
+    /* Hintergrund transparenter */
+    background: rgba(80, 80, 80, 0.6); 
     border: none; 
     border-radius: 5px; 
     color: #fff; 
@@ -149,7 +154,7 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
 /* Platzhalter (DEUTSCH) */
 .guestbook-form-wrapper input::placeholder,
 .guestbook-form-wrapper textarea::placeholder {
-    color: #dddddd; 
+    color: #ccc; /* Etwas heller, damit es besser sichtbar ist */
     font-size: 16px; 
     font-weight: 500;
     letter-spacing: 0.5px;
@@ -159,13 +164,13 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
 .guestbook-form-wrapper input[type="text"]:focus,
 .guestbook-form-wrapper textarea:focus {
   border-color: var(--gold);
-  box-shadow: 0 0 10px rgba(255,215,0,0.2);
+  box-shadow: 0 0 10px rgba(255,215,0,0.3); /* Etwas stärkerer Fokus-Schatten */
   outline: none;
 }
 .guestbook-form-wrapper textarea { resize: vertical; min-height: 100px; }
 
 
-/* Sterne-Bewertung (für neue Logik) */
+/* Sterne-Bewertung */
 .star-rating { 
     font-size: 35px; 
     margin: 0 0 35px; 
@@ -175,11 +180,13 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
     text-align: center; 
 }
 .star-rating i { transition: color 0.2s; } 
-.star-rating i.active { color: var(--gold-light); } 
-.star-rating i.fa-solid { color: var(--gold-light); } /* Wichtig für die Anzeige */
+.star-rating i.active, .star-rating i.fa-solid { 
+    color: var(--gold-light); 
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.5); /* Leichter goldener Schimmer */
+} 
 
 
-/* Submit Button (SUBMIT ENTRY) */
+/* Submit Button (EINTRAG SENDEN) */
 .submit-btn { 
   background: linear-gradient(0deg, #CEB700, var(--gold)); 
   color: #000; 
@@ -212,16 +219,20 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
     padding: 0 50px;
 }
 .message-card {
-    background: var(--card);
-    border: 1px solid rgba(255, 215, 0, 0.3); 
+    /* Hintergrund transparenter */
+    background: rgba(10, 10, 10, 0.7); /* Deutlich transparenter */
+    border: 1px solid rgba(255, 215, 0, 0.2); /* Border auch transparenter */
     border-radius: 12px;
     padding: 20px;
     text-align: left;
-    box-shadow: 0 0 15px rgba(255, 215, 0, 0.1); 
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.05); /* Schatten leichter */
     transition: transform 0.2s ease, box-shadow 0.3s ease;
     border-left: 4px solid var(--gold-light); 
 }
-.message-card:hover { transform: translateY(-4px); box-shadow: 0 0 25px rgba(255, 215, 0, 0.25); }
+.message-card:hover { 
+    transform: translateY(-4px); 
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.15); /* Hover-Schatten auch leichter */
+}
 .message-card .card-header { font-weight: bold; color: var(--gold-light); margin-bottom: 8px; }
 .message-card .card-info { font-size: 0.9em; color: var(--muted); margin-bottom: 10px; }
 .message-card .card-stars i { color: var(--gold-light); font-size: 16px; margin-right: 2px; }
@@ -270,37 +281,38 @@ footer{text-align:center;padding:15px 0;background:var(--surface);color:#888;mar
     .header-banner { height: 200px; }
     .image-price-section img { max-width: 100%; }
 
-    /* 1. Gästebuch Sektion: Hintergrundbild ausschalten */
+    /* Gästebuch Sektion: Hintergrundbild ausschalten */
     .guestbook-section-custom {
-        background-image: none !important; /* Wichtig: Bild auf Mobile entfernen */
+        background-image: none !important; 
         min-height: auto;
         padding: 40px 10px;
-        background: var(--bg); /* Stellt sicher, dass der Container schwarz ist */
+        background: var(--bg); /* Auf Mobile bleibt der Hintergrund schwarz */
     }
     
     .guestbook-main-content {
-        position: static; /* Position zurücksetzen */
+        position: static; 
         flex-direction: column;
         height: auto;
         padding-top: 0;
     }
     
-    /* 2. Formular-Wrapper: Hintergrund und Abstand für Mobile setzen */
+    /* Formular-Wrapper: Hintergrund und Abstand für Mobile setzen */
     .guestbook-form-wrapper { 
-        background: var(--card); /* Formular erhält Hintergrund, da Bild fehlt */
+        /* Hintergrund auf Mobile etwas undurchsichtiger für bessere Lesbarkeit */
+        background: var(--card); /* Nutzt die vordefinierte --card Farbe */
         
         max-width: 95%; 
-        margin: 20px auto; /* Zentriert und Abstand oben/unten */
-        padding: 20px; /* Kompaktes Padding für Mobile */
+        margin: 20px auto; 
+        padding: 20px; 
         
         border: 2px solid var(--gold); 
         box-shadow: 0 0 20px var(--gold-shadow);
         
-        transform: none; /* Positionierung zurücksetzen */
+        transform: none; 
         height: auto; 
     }
 
-    /* 3. Überschrift für Mobile hinzufügen (Jetzt: GÄSTEBUCH) */
+    /* Überschrift für Mobile */
     .guestbook-form-wrapper::before {
         content: "GÄSTEBUCH";
         display: block;
@@ -455,7 +467,6 @@ async function loadEntries(){
         dynamicMessagesGrid.innerHTML = ''; 
         
         if(!entries || !entries.length){ 
-            // Korrigierte Meldung
             dynamicMessagesGrid.innerHTML='<p style="text-align:center;color:var(--muted); grid-column: 1 / -1;">Noch keine Einträge vorhanden. Schreiben Sie uns eine Nachricht!</p>'; 
             return; 
         } 
@@ -496,48 +507,6 @@ async function loadEntries(){
     if (dynamicMessagesGrid) {
         dynamicMessagesGrid.innerHTML='<p style="text-align:center;color:var(--brand-2); grid-column: 1 / -1;">Fehler beim Laden der Einträge.</p>'; 
     }
-  } 
-} 
-// --- Formular absenden (POST) --- 
-form.addEventListener("submit",async e=>{ 
-  e.preventDefault(); 
-  const name=document.getElementById("guestName").value.trim(); 
-  const text=document.getElementById("guestText").value.trim(); 
-  
-  if(!name||!text||selectedRating === 0) { 
-      alert("Bitte füllen Sie alle Felder aus und geben Sie eine Bewertung ab (Sterne auswählen)!");
-      return;
-  }
-  
-  try{ 
-    const data=new FormData(); 
-    data.append("name",name); 
-    data.append("text",text); 
-    data.append("rating", selectedRating); 
-    
-    // Deaktivieren des Buttons und Text ändern
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Wird gesendet...'; 
-    
-    await fetch(sheetURL,{method:"POST",body:data}); 
-    
-    submitBtn.disabled = false;
-    submitBtn.textContent = 'EINTRAG SENDEN'; // Text zurücksetzen
-
-    form.reset(); 
-    // Sterne zurücksetzen
-    selectedRating = 0;
-    updateStars(0);
-
-    successMsg.style.display="block"; 
-    setTimeout(()=>successMsg.style.display="none",3000); 
-    
-    loadEntries(); 
-  }catch(err){ 
-    console.error(err); 
-    alert("Fehler beim Senden!");
-    submitBtn.disabled = false;
-    submitBtn.textContent = 'EINTRAG SENDEN'; // Text zurücksetzen
   } 
 }); 
 document.addEventListener("DOMContentLoaded",loadEntries); 
