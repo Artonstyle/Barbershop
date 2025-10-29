@@ -117,7 +117,8 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
 }
 
 /* --- Formular Felder und Button --- */
-.guestbook-form-wrapper input[type="text"] {
+.guestbook-form-wrapper input[type="text"],
+.guestbook-form-wrapper textarea { /* TEXTAREA WIEDER HINZUGEFÜGT */
     width: 100%;
     padding: 12px;
     margin-bottom: 15px;
@@ -126,14 +127,8 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
     color: #fff;
     border-radius: 8px;
 }
-/* Spezifischer Stil für die Fragen-Prompts */
-.form-prompt {
-    font-size: 0.9em;
-    color: var(--gold-light);
-    text-align: left;
-    margin: 0 0 5px;
-    font-weight: 600;
-}
+/* Entfernter form-prompt Stil */
+
 
 /* Submit Button */
 .guestbook-form-wrapper .submit-btn {
@@ -179,7 +174,7 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
 
 
 /* -------------------------------------- */
-/* 💈 DEKORATION */
+/* 💈 DEKORATION (Unverändert) */
 /* -------------------------------------- */
 
 /* Positionierung der dekorativen Icons/SVGs */
@@ -267,11 +262,6 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
     left: calc(50% - 350px);
     -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><defs><linearGradient id="goldGradient" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:rgb(255,215,0);stop-opacity:1" /><stop offset="100%" style="stop-color:rgb(230,210,0);stop-opacity:1" /></linearGradient></defs><path fill="url(%23goldGradient)" stroke="none" d="M100 10 C60 10 30 50 30 90 C30 130 60 170 100 170 C140 170 170 130 170 90 C170 50 140 10 100 10 Z M100 170 C80 170 60 150 60 130 L60 120 C60 110 70 100 80 100 L120 100 C130 100 140 110 140 120 L140 130 C140 150 120 170 100 170 Z M75 70 C75 60 80 55 85 55 C90 55 95 60 95 70 C95 80 90 85 85 85 C80 85 75 80 75 70 Z M125 70 C125 60 120 55 115 55 C110 55 105 60 105 70 C105 80 110 85 115 85 C120 85 125 80 125 70 Z M70 135 L130 135 C135 135 138 138 138 143 C138 148 135 151 130 151 L70 151 C65 151 62 148 62 143 C62 138 65 135 70 135 Z"/></svg>') no-repeat center / contain;
     mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><defs><linearGradient id="goldGradient" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:rgb(255,215,0);stop-opacity:1" /><stop offset="100%" style="stop-color:rgb(230,210,0);stop-opacity:1" /></linearGradient></defs><path fill="url(%23goldGradient)" stroke="none" d="M100 10 C60 10 30 50 30 90 C30 130 60 170 100 170 C140 170 170 130 170 90 C170 50 140 10 100 10 Z M100 170 C80 170 60 150 60 130 L60 120 C60 110 70 100 80 100 L120 100 C130 100 140 110 140 120 L140 130 C140 150 120 170 100 170 Z M75 70 C75 60 80 55 85 55 C90 55 95 60 95 70 C95 80 90 85 85 85 C80 85 75 80 75 70 Z M125 70 C125 60 120 55 115 55 C110 55 105 60 105 70 C105 80 110 85 115 85 C120 85 125 80 125 70 Z M70 135 L130 135 C135 135 138 138 138 143 C138 148 135 151 130 151 L70 151 C65 151 62 148 62 143 C62 138 65 135 70 135 Z"/></svg>') no-repeat center / contain;
-    transform: translateY(-50%) scaleX(-1);
-}
-.barber-head-drawing.right {
-    right: calc(50% - 350px);
-    -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><defs><linearGradient id="goldGradient" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:rgb(255,215,0);stop-opacity:1" /><stop offset="100%" style="stop-color:rgb(230,210,0);stop-opacity:1" /></linearGradient></defs><path fill="url(%23goldGradient)" stroke="none" d="M100 10 C60 10 30 50 30 90 C30 130 60 170 100 170 C140 170 170 130 170 90 C170 50 140 10 100 10 Z M100 170 C80 170 60 150 60 130 L60 120 C60 110 70 100 80 100 L120 100 C130 100 140 110 140 120 L140 130 C140 150 120 170 100 170 Z M75 70 C75 60 80 55 85 55 C90 55 95 60 95 70 C95 80 90 85 85 85 C80 85 75 80 75 70 Z M125 70 C125 60 120 55 115 55 C110 55 105 60 105 70 C105 80 110 85 115 85 C120 85 125 80 125 70 Z M70 135 L130 135 C135 135 138 138 138 143 C138 148 135 151 130 151 L70 151 C65 151 62 148 62 143 C62 138 65 135 70 135 Z"/></svg>') no-repeat center / contain;
     mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><defs><linearGradient id="goldGradient" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:rgb(255,215,0);stop-opacity:1" /><stop offset="100%" style="stop-color:rgb(230,210,0);stop-opacity:1" /></linearGradient></defs><path fill="url(%23goldGradient)" stroke="none" d="M100 10 C60 10 30 50 30 90 C30 130 60 170 100 170 C140 170 170 130 170 90 C170 50 140 10 100 10 Z M100 170 C80 170 60 150 60 130 L60 120 C60 110 70 100 80 100 L120 100 C130 100 140 110 140 120 L140 130 C140 150 120 170 100 170 Z M75 70 C75 60 80 55 85 55 C90 55 95 60 95 70 C95 80 90 85 85 85 C80 85 75 80 75 70 Z M125 70 C125 60 120 55 115 55 C110 55 105 60 105 70 C105 80 110 85 115 85 C120 85 125 80 125 70 Z M70 135 L130 135 C135 135 138 138 138 143 C138 148 135 151 130 151 L70 151 C65 151 62 148 62 143 C62 138 65 135 70 135 Z"/></svg>') no-repeat center / contain;
 }
 
@@ -304,8 +294,7 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
     text-align: left;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
     transition: transform 0.2s;
-    /* Neue Anpassung für Nachrichtenanzeige */
-    white-space: pre-wrap; /* Wichtig, um Zeilenumbrüche aus dem JS zu behalten */
+    white-space: pre-wrap;
 }
 .message-card:hover {
     transform: translateY(-3px);
@@ -316,7 +305,7 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
 .message-card .card-stars i { color: var(--gold-light); font-size: 16px; margin-right: 2px; }
 
 /* -------------------------------------- */
-/* 📸 SOCIAL MEDIA ICON GRÖSSE */
+/* 📸 SOCIAL MEDIA ICON GRÖSSE (Unverändert) */
 /* -------------------------------------- */
 
 .social-links {
@@ -407,15 +396,7 @@ für Ihr perfektes Haar- und Bartgefühl.</p>
 
             <form id="guestbookForm">
               <input type="text" id="guestName" placeholder="DEIN NAME" required>
-              
-              <p class="form-prompt">Der beste Schnitt, den ich je bei C&D hatte:</p>
-              <input type="text" id="prompt1" placeholder="Meine Story / mein Lob" required>
-              
-              <p class="form-prompt">Mein goldener Tipp für den nächsten Besuch:</p>
-              <input type="text" id="prompt2" placeholder="Zum Beispiel: Was ich gerne sehen würde" required>
-              
-              <p class="form-prompt">Ein Wort, das C&D am besten beschreibt:</p>
-              <input type="text" id="prompt3" placeholder="Z.B. 'Perfekt', 'Stilvoll', 'Königlich'" required>
+              <textarea id="guestText" placeholder="DEINE NACHRICHT" required></textarea>
 
               <div class="star-rating">
                   <span data-rating="1"><i class="far fa-star"></i></span>
@@ -561,27 +542,17 @@ async function loadEntries(){
 form.addEventListener("submit",async e=>{
   e.preventDefault();
   const name=document.getElementById("guestName").value.trim();
-  const p1=document.getElementById("prompt1").value.trim();
-  const p2=document.getElementById("prompt2").value.trim();
-  const p3=document.getElementById("prompt3").value.trim();
-  
-  // Überprüfen, ob alle Fragen beantwortet wurden (müssen nicht lang sein, aber gefüllt)
-  if(!name||!p1||!p2||!p3||selectedRating === 0) {
+  const text=document.getElementById("guestText").value.trim(); // Wieder das Textfeld
+
+  if(!name||!text||selectedRating === 0) {
       alert("Bitte füllen Sie alle Felder aus und geben Sie eine Sterne-Bewertung ab!");
       return;
   }
-  
-  // Alle Antworten in ein Textfeld zusammenfassen (da das Google Script nur ein Text-Feld erwartet)
-  const combinedText = 
-    `Bester Schnitt: ${p1}\n` + 
-    `Goldener Tipp: ${p2}\n` + 
-    `Ein Wort: ${p3}`;
 
   try{
     const data=new FormData();
     data.append("name",name);
-    // Das zusammengefasste Textfeld senden
-    data.append("text", combinedText); 
+    data.append("text",text); // Einfache Nachricht senden
     data.append("rating", selectedRating); 
 
     const submitBtn = document.querySelector('.submit-btn');
@@ -592,7 +563,7 @@ form.addEventListener("submit",async e=>{
 
     // Zurücksetzen nach erfolgreichem Senden
     form.reset();
-    selectedRating = 0;
+    selectedRating = 0; 
     document.querySelectorAll('.star-rating span i').forEach(icon => {
         icon.classList.remove('fas');
         icon.classList.add('far');
