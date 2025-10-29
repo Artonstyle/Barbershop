@@ -1,22 +1,23 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>💈 C&D Barbershop – Black & Gold Edition</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<!doctype html> 
+<html lang="de"> 
+<head> 
+<meta charset="utf-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<title>💈 C&D Barbershop – Black & Gold Edition</title> 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet"> 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-<style>
-body {
-    font-family:'Poppins', sans-serif;
-    background: #000;
-    color: #fff;
-    margin: 0;
-    padding: 0;
-}
-.container{width: 90%; max-width: 1200px; margin: 0 auto; padding: 20px;}
+<style> 
+body { 
+  font-family:'Poppins', sans-serif; 
+  background: #000; 
+  color: #fff; 
+  margin: 0; 
+  padding: 0; 
+} 
+.container{width: 90%; max-width: 1200px; margin: 0 auto; padding: 20px;} 
 h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: #fdd835; text-shadow: 0 0 15px rgba(253, 216, 53, 0.4);} 
 .header-banner{width: 100%; height: 300px; display: flex; justify-content: center; align-items: center; background: #000; overflow: hidden;}
+ 
 .header-banner img{max-width: 100%; max-height: 100%; object-fit: contain; filter: brightness(1.2) contrast(1.1);} 
 .welcome-section{padding: 30px 20px; background: rgba(255, 255, 255, 0.05); border-radius: 15px; max-width: 900px; margin: 40px auto; text-align: center; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);} 
 .welcome-section h1{font-size: 2em; margin-bottom: 10px; color: #fdd835;} 
@@ -24,35 +25,102 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: #fdd835; te
 .image-price-section{text-align: center; padding: 20px 0; margin-bottom: 50px; background: rgba(255, 255, 255, 0.03); border-radius: 15px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);} 
 .image-price-section img{max-width: 500px; width: 90%; border-radius: 10px; box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);} 
 
-/* NEUE & GEÄNDERTE STYLES FÜR GÄSTEBUCH */
-.guestbook-section {
-    padding: 40px 20px; 
-    margin: 40px auto; 
-    background: #000; /* Schwarzer Hintergrund für den Bereich */
-    max-width: 950px; /* Breiter für die Figuren */
-    position: relative;
-    box-sizing: border-box;
-    min-height: 700px;
-}
-.guestbook-wrapper {
-    background: rgba(255, 255, 255, 0.05); /* Hintergrund für den Formularbereich */
-    border-radius: 15px;
-    padding: 30px;
-    max-width: 600px;
-    margin: 0 auto;
-    box-shadow: 0 0 40px rgba(253, 216, 53, 0.2);
-    position: relative;
-    z-index: 10; /* Damit das Formular über den Figuren ist */
+/* DEINE NEUEN CSS-REGELN FÜR DAS GÄSTEBUCH STARTEN HIER */
+
+/* Grundfarben & Typografie */
+:root {
+  --brand:#c0392b;
+  --brand-2:#ff6b61;
+  --bg:#0b0f14; /* dunkles, modernes Theme */
+  --card:#0f1720;
+  --surface:#0b1116;
+  --text:#e6eef6;
+  --muted:#9aa6b2;
+  --glass:rgba(255,255,255,0.03);
+  --max-width:1200px;
+  --radius:10px;
+
+  /* GOLD-FARBDEFINITIONEN FÜR GÄSTEBUCH */
+  --gold: #FFD700;
+  --gold-light: #fdd835;
+  --gold-shadow: rgba(253, 216, 53, 0.4);
+
+  font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
 }
 
-/* Positionierung der freigestellten Figuren */
+/* Header / Logo */
+.guestbook-header {
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.guestbook-header .logo-main {
+    font-size: 36px;
+    font-weight: bold;
+    letter-spacing: 5px;
+    color: var(--gold); /* Reines Gold */
+    margin-bottom: 5px;
+}
+
+.guestbook-header .logo-sub {
+    font-size: 16px;
+    letter-spacing: 2px;
+    color: var(--text);
+    margin-bottom: 20px;
+}
+
+.guestbook-header .logo-line {
+    width: 200px;
+    height: 1px;
+    background-color: var(--gold-light);
+    margin: 0 auto;
+}
+
+/* Gästebuch Sektion */
+.guestbook-section-custom {
+    padding: 0; /* padding wird im wrapper sein */
+    margin: 40px auto; 
+    background: transparent; /* Hintergrund ist im Body */
+    max-width: 1200px; /* Breiter für die Figuren */
+    position: relative;
+    box-sizing: border-box;
+    box-shadow: none; 
+}
+
+/* Hintergrundmuster (optional, für den visuellen Effekt deines Bildes) */
+.guestbook-section-custom::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('https://www.transparenttextures.com/patterns/connected-squares.png') repeat; /* Beispiel-Muster */
+    opacity: 0.05;
+    z-index: 1;
+}
+
+/* Hauptbereich des Gästebuchs (Formular + Figuren) */
+.guestbook-main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Vertikale Zentrierung */
+    position: relative;
+    z-index: 10;
+    padding-top: 50px; /* Platz für den Header */
+}
+
+/* Figuren Stylen */
 .barber-figure {
     position: absolute;
-    width: 350px; /* Große Figuren */
+    width: 320px; /* Größe der Figuren */
     height: auto;
     object-fit: contain;
-    bottom: 50px;
+    bottom: -80px; /* Unterhalb des Formulars zentrieren */
     z-index: 5;
+    /* Optional: Gold-Glow an der Figur (hängt vom verwendeten Bild ab) */
+    /* filter: drop-shadow(0 0 15px rgba(253, 216, 53, 0.5)); */
 }
 .barber-figure.left {
     left: 0;
@@ -60,90 +128,241 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: #fdd835; te
 .barber-figure.right {
     right: 0;
 }
+
+/* Schere und Kamm Icons */
 .scissors-icon, .comb-icon {
     font-size: 60px;
-    color: #fdd835;
+    color: var(--gold-light);
     position: absolute;
-    top: 35%;
+    top: 50%; /* Vertikal mittig */
+    transform: translateY(-50%);
     z-index: 5;
     opacity: 0.8;
 }
+
 .scissors-icon {
-    left: 20px;
-    transform: rotate(30deg);
+    left: 100px; /* Positionierung anpassen */
+    transform: translateY(-50%) rotate(30deg);
 }
 .comb-icon {
-    right: 20px;
-    transform: scaleX(-1) rotate(-30deg);
+    right: 100px; /* Positionierung anpassen */
+    transform: translateY(-50%) scaleX(-1) rotate(-30deg);
 }
 
-/* Formular Styles */
-.guestbook-section h2 {
-    font-size: 3em;
-    margin-bottom: 5px;
-    color: #fdd835;
-    text-shadow: 0 0 15px rgba(253, 216, 53, 0.6);
-}
-.guestbook-section p {
-    text-align: center;
-    color: #ddd;
-    margin-bottom: 25px;
-}
-.guestbook-section input, .guestbook-section textarea{
+/* Gästebuch Formular Wrapper */
+.guestbook-form-wrapper {
+    background: #0d0d0d; /* Dunkler Hintergrund für Formularbox */
+    border: 2px solid var(--gold); /* Gold-Rahmen */
+    border-radius: 15px;
+    padding: 30px;
     width: 100%;
+    max-width: 600px; /* Max-Breite des Formulars */
+    box-shadow: 0 0 50px var(--gold-shadow);
+    text-align: center;
+    position: relative;
+    z-index: 10;
+}
+
+.guestbook-form-wrapper .crown-icon {
+    font-size: 30px;
+    color: var(--gold);
+    margin-bottom: 15px;
+}
+
+.guestbook-form-wrapper h3 {
+    font-size: 28px;
+    margin: 0 0 8px;
+    color: var(--text); /* "GUESTBOOK" Textfarbe */
+    letter-spacing: 1px;
+}
+
+.guestbook-form-wrapper .slogan {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 30px;
+}
+
+/* Formular Felder */
+.guestbook-form-wrapper input[type="text"],
+.guestbook-form-wrapper textarea {
+    width: calc(100% - 20px); /* 100% Breite minus Padding */
     padding: 12px;
     margin-bottom: 15px;
-    border: 1px solid rgba(253, 216, 53, 0.4); /* Gold-Rand */
-    border-radius: 8px;
-    background: rgba(0, 0, 0, 0.6);
+    background: #222; /* Dunkleres Feld */
+    border: 1px solid #444;
     color: #fff;
+    border-radius: 8px;
     box-sizing: border-box;
 }
-.guestbook-section input::placeholder, .guestbook-section textarea::placeholder {
-    color: #aaa;
-    font-style: italic;
-}
-.guestbook-section textarea {
-    min-height: 120px;
+
+.guestbook-form-wrapper textarea {
     resize: vertical;
+    min-height: 100px;
 }
 
-.guestbook-section button{
-    width: 100%;
-    padding: 12px;
-    border: none;
-    border-radius: 8px;
-    background: #fdd835;
-    color: #000;
-    font-weight: 700;
+/* Sterne-Bewertung */
+.star-rating {
+    font-size: 30px;
+    margin: 20px 0 30px;
+    color: #888; /* Standard: Grau */
     cursor: pointer;
-    box-shadow: 0 4px 15px rgba(253, 216, 53, 0.4);
-    transition: background 0.3s, transform 0.2s;
+    display: inline-block; /* Für zentrierte Anzeige */
 }
-.guestbook-section button:hover{background: #ffeb3b; transform: translateY(-1px);} 
-#successMsg{text-align: center; color: #0f0; display: none; margin-top: 15px; font-weight: 600;} 
-#guestEntries div{background: rgba(255, 255, 255, 0.05); border-left: 4px solid #fdd835; padding: 10px 15px; border-radius: 8px; margin-bottom: 15px;} 
-.opening-hours{text-align: center;} 
-.opening-hours ul{list-style: none; padding: 0; display: inline-block; text-align: left;} 
-.opening-hours li{padding: 5px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1);} 
-footer{text-align: center; padding: 15px 0; background: #050505; color: #888; margin-top: 50px; border-top: 1px solid rgba(255, 255, 255, 0.1);} 
-.social-links a img{width: 28px; height: 28px; margin: 0 8px;} 
-@media(max-width: 1024px){
-    .barber-figure{width: 300px; bottom: 100px;}
-    .barber-figure.left{left: -30px;}
-    .barber-figure.right{right: -30px;}
+
+.star-rating span {
+    transition: color 0.2s;
+    user-select: none;
+    padding: 0 2px;
 }
+
+.star-rating span i.fas {
+    color: var(--gold-light); /* Ausgewählte Sterne */
+}
+
+/* Submit Button */
+.guestbook-form-wrapper .submit-btn {
+    background: linear-gradient(to right, #FFD700, #E6D090); /* Gold-Verlauf */
+    color: #000;
+    border: none;
+    padding: 12px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+    width: 100%; /* Button über die volle Breite */
+    max-width: 250px; /* Max-Breite des Buttons */
+    margin-top: 10px;
+}
+
+.guestbook-form-wrapper .submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.6);
+}
+
+/* Nachrichten von Gästen */
+.messages-overview {
+    text-align: center;
+    margin-top: 100px; /* Abstand zu den Figuren */
+    position: relative;
+    z-index: 10;
+}
+
+.messages-overview h3 {
+    font-size: 24px;
+    margin-bottom: 40px;
+    color: var(--gold-light);
+    letter-spacing: 1px;
+}
+
+.messages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 3-Spalten-Layout */
+    gap: 20px;
+    padding: 0 50px; /* Innenabstand für das Raster */
+}
+
+.message-card {
+    background: var(--card); /* Hintergrund der Karten */
+    border: 1px solid rgba(253, 216, 53, 0.2); /* Leichter Gold-Rand */
+    border-radius: 10px;
+    padding: 20px;
+    text-align: left;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.message-card .card-header {
+    font-weight: bold;
+    color: var(--gold-light);
+    margin-bottom: 8px;
+}
+
+.message-card .card-info {
+    font-size: 0.9em;
+    color: var(--muted);
+    margin-bottom: 10px;
+}
+
+.message-card .card-stars i {
+    color: var(--gold-light);
+    font-size: 16px;
+    margin-right: 2px;
+}
+
+.message-card p {
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.4;
+    margin-top: 10px;
+}
+
+/* Responsive Anpassungen */
+@media (max-width: 1100px) {
+    .barber-figure.left { left: -50px; }
+    .barber-figure.right { right: -50px; }
+    .scissors-icon { left: 20px; }
+    .comb-icon { right: 20px; }
+}
+
+@media (max-width: 900px) {
+    .barber-figure { width: 280px; bottom: -60px; }
+    .scissors-icon, .comb-icon { font-size: 50px; }
+    .scissors-icon { left: 0; }
+    .comb-icon { right: 0; }
+    .guestbook-main-content { padding-top: 20px; }
+    .messages-grid { padding: 0 20px; }
+}
+
 @media(max-width: 768px){
-    .header-banner{height: 200px;}
-    .image-price-section img{max-width: 100%;}
-    .barber-figure{display: none;} /* Figuren auf kleinen Geräten ausblenden */
-    .scissors-icon, .comb-icon {display: none;}
-    .guestbook-section {min-height: auto;}
-} 
+    /* Bestehende mobile Regeln beibehalten */
+    .header-banner { height: 200px; }
+    .image-price-section img { max-width: 100%; }
+
+    /* Gästebuch spezifische mobile Anpassungen */
+    .barber-figure, .scissors-icon, .comb-icon { display: none; } /* Figuren und Icons ausblenden */
+    .guestbook-section-custom { min-height: auto; max-width: 100%; }
+    .guestbook-form-wrapper { max-width: 100%; margin: 0 10px; padding: 20px; }
+    .messages-overview { margin-top: 50px; }
+    .messages-grid { grid-template-columns: 1fr; /* Eine Spalte auf kleinen Bildschirmen */ }
+}
+
+/* DEINE WEITEREN CSS-REGELN HIER */
+
+/* contact */
+.contact-grid{display:grid;grid-template-columns:360px 1fr 360px;gap:20px;align-items:start}
+.contact-card{background:linear-gradient(180deg,var(--card), rgba(255,255,255,0.02));padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)}
+.contact-form{background:linear-gradient(180deg,var(--card), rgba(255,255,255,0.02));padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)}
+.contact-form label{display:block;margin-top:8px;font-weight:600;color:var(--text)}
+.contact-form input,.contact-form textarea{width:100%;padding:10px;margin-top:6px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:rgba(255,255,255,0.02);color:var(--text)}
+.form-note{font-size:0.85rem;color:var(--muted);margin-top:8px}
+.map-wrapper iframe{width:100%;height:260px;border-radius:10px;border:0;box-shadow:0 10px 30px rgba(0,0,0,0.6)}
+
+/* footer */
+.site-footer{padding:18px 0;background:#06070a;color:var(--muted)}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+
+/* buttons */
+.btn{display:inline-block;padding:10px 16px;border-radius:10px;text-decoration:none;border:0}
+.btn-primary{background:linear-gradient(180deg,var(--brand),var(--brand-2));color:#111;box-shadow:0 8px 30px rgba(0,0,0,0.6)}
+.btn-secondary{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--text)}
+.btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted)}
+
+/* cookie banner */
+.cookie-banner{position:fixed;left:16px;right:16px;bottom:16px;background:var(--card);padding:12px;border-radius:10px;box-shadow:0 8px 30px rgba(0,0,0,0.24);display:flex;justify-content:space-between;gap:12px;align-items:center}
+.cookie-actions{display:flex;gap:8px}
+
+/* responsive */
+@media(max-width:980px){
+  .hero-grid{grid-template-columns:1fr}
+  .service-grid{grid-template-columns:repeat(2,1fr)}
+  .gallery-grid{grid-template-columns:repeat(2,1fr)}
+  .team-grid{grid-template-columns:1fr 1fr}
+  .contact-grid{grid-template-columns:1fr;grid-auto-rows:min-content}
+}
 </style> 
 </head> 
 <body> 
-
 <div class="header-banner"> 
   <img 
 src="https://raw.githubusercontent.com/Artonstyle/Barbershop/main/images/Barbershop-logo7.png"
@@ -161,29 +380,95 @@ für Ihr perfektes Haar- und Bartgefühl.</p>
   <img src="images/Barbershop-preisliste.png" alt="Aktuelle Preisliste"> 
 </div> 
 
-<div class="container guestbook-section"> 
-  
-  <img src="URL_MANN_LINKS_FREIGESTELLT.png" alt="Inhaber Links" class="barber-figure left">
-  <img src="URL_MANN_RECHTS_FREIGESTELLT.png" alt="Inhaber Rechts" class="barber-figure right">
+<div class="container guestbook-section-custom">
 
-  <i class="fas fa-cut scissors-icon"></i>
-  <i class="fas fa-solid fa-tooth comb-icon"></i>
+    <div class="guestbook-header">
+        <div class="logo-main">BARBERSHOP DELUXE</div>
+        <div class="logo-sub">BLACK - GOLD EDITION</div>
+        <div class="logo-line"></div>
+    </div>
 
-  <div class="guestbook-wrapper">
-    <h2>GÄSTEBUCH</h2> 
-    <p>Wir freuen uns über Ihre Meinung!</p> 
-    <form id="guestbookForm"> 
-      <input type="text" id="guestName" placeholder="DEIN NAME" required> 
-      <textarea id="guestText" placeholder="DEINE NACHRICHT" required></textarea> 
-      
-      <button type="submit">EINTRAG ABSCHICKEN</button> 
-    </form> 
-    <p id="successMsg">✅ Vielen Dank für Ihren Eintrag!</p> 
-  </div>
+    <div class="guestbook-main-content">
+        <img src="URL_MANN_LINKS_FREIGESTELLT.png" alt="Inhaber Links" class="barber-figure left">
+        <img src="URL_MANN_RECHTS_FREIGESTELLT.png" alt="Inhaber Rechts" class="barber-figure right">
 
-  <div id="guestEntries"></div> 
-</div> 
+        <i class="fas fa-cut scissors-icon"></i>
+        <i class="fas fa-solid fa-tooth comb-icon"></i> <div class="guestbook-form-wrapper">
+            <i class="fas fa-crown crown-icon"></i>
+            <h3>GÄSTEBUCH</h3>
+            <p class="slogan">Teile deine Wünsche mit</p>
+            <form id="guestbookForm"> 
+              <input type="text" id="guestName" placeholder="DEIN NAME" required> 
+              <textarea id="guestText" placeholder="DEINE NACHRICHT" required></textarea> 
+              
+              <div class="star-rating">
+                  <span data-rating="1"><i class="far fa-star"></i></span>
+                  <span data-rating="2"><i class="far fa-star"></i></span>
+                  <span data-rating="3"><i class="far fa-star"></i></span>
+                  <span data-rating="4"><i class="far fa-star"></i></span>
+                  <span data-rating="5"><i class="far fa-star"></i></span>
+              </div>
 
+              <button type="submit" class="submit-btn">EINTRAG ABSCHICKEN</button> 
+            </form> 
+            <p id="successMsg">✅ Vielen Dank für Ihren Eintrag!</p> 
+        </div>
+    </div>
+
+    <div class="messages-overview">
+        <h3>Nachrichten Von Unseren Gästen</h3>
+        <div class="messages-grid">
+            <div class="message-card">
+                <div class="card-header">Norer Name</div>
+                <div class="card-info">20.221 / 182-08</div>
+                <div class="card-stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                </div>
+                <p>Super Service, immer freundlich und der Haarschnitt ist jedes Mal perfekt! Ich komme gerne wieder.</p>
+            </div>
+            <div class="message-card">
+                <div class="card-header">Norer Name</div>
+                <div class="card-info">20.221 / 182-02</div>
+                <div class="card-stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p>Bester Barbershop in der Stadt! Tolle Atmosphäre und top Beratung. Absolut empfehlenswert.</p>
+            </div>
+            <div class="message-card">
+                <div class="card-header">Norer Name</div>
+                <div class="card-info">20.221 / 182-04</div>
+                <div class="card-stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                </div>
+                <p>Schnell, sauber und der Bart ist in Form gebracht. Genau das, was ich erwartet habe. Danke!</p>
+            </div>
+            <div class="message-card">
+                <div class="card-header">Norer Name</div>
+                <div class="card-info">20.221 / 182-12</div>
+                <div class="card-stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p>Ich bin sehr zufrieden mit meinem neuen Haarschnitt. Das Team ist super freundlich und kompetent.</p>
+            </div>
+            <div class="message-card">
+                <div class="card-header">Norer Name</div>
+                <div class="card-info">20.221 / 182-03</div>
+                <div class="card-stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                </div>
+                <p>Komme seit Jahren hierher. Die Qualität ist konstant hoch. Einfach nur top! Immer wieder gerne.</p>
+            </div>
+            <div class="message-card">
+                <div class="card-header">Norer Name</div>
+                <div class="card-info">20.221 / 182-06</div>
+                <div class="card-stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p>Tolle Beratung für meine neue Frisur. Bin begeistert vom Ergebnis. Ich kann diesen Barbershop nur empfehlen.</p>
+            </div>
+        </div>
+    </div>
+    <div id="guestEntries"></div> </div> 
 <div class="container opening-hours"> 
   <h2>📍 Kontakt</h2> 
   <p>Bachgasse 68, 69502 Hemsbach</p> 
@@ -215,6 +500,54 @@ const sheetURL =
 const form=document.getElementById("guestbookForm"); 
 const guestEntriesDiv=document.getElementById("guestEntries"); 
 const successMsg=document.getElementById("successMsg"); 
+
+// --- Star Rating Funktionalität ---
+document.addEventListener('DOMContentLoaded', () => {
+    const stars = document.querySelectorAll('.star-rating span');
+    let selectedRating = 0;
+
+    stars.forEach(star => {
+        star.addEventListener('click', () => {
+            selectedRating = parseInt(star.dataset.rating);
+            updateStars(selectedRating);
+            // Optional: Speichere das Rating in einem versteckten Feld des Formulars
+            // let ratingInput = document.getElementById('guestRating');
+            // if (!ratingInput) {
+            //     ratingInput = document.createElement('input');
+            //     ratingInput.type = 'hidden';
+            //     ratingInput.id = 'guestRating';
+            //     ratingInput.name = 'rating';
+            //     form.appendChild(ratingInput);
+            // }
+            // ratingInput.value = selectedRating;
+        });
+
+        star.addEventListener('mouseover', () => {
+            const hoverRating = parseInt(star.dataset.rating);
+            updateStars(hoverRating);
+        });
+
+        star.addEventListener('mouseout', () => {
+            updateStars(selectedRating);
+        });
+    });
+
+    function updateStars(rating) {
+        stars.forEach(s => {
+            const icon = s.querySelector('i');
+            if (parseInt(s.dataset.rating) <= rating) {
+                icon.classList.remove('far');
+                icon.classList.add('fas');
+            } else {
+                icon.classList.remove('fas');
+                icon.classList.add('far');
+            }
+        });
+    }
+});
+// --- Ende Star Rating Funktionalität ---
+
+
 // --- Einträge laden (GET) --- 
 async function loadEntries(){ 
   try{ 
@@ -225,17 +558,32 @@ async function loadEntries(){
       return; 
     } 
     // Hier musste ich das Element mit dem Namen 'guestEntries' umrahmen, um das Design von dir zu integrieren
-    guestEntriesDiv.innerHTML=entries.reverse().map(e=>{ 
-      const d=new Date(e.date); 
-      const 
-dateString=d.toLocaleString('de-DE',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'});
- 
-      return `<div> 
-        <strong>${e.name||'Anonym'}</strong> 
-        <span style="color:#888;font-size:0.9em;"> (${dateString})</span> 
-        <p style="color:#ccc;margin-top:5px;">${e.text}</p> 
-      </div>`; 
-    }).join(''); 
+    // ACHTUNG: Dies überschreibt die statischen Beispiel-Karten. Passe an, wenn du beides möchtest.
+    guestEntriesDiv.innerHTML=''; // Löscht die statischen Beispiel-Karten, wenn dynamische geladen werden.
+    const dynamicMessagesGrid = document.querySelector('.messages-grid');
+    if (dynamicMessagesGrid) {
+        dynamicMessagesGrid.innerHTML = entries.reverse().map(e=>{ 
+        // Anpassung für Rating, falls im Google Sheet gespeichert
+        const entryRating = e.rating ? parseInt(e.rating) : 0;
+        let starHtml = '';
+        for (let i = 1; i <= 5; i++) {
+            starHtml += `<i class="${i <= entryRating ? 'fas' : 'far'} fa-star"></i>`;
+        }
+
+        const d=new Date(e.date); 
+        const dateString=d.toLocaleString('de-DE',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'});
+    
+        return `
+            <div class="message-card">
+                <div class="card-header">${e.name||'Anonym'}</div>
+                <div class="card-info">${dateString}</div>
+                <div class="card-stars">${starHtml}</div>
+                <p>${e.text}</p>
+            </div>
+        `; 
+      }).join('');
+    }
+
   }catch(err){ 
     console.error(err); 
     guestEntriesDiv.innerHTML='<p style="text-align:center;color:red;">Fehler beim Laden der Einträge.</p>'; 
@@ -246,13 +594,27 @@ form.addEventListener("submit",async e=>{
   e.preventDefault(); 
   const name=document.getElementById("guestName").value.trim(); 
   const text=document.getElementById("guestText").value.trim(); 
-  if(!name||!text)return; 
+  
+  // Rating auslesen
+  const selectedRating = parseInt(document.querySelector('.star-rating span.fas')?.dataset.rating || '0');
+  
+  if(!name||!text||selectedRating === 0) { // Rating ist jetzt Pflicht
+      alert("Bitte füllen Sie alle Felder aus und geben Sie eine Bewertung ab!");
+      return;
+  }
+  
   try{ 
     const data=new FormData(); 
     data.append("name",name); 
     data.append("text",text); 
+    data.append("rating", selectedRating); // Rating senden
+    
     await fetch(sheetURL,{method:"POST",body:data}); 
     form.reset(); 
+    document.querySelectorAll('.star-rating span i').forEach(icon => { // Sterne zurücksetzen
+        icon.classList.remove('fas');
+        icon.classList.add('far');
+    });
     successMsg.style.display="block"; 
     setTimeout(()=>successMsg.style.display="none",3000); 
     loadEntries(); 
