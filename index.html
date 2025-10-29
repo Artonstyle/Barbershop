@@ -51,138 +51,77 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
 .image-price-section img{max-width: 500px; width: 90%; border-radius: 10px; box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);} 
 
 /* -------------------------------------- */
-/* NEUE GÄSTEBUCH-STYLES START */
+/* === BLACK & GOLD MOCKUP STYLES START (mit Hintergrundbild) === */
 /* -------------------------------------- */
 
-/* Header / Logo */
-.guestbook-header {
-    text-align: center;
-    margin-bottom: 30px;
-    position: relative;
-    padding-top: 30px;
-}
-.guestbook-header .logo-main {
-    font-size: 36px;
-    font-weight: bold;
-    letter-spacing: 5px;
-    color: var(--gold); 
-    margin-bottom: 5px;
-}
-.guestbook-header .logo-sub {
-    font-size: 16px;
-    letter-spacing: 2px;
-    color: var(--text);
-    margin-bottom: 20px;
-}
-.guestbook-header .logo-line {
-    width: 200px;
-    height: 1px;
-    background-color: var(--gold-light);
-    margin: 0 auto;
+/* Animation für den pulsierenden Gold-Glow (wird als Overlay verwendet) */
+@keyframes goldPulse {
+  0% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+  100% { opacity: 0.4; }
 }
 
-/* Gästebuch Sektion */
+/* Gästebuch Sektion: Verwendet IHR BILD als Hintergrund */
 .guestbook-section-custom {
+    /* **Hintergrundbild vom GitHub-Ordner** */
+    background-image: url('https://raw.githubusercontent.com/Artonstyle/Barbershop/main/images/G%C3%A4stebuch.png'); 
+    background-size: cover; 
+    background-position: center center;
+    background-repeat: no-repeat;
+    
+    position: relative;
     padding: 0; 
     margin: 40px auto; 
-    background: transparent;
     max-width: 1200px; 
-    position: relative;
     box-sizing: border-box;
-    box-shadow: none; 
-}
-.guestbook-section-custom::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    /* Dies ist der Hintergrund-Effekt */
-    background: url('https://www.transparenttextures.com/patterns/connected-squares.png') repeat; 
-    opacity: 0.05;
-    z-index: 1;
+    /* Dunkler Overlay-Glow (Simulation des Mockups) */
+    box-shadow: inset 0 0 0 100vw rgba(0, 0, 0, 0.4); 
+    min-height: 750px; 
 }
 
-/* Hauptbereich des Gästebuchs (Formular + Figuren) */
+/* Pulsierendes Muster als Overlay */
+.guestbook-section-custom::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: 
+      repeating-linear-gradient(45deg, rgba(255,215,0,0.02) 0px, rgba(255,215,0,0.02) 2px, transparent 2px, transparent 20px),
+      repeating-linear-gradient(-45deg, rgba(255,215,0,0.02) 0px, rgba(255,215,0,0.02) 2px, transparent 2px, transparent 20px);
+    animation: goldPulse 5s ease-in-out infinite;
+    z-index: 1;
+    opacity: 0.8; 
+}
+
+/* Der Content-Wrapper muss absolut im Container positioniert werden, um zentriert zu sein */
 .guestbook-main-content {
     display: flex;
     justify-content: center;
     align-items: center; 
-    position: relative;
+    position: absolute; 
+    inset: 0;
     z-index: 10;
-    padding-top: 50px;
+    padding-top: 0;
 }
 
-/* Figuren Stylen */
-.barber-figure {
-    position: absolute;
-    width: 280px; /* REDUZIERTE GRÖSSE */
-    height: auto;
-    object-fit: contain;
-    bottom: -80px; 
-    z-index: 5;
-    /* Positionierung über dem Formularzentrierpunkt, damit sie nicht schweben */
-    top: 50%;
-    transform: translateY(-50%);
-}
-.barber-figure.left {
-    left: 0;
-}
-.barber-figure.right {
-    right: 0;
-}
+/* Elemente, die jetzt im Hintergrundbild sind, ausblenden */
+.guestbook-header { display: none; }
+.barber-figure, .scissors-icon, .comb-icon { display: none !important; }
 
-/* Schere und Kamm Icons */
-.scissors-icon, .comb-icon {
-    font-size: 50px; /* REDUZIERTE GRÖSSE */
-    color: var(--gold-light);
-    position: absolute;
-    top: 50%; 
-    z-index: 5;
-    opacity: 0.8;
-}
 
-.scissors-icon {
-    left: 100px; 
-    transform: translateY(-50%) rotate(30deg);
-}
-.comb-icon {
-    right: 100px; 
-    transform: translateY(-50%) scaleX(-1) rotate(-30deg);
-}
-
-/* Gästebuch Formular Wrapper */
+/* Formular Wrapper: Übernimmt den Glow-Stil des Bildes */
 .guestbook-form-wrapper {
-    background: #0d0d0d; 
+    /* WICHTIG: Die Formular-Box selbst muss halb-transparent sein */
+    background: rgba(15, 15, 15, 0.95); 
     border: 2px solid var(--gold); 
-    border-radius: 15px;
-    padding: 30px;
-    width: 100%;
-    max-width: 600px; 
-    box-shadow: 0 0 50px var(--gold-shadow);
+    border-radius: 20px;
+    padding: 40px; 
+    max-width: 450px; 
+    
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.5), inset 0 0 15px rgba(255, 215, 0, 0.2); 
     text-align: center;
     position: relative;
     z-index: 10;
-}
-
-.guestbook-form-wrapper .crown-icon {
-    font-size: 30px;
-    color: var(--gold);
-    margin-bottom: 15px;
-}
-
-.guestbook-form-wrapper h3 {
-    font-size: 28px;
-    margin: 0 0 8px;
-    color: var(--text);
-    letter-spacing: 1px;
-}
-
-.guestbook-form-wrapper .slogan {
-    font-size: 14px;
-    color: var(--muted);
-    margin-bottom: 30px;
+    margin: 0; 
 }
 
 /* Formular Felder */
@@ -191,63 +130,46 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
     width: 100%; 
     padding: 12px;
     margin-bottom: 15px;
-    background: #222; 
-    border: 1px solid #444;
+    background: #141414; /* Dunklerer Input-Hintergrund */
+    border: 1px solid rgba(255, 215, 0, 0.2); 
     color: #fff;
     border-radius: 8px;
     box-sizing: border-box;
+    box-shadow: inset 0 0 5px rgba(255,215,0,0.05);
 }
 
-.guestbook-form-wrapper textarea {
-    resize: vertical;
-    min-height: 100px;
+.guestbook-form-wrapper input[type="text"]:focus,
+.guestbook-form-wrapper textarea:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 10px rgba(255,215,0,0.2);
+  outline: none;
 }
-
-/* Sterne-Bewertung */
-.star-rating {
-    font-size: 30px;
-    margin: 20px 0 30px;
-    color: #888; 
-    cursor: pointer;
-    display: inline-block; 
-}
-
-.star-rating span {
-    transition: color 0.2s;
-    user-select: none;
-    padding: 0 2px;
-}
-
-.star-rating span i.fas {
-    color: var(--gold-light); 
-}
+.guestbook-form-wrapper textarea { resize: vertical; min-height: 100px; }
 
 /* Submit Button */
-.guestbook-form-wrapper .submit-btn {
-    background: linear-gradient(to right, #FFD700, #E6D090); 
-    color: #000;
-    border: none;
-    padding: 12px 30px;
-    font-size: 18px;
-    font-weight: bold;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
-    width: 100%; 
-    max-width: 250px; 
-    margin-top: 10px;
+.submit-btn { 
+  background: linear-gradient(90deg, #FFD700, #E5C100); 
+  color: #000;
+  font-weight: 700;
+  border: none;
+  border-radius: 10px; 
+  padding: 12px 40px; 
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.4); 
+  width: 100%; 
+  max-width: 250px; 
+  margin-top: 15px;
 }
-
-.guestbook-form-wrapper .submit-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.6);
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 35px rgba(255, 215, 0, 0.6);
 }
 
 /* Nachrichten von Gästen */
 .messages-overview {
     text-align: center;
-    margin-top: 100px; 
+    margin-top: 50px; /* Reduzierter Abstand */
     position: relative;
     z-index: 10;
 }
@@ -267,38 +189,24 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
 }
 
 .message-card {
-    background: var(--card); 
-    border: 1px solid rgba(253, 216, 53, 0.2); 
-    border-radius: 10px;
+    background: rgba(15, 15, 15, 0.9); /* Dunkler, halbtransparenter Hintergrund */
+    border: 1px solid rgba(255, 215, 0, 0.3); 
+    border-radius: 12px;
     padding: 20px;
     text-align: left;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.1); /* Dezenter Glow */
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    border-left: 4px solid var(--gold-light); 
+}
+.message-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.25);
 }
 
-.message-card .card-header {
-    font-weight: bold;
-    color: var(--gold-light);
-    margin-bottom: 8px;
-}
-
-.message-card .card-info {
-    font-size: 0.9em;
-    color: var(--muted);
-    margin-bottom: 10px;
-}
-
-.message-card .card-stars i {
-    color: var(--gold-light);
-    font-size: 16px;
-    margin-right: 2px;
-}
-
-.message-card p {
-    font-size: 14px;
-    color: var(--text);
-    line-height: 1.4;
-    margin-top: 10px;
-}
+.message-card .card-header { font-weight: bold; color: var(--gold-light); margin-bottom: 8px; }
+.message-card .card-info { font-size: 0.9em; color: var(--muted); margin-bottom: 10px; }
+.message-card .card-stars i { color: var(--gold-light); font-size: 16px; margin-right: 2px; }
+.message-card p { font-size: 14px; color: var(--text); line-height: 1.4; margin-top: 10px; }
 
 /* -------------------------------------- */
 /* KONTAKT & FOOTER STYLES */
@@ -332,17 +240,7 @@ footer{text-align:center;padding:15px 0;background:#050505;color:#888;margin-top
 /* RESPONSIVE ANPASSUNGEN */
 /* -------------------------------------- */
 
-@media (max-width: 1100px) {
-    .barber-figure.left { left: -50px; }
-    .barber-figure.right { right: -50px; }
-    .scissors-icon { left: 20px; }
-    .comb-icon { right: 20px; }
-}
-
 @media (max-width: 900px) {
-    .barber-figure { width: 220px; bottom: -60px; } /* VERKLEINERT */
-    .scissors-icon { left: 0; }
-    .comb-icon { right: 0; }
     .messages-grid { padding: 0 20px; }
 }
 
@@ -350,12 +248,21 @@ footer{text-align:center;padding:15px 0;background:#050505;color:#888;margin-top
     .header-banner { height: 200px; }
     .image-price-section img { max-width: 100%; }
 
-    /* Gästebuch: Figuren und Icons ausblenden */
-    .barber-figure, .scissors-icon, .comb-icon { display: none; } 
-    .guestbook-section-custom { min-height: auto; max-width: 100%; }
+    /* WICHTIG: Das Hintergrundbild im Mobile-Modus entfernen und alles normal fließen lassen */
+    .guestbook-section-custom {
+        background-image: none !important;
+        min-height: auto;
+        padding: 40px 10px;
+    }
+    
+    .guestbook-main-content {
+        position: static;
+        flex-direction: column;
+    }
+
     .guestbook-form-wrapper { max-width: 100%; margin: 0 10px; padding: 20px; }
     .messages-overview { margin-top: 50px; }
-    .messages-grid { grid-template-columns: 1fr; /* Eine Spalte auf Handys */ }
+    .messages-grid { grid-template-columns: 1fr; }
     
     .container {padding: 0 10px;}
 }
@@ -381,22 +288,9 @@ für Ihr perfektes Haar- und Bartgefühl.</p>
 
 <div class="container guestbook-section-custom">
     
-<div class="guestbook-header">
-        <div class="logo-main">BARBERSHOP DELUXE</div>
-        <div class="logo-sub">BLACK - GOLD EDITION</div>
-        <div class="logo-line"></div>
-    </div>
-
-    
-<div class="guestbook-main-content">
-        <img src="https://raw.githubusercontent.com/Artonstyle/Barbershop/main/images/URL_MANN_LINKS_FREIGESTELLT.png" alt="Inhaber Links" class="barber-figure left">
-        <img src="https://raw.githubusercontent.com/Artonstyle/Barbershop/main/images/URL_MANN_RECHTS_FREIGESTELLT.png" alt="Inhaber Rechts" class="barber-figure right">
-
+    <div class="guestbook-main-content">
         
-<i class="fas fa-cut scissors-icon"></i>
-        <i class="fas fa-solid fa-tooth comb-icon"></i> 
-        
-<div class="guestbook-form-wrapper">
+        <div class="guestbook-form-wrapper">
             <i class="fas fa-crown crown-icon"></i>
             <h3>GÄSTEBUCH</h3>
             <p class="slogan">Teile deine Wünsche mit</p>
