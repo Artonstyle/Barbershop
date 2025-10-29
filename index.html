@@ -40,8 +40,6 @@ body {
   -moz-osx-font-smoothing:grayscale;
 }
 .container{max-width:var(--max-width);margin:0 auto;padding:0 16px}
-.skip-link{position:absolute;left:-9999px;top:auto;overflow:hidden}
-.skip-link:focus{left:16px;top:16px;z-index:999;background:var(--card);padding:8px;border-radius:6px;color:var(--text)}
 
 /* Allgemeine Styles */
 h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-light); text-shadow: 0 0 15px rgba(253, 216, 53, 0.4);} 
@@ -54,7 +52,7 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
 .image-price-section img{max-width: 500px; width: 90%; border-radius: 10px; box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);} 
 
 /* ========================================================== */
-/* GÄSTEBUCH DELUXE STYLES (HINTERGRUNDBILD) */
+/* GÄSTEBUCH DELUXE STYLES (HINTERGRUNDBILD & FORMULAR ÜBERLAGERUNG) */
 /* ========================================================== */
 
 @keyframes goldPulse {
@@ -64,15 +62,15 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
 }
 
 .guestbook-section-custom {
-    /* **Hintergrundbild vom GitHub-Ordner** */
-    background-image: url('https://raw.githubusercontent.com/Artonstyle/Barbershop/main/images/G%C3%A4stebuch.png'); 
+    /* **WICHTIG: ERSETZEN SIE DIESE URL MIT DER NEUEN GITHUB-URL VON '1000110222.png'** */
+    background-image: url('https://raw.githubusercontent.com/Artonstyle/Barbershop/main/images/Gaestebuch_neu.png'); 
     background-size: cover; 
     background-position: center center;
     background-repeat: no-repeat;
     
     position: relative;
     padding: 0; 
-    margin: 40px auto 0; /* Abstand nach unten entfernt, da Nachrichten nun separat sind */
+    margin: 40px auto 0; 
     max-width: 1200px; 
     box-sizing: border-box;
     box-shadow: inset 0 0 0 100vw rgba(0, 0, 0, 0.4); 
@@ -91,7 +89,7 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
     opacity: 0.8; 
 }
 
-/* Der Content-Wrapper muss absolut im Container positioniert werden, um zentriert zu sein */
+/* Content-Wrapper für die Formular-Zentrierung */
 .guestbook-main-content {
     display: flex;
     justify-content: center;
@@ -102,67 +100,81 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
     padding-top: 0;
 }
 
-/* Figuren/Icons/Header sind jetzt im Bild und werden ausgeblendet */
-.guestbook-header { display: none; }
-.barber-figure, .scissors-icon, .comb-icon { display: none !important; }
+/* Elemente, die jetzt im Bild sind, ausblenden */
+.guestbook-header, .barber-figure, .scissors-icon, .comb-icon { display: none !important; }
 
-/* Formular Wrapper */
+/* Formular Wrapper: MUSS TRANSPARENT SEIN und nur die Eingabefelder anzeigen */
 .guestbook-form-wrapper {
-    background: rgba(15, 15, 15, 0.95); 
-    border: 2px solid var(--gold); 
+    background: transparent; 
+    border: none; 
     border-radius: 20px;
-    padding: 40px; 
+    padding: 40px 10px;
     max-width: 450px; 
-    box-shadow: 0 0 25px rgba(255, 215, 0, 0.5), inset 0 0 15px rgba(255, 215, 0, 0.2); 
+    box-shadow: none; 
     text-align: center;
     position: relative;
     z-index: 10;
     margin: 0; 
+    transform: translateY(-5px); /* Fein-Tuning für die vertikale Position */
 }
 
-/* Formular Felder, Sterne & Button Styles (übernommen) */
+/* Formular Header (Icon, H3, Slogan) sind im Bild und werden ausgeblendet */
+.guestbook-form-wrapper .crown-icon,
+.guestbook-form-wrapper h3,
+.guestbook-form-wrapper .slogan {
+    display: none !important;
+}
+
+
+/* Formular Felder: Halten den Platz und sind leicht transparent */
 .guestbook-form-wrapper input[type="text"],
 .guestbook-form-wrapper textarea {
-    width: 100%; padding: 12px; margin-bottom: 15px; background: #141414; 
-    border: 1px solid rgba(255, 215, 0, 0.2); color: #fff; border-radius: 8px; box-sizing: border-box;
-    box-shadow: inset 0 0 5px rgba(255,215,0,0.05);
+    width: 100%; padding: 12px; margin-bottom: 15px; 
+    background: rgba(25, 25, 25, 0.7); 
+    border: 1px solid rgba(255, 215, 0, 0.2); 
+    color: #fff; border-radius: 8px; box-sizing: border-box;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.5); 
 }
 .guestbook-form-wrapper input[type="text"]:focus,
-.guestbook-form-wrapper textarea:focus { border-color: var(--gold); box-shadow: 0 0 10px rgba(255,215,0,0.2); outline: none; }
+.guestbook-form-wrapper textarea:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 10px rgba(255,215,0,0.2), inset 0 0 5px rgba(255,215,0,0.1);
+  outline: none;
+}
 .guestbook-form-wrapper textarea { resize: vertical; min-height: 100px; }
+
+
+/* Sterne-Bewertung */
+.star-rating { 
+    font-size: 30px; 
+    margin: 0 0 20px; 
+    color: #888; 
+    cursor: pointer;
+    display: inline-block; 
+}
+.star-rating span i.fas { color: var(--gold-light); }
+
+/* Submit Button */
 .submit-btn { 
   background: linear-gradient(90deg, #FFD700, #E5C100); color: #000; font-weight: 700; border: none;
   border-radius: 10px; padding: 12px 40px; cursor: pointer; transition: all 0.2s ease;
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.4); width: 100%; max-width: 250px; margin-top: 15px;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.4); width: 100%; max-width: 250px; 
+  margin-top: 0; 
 }
 .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 0 35px rgba(255, 215, 0, 0.6); }
 
-.star-rating { font-size: 30px; margin: 20px 0 30px; color: #888; cursor: pointer; display: inline-block; }
-.star-rating span { transition: color 0.2s; user-select: none; padding: 0 2px; }
-.star-rating span i.fas { color: var(--gold-light); }
-
 
 /* ========================================================== */
-/* NACHRICHTEN ÜBERSICHT STYLES (Korrektur der Positionierung) */
+/* NACHRICHTEN ÜBERSICHT STYLES (SEPARAT) */
 /* ========================================================== */
 
-/* NEUE SEKTION: Stellt sicher, dass die Nachrichten unter dem großen Bild erscheinen */
 .guestbook-messages-section {
     margin-top: 50px; 
-    padding-top: 50px; /* Zusätzlicher Abstand, um das Formular (750px Höhe) freizulassen */
+    padding-top: 50px;
 }
 
-.messages-overview {
-    text-align: center;
-    position: relative;
-    z-index: 10;
-}
-.messages-overview h3 {
-    font-size: 24px;
-    margin-bottom: 40px;
-    color: var(--gold-light);
-    letter-spacing: 1px;
-}
+.messages-overview { text-align: center; position: relative; z-index: 10; }
+.messages-overview h3 { font-size: 24px; margin-bottom: 40px; color: var(--gold-light); letter-spacing: 1px; }
 .messages-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
@@ -181,6 +193,9 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
     border-left: 4px solid var(--gold-light); 
 }
 .message-card:hover { transform: translateY(-4px); box-shadow: 0 0 25px rgba(255, 215, 0, 0.25); }
+.message-card .card-header { font-weight: bold; color: var(--gold-light); margin-bottom: 8px; }
+.message-card .card-info { font-size: 0.9em; color: var(--muted); margin-bottom: 10px; }
+.message-card .card-stars i { color: var(--gold-light); font-size: 16px; margin-right: 2px; }
 
 
 /* ========================================================== */
@@ -298,12 +313,9 @@ für Ihr perfektes Haar- und Bartgefühl.</p>
     <div class="guestbook-main-content">
         
         <div class="guestbook-form-wrapper">
-            <i class="fas fa-crown crown-icon"></i>
-            <h3>GÄSTEBUCH</h3>
-            <p class="slogan">Teile deine Wünsche mit</p>
             <form id="guestbookForm"> 
-              <input type="text" id="guestName" placeholder="DEIN NAME" required> 
-              <textarea id="guestText" placeholder="DEINE NACHRICHT" required></textarea> 
+              <input type="text" id="guestName" placeholder="YOUR NAME" required> 
+              <textarea id="guestText" placeholder="YOUR MESSAGE" required></textarea> 
               
               <div class="star-rating">
                   <span data-rating="1"><i class="far fa-star"></i></span>
@@ -313,7 +325,7 @@ für Ihr perfektes Haar- und Bartgefühl.</p>
                   <span data-rating="5"><i class="far fa-star"></i></span>
               </div>
 
-              <button type="submit" class="submit-btn">EINTRAG ABSCHICKEN</button> 
+              <button type="submit" class="submit-btn">SUBMIT ENTRY</button> 
             </form> 
             <p id="successMsg" style="display:none;">✅ Vielen Dank für Ihren Eintrag!</p> 
         </div>
