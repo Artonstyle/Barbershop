@@ -1,605 +1,255 @@
-<!doctype html> 
-<html lang="de"> 
-<head> 
-<meta charset="utf-8"> 
-<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-<title>💈 C&D Barbershop – Black & Gold Edition</title> 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet"> 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-<style> 
-/* Grundfarben & Typografie */
-:root {
-  --brand:#c0392b;
-  --brand-2:#ff6b61;
-  --bg:#0b0f14; /* DUNKEL: Hintergrundfarbe */
-  --card:#0f1720;
-  --surface:#0b1116;
-  --text:#e6eef6; /* HELL: Textfarbe */
-  --muted:#9aa6b2;
-  --glass:rgba(255,255,255,0.03);
-  --max-width:1200px;
-  --radius:10px;
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💈 C&D Barbershop – Black Edition</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+/* ------------------------------------------------------------------ */
+/* ORIGINALER CSS-CODE */
+/* ------------------------------------------------------------------ */
 
-  /* GOLD-FARBDEFINITIONEN FÜR GÄSTEBUCH */
-  --gold: #FFD700;
-  --gold-light: #fdd835;
-  --gold-shadow: rgba(253, 216, 53, 0.4);
-
-  font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+body { 
+    font-family:'Poppins', sans-serif; 
+    background-color:#000; 
+    color:#fff; 
+    margin:0; 
+    padding:0; 
+    perspective: 1200px; 
 }
-*{box-sizing:border-box}
-html,body{height:100%}
-body {
-  margin:0;
-  /* DUNKEL Hintergrund: Verwendet die Variable */
-  background:linear-gradient(180deg,var(--bg),rgba(0,0,0,0.03)); 
-  color:var(--text); 
-  line-height:1.5;
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
+p { margin:0; }
+.container { width:90%; max-width:1200px; margin:0 auto; padding:20px; }
+h2 { text-align:center; margin-bottom:30px; font-weight:700; text-shadow:0 0 15px rgba(255,255,255,0.8); }
+
+/* *************************************************************** */
+/* BANNER FIX */
+/* *************************************************************** */
+.header-banner { 
+    width:100%; 
+    height: 300px; 
+    overflow:hidden; 
+    display:flex; 
+    justify-content:center; 
+    align-items:center; 
+    position:relative; 
+    background:#000; 
 }
-.container{max-width:var(--max-width);margin:0 auto;padding:0 16px}
+.header-banner img { 
+    width: auto; 
+    max-width: 100%; 
+    max-height: 100%; 
+    height: auto; 
+    object-fit:contain; 
+    filter:brightness(1.2) contrast(1.1); 
+    border:none; 
+}
+/* 3D-Effekt auf Willkommens-Sektion */
+.welcome-section { 
+    text-align:center; 
+    padding:30px 20px; 
+    background:rgba(255,255,255,0.05); 
+    backdrop-filter:blur(8px); 
+    margin:0 auto 40px auto; 
+    border-radius:15px; 
+    box-shadow:0 10px 30px rgba(0,0,0,0.7), 0 0 25px rgba(255,255,255,0.2);
+    max-width:900px; 
+    transform: translateZ(-10px);
+    transition: transform 0.5s ease-in-out;
+}
+.welcome-section:hover {
+    transform: translateZ(5px); 
+}
 
-/* Allgemeine Styles (aus deinem Original-CSS) */
-h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-light); text-shadow: 0 0 15px rgba(253, 216, 53, 0.4);} 
-.header-banner{width: 100%; height: 300px; display: flex; justify-content: center; align-items: center; background: var(--bg); overflow: hidden; border-bottom: 2px solid var(--gold-light);}
-.header-banner img{max-width: 100%; max-height: 100%; object-fit: contain; filter: brightness(1.2) contrast(1.1);} 
-.welcome-section{padding: 30px 20px; background: rgba(255, 255, 255, 0.05); border-radius: 15px; max-width: 900px; margin: 40px auto; text-align: center; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);} 
-.welcome-section h1{font-size: 2em; margin-bottom: 10px; color: var(--gold-light);} 
-.welcome-section p{color: var(--muted); line-height: 1.6;} 
-.image-price-section{text-align: center; padding: 20px 0; margin-bottom: 50px; background: rgba(255, 255, 255, 0.03); border-radius: 15px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);} 
-.image-price-section img{max-width: 500px; width: 90%; border-radius: 10px; box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);} 
+.welcome-section h1 { font-size:2em; margin-bottom:10px; text-shadow:0 0 20px rgba(255,255,255,0.8); color: #fff; }
+.welcome-section p { font-size:1.1em; color:#ddd; line-height:1.6; }
+.opening-hours { margin-top:20px; text-align:center; }
+.opening-hours ul { list-style:none; padding:0; display:inline-block; text-align:left; color:#ddd; }
+.opening-hours li { padding:5px 0; border-bottom:1px solid rgba(255,255,255,0.1); }
+.opening-hours li strong { color:#fff; }
+footer { text-align:center; padding:15px 0; background:#050505; color:#888; margin-top:50px; border-top:1px solid rgba(255,255,255,0.1); }
+footer a { color:#fff; text-decoration:none; margin:0 10px; }
+footer a:hover { text-decoration:underline; }
+.social-links { margin-top:15px; }
+.social-links a { display:inline-block; margin:0 8px; }
+.social-links img { width:28px; height:28px; filter:brightness(1.2); transition:transform 0.3s ease; }
+.social-links img:hover { transform:scale(1.2); filter:brightness(1.5); }
 
-/* -------------------------------------- */
-/* NEUE GÄSTEBUCH-STYLES START */
-/* -------------------------------------- */
-
-/* Header / Logo */
-.guestbook-header {
+/* *************************************************************** */
+/* NEUER CSS FÜR DAS PREISLISTEN-BILD */
+/* *************************************************************** */
+.image-price-section {
     text-align: center;
-    margin-bottom: 30px;
-    position: relative;
-    padding-top: 30px;
-}
-.guestbook-header .logo-main {
-    font-size: 36px;
-    font-weight: bold;
-    letter-spacing: 5px;
-    color: var(--gold); 
-    margin-bottom: 5px;
-}
-.guestbook-header .logo-sub {
-    font-size: 16px;
-    letter-spacing: 2px;
-    color: var(--text);
-    margin-bottom: 20px;
-}
-.guestbook-header .logo-line {
-    width: 200px;
-    height: 1px;
-    background-color: var(--gold-light);
-    margin: 0 auto;
-}
-
-/* Gästebuch Sektion */
-.guestbook-section-custom {
-    padding: 0; 
-    margin: 40px auto; 
-    background: transparent;
-    max-width: 1200px; 
-    position: relative;
-    box-sizing: border-box;
-    box-shadow: none; 
-}
-.guestbook-section-custom::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    /* Dies ist der Hintergrund-Effekt */
-    background: url('https://www.transparenttextures.com/patterns/connected-squares.png') repeat; 
-    opacity: 0.05;
-    z-index: 1;
-}
-
-/* Hauptbereich des Gästebuchs (Formular + Figuren) */
-.guestbook-main-content {
-    display: flex;
-    justify-content: center;
-    align-items: center; 
-    position: relative;
-    z-index: 10;
-    padding-top: 50px;
-}
-
-/* Figuren Stylen */
-.barber-figure {
-    position: absolute;
-    width: 280px; /* REDUZIERTE GRÖSSE */
-    height: auto;
-    object-fit: contain;
-    bottom: -80px; 
-    z-index: 5;
-    /* Positionierung über dem Formularzentrierpunkt, damit sie nicht schweben */
-    top: 50%;
-    transform: translateY(-50%);
-}
-.barber-figure.left {
-    left: 0;
-}
-.barber-figure.right {
-    right: 0;
-}
-
-/* Schere und Kamm Icons */
-.scissors-icon, .comb-icon {
-    font-size: 50px; /* REDUZIERTE GRÖSSE */
-    color: var(--gold-light);
-    position: absolute;
-    top: 50%; 
-    z-index: 5;
-    opacity: 0.8;
-}
-
-.scissors-icon {
-    left: 100px; 
-    transform: translateY(-50%) rotate(30deg);
-}
-.comb-icon {
-    right: 100px; 
-    transform: translateY(-50%) scaleX(-1) rotate(-30deg);
-}
-
-/* Gästebuch Formular Wrapper */
-.guestbook-form-wrapper {
-    background: #0d0d0d; 
-    border: 2px solid var(--gold); 
+    padding: 20px 0;
+    margin-bottom: 50px;
+    background: rgba(255,255,255,0.03); 
     border-radius: 15px;
-    padding: 30px;
-    width: 100%;
-    max-width: 600px; 
-    box-shadow: 0 0 50px var(--gold-shadow);
-    text-align: center;
-    position: relative;
-    z-index: 10;
+    box-shadow:0 10px 30px rgba(0,0,0,0.7), 0 0 25px rgba(255,255,255,0.2);
+    transform: translateZ(-10px);
+    transition: transform 0.5s ease-in-out;
 }
 
-.guestbook-form-wrapper .crown-icon {
-    font-size: 30px;
-    color: var(--gold);
-    margin-bottom: 15px;
+.image-price-section:hover {
+    transform: translateZ(5px);
 }
 
-.guestbook-form-wrapper h3 {
-    font-size: 28px;
-    margin: 0 0 8px;
-    color: var(--text);
-    letter-spacing: 1px;
-}
-
-.guestbook-form-wrapper .slogan {
-    font-size: 14px;
-    color: var(--muted);
-    margin-bottom: 30px;
-}
-
-/* Formular Felder */
-.guestbook-form-wrapper input[type="text"],
-.guestbook-form-wrapper textarea {
-    width: 100%; 
-    padding: 12px;
-    margin-bottom: 15px;
-    background: #222; 
-    border: 1px solid #444;
-    color: #fff;
-    border-radius: 8px;
-    box-sizing: border-box;
-}
-
-.guestbook-form-wrapper textarea {
-    resize: vertical;
-    min-height: 100px;
-}
-
-/* Sterne-Bewertung */
-.star-rating {
-    font-size: 30px;
-    margin: 20px 0 30px;
-    color: #888; 
-    cursor: pointer;
-    display: inline-block; 
-}
-
-.star-rating span {
-    transition: color 0.2s;
-    user-select: none;
-    padding: 0 2px;
-}
-
-.star-rating span i.fas {
-    color: var(--gold-light); 
-}
-
-/* Submit Button */
-.guestbook-form-wrapper .submit-btn {
-    background: linear-gradient(to right, #FFD700, #E6D090); 
-    color: #000;
-    border: none;
-    padding: 12px 30px;
-    font-size: 18px;
-    font-weight: bold;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
-    width: 100%; 
-    max-width: 250px; 
-    margin-top: 10px;
-}
-
-.guestbook-form-wrapper .submit-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.6);
-}
-
-/* Nachrichten von Gästen */
-.messages-overview {
-    text-align: center;
-    margin-top: 100px; 
-    position: relative;
-    z-index: 10;
-}
-
-.messages-overview h3 {
-    font-size: 24px;
-    margin-bottom: 40px;
-    color: var(--gold-light);
-    letter-spacing: 1px;
-}
-
-.messages-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-    gap: 20px;
-    padding: 0 50px;
-}
-
-.message-card {
-    background: var(--card); 
-    border: 1px solid rgba(253, 216, 53, 0.2); 
+.image-price-section img {
+    max-width: 500px; /* Reduzierte maximale Breite für Desktops */
+    width: 90%; /* Sorgt dafür, dass es auf kleineren Bildschirmen skaliert */
+    height: auto;
     border-radius: 10px;
-    padding: 20px;
-    text-align: left;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 15px rgba(255,255,255,0.2);
+    transition: transform 0.3s ease;
 }
 
-.message-card .card-header {
-    font-weight: bold;
-    color: var(--gold-light);
-    margin-bottom: 8px;
+.image-price-section img:hover {
+    transform: scale(1.01);
 }
 
-.message-card .card-info {
-    font-size: 0.9em;
-    color: var(--muted);
-    margin-bottom: 10px;
+/* *************************************************************** */
+/* CSS FÜR DAS GÄSTEBUCH */
+/* *************************************************************** */
+.guestbook-section {
+    padding: 40px 20px;
+    margin: 40px auto;
+    background: rgba(255,255,255,0.05); 
+    border-radius: 15px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.7), 0 0 25px rgba(255,255,255,0.2);
+    transform: translateZ(-10px);
+    transition: transform 0.5s ease-in-out;
+    max-width: 700px;
+}
+.guestbook-section:hover {
+    transform: translateZ(5px);
 }
 
-.message-card .card-stars i {
-    color: var(--gold-light);
-    font-size: 16px;
-    margin-right: 2px;
+.guestbook-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #fff;
 }
 
-.message-card p {
-    font-size: 14px;
-    color: var(--text);
-    line-height: 1.4;
-    margin-top: 10px;
+.guestbook-form input[type="text"], 
+.guestbook-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 8px;
+    background: rgba(0,0,0,0.5);
+    color: #fff;
+    font-size: 1em;
+    box-sizing: border-box; /* Wichtig für die korrekte Breite */
+    transition: border-color 0.3s;
 }
 
-/* -------------------------------------- */
-/* KONTAKT & FOOTER STYLES */
-/* -------------------------------------- */
-
-.opening-hours{text-align:center; padding: 40px 0;} 
-.opening-hours ul{list-style:none;padding:0;display:inline-block;text-align:left;} 
-.opening-hours li{padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.1);} 
-
-/* KORRIGIERTE GRÖSSE FÜR SOCIAL MEDIA ICONS */
-.social-links {
-    margin: 20px 0;
-    text-align: center;
-}
-.social-links a img {
-    width: 32px; 
-    height: 32px; 
-    margin: 0 10px;
-    vertical-align: middle;
-    border-radius: 50%;
-    box-shadow: 0 0 10px rgba(253, 216, 53, 0.4); 
-    transition: transform 0.2s;
-}
-.social-links a img:hover {
-    transform: scale(1.1);
+.guestbook-form input[type="text"]:focus, 
+.guestbook-form textarea:focus {
+    border-color: #fdd835; /* Gold-Akzent beim Fokussieren */
+    outline: none;
 }
 
-footer{text-align:center;padding:15px 0;background:#050505;color:#888;margin-top:50px;border-top:1px solid rgba(255,255,255,0.1);} 
-
-/* -------------------------------------- */
-/* RESPONSIVE ANPASSUNGEN */
-/* -------------------------------------- */
-
-@media (max-width: 1100px) {
-    .barber-figure.left { left: -50px; }
-    .barber-figure.right { right: -50px; }
-    .scissors-icon { left: 20px; }
-    .comb-icon { right: 20px; }
+.guestbook-form textarea {
+    resize: vertical;
+    min-height: 120px;
 }
 
-@media (max-width: 900px) {
-    .barber-figure { width: 220px; bottom: -60px; } /* VERKLEINERT */
-    .scissors-icon { left: 0; }
-    .comb-icon { right: 0; }
-    .messages-grid { padding: 0 20px; }
+.guestbook-form button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background-color: #fdd835; /* Goldener Button */
+    color: #000;
+    font-size: 1.1em;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
 }
 
-@media(max-width: 768px){
-    .header-banner { height: 200px; }
-    .image-price-section img { max-width: 100%; }
-
-    /* Gästebuch: Figuren und Icons ausblenden */
-    .barber-figure, .scissors-icon, .comb-icon { display: none; } 
-    .guestbook-section-custom { min-height: auto; max-width: 100%; }
-    .guestbook-form-wrapper { max-width: 100%; margin: 0 10px; padding: 20px; }
-    .messages-overview { margin-top: 50px; }
-    .messages-grid { grid-template-columns: 1fr; /* Eine Spalte auf Handys */ }
-    
-    .container {padding: 0 10px;}
+.guestbook-form button:hover {
+    background-color: #ffeb3b;
+    transform: translateY(-2px);
 }
-</style> 
-</head> 
-<body> 
-<div class="header-banner"> 
-  <img 
-src="https://raw.githubusercontent.com/Artonstyle/Barbershop/main/images/Barbershop-logo7.png"
- alt="C&D Barbershop Banner"> 
-</div> 
-<div class="welcome-section"> 
-  <h1>Willkommen bei C&D Barbershop</h1> 
-  <p>Schön, dass Sie hier sind! C&D Barbershop steht für 
-Qualität, Stil und Persönlichkeit. In einer modernen Atmosphäre bieten 
-wir individuelle Beratung, trendige Schnitte und hochwertige Pflege – 
-für Ihr perfektes Haar- und Bartgefühl.</p> 
-</div> 
-<div class="container image-price-section"> 
-  <h2>💇‍♂️ Unsere Preisliste</h2> 
-  <img src="images/Barbershop-preisliste.png" alt="Aktuelle Preisliste"> 
-</div> 
-
-<div class="container guestbook-section-custom">
-    
-<div class="guestbook-header">
-        <div class="logo-main">BARBERSHOP DELUXE</div>
-        <div class="logo-sub">BLACK - GOLD EDITION</div>
-        <div class="logo-line"></div>
-    </div>
-
-    
-<div class="guestbook-main-content">
-        
-<img src="URL_MANN_LINKS_FREIGESTELLT.png" alt="Inhaber Links" class="barber-figure left">
-        <img src="URL_MANN_RECHTS_FREIGESTELLT.png" alt="Inhaber Rechts" class="barber-figure right">
-
-        
-<i class="fas fa-cut scissors-icon"></i>
-        <i class="fas fa-solid fa-tooth comb-icon"></i> 
-        
-<div class="guestbook-form-wrapper">
-            <i class="fas fa-crown crown-icon"></i>
-            <h3>GÄSTEBUCH</h3>
-            <p class="slogan">Teile deine Wünsche mit</p>
-            <form id="guestbookForm"> 
-              <input type="text" id="guestName" placeholder="DEIN NAME" required> 
-              <textarea id="guestText" placeholder="DEINE NACHRICHT" required></textarea> 
-              
-              <div class="star-rating">
-                  <span data-rating="1"><i class="far fa-star"></i></span>
-                  <span data-rating="2"><i class="far fa-star"></i></span>
-                  <span data-rating="3"><i class="far fa-star"></i></span>
-                  <span data-rating="4"><i class="far fa-star"></i></span>
-                  <span data-rating="5"><i class="far fa-star"></i></span>
-              </div>
-
-              <button type="submit" class="submit-btn">EINTRAG ABSCHICKEN</button> 
-            </form> 
-            <p id="successMsg">✅ Vielen Dank für Ihren Eintrag!</p> 
-        </div>
-    </div>
-
-    
-<div class="messages-overview">
-        <h3>Nachrichten Von Unseren Gästen</h3>
-        <div class="messages-grid">
-            
-<div class="message-card">
-                <div class="card-header">Norer Name</div>
-                <div class="card-info">20.221 / 182-08</div>
-                <div class="card-stars">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-                </div>
-                <p>Super Service, immer freundlich und der Haarschnitt ist jedes Mal perfekt! Ich komme gerne wieder.</p>
-            </div>
-            <div class="message-card">
-                <div class="card-header">Norer Name</div>
-                <div class="card-info">20.221 / 182-02</div>
-                <div class="card-stars">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                </div>
-                <p>Bester Barbershop in der Stadt! Tolle Atmosphäre und top Beratung. Absolut empfehlenswert.</p>
-            </div>
-            <div class="message-card">
-                <div class="card-header">Norer Name</div>
-                <div class="card-info">20.221 / 182-04</div>
-                <div class="card-stars">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-                </div>
-                <p>Schnell, sauber und der Bart ist in Form gebracht. Genau das, was ich erwartet habe. Danke!</p>
-            </div>
-            </div>
-    </div>
-    <div id="guestEntries"></div> 
-</div> 
-<div class="container opening-hours"> 
-  <h2>📍 Kontakt</h2> 
-  <p>Bachgasse 68, 69502 Hemsbach</p> 
-  <p>📞 0176 70794224</p> 
-  <div class="social-links"> 
-    <a href="https://www.instagram.com/cd_barbershop_/" target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
-    </a> 
-  </div> 
-  <h3>Öffnungszeiten</h3> 
-  <ul> 
-    <li><strong>Montag – Freitag:</strong><br>09:00 – 19:00 Uhr</li> 
-    <li><strong>Samstag:</strong><br>09:00 – 18:00 Uhr</li> 
-    <li><strong>Sonntag:</strong><br>Geschlossen ⛔</li> 
-  </ul> 
-  <p><a 
-href="https://www.google.com/maps/dir/?api=1&destination=Bachgasse+68,+69502+Hemsbach"
- target="_blank" style="color:#fdd835;">Route auf Google Maps 
-öffnen</a></p> 
-</div> 
-<footer> 
-  © 2025 C&D Barbershop | Black Edition 
-</footer> 
-<script> 
-// ✅ AKTUELLE GOOGLE-SCRIPT-URL 
-const sheetURL = 
-"https://script.google.com/macros/s/AKfycbx-MmXEQuTij8xhVIR5RUUN91EOH5bTM4QkjeVx5OQhg6cPFZmUZkT79jCWi-RITY-v/exec";
- 
-const form=document.getElementById("guestbookForm"); 
-const successMsg=document.getElementById("successMsg"); 
-
-// --- Star Rating Funktionalität ---
-document.addEventListener('DOMContentLoaded', () => {
-    const stars = document.querySelectorAll('.star-rating span');
-    let selectedRating = 0;
-
-    stars.forEach(star => {
-        star.addEventListener('click', () => {
-            selectedRating = parseInt(star.dataset.rating);
-            updateStars(selectedRating);
-        });
-
-        star.addEventListener('mouseover', () => {
-            const hoverRating = parseInt(star.dataset.rating);
-            updateStars(hoverRating);
-        });
-
-        star.addEventListener('mouseout', () => {
-            updateStars(selectedRating);
-        });
-    });
-
-    function updateStars(rating) {
-        stars.forEach(s => {
-            const icon = s.querySelector('i');
-            if (parseInt(s.dataset.rating) <= rating) {
-                icon.classList.remove('far');
-                icon.classList.add('fas');
-            } else {
-                icon.classList.remove('fas');
-                icon.classList.add('far');
-            }
-        });
-    }
-});
-// --- Ende Star Rating Funktionalität ---
-
-
-// --- Einträge laden (GET) --- 
-async function loadEntries(){ 
-  try{ 
-    const res=await fetch(sheetURL); 
-    const entries=await res.json(); 
-    
-    const dynamicMessagesGrid = document.querySelector('.messages-grid');
-    if (dynamicMessagesGrid) {
-        // Leert sowohl die statischen als auch die vorherigen dynamischen Einträge
-        dynamicMessagesGrid.innerHTML = '';
-        
-        if(!entries || !entries.length){ 
-            dynamicMessagesGrid.innerHTML='<p style="text-align:center;color:#888; grid-column: 1 / -1;">Noch keine Einträge.</p>'; 
-            return; 
-        } 
-        
-        dynamicMessagesGrid.innerHTML = entries.reverse().map(e=>{ 
-        const entryRating = e.rating ? parseInt(e.rating) : 0;
-        let starHtml = '';
-        for (let i = 1; i <= 5; i++) {
-            starHtml += `<i class="${i <= entryRating ? 'fas' : 'far'} fa-star"></i>`;
-        }
-
-        const d=new Date(e.date); 
-        const dateString=d.toLocaleString('de-DE',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'});
-    
-        return `
-            <div class="message-card">
-                <div class="card-header">${e.name||'Anonym'}</div>
-                <div class="card-info">${dateString}</div>
-                <div class="card-stars">${starHtml}</div>
-                <p>${e.text}</p>
-            </div>
-        `; 
-      }).join('');
-    }
-
-  }catch(err){ 
-    console.error(err); 
-    const dynamicMessagesGrid = document.querySelector('.messages-grid');
-    if (dynamicMessagesGrid) {
-        dynamicMessagesGrid.innerHTML='<p style="text-align:center;color:red; grid-column: 1 / -1;">Fehler beim Laden der Einträge.</p>'; 
-    }
-  } 
-} 
-// --- Formular absenden (POST) --- 
-form.addEventListener("submit",async e=>{ 
-  e.preventDefault(); 
-  const name=document.getElementById("guestName").value.trim(); 
-  const text=document.getElementById("guestText").value.trim(); 
+/* *************************************************************** */
+/* MOBILE FIX (3D deaktivieren) */
+/* *************************************************************** */
+@media (max-width:768px) {
+  .header-banner { height: 200px; box-shadow:none; border:none; }
+  .header-banner img { max-width:100%; max-height:100%; filter:brightness(1.3) contrast(1.2); }
   
-  // Rating auslesen
-  const selectedRating = parseInt(document.querySelector('.star-rating span.fas')?.dataset.rating || '0');
-  
-  if(!name||!text||selectedRating === 0) { 
-      alert("Bitte füllen Sie alle Felder aus und geben Sie eine Bewertung ab!");
-      return;
+  /* 3D-Effekt auf Mobile deaktivieren, damit es nicht seltsam aussieht */
+  .welcome-section, .welcome-section:hover,
+  .image-price-section, .image-price-section:hover,
+  .guestbook-section, .guestbook-section:hover { 
+      transform: none !important;
+      box-shadow: 0 0 20px rgba(255,255,255,0.3);
   }
-  
-  try{ 
-    const data=new FormData(); 
-    data.append("name",name); 
-    data.append("text",text); 
-    data.append("rating", selectedRating); 
+  /* Anpassung für das Preislisten-Bild auf Mobile */
+  .image-price-section img {
+      max-width: 100%; /* HIER GEÄNDERT: Volle Breite im Container */
+      width: 100%;     /* HIER GEÄNDERT: Volle Breite im Container */
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="header-banner">
+  <img src="https://raw.githubusercontent.com/Artonstyle/Barbershop/main/images/Barbershop-logo6.png" alt="C&D Barbershop Banner">
+</div>
+
+<div class="welcome-section">
+  <h1>Willkommen bei C&D Barbershop</h1>
+  <p>Schön, dass Sie hier sind! C&D Barbershop steht für Qualität, Stil und Persönlichkeit. In einer modernen Atmosphäre bieten wir individuelle Beratung, trendige Schnitte und hochwertige Pflege – für Ihr perfektes Haar- und Bartgefühl.</p>
+</div>
+
+<div class="container image-price-section">
+  <h2>💇‍♂️ Unsere Preisliste</h2>
+  <img src="images/preisliste_barbershop.png" alt="Aktuelle Preisliste des C&D Barbershops">
+</div>
+<div class="container guestbook-section">
+    <h2>⭐ Ihr Feedback</h2>
+    <p style="text-align: center; margin-bottom: 25px; color: #aaa;">Wir freuen uns über Ihre Meinung und Ihren Besuch!</p>
     
-    await fetch(sheetURL,{method:"POST",body:data}); 
-    form.reset(); 
-    document.querySelectorAll('.star-rating span i').forEach(icon => { 
-        icon.classList.remove('fas');
-        icon.classList.add('far');
-    });
-    successMsg.style.display="block"; 
-    setTimeout(()=>successMsg.style.display="none",3000); 
-    loadEntries(); 
-  }catch(err){ 
-    console.error(err); 
-    alert("Fehler beim Senden!");
-  } 
-}); 
-document.addEventListener("DOMContentLoaded",loadEntries); 
-</script> 
-</body> 
+    <form class="guestbook-form" action="guestbook_save.php" method="POST">
+        <label for="guestName">Ihr Name:</label>
+        <input type="text" id="guestName" name="name" required>
+        
+        <label for="guestText">Ihr Beitrag:</label>
+        <textarea id="guestText" name="text" required></textarea>
+        
+        <button type="submit">Beitrag abschicken</button>
+    </form>
+    
+    <h3 style="margin-top: 40px; text-align: center; color: #fdd835;">
+        (Hier werden später die Einträge angezeigt)
+    </h3>
+</div>
+<div class="container opening-hours">
+  <h2>📍 Kontakt</h2>
+  <p>Bachgasse 68, 69502 Hemsbach</p>
+  <p>📞 +49 123 456 7890</p>
+  <div class="social-links">
+    <a href="#" target="_blank" aria-label="Instagram">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram Icon">
+    </a>
+  </div>
+  <h3>Öffnungszeiten</h3>
+  <ul>
+    <li><strong>Montag – Freitag:</strong><br>09:00 – 19:00 Uhr</li>
+    <li><strong>Samstag:</strong><br>09:00 – 18:00 Uhr</li>
+    <li><strong>Sonntag:</strong><br>Geschlossen ⛔</li>
+  </ul>
+  <p><a href="https://www.google.com/maps/dir/?api=1&destination=Bachgasse+68,+69502+Hemsbach" target="_blank" style="color:#fff;">Route starten mit Google Maps</a></p>
+</div>
+
+<footer>
+  © 2025 C&D Barbershop | Black Edition & Style<br>
+  <a href="#">Datenschutzerklärung</a> | <a href="#">Impressum</a>
+</footer>
+
+</body>
 </html>
