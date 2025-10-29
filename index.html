@@ -105,16 +105,14 @@ h2{text-align:center;margin-bottom:30px;font-weight:700;color:var(--gold-light);
   z-index: 5;
 }
 
-/* Formular-Box */
+/* Formular-Box - ZURÜCK AUF URSPRÜNGLICHE GRÖSSE */
 .guestbook-form-wrapper {
   background: rgba(0, 0, 0, 0.75);
   border: 2px solid var(--gold);
   border-radius: 20px;
-  /* VERKLEINERT: Padding für kompaktes Aussehen */
-  padding: 30px 25px; 
+  padding: 40px 35px; 
   width: 100%;
-  /* VERKLEINERT: Maximale Breite auf 380px */
-  max-width: 380px; 
+  max-width: 440px; /* ZURÜCKGESETZT */
   box-shadow: 0 0 45px var(--gold-shadow);
   text-align: center;
   z-index: 10;
@@ -136,6 +134,16 @@ h2{text-align:center;margin-bottom:30px;font-weight:700;color:var(--gold-light);
   font-size: 15px;
   transition: all 0.2s ease;
 }
+
+/* SPEZIELLE ANPASSUNG: YOUR NAME kleiner machen */
+.guestbook-form-wrapper input[type="text"] {
+    width: 80%; /* Kleiner machen */
+    margin-left: auto; /* Zentrieren */
+    margin-right: auto; /* Zentrieren */
+    display: block; /* Für die Zentrierung nötig */
+}
+/* ENDE SPEZIELLE ANPASSUNG */
+
 .guestbook-form-wrapper input:focus,
 .guestbook-form-wrapper textarea:focus {
   border-color: var(--gold-light);
@@ -253,8 +261,8 @@ h2{text-align:center;margin-bottom:30px;font-weight:700;color:var(--gold-light);
 .contact-section-deluxe a { color: var(--gold-light) !important; text-decoration: none; font-weight: bold; display: block; margin-top: 25px; transition: color 0.2s; }
 .social-links { margin: 30px 0 20px; text-align: center;}
 .social-links a img { 
-    width: 32px; 
-    height: 32px; 
+    width: 48px; /* VERGRÖSSERT */ 
+    height: 48px; /* VERGRÖSSERT */ 
     margin: 0 10px; 
     vertical-align: middle; 
     border-radius: 50%; 
@@ -286,7 +294,6 @@ footer{text-align:center;padding:15px 0;background:var(--surface);color:#888;mar
     background:var(--card);
     border:2px solid var(--gold);
     box-shadow:0 0 25px var(--gold-shadow);
-    /* Auch auf Mobile angepasst, aber weniger stark reduziert */
     padding:25px 20px; 
     margin:20px auto;
     width:90%;
@@ -302,10 +309,20 @@ footer{text-align:center;padding:15px 0;background:var(--surface);color:#888;mar
     margin-bottom:20px;
     text-shadow:0 0 5px var(--gold-shadow);
   }
+  .guestbook-form-wrapper input[type="text"] {
+    width: 100%; /* Auf Mobile volle Breite */
+    margin-left: 0;
+    margin-right: 0;
+  }
   .submit-btn{width:100%;max-width:none;}
   .messages-grid{grid-template-columns:1fr;padding:0 10px;}
   .contact-section-deluxe { margin: 40px 10px; padding: 30px 15px; } 
   .container {padding: 0 10px;} 
+  
+  .social-links a img { 
+    width: 40px; /* Leicht kleiner auf Mobile */ 
+    height: 40px; /* Leicht kleiner auf Mobile */ 
+  }
 }
 </style> 
 </head> 
