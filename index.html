@@ -1,111 +1,73 @@
-<!doctype html> 
-<html lang="de"> 
-<head> 
-<meta charset="utf-8"> 
-<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-<title>💈 C&D Barbershop – Black & Gold Edition</title> 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet"> 
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💈 C&D Barbershop – Black & Gold Edition</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-<style> 
-/* Grundfarben & Typografie */
+<style>
+/* -------------------------------------- */
+/* 🛠️ VARIABLEN & GRUNDSTILE */
+/* -------------------------------------- */
 :root {
-  --brand:#c0392b;
-  --brand-2:#ff6b61;
-  --bg:#0b0f14; /* DUNKEL: Hintergrundfarbe */
-  --card:#0f1720;
-  --surface:#0b1116;
-  --text:#e6eef6; /* HELL: Textfarbe */
-  --muted:#9aa6b2;
-  --glass:rgba(255,255,255,0.03);
-  --max-width:1200px;
-  --radius:10px;
+    /* BLACK & GOLD PALETTE */
+    --gold: #FFD700;
+    --gold-light: #fdd835;
+    --gold-shadow: rgba(253, 216, 53, 0.4);
+    --bg-dark: #0b0f14; /* DUNKEL: Hintergrundfarbe */
+    --card-dark: #0f1720; /* Dunkler für Karten/Container */
+    --text-light: #e6eef6; /* HELL: Textfarbe */
+    --muted-text: #9aa6b2; /* Abgedunkelter Text */
 
-  /* GOLD-FARBDEFINITIONEN FÜR GÄSTEBUCH */
-  --gold: #FFD700;
-  --gold-light: #fdd835;
-  --gold-shadow: rgba(253, 216, 53, 0.4);
+    /* Barber Pole Farben (wie im Original-CSS) */
+    --pole-red: #c0392b;
+    --pole-blue: #2980b9;
+    --pole-white: #ecf0f1;
 
-  /* Barber Pole Farben */
-  --pole-red: #c0392b;
-  --pole-blue: #2980b9;
-  --pole-white: #ecf0f1;
-
-  font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    --max-width: 1200px;
+    font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
 }
 *{box-sizing:border-box}
 html,body{height:100%}
 body {
-  margin:0;
-  background:linear-gradient(180deg,var(--bg),rgba(0,0,0,0.03)); 
-  color:var(--text); 
-  line-height:1.5;
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
+    margin:0;
+    background-color: var(--bg-dark); /* Fester Hintergrund */
+    color:var(--text-light);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
 }
 .container{max-width:var(--max-width);margin:0 auto;padding:0 16px}
+/* ... (Deine bestehenden allgemeinen Styles) ... */
 
-/* Allgemeine Styles (aus deinem Original-CSS) */
-h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-light); text-shadow: 0 0 15px rgba(253, 216, 53, 0.4);} 
-.header-banner{width: 100%; height: 300px; display: flex; justify-content: center; align-items: center; background: var(--bg); overflow: hidden; border-bottom: 2px solid var(--gold-light);}
-.header-banner img{max-width: 100%; max-height: 100%; object-fit: contain; filter: brightness(1.2) contrast(1.1);} 
-.welcome-section{padding: 30px 20px; background: rgba(255, 255, 255, 0.05); border-radius: 15px; max-width: 900px; margin: 40px auto; text-align: center; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);} 
-.welcome-section h1{font-size: 2em; margin-bottom: 10px; color: var(--gold-light);} 
-.welcome-section p{color: var(--muted); line-height: 1.6;} 
-.image-price-section{text-align: center; padding: 20px 0; margin-bottom: 50px; background: rgba(255, 255, 255, 0.03); border-radius: 15px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);} 
-.image-price-section img{max-width: 500px; width: 90%; border-radius: 10px; box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);} 
+h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-light); text-shadow: 0 0 10px var(--gold-shadow);}
+#successMsg { display: none; margin-top: 20px; color: var(--gold); font-weight: bold; }
 
 /* -------------------------------------- */
-/* NEUE GÄSTEBUCH-STYLES START */
+/* ✂️ GÄSTEBUCH-SPEZIFISCHE STYLES */
 /* -------------------------------------- */
 
-/* Header / Logo */
-.guestbook-header {
-    text-align: center;
-    margin-bottom: 30px;
-    position: relative;
-    padding-top: 30px;
-}
-.guestbook-header .logo-main {
-    font-size: 36px;
-    font-weight: bold;
-    letter-spacing: 5px;
-    color: var(--gold); 
-    margin-bottom: 5px;
-}
-.guestbook-header .logo-sub {
-    font-size: 16px;
-    letter-spacing: 2px;
-    color: var(--text);
-    margin-bottom: 20px;
-}
-.guestbook-header .logo-line {
-    width: 200px;
-    height: 1px;
-    background-color: var(--gold-light);
-    margin: 0 auto;
-}
-
-/* Gästebuch Sektion */
 .guestbook-section-custom {
-    padding: 0; 
-    margin: 40px auto; 
+    padding: 0;
+    margin: 40px auto;
     background: transparent;
-    max-width: 1200px; 
+    max-width: 1200px;
     position: relative;
-    box-sizing: border-box;
-    box-shadow: none; 
+    box-shadow: none;
+    overflow: hidden; /* Wichtig für die Poles/Icons */
 }
+
 /* Hintergrundmuster (wie im Bild) */
 .guestbook-section-custom::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: 
-        radial-gradient(circle at 15% 50%, rgba(255, 215, 0, 0.05) 0%, transparent 20%),
-        radial-gradient(circle at 85% 50%, rgba(255, 215, 0, 0.05) 0%, transparent 20%),
+    top: 0; left: 0; right: 0; bottom: 0;
+    background:
+        /* Zwei goldene Radials (oben links/rechts, wie Lichtflecken) */
+        radial-gradient(circle at 15% 15%, rgba(255, 215, 0, 0.05) 0%, transparent 20%),
+        radial-gradient(circle at 85% 15%, rgba(255, 215, 0, 0.05) 0%, transparent 20%),
+        /* Feines Gittermuster */
         linear-gradient(to right, rgba(255, 215, 0, 0.02) 1px, transparent 1px) 0 0,
         linear-gradient(to bottom, rgba(255, 215, 0, 0.02) 1px, transparent 1px) 0 0;
     background-size: 20px 20px, 20px 20px, 50px 50px, 50px 50px;
@@ -114,155 +76,24 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
 }
 
 
-/* Hauptbereich des Gästebuchs (Formular + Figuren) */
+/* --- Formular Wrapper (Mitte) --- */
 .guestbook-main-content {
     display: flex;
     justify-content: center;
-    align-items: center; 
+    align-items: center;
     position: relative;
     z-index: 10;
-    padding-top: 50px;
+    padding: 50px 0;
 }
 
-/* CSS-Generierter Männerkopf (Strichzeichnung) */
-.barber-head-drawing {
-    position: absolute;
-    width: 250px; 
-    height: 250px;
-    z-index: 5;
-    top: 50%;
-    transform: translateY(-50%);
-    opacity: 0.9;
-    /* Optional: leichter goldener Schimmer */
-    filter: drop-shadow(0 0 5px var(--gold-shadow));
-}
-/* Linker Kopf */
-.barber-head-drawing.left {
-    left: 10px; /* Anpassen */
-    /* Hier würden die komplexen CSS-Zeichnungen oder ein Inline-SVG für den linken Kopf eingefügt */
-}
-/* Rechter Kopf */
-.barber-head-drawing.right {
-    right: 10px; /* Anpassen */
-    /* Hier würden die komplexen CSS-Zeichnungen oder ein Inline-SVG für den rechten Kopf eingefügt */
-}
-
-/* Die Köpfe mit CSS zu zeichnen ist extrem aufwändig. 
-   Ich werde hier ein Platzhalter-SVG einfügen, das dem Stil nahekommt, 
-   aber es ist keine pixelgenaue Nachbildung deiner komplexen Bild-Illustration.
-   Dies ist eine vereinfachte Darstellung eines Linien-Porträts.
-*/
-.barber-head-drawing svg {
-    width: 100%;
-    height: 100%;
-}
-/* Beispiel SVG für einen Linienkopf (vereinfacht) */
-/* Dies müsste stark erweitert werden, um deinem Bild zu entsprechen */
-.barber-head-drawing.left::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23FFD700" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>') no-repeat center center / contain;
-    filter: drop-shadow(0 0 5px var(--gold-shadow));
-    opacity: 0.8;
-}
-.barber-head-drawing.right::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23FFD700" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>') no-repeat center center / contain;
-    filter: drop-shadow(0 0 5px var(--gold-shadow));
-    opacity: 0.8;
-}
-
-/* CSS-Generierte Schere (Strichzeichnung) */
-.scissors-drawing, .comb-drawing {
-    position: absolute;
-    z-index: 5;
-    opacity: 0.9;
-    filter: drop-shadow(0 0 5px var(--gold-shadow));
-    color: var(--gold-light); /* Fallback für Icons, falls kein SVG */
-}
-.scissors-drawing {
-    left: 80px; /* Position anpassen */
-    top: 40%;
-    transform: translateY(-50%) rotate(30deg);
-    font-size: 80px; /* Wenn Font Awesome Icon verwendet wird */
-}
-.comb-drawing {
-    right: 80px; /* Position anpassen */
-    top: 40%;
-    transform: translateY(-50%) scaleX(-1) rotate(-30deg);
-    font-size: 80px; /* Wenn Font Awesome Icon verwendet wird */
-}
-
-/* Barber Pole (CSS-Generiert) */
-.barber-pole {
-    position: absolute;
-    width: 80px; /* Breite der Pole */
-    height: 200px; /* Höhe der Pole */
-    background: linear-gradient(
-        to bottom,
-        #eee 0%, #eee 10%, 
-        #c0392b 10%, #c0392b 30%, 
-        #2980b9 30%, #2980b9 50%, 
-        #eee 50%, #eee 70%, 
-        #c0392b 70%, #c0392b 90%, 
-        #2980b9 90%, #2980b9 100%
-    );
-    border-radius: 5px;
-    overflow: hidden;
-    box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
-    z-index: 6; /* Über den Köpfen */
-    top: 0px; /* Oben im guestbook-section-custom */
-    animation: rotatePole 3s linear infinite; /* Animation */
-}
-
-/* Animation für rotierende Streifen */
-@keyframes rotatePole {
-    0% { background-position: 0 0; }
-    100% { background-position: 0 100px; /* Bewegt die Streifen nach unten */ }
-}
-
-.barber-pole::before, .barber-pole::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: 15px; /* Kappenhöhe */
-    background: var(--gold);
-    box-shadow: 0 0 10px var(--gold-shadow);
-}
-.barber-pole::before {
-    top: 0;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-}
-.barber-pole::after {
-    bottom: 0;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-}
-
-.barber-pole.left {
-    left: 50%;
-    margin-left: -400px; /* Anpassen um es links zu platzieren */
-}
-.barber-pole.right {
-    left: 50%;
-    margin-left: 320px; /* Anpassen um es rechts zu platzieren */
-}
-
-
-/* Gästebuch Formular Wrapper */
 .guestbook-form-wrapper {
-    background: #0d0d0d; 
-    border: 2px solid var(--gold); 
+    background: #0d0d0d;
+    border: 3px solid var(--gold);
     border-radius: 15px;
     padding: 30px;
     width: 100%;
-    max-width: 600px; 
-    box-shadow: 0 0 50px var(--gold-shadow);
+    max-width: 480px; /* Etwas schmaler für den Fokus */
+    box-shadow: 0 0 40px var(--gold-shadow);
     text-align: center;
     position: relative;
     z-index: 10;
@@ -272,61 +103,33 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
     font-size: 30px;
     color: var(--gold);
     margin-bottom: 15px;
+    text-shadow: 0 0 10px var(--gold-shadow);
 }
 
 .guestbook-form-wrapper h3 {
     font-size: 28px;
     margin: 0 0 8px;
-    color: var(--text);
+    color: var(--gold-light);
     letter-spacing: 1px;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
 }
 
-.guestbook-form-wrapper .slogan {
-    font-size: 14px;
-    color: var(--muted);
-    margin-bottom: 30px;
-}
-
-/* Formular Felder */
+/* --- Formular Felder und Button --- */
 .guestbook-form-wrapper input[type="text"],
 .guestbook-form-wrapper textarea {
-    width: 100%; 
+    width: 100%;
     padding: 12px;
     margin-bottom: 15px;
-    background: #222; 
+    background: #222;
     border: 1px solid #444;
     color: #fff;
     border-radius: 8px;
-    box-sizing: border-box;
-}
-
-.guestbook-form-wrapper textarea {
-    resize: vertical;
-    min-height: 100px;
-}
-
-/* Sterne-Bewertung */
-.star-rating {
-    font-size: 30px;
-    margin: 20px 0 30px;
-    color: #888; 
-    cursor: pointer;
-    display: inline-block; 
-}
-
-.star-rating span {
-    transition: color 0.2s;
-    user-select: none;
-    padding: 0 2px;
-}
-
-.star-rating span i.fas {
-    color: var(--gold-light); 
 }
 
 /* Submit Button */
 .guestbook-form-wrapper .submit-btn {
-    background: linear-gradient(to right, #FFD700, #E6D090); 
+    /* Exakter Gold-Gradient für den Button */
+    background: linear-gradient(to bottom, var(--gold-light), var(--gold));
     color: #000;
     border: none;
     padding: 12px 30px;
@@ -335,189 +138,227 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
     border-radius: 8px;
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
-    width: 100%; 
-    max-width: 250px; 
+    box-shadow: 0 4px 15px var(--gold-shadow);
+    width: 100%;
+    max-width: 280px;
     margin-top: 10px;
+    letter-spacing: 1px;
 }
-
 .guestbook-form-wrapper .submit-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.6);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px var(--gold-shadow);
 }
 
-/* Nachrichten von Gästen */
+
+/* --- Star Rating Style --- */
+.star-rating {
+    font-size: 30px;
+    margin: 20px 0 30px;
+    color: #888;
+    cursor: pointer;
+    display: inline-block;
+}
+.star-rating span i {
+    color: var(--muted-text); /* Grundfarbe (Grau) */
+    transition: color 0.2s;
+    padding: 0 2px;
+}
+.star-rating span i.fas {
+    color: var(--gold-light); /* Ausgewählte/Hover-Farbe (Gold) */
+    text-shadow: 0 0 5px var(--gold-shadow);
+}
+
+
+/* -------------------------------------- */
+/* 💈 DEKORATION (POLES, SCHERE, KÖPFE) */
+/* -------------------------------------- */
+
+/* Positionierung der dekorativen Icons/SVGs */
+.barber-pole, .scissors-drawing, .comb-drawing, .barber-head-drawing {
+    position: absolute;
+    z-index: 5;
+    opacity: 0.9;
+    /* Gold-Schatten für alle dekorativen Elemente */
+    filter: drop-shadow(0 0 5px var(--gold-shadow));
+}
+
+/* Schere und Kamm Icons (mit Font Awesome) */
+.scissors-drawing {
+    left: 100px;
+    top: 50%;
+    transform: translateY(-50%) rotate(30deg);
+    font-size: 100px;
+    color: var(--gold);
+}
+.comb-drawing {
+    right: 100px;
+    top: 50%;
+    transform: translateY(-50%) scaleX(-1) rotate(-30deg);
+    font-size: 100px;
+    color: var(--gold);
+}
+
+/* Barber Pole (CSS-Generiert und Animiert) */
+.barber-pole {
+    width: 80px;
+    height: 250px;
+    background: repeating-linear-gradient(
+        15deg, /* Leichter Winkel für die Streifen */
+        var(--pole-white) 0%, var(--pole-white) 10%,
+        var(--pole-red) 10%, var(--pole-red) 30%,
+        var(--pole-blue) 30%, var(--pole-blue) 50%
+    );
+    background-size: 100% 100px; /* Wichtig für die Animation */
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 0 15px var(--gold-shadow);
+    animation: rotatePole 2s linear infinite;
+}
+
+@keyframes rotatePole {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 100px; /* Streifen bewegen sich nach unten */ }
+}
+
+.barber-pole::before, .barber-pole::after {
+    content: '';
+    position: absolute;
+    left: 0; width: 100%; height: 20px;
+    background: var(--gold);
+    box-shadow: 0 0 10px var(--gold-shadow);
+}
+.barber-pole::before { top: 0; border-radius: 5px 5px 0 0; }
+.barber-pole::after { bottom: 0; border-radius: 0 0 5px 5px; }
+
+.barber-pole.left {
+    left: 50%;
+    margin-left: -500px; /* Position links des Formulars */
+    top: 50px;
+}
+.barber-pole.right {
+    left: 50%;
+    margin-left: 420px; /* Position rechts des Formulars */
+    top: 50px;
+}
+
+/* Köpfe: Hier müsste ein SVG eingefügt werden, da CSS-Zeichnungen zu komplex sind */
+.barber-head-drawing {
+    width: 250px;
+    height: 250px;
+    opacity: 0.2; /* Sehr dezent halten */
+    background: var(--gold); /* Platzhalterfarbe */
+    -webkit-mask: url('https://raw.githubusercontent.com/Artonstyle/Barbershop/main/images/barber-head-placeholder.svg') no-repeat center / contain;
+    mask: url('https://raw.githubusercontent.com/Artonstyle/Barbershop/main/images/barber-head-placeholder.svg') no-repeat center / contain;
+}
+.barber-head-drawing.left { left: 0px; top: 100px; transform: scaleX(-1); }
+.barber-head-drawing.right { right: 0px; top: 100px; }
+
+
+/* --- Nachrichten von Gästen --- */
 .messages-overview {
     text-align: center;
-    margin-top: 100px; 
+    margin-top: 100px;
     position: relative;
     z-index: 10;
 }
-
 .messages-overview h3 {
     font-size: 24px;
     margin-bottom: 40px;
     color: var(--gold-light);
     letter-spacing: 1px;
+    text-shadow: 0 0 5px var(--gold-shadow);
 }
-
 .messages-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 20px;
     padding: 0 50px;
 }
-
 .message-card {
-    background: var(--card); 
-    border: 1px solid rgba(253, 216, 53, 0.2); 
+    background: var(--card-dark);
+    border: 1px solid rgba(253, 216, 53, 0.2);
     border-radius: 10px;
     padding: 20px;
     text-align: left;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-}
-
-.message-card .card-header {
-    font-weight: bold;
-    color: var(--gold-light);
-    margin-bottom: 8px;
-}
-
-.message-card .card-info {
-    font-size: 0.9em;
-    color: var(--muted);
-    margin-bottom: 10px;
-}
-
-.message-card .card-stars i {
-    color: var(--gold-light);
-    font-size: 16px;
-    margin-right: 2px;
-}
-
-.message-card p {
-    font-size: 14px;
-    color: var(--text);
-    line-height: 1.4;
-    margin-top: 10px;
-}
-
-/* -------------------------------------- */
-/* KONTAKT & FOOTER STYLES */
-/* -------------------------------------- */
-
-.opening-hours{text-align:center; padding: 40px 0;} 
-.opening-hours ul{list-style:none;padding:0;display:inline-block;text-align:left;} 
-.opening-hours li{padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.1);} 
-
-/* KORRIGIERTE GRÖSSE FÜR SOCIAL MEDIA ICONS */
-.social-links {
-    margin: 20px 0;
-    text-align: center;
-}
-.social-links a img {
-    width: 32px; 
-    height: 32px; 
-    margin: 0 10px;
-    vertical-align: middle;
-    border-radius: 50%;
-    box-shadow: 0 0 10px rgba(253, 216, 53, 0.4); 
     transition: transform 0.2s;
 }
-.social-links a img:hover {
-    transform: scale(1.1);
+.message-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 20px rgba(255, 215, 0, 0.2);
 }
-
-footer{text-align:center;padding:15px 0;background:#050505;color:#888;margin-top:50px;border-top:1px solid rgba(255,255,255,0.1);} 
+.message-card .card-header { color: var(--gold-light); }
+.message-card .card-info { font-size: 0.9em; color: var(--muted-text); }
+.message-card .card-stars i { color: var(--gold-light); font-size: 16px; margin-right: 2px; }
 
 /* -------------------------------------- */
-/* RESPONSIVE ANPASSUNGEN */
+/* 📱 RESPONSIVE ANPASSUNGEN */
 /* -------------------------------------- */
 
-@media (max-width: 1100px) {
-    .barber-pole.left { margin-left: -350px; }
-    .barber-pole.right { margin-left: 270px; }
-
-    .barber-head-drawing.left { left: 0px; }
-    .barber-head-drawing.right { right: 0px; }
-
-    .scissors-drawing { left: 20px; }
-    .comb-drawing { right: 20px; }
+@media (max-width: 1200px) {
+    .barber-pole.left { margin-left: -400px; }
+    .barber-pole.right { margin-left: 320px; }
 }
 
-@media (max-width: 900px) {
-    .barber-head-drawing { width: 200px; height: 200px; } 
-    .scissors-drawing, .comb-drawing { font-size: 40px; }
-    .scissors-drawing { left: 0; }
-    .comb-drawing { right: 0; }
+@media(max-width: 900px){
+    /* Dekorationselemente für Tablets/kleinere Desktops */
+    .barber-pole, .scissors-drawing, .comb-drawing, .barber-head-drawing { display: none; }
     .messages-grid { padding: 0 20px; }
-
-    .barber-pole { width: 60px; height: 160px; }
-    .barber-pole.left { margin-left: -280px; top: 20px; }
-    .barber-pole.right { margin-left: 220px; top: 20px; }
 }
 
 @media(max-width: 768px){
-    .header-banner { height: 200px; }
-    .image-price-section img { max-width: 100%; }
-
-    /* Gästebuch: ALLE ILLUSTRATIVEN ELEMENTE auf Handys ausblenden */
-    .barber-head-drawing, .scissors-drawing, .comb-drawing, .barber-pole { display: none; } 
+    /* Gästebuch: ALLE ILLUSTRATIVEN ELEMENTE ausblenden */
     .guestbook-section-custom { min-height: auto; max-width: 100%; }
     .guestbook-form-wrapper { max-width: 100%; margin: 0 10px; padding: 20px; }
     .messages-overview { margin-top: 50px; }
     .messages-grid { grid-template-columns: 1fr; /* Eine Spalte auf Handys */ }
-    
-    .container {padding: 0 10px;}
 }
-</style> 
-</head> 
-<body> 
-<div class="header-banner"> 
-  <img 
-src="https://raw.githubusercontent.com/Artonstyle/Barbershop/main/images/Barbershop-logo7.png"
- alt="C&D Barbershop Banner"> 
-</div> 
-<div class="welcome-section"> 
-  <h1>Willkommen bei C&D Barbershop</h1> 
-  <p>Schön, dass Sie hier sind! C&D Barbershop steht für 
-Qualität, Stil und Persönlichkeit. In einer modernen Atmosphäre bieten 
-wir individuelle Beratung, trendige Schnitte und hochwertige Pflege – 
-für Ihr perfektes Haar- und Bartgefühl.</p> 
-</div> 
-<div class="container image-price-section"> 
-  <h2>💇‍♂️ Unsere Preisliste</h2> 
-  <img src="images/Barbershop-preisliste.png" alt="Aktuelle Preisliste"> 
-</div> 
+</style>
+</head>
+<body>
+<div class="header-banner">
+  <img
+    src="https://raw.githubusercontent.com/Artonstyle/Barbershop/main/images/Barbershop-logo7.png"
+    alt="C&D Barbershop Banner">
+</div>
+<div class="welcome-section">
+  <h1>Willkommen bei C&D Barbershop</h1>
+  <p>Schön, dass Sie hier sind! C&D Barbershop steht für
+Qualität, Stil und Persönlichkeit. In einer modernen Atmosphäre bieten
+wir individuelle Beratung, trendige Schnitte und hochwertige Pflege –
+für Ihr perfektes Haar- und Bartgefühl.</p>
+</div>
+<div class="container image-price-section">
+  <h2>💇‍♂️ Unsere Preisliste</h2>
+  <img src="images/Barbershop-preisliste.png" alt="Aktuelle Preisliste">
+</div>
 
 <div class="container guestbook-section-custom">
-    
+
     <div class="guestbook-header">
         <div class="logo-main">BARBERSHOP DELUXE</div>
         <div class="logo-sub">BLACK - GOLD EDITION</div>
         <div class="logo-line"></div>
     </div>
 
-    
+
     <div class="guestbook-main-content">
         <div class="barber-pole left"></div>
         <div class="barber-pole right"></div>
-
+        <i class="fas fa-cut scissors-drawing"></i>
+        <i class="fas fa-solid fa-tooth comb-drawing"></i>
         <div class="barber-head-drawing left"></div>
         <div class="barber-head-drawing right"></div>
 
-        <i class="fas fa-cut scissors-drawing"></i>
-        <i class="fas fa-solid fa-tooth comb-drawing"></i> 
-        
         <div class="guestbook-form-wrapper">
             <i class="fas fa-crown crown-icon"></i>
             <h3>GÄSTEBUCH</h3>
             <p class="slogan">Teile deine Wünsche mit</p>
-            
-            <form id="guestbookForm"> 
-              <input type="text" id="guestName" placeholder="DEIN NAME" required> 
-              <textarea id="guestText" placeholder="DEINE NACHRICHT" required></textarea> 
-              
+
+            <form id="guestbookForm">
+              <input type="text" id="guestName" placeholder="DEIN NAME" required>
+              <textarea id="guestText" placeholder="DEINE NACHRICHT" required></textarea>
+
               <div class="star-rating">
                   <span data-rating="1"><i class="far fa-star"></i></span>
                   <span data-rating="2"><i class="far fa-star"></i></span>
@@ -526,100 +367,59 @@ für Ihr perfektes Haar- und Bartgefühl.</p>
                   <span data-rating="5"><i class="far fa-star"></i></span>
               </div>
 
-              <button type="submit" class="submit-btn">EINTRAG ABSCHICKEN</button> 
-            </form> 
-            <p id="successMsg">✅ Vielen Dank für Ihren Eintrag!</p> 
+              <button type="submit" class="submit-btn">EINTRAG ABSCHICKEN</button>
+            </form>
+            <p id="successMsg">✅ Vielen Dank für Ihren Eintrag!</p>
         </div>
     </div>
 
-    
     <div class="messages-overview">
         <h3>Nachrichten Von Unseren Gästen</h3>
         <div class="messages-grid">
-            
-            <div class="message-card">
-                <div class="card-header">Norer Name</div>
-                <div class="card-info">20.221 / 182-08</div>
-                <div class="card-stars">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-                </div>
-                <p>Super Service, immer freundlich und der Haarschnitt ist jedes Mal perfekt! Ich komme gerne wieder.</p>
-            </div>
-             <div class="message-card">
-                <div class="card-header">Norer Name</div>
-                <div class="card-info">20.221 / 182-02</div>
-                <div class="card-stars">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                </div>
-                <p>Bester Barbershop in der Stadt! Tolle Atmosphäre und top Beratung. Absolut empfehlenswert.</p>
-            </div>
-            <div class="message-card">
-                <div class="card-header">Norer Name</div>
-                <div class="card-info">20.221 / 182-04</div>
-                <div class="card-stars">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-                </div>
-                <p>Schnell, sauber und der Bart ist in Form gebracht. Genau das, was ich erwartet habe. Danke!</p>
-            </div>
             </div>
     </div>
-    <div id="guestEntries"></div> 
-</div> 
-<div class="container opening-hours"> 
-  <h2>📍 Kontakt</h2> 
-  <p>Bachgasse 68, 69502 Hemsbach</p> 
-  <p>📞 0176 70794224</p> 
-  <div class="social-links"> 
+</div>
+
+<div class="container opening-hours">
+  <h2>📍 Kontakt</h2>
+  <p>Bachgasse 68, 69502 Hemsbach</p>
+  <p>📞 0176 70794224</p>
+  <div class="social-links">
     <a href="https://www.instagram.com/cd_barbershop_/" target="_blank">
         <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
-    </a> 
-  </div> 
-  <h3>Öffnungszeiten</h3> 
-  <ul> 
-    <li><strong>Montag – Freitag:</strong><br>09:00 – 19:00 Uhr</li> 
-    <li><strong>Samstag:</strong><br>09:00 – 18:00 Uhr</li> 
-    <li><strong>Sonntag:</strong><br>Geschlossen ⛔</li> 
-  </ul> 
-  <p><a 
+    </a>
+  </div>
+  <h3>Öffnungszeiten</h3>
+  <ul>
+    <li><strong>Montag – Freitag:</strong><br>09:00 – 19:00 Uhr</li>
+    <li><strong>Samstag:</strong><br>09:00 – 18:00 Uhr</li>
+    <li><strong>Sonntag:</strong><br>Geschlossen ⛔</li>
+  </ul>
+  <p><a
 href="https://www.google.com/maps/dir/?api=1&destination=Bachgasse+68,+69502+Hemsbach"
- target="_blank" style="color:#fdd835;">Route auf Google Maps 
-öffnen</a></p> 
-</div> 
-<footer> 
-  © 2025 C&D Barbershop | Black Edition 
-</footer> 
-<script> 
-// ✅ AKTUELLE GOOGLE-SCRIPT-URL 
-const sheetURL = 
+  target="_blank" style="color:var(--gold-light);">Route auf Google Maps
+öffnen</a></p>
+</div>
+<footer>
+  © 2025 C&D Barbershop | Black Edition
+</footer>
+<script>
+// ✅ AKTUELLE GOOGLE-SCRIPT-URL
+const sheetURL =
 "https://script.google.com/macros/s/AKfycbx-MmXEQuTij8xhVIR5RUUN91EOH5bTM4QkjeVx5OQhg6cPFZmUZkT79jCWi-RITY-v/exec";
- 
-const form=document.getElementById("guestbookForm"); 
-const successMsg=document.getElementById("successMsg"); 
+
+const form = document.getElementById("guestbookForm");
+const successMsg = document.getElementById("successMsg");
+let selectedRating = 0; // Globaler Wert für das ausgewählte Rating
 
 // --- Star Rating Funktionalität ---
 document.addEventListener('DOMContentLoaded', () => {
     const stars = document.querySelectorAll('.star-rating span');
-    let selectedRating = 0;
-
-    stars.forEach(star => {
-        star.addEventListener('click', () => {
-            selectedRating = parseInt(star.dataset.rating);
-            updateStars(selectedRating);
-        });
-
-        star.addEventListener('mouseover', () => {
-            const hoverRating = parseInt(star.dataset.rating);
-            updateStars(hoverRating);
-        });
-
-        star.addEventListener('mouseout', () => {
-            updateStars(selectedRating);
-        });
-    });
 
     function updateStars(rating) {
         stars.forEach(s => {
             const icon = s.querySelector('i');
+            // 'fas' für gefüllt (Gold), 'far' für leer (Grau)
             if (parseInt(s.dataset.rating) <= rating) {
                 icon.classList.remove('far');
                 icon.classList.add('fas');
@@ -629,36 +429,57 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    stars.forEach(star => {
+        // Bei Klick: Setze das permanente Rating
+        star.addEventListener('click', () => {
+            selectedRating = parseInt(star.dataset.rating);
+            updateStars(selectedRating);
+        });
+
+        // Bei Hover: Zeige das Hover-Rating
+        star.addEventListener('mouseover', () => {
+            const hoverRating = parseInt(star.dataset.rating);
+            updateStars(hoverRating);
+        });
+
+        // Bei Mouse-Out: Kehre zum permanenten Rating zurück
+        star.addEventListener('mouseout', () => {
+            updateStars(selectedRating);
+        });
+    });
 });
 // --- Ende Star Rating Funktionalität ---
 
 
-// --- Einträge laden (GET) --- 
-async function loadEntries(){ 
-  try{ 
-    const res=await fetch(sheetURL); 
-    const entries=await res.json(); 
-    
+// --- Einträge laden (GET) ---
+async function loadEntries(){
+  try{
+    const res=await fetch(sheetURL);
+    const entries=await res.json();
+
     const dynamicMessagesGrid = document.querySelector('.messages-grid');
     if (dynamicMessagesGrid) {
-        // Leert sowohl die statischen als auch die vorherigen dynamischen Einträge
-        dynamicMessagesGrid.innerHTML = '';
-        
-        if(!entries || !entries.length){ 
-            dynamicMessagesGrid.innerHTML='<p style="text-align:center;color:#888; grid-column: 1 / -1;">Noch keine Einträge.</p>'; 
-            return; 
-        } 
-        
-        dynamicMessagesGrid.innerHTML = entries.reverse().map(e=>{ 
+        dynamicMessagesGrid.innerHTML = ''; // Vorherige Einträge löschen
+
+        if(!entries || !entries.length){
+            dynamicMessagesGrid.innerHTML='<p style="text-align:center;color:#888; grid-column: 1 / -1;">Noch keine Einträge vorhanden.</p>';
+            return;
+        }
+
+        // Einträge umkehren (neueste zuerst) und rendern
+        dynamicMessagesGrid.innerHTML = entries.reverse().map(e=>{
         const entryRating = e.rating ? parseInt(e.rating) : 0;
         let starHtml = '';
         for (let i = 1; i <= 5; i++) {
+            // Sterne füllen basierend auf der Bewertung
             starHtml += `<i class="${i <= entryRating ? 'fas' : 'far'} fa-star"></i>`;
         }
 
-        const d=new Date(e.date); 
+        const d=new Date(e.date);
+        // Datum formatieren
         const dateString=d.toLocaleString('de-DE',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'});
-    
+
         return `
             <div class="message-card">
                 <div class="card-header">${e.name||'Anonym'}</div>
@@ -666,53 +487,63 @@ async function loadEntries(){
                 <div class="card-stars">${starHtml}</div>
                 <p>${e.text}</p>
             </div>
-        `; 
+        `;
       }).join('');
     }
 
-  }catch(err){ 
-    console.error(err); 
+  }catch(err){
+    console.error("Fehler beim Laden der Einträge:", err);
     const dynamicMessagesGrid = document.querySelector('.messages-grid');
     if (dynamicMessagesGrid) {
-        dynamicMessagesGrid.innerHTML='<p style="text-align:center;color:red; grid-column: 1 / -1;">Fehler beim Laden der Einträge.</p>'; 
+        dynamicMessagesGrid.innerHTML='<p style="text-align:center;color:red; grid-column: 1 / -1;">Fehler beim Laden der Einträge. Überprüfen Sie das Script-URL.</p>';
     }
-  } 
-} 
-// --- Formular absenden (POST) --- 
-form.addEventListener("submit",async e=>{ 
-  e.preventDefault(); 
-  const name=document.getElementById("guestName").value.trim(); 
-  const text=document.getElementById("guestText").value.trim(); 
-  
-  // Rating auslesen
-  const selectedRating = parseInt(document.querySelector('.star-rating span.fas')?.dataset.rating || '0');
-  
-  if(!name||!text||selectedRating === 0) { 
-      alert("Bitte füllen Sie alle Felder aus und geben Sie eine Bewertung ab!");
+  }
+}
+// --- Formular absenden (POST) ---
+form.addEventListener("submit",async e=>{
+  e.preventDefault();
+  const name=document.getElementById("guestName").value.trim();
+  const text=document.getElementById("guestText").value.trim();
+
+  if(!name||!text||selectedRating === 0) {
+      alert("Bitte füllen Sie alle Felder aus und geben Sie eine Sterne-Bewertung ab!");
       return;
   }
-  
-  try{ 
-    const data=new FormData(); 
-    data.append("name",name); 
-    data.append("text",text); 
-    data.append("rating", selectedRating); 
-    
-    await fetch(sheetURL,{method:"POST",body:data}); 
-    form.reset(); 
-    document.querySelectorAll('.star-rating span i').forEach(icon => { 
+
+  try{
+    const data=new FormData();
+    data.append("name",name);
+    data.append("text",text);
+    data.append("rating", selectedRating); // Füge die Bewertung hinzu
+
+    const submitBtn = document.querySelector('.submit-btn');
+    submitBtn.textContent = 'Wird gesendet...';
+    submitBtn.disabled = true;
+
+    await fetch(sheetURL,{method:"POST",body:data});
+
+    // Zurücksetzen nach erfolgreichem Senden
+    form.reset();
+    selectedRating = 0; // Rating zurücksetzen
+    document.querySelectorAll('.star-rating span i').forEach(icon => {
         icon.classList.remove('fas');
         icon.classList.add('far');
     });
-    successMsg.style.display="block"; 
-    setTimeout(()=>successMsg.style.display="none",3000); 
-    loadEntries(); 
-  }catch(err){ 
-    console.error(err); 
-    alert("Fehler beim Senden!");
-  } 
-}); 
-document.addEventListener("DOMContentLoaded",loadEntries); 
-</script> 
-</body> 
+
+    submitBtn.textContent = 'EINTRAG ABSCHICKEN';
+    submitBtn.disabled = false;
+
+    successMsg.style.display="block";
+    setTimeout(()=>successMsg.style.display="none",3000);
+    loadEntries(); // Neue Einträge laden
+  }catch(err){
+    console.error("Fehler beim Senden!", err);
+    alert("Fehler beim Senden des Eintrags. Ist das Google Script korrekt?");
+    document.querySelector('.submit-btn').textContent = 'EINTRAG ABSCHICKEN';
+    document.querySelector('.submit-btn').disabled = false;
+  }
+});
+document.addEventListener("DOMContentLoaded",loadEntries);
+</script>
+</body>
 </html>
