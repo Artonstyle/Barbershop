@@ -1,163 +1,238 @@
-<!DOCTYPE html> 
- <html lang="de"> 
- <head> 
- <meta charset="utf-8"> 
- <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
- <title>💈 C&D Barbershop – Black Edition</title> 
- <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet"> 
- <style> 
- body { 
-   font-family:'Poppins',sans-serif; 
-   background:#000; 
-   color:#fff; 
-   margin:0; 
-   padding:0; 
- } 
- .container{width:90%;max-width:1200px;margin:0 auto;padding:20px;} 
- h2{text-align:center;margin-bottom:30px;font-weight:700;text-shadow:0 0 15px rgba(255,255,255,0.8);} 
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💈 C&D Barbershop – Black Edition</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+/* Ihre Original-Stile */
+body {
+    font-family:'Poppins',sans-serif;
+    background:#000;
+    color:#fff;
+    margin:0;
+    padding:0;
+}
+.container{width:90%;max-width:1200px;margin:0 auto;padding:20px;}
+h2{text-align:center;margin-bottom:30px;font-weight:700;text-shadow:0 0 15px rgba(255,255,255,0.8);}
 .header-banner{width:100%;height:300px;display:flex;justify-content:center;align-items:center;background:#000;overflow:hidden;}
- 
- .header-banner img{max-width:100%;max-height:100%;object-fit:contain;filter:brightness(1.2) contrast(1.1);} 
- .welcome-section{padding:30px 
-20px;background:rgba(255,255,255,0.05);border-radius:15px;max-width:900px;margin:40px
- auto;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,0.7);} 
- .welcome-section h1{font-size:2em;margin-bottom:10px;} 
- .welcome-section p{color:#ddd;line-height:1.6;} 
- .image-price-section{text-align:center;padding:20px 
-0;margin-bottom:50px;background:rgba(255,255,255,0.03);border-radius:15px;box-shadow:0
- 10px 30px rgba(0,0,0,0.7);} 
- .image-price-section img{max-width:500px;width:90%;border-radius:10px;box-shadow:0 0 15px rgba(255,255,255,0.2);} 
- .guestbook-section{padding:40px 20px;margin:40px 
-auto;background:rgba(255,255,255,0.05);border-radius:15px;max-width:700px;box-shadow:0
- 10px 30px rgba(0,0,0,0.7);} 
- .guestbook-section input,.guestbook-section 
-textarea{width:100%;padding:10px;margin-bottom:15px;border:1px solid 
-rgba(255,255,255,0.2);border-radius:8px;background:rgba(0,0,0,0.5);color:#fff;}
- 
- .guestbook-section 
-button{width:100%;padding:12px;border:none;border-radius:8px;background:#fdd835;color:#000;font-weight:700;cursor:pointer;}
- 
- .guestbook-section button:hover{background:#ffeb3b;} 
- #successMsg{text-align:center;color:#0f0;display:none;margin-top:10px;} 
- #guestEntries div{background:rgba(255,255,255,0.05);border-left:4px 
-solid #fdd835;padding:10px 15px;border-radius:8px;margin-bottom:15px;} 
- .opening-hours{text-align:center;} 
- .opening-hours ul{list-style:none;padding:0;display:inline-block;text-align:left;} 
- .opening-hours li{padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.1);} 
- footer{text-align:center;padding:15px 
-0;background:#050505;color:#888;margin-top:50px;border-top:1px solid 
-rgba(255,255,255,0.1);} 
- .social-links a img{width:28px;height:28px;margin:0 8px;} 
- @media(max-width:768px){.header-banner{height:200px;}.image-price-section img{max-width:100%;}} 
- </style> 
- </head> 
- <body> 
- <div class="header-banner"> 
-   <img 
+
+.header-banner img{max-width:100%;max-height:100%;object-fit:contain;filter:brightness(1.2) contrast(1.1);}
+.welcome-section{padding:30px 20px;background:rgba(255,255,255,0.05);border-radius:15px;max-width:900px;margin:40px auto;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,0.7);}
+.welcome-section h1{font-size:2em;margin-bottom:10px;}
+.welcome-section p{color:#ddd;line-height:1.6;}
+.image-price-section{text-align:center;padding:20px 0;margin-bottom:50px;background:rgba(255,255,255,0.03);border-radius:15px;box-shadow:0 10px 30px rgba(0,0,0,0.7);}
+.image-price-section img{max-width:500px;width:90%;border-radius:10px;box-shadow:0 0 15px rgba(255,255,255,0.2);}
+.guestbook-section{padding:40px 20px;margin:40px auto;background:rgba(255,255,255,0.05);border-radius:15px;max-width:700px;box-shadow:0 10px 30px rgba(0,0,0,0.7);}
+.guestbook-section input,.guestbook-section textarea{width:100%;padding:10px;margin-bottom:15px;border:1px solid rgba(255,255,255,0.2);border-radius:8px;background:rgba(0,0,0,0.5);color:#fff;}
+
+.guestbook-section button{width:100%;padding:12px;border:none;border-radius:8px;background:#fdd835;color:#000;font-weight:700;cursor:pointer;}
+
+.guestbook-section button:hover{background:#ffeb3b;}
+#successMsg{text-align:center;color:#0f0;display:none;margin-top:10px;}
+#guestEntries div{background:rgba(255,255,255,0.05);border-left:4px solid #fdd835;padding:10px 15px;border-radius:8px;margin-bottom:15px;}
+.opening-hours{text-align:center;}
+.opening-hours ul{list-style:none;padding:0;display:inline-block;text-align:left;}
+.opening-hours li{padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.1);}
+footer{text-align:center;padding:15px 0;background:#050505;color:#888;margin-top:50px;border-top:1px solid rgba(255,255,255,0.1);}
+.social-links a img{width:28px;height:28px;margin:0 8px;}
+@media(max-width:768px){.header-banner{height:200px;}.image-price-section img{max-width:100%;}}
+
+/* NEUE STYLES FÜR STERNE-BEWERTUNG */
+.star-rating {
+    font-size: 28px; /* Etwas kleiner als vorher, passt besser */
+    margin: 10px 0 25px;
+    color: #666;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+.star-rating i { cursor: pointer; transition: transform 0.15s; }
+.star-rating i:hover { transform: scale(1.15); }
+.star-rating i.fa-solid { color: #fdd835; } /* Aktive Sterne */
+
+/* Style für Sterne in den angezeigten Einträgen */
+.entry-stars i { color: #fdd835; font-size: 1.1em; } 
+
+/* Entferne Label, da wir nun Platzhalter und Sterne nutzen */
+.guestbook-section label { display: none; }
+</style>
+</head>
+<body>
+<div class="header-banner">
+    <img
 src="https://raw.githubusercontent.com/Artonstyle/Barbershop/main/images/Barbershop-logo7.png"
- alt="C&D Barbershop Banner"> 
- </div> 
- <div class="welcome-section"> 
-   <h1>Willkommen bei C&D Barbershop</h1> 
-   <p>Schön, dass Sie hier sind! C&D Barbershop steht für 
-Qualität, Stil und Persönlichkeit. In einer modernen Atmosphäre bieten 
-wir individuelle Beratung, trendige Schnitte und hochwertige Pflege – 
-für Ihr perfektes Haar- und Bartgefühl.</p> 
- </div> 
- <div class="container image-price-section"> 
-   <h2>💇‍♂️ Unsere Preisliste</h2> 
-   <img src="images/Barbershop-preisliste.png" alt="Aktuelle Preisliste"> 
- </div> 
- <div class="container guestbook-section"> 
-   <h2>⭐ Ihr Feedback</h2> 
-   <p style="text-align:center;color:#aaa;">Wir freuen uns über Ihre Meinung!</p> 
-   <form id="guestbookForm"> 
-     <label for="guestName">Ihr Name:</label> 
-     <input type="text" id="guestName" required> 
-     <label for="guestText">Ihr Beitrag:</label> 
-     <textarea id="guestText" required></textarea> 
-     <button type="submit">Beitrag absenden</button> 
-   </form> 
-   <p id="successMsg">✅ Vielen Dank für Ihren Eintrag!</p> 
-   <div id="guestEntries"></div> 
- </div> 
- <div class="container opening-hours"> 
-   <h2>📍 Kontakt</h2> 
-   <p>Bachgasse 68, 69502 Hemsbach</p> 
-   <p>📞 0176 70794224</p> 
-   <div class="social-links"> 
-    <a href="https://www.instagram.com/cd_barbershop_/" target="_blank"><img 
+  alt="C&D Barbershop Banner">
+</div>
+<div class="welcome-section">
+    <h1>Willkommen bei C&D Barbershop</h1>
+    <p>Schön, dass Sie hier sind! C&D Barbershop steht für
+Qualität, Stil und Persönlichkeit. In einer modernen Atmosphäre bieten
+wir individuelle Beratung, trendige Schnitte und hochwertige Pflege –
+für Ihr perfektes Haar- und Bartgefühl.</p>
+</div>
+<div class="container image-price-section">
+    <h2>💇‍♂️ Unsere Preisliste</h2>
+    <img src="images/Barbershop-preisliste.png" alt="Aktuelle Preisliste">
+</div>
+<div class="container guestbook-section">
+    <h2>⭐ Ihr Feedback</h2>
+    <p style="text-align:center;color:#aaa;">Wir freuen uns über Ihre Meinung!</p>
+    <form id="guestbookForm">
+           <input type="text" id="guestName" placeholder="Ihr Name" required>
+           <textarea id="guestText" placeholder="Ihr Beitrag" required></textarea>
+      
+           <div class="star-rating" id="starRating">
+          <i class="fa-regular fa-star" data-value="1"></i>
+          <i class="fa-regular fa-star" data-value="2"></i>
+          <i class="fa-regular fa-star" data-value="3"></i>
+          <i class="fa-regular fa-star" data-value="4"></i>
+          <i class="fa-regular fa-star" data-value="5"></i>
+      </div>
+      
+      <button type="submit">Beitrag absenden</button>
+    </form>
+    <p id="successMsg">✅ Vielen Dank für Ihren Eintrag!</p>
+    <div id="guestEntries"></div>
+</div>
+<div class="container opening-hours">
+    <h2>📍 Kontakt</h2>
+    <p>Bachgasse 68, 69502 Hemsbach</p>
+    <p>📞 0176 70794224</p>
+    <div class="social-links">
+     <a href="https://www.instagram.com/cd_barbershop_/" target="_blank"><img
 src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"
- alt="Instagram"></a> 
-   </div> 
-   <h3>Öffnungszeiten</h3> 
-   <ul> 
-     <li><strong>Montag – Freitag:</strong><br>09:00 – 19:00 Uhr</li> 
-     <li><strong>Samstag:</strong><br>09:00 – 18:00 Uhr</li> 
-     <li><strong>Sonntag:</strong><br>Geschlossen ⛔</li> 
-   </ul> 
-   <p><a 
+  alt="Instagram"></a>
+    </div>
+    <h3>Öffnungszeiten</h3>
+    <ul>
+      <li><strong>Montag – Freitag:</strong><br>09:00 – 19:00 Uhr</li>
+      <li><strong>Samstag:</strong><br>09:00 – 18:00 Uhr</li>
+      <li><strong>Sonntag:</strong><br>Geschlossen ⛔</li>
+    </ul>
+    <p><a
 href="https://www.google.com/maps/dir/?api=1&destination=Bachgasse+68,+69502+Hemsbach"
- target="_blank" style="color:#fdd835;">Route auf Google Maps 
-öffnen</a></p> 
- </div> 
- <footer> 
-   © 2025 C&D Barbershop | Black Edition 
- </footer> 
- <script> 
- // ✅ AKTUELLE GOOGLE-SCRIPT-URL 
- const sheetURL = 
+  target="_blank" style="color:#fdd835;">Route auf Google Maps
+öffnen</a></p>
+</div>
+<footer>
+    © 2025 C&D Barbershop | Black Edition
+</footer>
+<script>
+// ✅ AKTUELLE GOOGLE-SCRIPT-URL
+const sheetURL =
 "https://script.google.com/macros/s/AKfycbzSBO9iha-NH0D4j3GfGjxsOdoko1AqwrEnM2ie-dy1zrfu2OtjNH4TvnZVIkWh0KDB/exec";
- 
- const form=document.getElementById("guestbookForm"); 
- const guestEntriesDiv=document.getElementById("guestEntries"); 
- const successMsg=document.getElementById("successMsg"); 
- // --- Einträge laden (GET) --- 
- async function loadEntries(){ 
-   try{ 
-     const res=await fetch(sheetURL); 
-     const entries=await res.json(); 
-     if(!entries||!entries.length){ 
-       guestEntriesDiv.innerHTML='<p style="text-align:center;color:#888;">Noch keine Einträge.</p>'; 
-       return; 
-     } 
-     guestEntriesDiv.innerHTML=entries.reverse().map(e=>{ 
-       const d=new Date(e.date); 
-       const 
+
+const form = document.getElementById("guestbookForm");
+const guestEntriesDiv = document.getElementById("guestEntries");
+const successMsg = document.getElementById("successMsg");
+const submitBtn = form.querySelector('button[type="submit"]'); // NEU: Button-Referenz
+
+// --- NEU: Star Rating Funktionalität ---
+let selectedRating = 0;
+document.querySelectorAll("#starRating i").forEach(star => {
+    star.addEventListener("click", () => {
+        selectedRating = parseInt(star.getAttribute("data-value"));
+        updateStars(selectedRating);
+    });
+
+    star.addEventListener("mouseover", () => {
+        updateStars(parseInt(star.getAttribute("data-value")));
+    });
+
+    star.addEventListener("mouseout", () => {
+        updateStars(selectedRating);
+    });
+});
+
+function updateStars(rating) {
+    document.querySelectorAll("#starRating i").forEach(s => {
+        const value = parseInt(s.getAttribute("data-value"));
+        const active = value <= rating;
+        s.classList.toggle("fa-solid", active);
+        s.classList.toggle("fa-regular", !active);
+    });
+}
+// --- Ende Star Rating Funktionalität ---
+
+// --- Einträge laden (GET) ---
+async function loadEntries(){
+    try{
+        const res=await fetch(sheetURL);
+        const entries=await res.json();
+        if(!entries||!entries.length){
+            guestEntriesDiv.innerHTML='<p style="text-align:center;color:#888;">Noch keine Einträge.</p>';
+            return;
+        }
+        guestEntriesDiv.innerHTML=entries.reverse().map(e=>{
+            const d=new Date(e.date);
+            const
 dateString=d.toLocaleString('de-DE',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'});
- 
-       return `<div> 
-         <strong>${e.name||'Anonym'}</strong> 
-         <span style="color:#888;font-size:0.9em;"> (${dateString})</span> 
-         <p style="color:#ccc;margin-top:5px;">${e.text}</p> 
-       </div>`; 
-     }).join(''); 
-   }catch(err){ 
-     console.error(err); 
-     guestEntriesDiv.innerHTML='<p style="text-align:center;color:red;">Fehler beim Laden der Einträge.</p>'; 
-   } 
- } 
- // --- Formular absenden (POST) --- 
- form.addEventListener("submit",async e=>{ 
-   e.preventDefault(); 
-   const name=document.getElementById("guestName").value.trim(); 
-   const text=document.getElementById("guestText").value.trim(); 
-   if(!name||!text)return; 
-   try{ 
-     const data=new FormData(); 
-     data.append("name",name); 
-     data.append("text",text); 
-     await fetch(sheetURL,{method:"POST",body:data}); 
-     form.reset(); 
-     successMsg.style.display="block"; 
-     setTimeout(()=>successMsg.style.display="none",3000); 
-     loadEntries(); 
-   }catch(err){ 
-     console.error(err); 
-     alert("Fehler beim Senden!"); 
-   } 
- }); 
- document.addEventListener("DOMContentLoaded",loadEntries); 
- </script> 
- </body> 
- </html>
+
+            // NEU: Sterne-Anzeige generieren
+            const entryRating = parseInt(e.rating || e.bewertung || 0);
+            let starHtml = '';
+            for (let i = 1; i <= 5; i++) {
+                const active = i <= entryRating;
+                starHtml += `<i class="${active ? 'fa-solid' : 'fa-regular'} fa-star"></i>`;
+            }
+
+            return `<div>
+                <strong>${e.name||'Anonym'}</strong>
+                <span style="color:#888;font-size:0.9em;"> (${dateString})</span>
+                <div class="entry-stars">${starHtml}</div>
+                <p style="color:#ccc;margin-top:5px;">${e.text}</p>
+            </div>`;
+        }).join('');
+    }catch(err){
+        console.error(err);
+        guestEntriesDiv.innerHTML='<p style="text-align:center;color:red;">Fehler beim Laden der Einträge.</p>';
+    }
+}
+// --- Formular absenden (POST) ---
+form.addEventListener("submit",async e=>{
+    e.preventDefault();
+    const name=document.getElementById("guestName").value.trim();
+    const text=document.getElementById("guestText").value.trim();
+    
+    // NEU: Prüfung auf Stern-Bewertung
+    if(!name||!text||selectedRating === 0){
+        alert("Bitte füllen Sie alle Felder aus und geben Sie eine Bewertung ab (Sterne auswählen)!");
+        return;
+    }
+    try{
+        const data=new FormData();
+        data.append("name",name);
+        data.append("text",text);
+        data.append("rating", selectedRating); // NEU: Bewertung anhängen
+        
+        // Button deaktivieren
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Wird gesendet...';
+
+        await fetch(sheetURL,{method:"POST",body:data});
+        
+        // Button wieder aktivieren
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Beitrag absenden';
+
+        form.reset();
+        selectedRating = 0; // Sterne zurücksetzen
+        updateStars(0);
+
+        successMsg.style.display="block";
+        setTimeout(()=>successMsg.style.display="none",3000);
+        loadEntries();
+    }catch(err){
+        console.error(err);
+        alert("Fehler beim Senden!");
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Beitrag absenden';
+    }
+});
+document.addEventListener("DOMContentLoaded",loadEntries);
+</script>
+</body>
+</html>
