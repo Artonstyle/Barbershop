@@ -7,20 +7,22 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet"> 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <style> 
-/* Dein CSS-Code ist hier unverändert, aber gut strukturiert! */
+/* ========================================================== */
+/* BASIS & GLOBALE STYLES */
+/* ========================================================== */
 :root {
   --brand:#c0392b;
   --brand-2:#ff6b61;
-  --bg:#0b0f14; /* DUNKEL: Hintergrundfarbe */
+  --bg:#0b0f14; 
   --card:#0f1720;
   --surface:#0b1116;
-  --text:#e6eef6; /* HELL: Textfarbe */
+  --text:#e6eef6; 
   --muted:#9aa6b2;
   --glass:rgba(255,255,255,0.03);
   --max-width:1200px;
   --radius:10px;
 
-  /* GOLD-FARBDEFINITIONEN FÜR GÄSTEBUCH */
+  /* GOLD-FARBDEFINITIONEN FÜR DELUXE EDITION */
   --gold: #FFD700;
   --gold-light: #fdd835;
   --gold-shadow: rgba(253, 216, 53, 0.4);
@@ -31,7 +33,6 @@
 html,body{height:100%}
 body {
   margin:0;
-  /* DUNKEL Hintergrund: Verwendet die Variable */
   background:linear-gradient(180deg,var(--bg),rgba(0,0,0,0.03)); 
   color:var(--text); 
   line-height:1.5;
@@ -39,8 +40,10 @@ body {
   -moz-osx-font-smoothing:grayscale;
 }
 .container{max-width:var(--max-width);margin:0 auto;padding:0 16px}
+.skip-link{position:absolute;left:-9999px;top:auto;overflow:hidden}
+.skip-link:focus{left:16px;top:16px;z-index:999;background:var(--card);padding:8px;border-radius:6px;color:var(--text)}
 
-/* Allgemeine Styles (aus deinem Original-CSS) */
+/* Allgemeine Styles */
 h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-light); text-shadow: 0 0 15px rgba(253, 216, 53, 0.4);} 
 .header-banner{width: 100%; height: 300px; display: flex; justify-content: center; align-items: center; background: var(--bg); overflow: hidden; border-bottom: 2px solid var(--gold-light);}
 .header-banner img{max-width: 100%; max-height: 100%; object-fit: contain; filter: brightness(1.2) contrast(1.1);} 
@@ -50,18 +53,16 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
 .image-price-section{text-align: center; padding: 20px 0; margin-bottom: 50px; background: rgba(255, 255, 255, 0.03); border-radius: 15px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);} 
 .image-price-section img{max-width: 500px; width: 90%; border-radius: 10px; box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);} 
 
-/* -------------------------------------- */
-/* === BLACK & GOLD MOCKUP STYLES START (mit Hintergrundbild) === */
-/* -------------------------------------- */
+/* ========================================================== */
+/* GÄSTEBUCH DELUXE STYLES (HINTERGRUNDBILD) */
+/* ========================================================== */
 
-/* Animation für den pulsierenden Gold-Glow (wird als Overlay verwendet) */
 @keyframes goldPulse {
   0% { opacity: 0.4; }
   50% { opacity: 0.8; }
   100% { opacity: 0.4; }
 }
 
-/* Gästebuch Sektion: Verwendet IHR BILD als Hintergrund */
 .guestbook-section-custom {
     /* **Hintergrundbild vom GitHub-Ordner** */
     background-image: url('https://raw.githubusercontent.com/Artonstyle/Barbershop/main/images/G%C3%A4stebuch.png'); 
@@ -71,15 +72,13 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
     
     position: relative;
     padding: 0; 
-    margin: 40px auto; 
+    margin: 40px auto 0; /* Abstand nach unten entfernt, da Nachrichten nun separat sind */
     max-width: 1200px; 
     box-sizing: border-box;
-    /* Dunkler Overlay-Glow (Simulation des Mockups) */
     box-shadow: inset 0 0 0 100vw rgba(0, 0, 0, 0.4); 
     min-height: 750px; 
 }
 
-/* Pulsierendes Muster als Overlay */
 .guestbook-section-custom::before {
     content: "";
     position: absolute;
@@ -103,20 +102,17 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
     padding-top: 0;
 }
 
-/* Elemente, die jetzt im Hintergrundbild sind, ausblenden */
+/* Figuren/Icons/Header sind jetzt im Bild und werden ausgeblendet */
 .guestbook-header { display: none; }
 .barber-figure, .scissors-icon, .comb-icon { display: none !important; }
 
-
-/* Formular Wrapper: Übernimmt den Glow-Stil des Bildes */
+/* Formular Wrapper */
 .guestbook-form-wrapper {
-    /* WICHTIG: Die Formular-Box selbst muss halb-transparent sein */
     background: rgba(15, 15, 15, 0.95); 
     border: 2px solid var(--gold); 
     border-radius: 20px;
     padding: 40px; 
     max-width: 450px; 
-    
     box-shadow: 0 0 25px rgba(255, 215, 0, 0.5), inset 0 0 15px rgba(255, 215, 0, 0.2); 
     text-align: center;
     position: relative;
@@ -124,63 +120,49 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
     margin: 0; 
 }
 
-/* Formular Felder */
+/* Formular Felder, Sterne & Button Styles (übernommen) */
 .guestbook-form-wrapper input[type="text"],
 .guestbook-form-wrapper textarea {
-    width: 100%; 
-    padding: 12px;
-    margin-bottom: 15px;
-    background: #141414; /* Dunklerer Input-Hintergrund */
-    border: 1px solid rgba(255, 215, 0, 0.2); 
-    color: #fff;
-    border-radius: 8px;
-    box-sizing: border-box;
+    width: 100%; padding: 12px; margin-bottom: 15px; background: #141414; 
+    border: 1px solid rgba(255, 215, 0, 0.2); color: #fff; border-radius: 8px; box-sizing: border-box;
     box-shadow: inset 0 0 5px rgba(255,215,0,0.05);
 }
-
 .guestbook-form-wrapper input[type="text"]:focus,
-.guestbook-form-wrapper textarea:focus {
-  border-color: var(--gold);
-  box-shadow: 0 0 10px rgba(255,215,0,0.2);
-  outline: none;
-}
+.guestbook-form-wrapper textarea:focus { border-color: var(--gold); box-shadow: 0 0 10px rgba(255,215,0,0.2); outline: none; }
 .guestbook-form-wrapper textarea { resize: vertical; min-height: 100px; }
-
-/* Submit Button */
 .submit-btn { 
-  background: linear-gradient(90deg, #FFD700, #E5C100); 
-  color: #000;
-  font-weight: 700;
-  border: none;
-  border-radius: 10px; 
-  padding: 12px 40px; 
-  cursor: pointer;
-  transition: all 0.2s ease;
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.4); 
-  width: 100%; 
-  max-width: 250px; 
-  margin-top: 15px;
+  background: linear-gradient(90deg, #FFD700, #E5C100); color: #000; font-weight: 700; border: none;
+  border-radius: 10px; padding: 12px 40px; cursor: pointer; transition: all 0.2s ease;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.4); width: 100%; max-width: 250px; margin-top: 15px;
 }
-.submit-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 35px rgba(255, 215, 0, 0.6);
+.submit-btn:hover { transform: translateY(-2px); box-shadow: 0 0 35px rgba(255, 215, 0, 0.6); }
+
+.star-rating { font-size: 30px; margin: 20px 0 30px; color: #888; cursor: pointer; display: inline-block; }
+.star-rating span { transition: color 0.2s; user-select: none; padding: 0 2px; }
+.star-rating span i.fas { color: var(--gold-light); }
+
+
+/* ========================================================== */
+/* NACHRICHTEN ÜBERSICHT STYLES (Korrektur der Positionierung) */
+/* ========================================================== */
+
+/* NEUE SEKTION: Stellt sicher, dass die Nachrichten unter dem großen Bild erscheinen */
+.guestbook-messages-section {
+    margin-top: 50px; 
+    padding-top: 50px; /* Zusätzlicher Abstand, um das Formular (750px Höhe) freizulassen */
 }
 
-/* Nachrichten von Gästen */
 .messages-overview {
     text-align: center;
-    margin-top: 50px; /* Reduzierter Abstand */
     position: relative;
     z-index: 10;
 }
-
 .messages-overview h3 {
     font-size: 24px;
     margin-bottom: 40px;
     color: var(--gold-light);
     letter-spacing: 1px;
 }
-
 .messages-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
@@ -189,56 +171,75 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
 }
 
 .message-card {
-    background: rgba(15, 15, 15, 0.9); /* Dunkler, halbtransparenter Hintergrund */
+    background: rgba(15, 15, 15, 0.9); 
     border: 1px solid rgba(255, 215, 0, 0.3); 
     border-radius: 12px;
     padding: 20px;
     text-align: left;
-    box-shadow: 0 0 15px rgba(255, 215, 0, 0.1); /* Dezenter Glow */
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.1); 
     transition: transform 0.2s ease, box-shadow 0.3s ease;
     border-left: 4px solid var(--gold-light); 
 }
-.message-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 0 25px rgba(255, 215, 0, 0.25);
-}
+.message-card:hover { transform: translateY(-4px); box-shadow: 0 0 25px rgba(255, 215, 0, 0.25); }
 
-.message-card .card-header { font-weight: bold; color: var(--gold-light); margin-bottom: 8px; }
-.message-card .card-info { font-size: 0.9em; color: var(--muted); margin-bottom: 10px; }
-.message-card .card-stars i { color: var(--gold-light); font-size: 16px; margin-right: 2px; }
-.message-card p { font-size: 14px; color: var(--text); line-height: 1.4; margin-top: 10px; }
 
-/* -------------------------------------- */
-/* KONTAKT & FOOTER STYLES */
-/* -------------------------------------- */
+/* ========================================================== */
+/* KONTAKT & ÖFFNUNGSZEITEN DELUXE STYLES */
+/* ========================================================== */
 
-.opening-hours{text-align:center; padding: 40px 0;} 
-.opening-hours ul{list-style:none;padding:0;display:inline-block;text-align:left;} 
-.opening-hours li{padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.1);} 
-
-/* KORRIGIERTE GRÖSSE FÜR SOCIAL MEDIA ICONS */
-.social-links {
-    margin: 20px 0;
+.contact-section-deluxe {
     text-align: center;
+    padding: 50px 20px;
+    margin: 60px auto; 
+    max-width: 900px;
+    background: rgba(15, 15, 15, 0.9); 
+    border: 2px solid var(--gold); 
+    border-radius: 20px;
+    box-shadow: 0 0 40px rgba(255, 215, 0, 0.4); 
+    position: relative;
+    z-index: 5;
 }
+
+.contact-section-deluxe h2 { font-size: 28px; margin-bottom: 30px; }
+.contact-info p { font-size: 1.1em; color: var(--text); margin: 10px 0; }
+.contact-info .address-line { color: var(--muted); }
+.contact-info .phone-number { font-weight: bold; color: var(--gold-light); }
+
+.opening-hours-list {
+    list-style: none; padding: 0; display: inline-block; text-align: left; margin-top: 20px;
+}
+.opening-hours-list li {
+    padding: 8px 0; font-size: 1.05em; color: var(--text);
+    border-bottom: 1px solid rgba(255,215,0,0.2); 
+}
+.opening-hours-list li:last-child { border-bottom: none; }
+.opening-hours-list strong { color: var(--gold-light); display: inline-block; width: 150px; }
+.opening-hours-list .closed { color: var(--brand-2); font-weight: 600; }
+
+.contact-section-deluxe a {
+    color: var(--gold-light) !important; text-decoration: none; font-weight: bold;
+    display: block; margin-top: 25px; transition: color 0.2s;
+}
+.contact-section-deluxe a:hover { color: #fff !important; }
+
+/* Social Links */
+.social-links { margin: 30px 0 20px; text-align: center;}
 .social-links a img {
-    width: 32px; 
-    height: 32px; 
-    margin: 0 10px;
-    vertical-align: middle;
-    border-radius: 50%;
-    box-shadow: 0 0 10px rgba(253, 216, 53, 0.4); 
+    width: 32px; height: 32px; margin: 0 10px; vertical-align: middle;
+    border-radius: 50%; box-shadow: 0 0 10px rgba(253, 216, 53, 0.4); 
     transition: transform 0.2s;
 }
-.social-links a img:hover {
-    transform: scale(1.1);
-}
+.social-links a img:hover { transform: scale(1.1); }
 
-footer{text-align:center;padding:15px 0;background:#050505;color:#888;margin-top:50px;border-top:1px solid rgba(255,255,255,0.1);} 
+/* FOOTER */
+footer{
+    text-align:center; padding:20px 0; background:#000000; color:#555;
+    margin-top:50px; border-top:1px solid rgba(255,215,0,0.1); font-size: 0.9em;
+} 
 
-/* -------------------------------------- */
-/* RESPONSIVE ANPASSUNGEN */
-/* -------------------------------------- */
+/* ========================================================== */
+/* RESPONSIVE ANPASSUNGEN (HANDY-ANSICHT) */
+/* ========================================================== */
 
 @media (max-width: 900px) {
     .messages-grid { padding: 0 20px; }
@@ -248,22 +249,28 @@ footer{text-align:center;padding:15px 0;background:#050505;color:#888;margin-top
     .header-banner { height: 200px; }
     .image-price-section img { max-width: 100%; }
 
-    /* WICHTIG: Das Hintergrundbild im Mobile-Modus entfernen und alles normal fließen lassen */
+    /* WICHTIG: Hintergrundbild im Mobile-Modus entfernen */
     .guestbook-section-custom {
         background-image: none !important;
         min-height: auto;
         padding: 40px 10px;
     }
     
+    /* Content muss auf Mobile normal fließen */
     .guestbook-main-content {
         position: static;
         flex-direction: column;
     }
 
     .guestbook-form-wrapper { max-width: 100%; margin: 0 10px; padding: 20px; }
-    .messages-overview { margin-top: 50px; }
-    .messages-grid { grid-template-columns: 1fr; }
     
+    .guestbook-messages-section {
+        margin-top: 20px; 
+        padding-top: 0;
+    }
+
+    .messages-grid { grid-template-columns: 1fr; }
+    .contact-section-deluxe { margin: 40px 10px; padding: 30px 15px; }
     .container {padding: 0 10px;}
 }
 </style> 
@@ -311,35 +318,45 @@ für Ihr perfektes Haar- und Bartgefühl.</p>
             <p id="successMsg" style="display:none;">✅ Vielen Dank für Ihren Eintrag!</p> 
         </div>
     </div>
+</div> 
 
-    
-<div class="messages-overview">
+
+<div class="container guestbook-messages-section">
+    <div class="messages-overview">
         <h3>Nachrichten Von Unseren Gästen</h3>
         <div class="messages-grid" id="messagesGrid">
-            </div>
+        </div>
     </div>
     <div id="guestEntries"></div> 
 </div> 
-<div class="container opening-hours"> 
-  <h2>📍 Kontakt</h2> 
-  <p>Bachgasse 68, 69502 Hemsbach</p> 
-  <p>📞 0176 70794224</p> 
-  <div class="social-links"> 
-    <a href="https://www.instagram.com/cd_barbershop_/" target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
-    </a> 
-  </div> 
-  <h3>Öffnungszeiten</h3> 
-  <ul> 
-    <li><strong>Montag – Freitag:</strong><br>09:00 – 19:00 Uhr</li> 
-    <li><strong>Samstag:</strong><br>09:00 – 18:00 Uhr</li> 
-    <li><strong>Sonntag:</strong><br>Geschlossen ⛔</li> 
-  </ul> 
-  <p><a 
-href="https://www.google.com/maps/dir/?api=1&destination=Bachgasse+68,+69502+Hemsbach"
- target="_blank" style="color:#fdd835;">Route auf Google Maps 
-öffnen</a></p> 
+
+
+<div class="container contact-section-deluxe"> 
+    <h2>📍 Kontakt</h2> 
+    
+    <div class="contact-info">
+      <p class="address-line">Bachgasse 68, 69502 Hemsbach</p> 
+      <p class="phone-number">📞 0176 70794224</p> 
+    </div>
+
+    <div class="social-links"> 
+        <a href="https://www.instagram.com/cd_barbershop_/" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+        </a> 
+    </div> 
+
+    <h3>Öffnungszeiten</h3> 
+    <ul class="opening-hours-list"> 
+      <li><strong>Montag – Freitag:</strong> 09:00 – 19:00 Uhr</li> 
+      <li><strong>Samstag:</strong> 09:00 – 18:00 Uhr</li> 
+      <li><strong>Sonntag:</strong> <span class="closed">Geschlossen ⛔</span></li> 
+    </ul> 
+    <p><a 
+    href="https://www.google.com/maps/dir/?api=1&destination=Bachgasse+68,+69502+Hemsbach"
+    target="_blank">Route auf Google Maps öffnen</a></p> 
 </div> 
+
+
 <footer> 
   © 2025 C&D Barbershop | Black Edition 
 </footer> 
