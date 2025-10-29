@@ -1,269 +1,132 @@
-<style> 
-/* ========================================================== */
-/* BASIS & GLOBALE STYLES (GOLD EDITION) */
-/* ========================================================== */
-:root {
+/* Grundfarben & Typografie */
+:root{
   --brand:#c0392b;
   --brand-2:#ff6b61;
-  --bg:#000000;
-  --card:#0a0a0a;
-  --surface:#050505;
+  --bg:#0b0f14; /* dunkles, modernes Theme */
+  --card:#0f1720;
+  --surface:#0b1116;
   --text:#e6eef6;
   --muted:#9aa6b2;
   --glass:rgba(255,255,255,0.03);
   --max-width:1200px;
   --radius:10px;
-
-  --gold:#FFD700;
-  --gold-light:#fdd835;
-  --gold-shadow:rgba(253,216,53,0.4);
-
-  font-family:"Poppins",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
 }
 *{box-sizing:border-box}
 html,body{height:100%}
-body {
-  margin:0;
-  background:var(--bg);
-  color:var(--text);
-  line-height:1.5;
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
+body{
+  margin:0;
+  background:linear-gradient(180deg,var(--bg),rgba(0,0,0,0.03));
+  color:var(--text);
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
 }
 .container{max-width:var(--max-width);margin:0 auto;padding:0 16px}
+
+/* Skip link */
 .skip-link{position:absolute;left:-9999px;top:auto;overflow:hidden}
 .skip-link:focus{left:16px;top:16px;z-index:999;background:var(--card);padding:8px;border-radius:6px;color:var(--text)}
-h2{text-align:center;margin-bottom:30px;font-weight:700;color:var(--gold-light);text-shadow:0 0 15px var(--gold-shadow);}
-.header-banner{width:100%;height:300px;display:flex;justify-content:center;align-items:center;background:var(--bg);overflow:hidden;border-bottom:2px solid var(--gold-light);}
-.header-banner img{max-width:100%;max-height:100%;object-fit:contain;filter:brightness(1.2) contrast(1.1);}
 
-/* ====================================== */
-/* WILLKOMMEN & PREISSEKTION */
-/* ====================================== */
-.welcome-section,.image-price-section{
-  padding:30px 20px;
-  background:var(--card);
-  border-radius:15px;
-  max-width:900px;
-  margin:40px auto;
-  text-align:center;
-  box-shadow:0 10px 30px rgba(0,0,0,0.7),0 0 20px var(--gold-shadow,rgba(0,0,0,0.1));
-}
-.welcome-section h1{font-size:2em;margin-bottom:10px;color:var(--gold-light);}
-.welcome-section p{color:var(--muted);line-height:1.6;}
-.image-price-section img{max-width:500px;width:90%;border-radius:10px;box-shadow:0 0 15px rgba(255,215,0,0.3);}
+/* Header */
+.site-header{backdrop-filter: blur(6px);background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);border-bottom:1px solid rgba(255,255,255,0.03)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
 
-/* ====================================== */
-/* GÄSTEBUCH-STYLES (Black & Gold Fix) */
-/* ====================================== */
-
-@keyframes goldPulse {
-  0% { opacity: 0.5; }
-  50% { opacity: 0.9; }
-  100% { opacity: 0.5; }
+/* BANNER FIX: NEUE REGELN FÜR KORREKTE GRÖSSE DES LOGOS */
+.header-banner {
+  width: 100%;
+  height: 300px; /* Feste Höhe, damit das Bild nicht überragt. */
+  overflow: hidden; 
+  display: flex;
+  justify-content: center; /* Zentriert das Bild horizontal */
+  align-items: center; /* Zentriert das Bild vertikal */
+  background: var(--bg); 
+  border-bottom: 2px solid var(--brand); 
 }
 
-.guestbook-section-custom {
-  /* WICHTIG: Das Bild, auf dem das Formular platziert wird */
-  background-image: url('https://raw.githubusercontent.com/Artonstyle/Barbershop/main/images/Gästebuch.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  position: relative;
-  margin: 40px auto;
-  max-width: 1200px;
-  min-height: 750px;
-  box-shadow: inset 0 0 0 100vw rgba(0,0,0,0.45);
+.header-banner img {
+  max-width: 100%; 
+  max-height: 100%; 
+  object-fit: contain; /* Skaliert das Bild ohne Verzerrung in den Container */
+  height: auto;
+  filter: brightness(1.2) contrast(1.1);
+  border: none;
 }
+/* ENDE BANNER FIX */
 
-.guestbook-section-custom::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image:
-    repeating-linear-gradient(45deg, rgba(255,215,0,0.02) 0px, rgba(255,215,0,0.02) 2px, transparent 2px, transparent 20px),
-    repeating-linear-gradient(-45deg, rgba(255,215,0,0.02) 0px, rgba(255,215,0,0.02) 2px, transparent 2px, transparent 20px);
-  animation: goldPulse 6s ease-in-out infinite;
-  z-index: 1;
-  opacity: 0.7;
-}
+.logo{font-weight:700;color:var(--text);text-decoration:none;font-size:1.05rem}
+.nav-toggle{display:none;background:none;border:0;font-size:1.4rem;color:var(--text)}
+.main-nav ul{display:flex;gap:12px;list-style:none;padding:0;margin:0;align-items:center}
+.main-nav a{text-decoration:none;color:var(--muted);padding:8px 10px;border-radius:8px}
+.main-nav a:hover{color:var(--brand)}
+.cta{background:linear-gradient(180deg,var(--brand),var(--brand-2));color:#111;padding:8px 12px;border-radius:8px;text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,0.6);font-weight:600}
 
-/* Container, der die Position des Formulars bestimmt */
-.guestbook-main-content {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start; /* Stellt sicher, dass das Formular an der Spitze beginnt */
-  position: absolute;
-  inset: 0;
-  z-index: 5;
-}
+/* HERO */
+.hero{padding:56px 0;background:linear-gradient(90deg, rgba(255,107,97,0.06), transparent)}
+.hero-grid{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center}
+.hero-text h1{margin:0 0 10px;font-size:2.1rem}
+.hero-text p{color:var(--muted);max-width:720px}
+.hero-image img{width:100%;height:auto;border-radius:var(--radius);display:block;box-shadow:0 12px 40px rgba(0,0,0,0.6)}
 
-/* Formular-Box (Positionierung hier steuern!) */
-.guestbook-form-wrapper {
-  background: rgba(0, 0, 0, 0.75);
-  border: 2px solid var(--gold);
-  border-radius: 20px;
-  padding: 40px 35px;
-  width: 100%;
-  max-width: 440px;
-  box-shadow: 0 0 45px var(--gold-shadow);
-  text-align: center;
-  z-index: 10;
-  backdrop-filter: blur(3px);
-  animation: goldPulse 3s ease-in-out infinite alternate;
+/* Sections */
+.section{padding:48px 0}
+.section--light{background:linear-gradient(180deg, rgba(255,255,255,0.015), transparent);border-radius:12px}
+.section--dark{background:transparent}
+.lead{max-width:720px;margin-top:6px;color:var(--muted)}
+.service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:20px}
+.service{background:linear-gradient(180deg,var(--card), rgba(255,255,255,0.02));padding:18px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.45);border:1px solid rgba(255,255,255,0.02)}
+.service h3{margin:0 0 8px}
 
-  /* 🌟🌟 IHRE ANPASSUNG: POSITIONIERUNG 🌟🌟 */
-  position: absolute; 
-  top: 50%; /* Hier vertikale Verschiebung (40% für höher, 65% für tiefer) */
-  left: 50%; /* Hier horizontale Verschiebung (30% für links, 70% für rechts) */
-  transform: translate(-50%, -50%); /* Wichtig: hält die Box zentriert am top/left-Punkt */
-}
+/* Gallery */
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.gallery-grid img{width:100%;height:220px;object-fit:cover;border-radius:8px;box-shadow:0 8px 30px rgba(0,0,0,0.45)}
 
-/* Eingabefelder */
-.guestbook-form-wrapper input[type="text"],
-.guestbook-form-wrapper textarea {
-  width: 100%;
-  padding: 14px 12px;
-  margin-bottom: 20px;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,215,0,0.2);
-  border-radius: 6px;
-  color: #fff;
-  font-size: 15px;
-  transition: all 0.2s ease;
-}
-.guestbook-form-wrapper input:focus,
-.guestbook-form-wrapper textarea:focus {
-  border-color: var(--gold-light);
-  box-shadow: 0 0 8px var(--gold-shadow);
-  outline: none;
-}
-.guestbook-form-wrapper textarea {
-  min-height: 100px;
-  resize: none;
-}
+/* Team */
+.team-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.team-member{background:linear-gradient(180deg,var(--card), rgba(255,255,255,0.02));padding:12px;border-radius:12px;text-align:center;box-shadow:0 8px 24px rgba(0,0,0,0.45)}
+.team-member img{width:100%;height:220px;object-fit:cover;border-radius:8px;margin-bottom:8px}
 
-/* Sternebewertung */
-.star-rating {
-  font-size: 34px;
-  margin: 10px 0 25px;
-  color: #666;
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-}
-.star-rating span { transition: transform 0.15s; }
-.star-rating span:hover { transform: scale(1.15); }
-.star-rating i.fa-solid { color: var(--gold-light); }
+/* Contact */
+.contact-grid{display:grid;grid-template-columns:360px 1fr 360px;gap:20px;align-items:start}
+.contact-card{background:linear-gradient(180deg,var(--card), rgba(255,255,255,0.02));padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)}
+.contact-form{background:linear-gradient(180deg,var(--card), rgba(255,255,255,0.02));padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)}
+.contact-form label{display:block;margin-top:8px;font-weight:600;color:var(--text)}
+.contact-form input,.contact-form textarea{width:100%;padding:10px;margin-top:6px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:rgba(255,255,255,0.02);color:var(--text)}
+.form-note{font-size:0.85rem;color:var(--muted);margin-top:8px}
+.map-wrapper iframe{width:100%;height:260px;border-radius:10px;border:0;box-shadow:0 10px 30px rgba(0,0,0,0.6)}
 
-/* Button */
-.submit-btn {
-  background: linear-gradient(180deg, var(--gold-light), var(--gold));
-  color: #000;
-  font-weight: 700;
-  border: none;
-  border-radius: 30px;
-  padding: 14px 40px;
-  cursor: pointer;
-  font-size: 16px;
-  width: 80%;
-  max-width: 250px;
-  box-shadow: 0 0 20px rgba(255,215,0,0.4);
-  transition: all 0.25s ease;
-}
-.submit-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 30px rgba(255,215,0,0.6);
-}
+/* Footer */
+.site-footer{padding:18px 0;background:#06070a;color:var(--muted)}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
 
-#successMsg {
-  margin-top: 10px;
-  font-weight: 600;
-  color: var(--gold-light);
-}
+/* Buttons */
+.btn{display:inline-block;padding:10px 16px;border-radius:10px;text-decoration:none;border:0}
+.btn-primary{background:linear-gradient(180deg,var(--brand),var(--brand-2));color:#111;box-shadow:0 8px 30px rgba(0,0,0,0.6)}
+.btn-secondary{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--text)}
+.btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted)}
 
-/* ====================================== */
-/* GÄSTEBUCH-EINTRÄGE */
-/* ====================================== */
-.messages-overview {
-  text-align:center;
-  position:relative;
-  z-index:10;
-  padding-top:50px;
-}
-.messages-overview h3 {
-  font-size:24px;
-  margin-bottom:40px;
-  color:var(--gold-light);
-}
-.messages-grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:20px;
-  padding:0 50px;
-}
-.message-card {
-  background:var(--card);
-  border:1px solid rgba(255,215,0,0.3);
-  border-left:4px solid var(--gold-light);
-  border-radius:12px;
-  padding:20px;
-  text-align:left;
-  transition:transform 0.2s,box-shadow 0.3s;
-  box-shadow:0 0 15px rgba(255,215,0,0.1);
-}
-.message-card:hover {
-  transform:translateY(-4px);
-  box-shadow:0 0 25px rgba(255,215,0,0.25);
-}
-.message-card .card-header{font-weight:bold;color:var(--gold-light);}
-.message-card .card-info{font-size:0.9em;color:var(--muted);margin-bottom:10px;}
-.message-card .card-stars i{color:var(--gold-light);}
-.message-card p{font-size:14px;color:var(--text);line-height:1.4;margin-top:10px;}
+/* Cookie banner */
+.cookie-banner{position:fixed;left:16px;right:16px;bottom:16px;background:var(--card);padding:12px;border-radius:10px;box-shadow:0 8px 30px rgba(0,0,0,0.24);display:flex;justify-content:space-between;gap:12px;align-items:center}
+.cookie-actions{display:flex;gap:8px}
 
-/* ====================================== */
-/* MOBILE RESPONSIVE FIX */
-/* ====================================== */
-@media(max-width:768px){
-  .header-banner{height:200px;}
-  .guestbook-section-custom{
-    background-image:none!important;
-    background:var(--bg);
-    min-height:auto;
-    padding:40px 10px;
-  }
-  .guestbook-main-content{
-    position:static;
-    flex-direction:column;
-    height:auto;
-    padding:0;
-  }
-  /* WICHTIG: Mobile hat KEINE ABSOLUTE POSITION, um Scrollen zu erlauben */
-  .guestbook-form-wrapper{
-    background:var(--card);
-    border:2px solid var(--gold);
-    box-shadow:0 0 25px var(--gold-shadow);
-    padding:25px 20px;
-    margin:20px auto;
-    width:90%;
-    animation:none;
-    /* Positionierung für Mobile zurücksetzen, damit es normal fließt */
-    position: relative;
-    top: auto; 
-    left: auto;
-    transform: none; 
-  }
-  .guestbook-form-wrapper::before{
-    content:"GÄSTEBUCH"; /* DEUTSCH */
-    display:block;
-    color:var(--gold-light);
-    font-size:22px;
-    font-weight:700;
-    margin-bottom:20px;
-    text-shadow:0 0 5px var(--gold-shadow);
-  }
-  .submit-btn{width:100%;max-width:none;}
-  .messages-grid{grid-template-columns:1fr;padding:0 10px;}
+/* Responsive */
+@media(max-width:980px){
+  .hero-grid{grid-template-columns:1fr}
+  .service-grid{grid-template-columns:repeat(2,1fr)}
+  .gallery-grid{grid-template-columns:repeat(2,1fr)}
+  .team-grid{grid-template-columns:1fr 1fr}
+  .contact-grid{grid-template-columns:1fr;grid-auto-rows:min-content}
 }
-footer{text-align:center;padding:15px 0;background:var(--surface);color:#888;margin-top:50px;border-top:1px solid rgba(255,215,0,0.1);}
-</style>
+@media(max-width:640px){
+  .main-nav{display:none}
+  .nav-toggle{display:block}
+  .service-grid{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:1fr}
+  .team-grid{grid-template-columns:1fr}
+  .cookie-banner{left:8px;right:8px;flex-direction:column;align-items:flex-start}
+  
+  /* NEU: Höhe des Banners auf Mobilgeräten reduzieren */
+  .header-banner {
+    height: 200px; /* Kleinere Höhe auf Handys */
+  }
+}
