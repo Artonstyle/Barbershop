@@ -1,8 +1,59 @@
-/* ... [Bisherige CSS-Regeln bis zum Gästebuch-Bereich bleiben gleich] ... */
+/* Grundfarben & Typografie */
+:root{
+  --brand:#c0392b;
+  --brand-2:#ff6b61;
+  --bg:#0b0f14;
+  --card:#0f1720;
+  --surface:#0b1116;
+  --text:#e6eef6;
+  --muted:#9aa6b2;
+  --glass:rgba(255,255,255,0.03);
+  --max-width:1200px;
+  --radius:10px;
+  
+  /* GOLD-FARBDEFINITIONEN FÜR GÄSTEBUCH */
+  --gold: #FFD700;
+  --gold-light: #fdd835;
+  --gold-shadow: rgba(253, 216, 53, 0.4);
 
+  font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body {
+  margin:0;
+  background:linear-gradient(180deg,var(--bg),rgba(0,0,0,0.03)); 
+  color:var(--text); 
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+.container{max-width:var(--max-width);margin:0 auto;padding:0 16px}
+
+/* Skip link (Unverändert) */
+.skip-link{position:absolute;left:-9999px;top:auto;overflow:hidden}
+.skip-link:focus{left:16px;top:16px;z-index:999;background:var(--card);padding:8px;border-radius:6px;color:var(--text)}
+
+/* Header (Unverändert) */
+.site-header{backdrop-filter: blur(6px);background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);border-bottom:1px solid rgba(255,255,255,0.03)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+.logo{font-weight:700;color:var(--text);text-decoration:none;font-size:1.05rem}
+
+/* BANNER & Allgemeine Styles (Beibehalten) */
+h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-light); text-shadow: 0 0 15px rgba(253, 216, 53, 0.4);} 
+.header-banner{width: 100%; height: 300px; display: flex; justify-content: center; align-items: center; background: var(--bg); overflow: hidden; border-bottom: 2px solid var(--gold-light);}
+.header-banner img{max-width: 100%; max-height: 100%; object-fit: contain; filter: brightness(1.2) contrast(1.1);} 
+.welcome-section{padding: 30px 20px; background: rgba(255, 255, 255, 0.05); border-radius: 15px; max-width: 900px; margin: 40px auto; text-align: center; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);} 
+.welcome-section h1{font-size: 2em; margin-bottom: 10px; color: var(--gold-light);} 
+.welcome-section p{color: var(--muted); line-height: 1.6;} 
+.image-price-section{text-align: center; padding: 20px 0; margin-bottom: 50px; background: rgba(255, 255, 255, 0.03); border-radius: 15px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);} 
+.image-price-section img{max-width: 500px; width: 90%; border-radius: 10px; box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);} 
+
+/* -------------------------------------- */
 /* === BLACK & GOLD MOCKUP STYLES === */
+/* -------------------------------------- */
 
-/* Animation für den pulsierenden Gold-Glow (wird für den Hintergrund inaktiv, aber für andere Elemente beibehalten) */
+/* Animation für den pulsierenden Gold-Glow (wird als Overlay verwendet) */
 @keyframes goldPulse {
   0% { opacity: 0.4; }
   50% { opacity: 0.8; }
@@ -11,48 +62,51 @@
 
 /* Gästebuch Sektion: Verwendet IHR BILD als Hintergrund */
 .guestbook-section-custom {
-    /* **WICHTIG: Hier die URL Ihres hochgeladenen Bildes einfügen** */
-    background-image: url('[IHRE_BILD_URL_HIER]'); 
-    background-size: cover; /* Passt das Bild an die Größe an */
+    /* **WICHTIG: Die angenommene GitHub-URL wird hier eingefügt** */
+    background-image: url('https://raw.githubusercontent.com/Artonstyle/Barbershop/main/images/G%C3%A4stebuch.png'); 
+    background-size: cover; 
     background-position: center center;
     background-repeat: no-repeat;
     
     position: relative;
-    padding: 0; /* Padding entfernt, da das Bild den gesamten Raum einnehmen soll */
+    padding: 0; 
     margin: 40px auto; 
-    max-width: 1200px; /* Breite beibehalten */
+    max-width: 1200px; 
     box-sizing: border-box;
-    /* Zusätzlicher dunkler Overlay, um den Text besser lesbar zu machen */
+    /* Dunkler Overlay-Glow (Simulation des Mockups) */
     box-shadow: inset 0 0 0 100vw rgba(0, 0, 0, 0.4); 
-    min-height: 750px; /* Angepasst an das Bild-Format */
+    min-height: 750px; 
 }
 
-/* Pulsierendes Muster AUF dem Bild, um den dynamischen Glow zu simulieren */
+/* Pulsierendes Muster als Overlay, um den dynamischen Glow zu simulieren */
 .guestbook-section-custom::before {
     content: "";
     position: absolute;
     inset: 0;
-    /* Behält den goldenen Glow-Effekt bei */
     background-image: 
       repeating-linear-gradient(45deg, rgba(255,215,0,0.02) 0px, rgba(255,215,0,0.02) 2px, transparent 2px, transparent 20px),
       repeating-linear-gradient(-45deg, rgba(255,215,0,0.02) 0px, rgba(255,215,0,0.02) 2px, transparent 2px, transparent 20px);
     animation: goldPulse 5s ease-in-out infinite;
     z-index: 1;
-    opacity: 0.8; /* Etwas dezenter */
+    opacity: 0.8; 
 }
 
-/* Der Content-Wrapper muss jetzt zentriert und relativ zum Sektions-Hintergrund positioniert werden */
+/* Header-Elemente, die nicht mehr benötigt werden, weil sie im Bild sind */
+.guestbook-header { display: none; }
+
+
+/* Der Content-Wrapper muss jetzt absolut im Container positioniert werden, um zentriert zu sein */
 .guestbook-main-content {
     display: flex;
     justify-content: center;
     align-items: center; 
-    position: absolute; /* Absolut im Container positioniert */
+    position: absolute; 
     inset: 0;
     z-index: 10;
     padding-top: 0;
 }
 
-/* Figuren und Icons: Werden jetzt ausgeblendet, da sie im Hintergrundbild enthalten sind */
+/* Figuren und Icons: Werden AUSGEBLENDET, da sie im Hintergrundbild sind */
 .barber-figure, .scissors-icon, .comb-icon {
     display: none !important;
 }
@@ -60,45 +114,170 @@
 
 /* Formular Wrapper: Übernimmt den Glow-Stil des Bildes */
 .guestbook-form-wrapper {
-    /* Die Formular-Box selbst muss halb-transparent sein, damit der Hintergrund durchscheint */
+    /* WICHTIG: Die Formular-Box selbst muss halb-transparent sein */
     background: rgba(15, 15, 15, 0.95); 
     border: 2px solid var(--gold); 
     border-radius: 20px;
     padding: 40px; 
     max-width: 450px; /* Kleinerer Wrapper, um zum Bild zu passen */
     
-    /* Deluxe-Glow */
     box-shadow: 0 0 25px rgba(255, 215, 0, 0.5), inset 0 0 15px rgba(255, 215, 0, 0.2); 
     text-align: center;
     position: relative;
     z-index: 10;
-    margin: 0; /* Zentrierung über guestbook-main-content */
+    margin: 0; 
+}
+
+/* Formular Felder */
+.guestbook-form-wrapper input[type="text"],
+.guestbook-form-wrapper textarea {
+    background: #141414; 
+    border: 1px solid rgba(255, 215, 0, 0.2); 
+    color: #fff;
+    box-shadow: inset 0 0 5px rgba(255,215,0,0.05);
+}
+
+.guestbook-form-wrapper input[type="text"]:focus,
+.guestbook-form-wrapper textarea:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 10px rgba(255,215,0,0.2);
+  outline: none;
+}
+
+/* Submit Button */
+.submit-btn { 
+  background: linear-gradient(90deg, #FFD700, #E5C100); 
+  color: #000;
+  font-weight: 700;
+  border: none;
+  border-radius: 10px; 
+  padding: 12px 40px; 
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.4); 
+  width: 100%; 
+  max-width: 250px; 
+  margin-top: 15px;
+}
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 35px rgba(255, 215, 0, 0.6);
 }
 
 /* Nachrichten Karten müssen jetzt unter dem Bild-Bereich stehen */
 .messages-overview {
     text-align: center;
-    margin-top: 50px; /* Weniger Abstand, da der guestbook-section-custom Bereich jetzt nur 750px hoch ist */
+    margin-top: 50px; 
     position: relative;
     z-index: 10;
 }
 
-/* ... [Alle anderen Styles (Input, Button, Cards) bleiben gleich] ... */
+/* Nachrichten Karten Styles */
+.message-card {
+    background: rgba(15, 15, 15, 0.9);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.1); 
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    border-left: 4px solid var(--gold-light); 
+}
+.message-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.25);
+}
 
-/* Responsive: Im Mobile-Modus das Hintergrundbild entfernen */
+/* --- Unveränderte/Beibehaltene Styles --- */
+
+.guestbook-form-wrapper .crown-icon {
+    font-size: 30px;
+    color: var(--gold);
+    margin-bottom: 15px;
+}
+.guestbook-form-wrapper h3 {
+    font-size: 28px;
+    margin: 0 0 8px;
+    color: var(--text);
+    letter-spacing: 1px;
+}
+.guestbook-form-wrapper .slogan {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 30px;
+}
+.guestbook-form-wrapper textarea { resize: vertical; min-height: 100px; }
+.star-rating {
+    font-size: 30px;
+    margin: 20px 0 30px;
+    color: #888; 
+    cursor: pointer;
+    display: inline-block; 
+}
+.star-rating span {
+    transition: color 0.2s;
+    user-select: none;
+    padding: 0 2px;
+}
+.star-rating span i.fas {
+    color: var(--gold-light); 
+}
+.messages-overview h3 {
+    font-size: 24px;
+    margin-bottom: 40px;
+    color: var(--gold-light);
+    letter-spacing: 1px;
+}
+.messages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 20px;
+    padding: 0 50px;
+}
+.message-card .card-header { font-weight: bold; color: var(--gold-light); margin-bottom: 8px; }
+.message-card .card-info { font-size: 0.9em; color: var(--muted); margin-bottom: 10px; }
+.message-card .card-stars i { color: var(--gold-light); font-size: 16px; margin-right: 2px; }
+.message-card p { font-size: 14px; color: var(--text); line-height: 1.4; margin-top: 10px; }
+.opening-hours{text-align:center; padding: 40px 0;} 
+.opening-hours ul{list-style:none;padding:0;display:inline-block;text-align:left;} 
+.opening-hours li{padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.1);} 
+.social-links { margin: 20px 0; text-align: center; }
+.social-links a img {
+    width: 32px; height: 32px; margin: 0 10px; vertical-align: middle;
+    border-radius: 50%; box-shadow: 0 0 10px rgba(253, 216, 53, 0.4); 
+    transition: transform 0.2s;
+}
+.social-links a img:hover { transform: scale(1.1); }
+footer{text-align:center;padding:15px 0;background:#050505;color:#888;margin-top:50px;border-top:1px solid rgba(255,255,255,0.1);} 
+
+
+/* -------------------------------------- */
+/* RESPONSIVE ANPASSUNGEN */
+/* -------------------------------------- */
+
+/* Diese Regeln können entfallen, da Figuren/Icons in der Sektion ausgeblendet sind. */
+@media (max-width: 1100px) { }
+@media (max-width: 900px) {
+    .messages-grid { padding: 0 20px; }
+}
+
 @media(max-width: 768px){
-    /* ... [Bisherige Responsive-Regeln] ... */
+    .header-banner { height: 200px; }
+    .image-price-section img { max-width: 100%; }
 
-    /* WICHTIG: Das Hintergrundbild im Mobile-Modus entfernen */
+    /* WICHTIG: Das Hintergrundbild im Mobile-Modus entfernen und alles normal fließen lassen */
     .guestbook-section-custom {
         background-image: none !important;
         min-height: auto;
         padding: 40px 10px;
     }
     
-    /* Content muss auf Mobile normal fließen */
     .guestbook-main-content {
         position: static;
         flex-direction: column;
     }
+
+    .guestbook-form-wrapper { max-width: 100%; margin: 0 10px; padding: 20px; }
+    .messages-overview { margin-top: 50px; }
+    .messages-grid { grid-template-columns: 1fr; }
+    
+    .container {padding: 0 10px;}
 }
