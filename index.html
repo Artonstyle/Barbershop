@@ -63,15 +63,147 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
 .image-price-section img{max-width: 500px; width: 90%; border-radius: 10px; box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);} 
 
 /* -------------------------------------- */
-/* NACHRICHTEN & KONTAKT STYLES */
+/* GÄSTEBUCH-STYLES START (Design-Anpassung) */
 /* -------------------------------------- */
 
-/* Anpassung der Gästebuch-Sektion nach Entfernung des Formular-Hintergrundbilds */
-.guestbook-messages-section { 
-    margin: 40px auto; 
-    padding: 50px 0; 
-    max-width: 1200px;
+@keyframes goldPulse {
+  0% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+  100% { opacity: 0.4; }
 }
+
+.guestbook-section-custom {
+    /* HINTERGRUNDBILD (Wird auf Desktop verwendet) */
+    background-image: url('https://raw.githubusercontent.com/Artonstyle/Barbershop/main/images/Gästebuch.png'); 
+    background-size: cover; 
+    background-position: center center;
+    background-repeat: no-repeat;
+    
+    position: relative;
+    padding: 0; 
+    margin: 40px auto 0; 
+    max-width: 1200px; 
+    box-sizing: border-box;
+    box-shadow: inset 0 0 0 100vw rgba(0, 0, 0, 0.4); 
+    min-height: 750px; 
+}
+
+.guestbook-section-custom::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: 
+      repeating-linear-gradient(45deg, rgba(255,215,0,0.02) 0px, rgba(255,215,0,0.02) 2px, transparent 2px, transparent 20px),
+      repeating-linear-gradient(-45deg, rgba(255,215,0,0.02) 0px, rgba(255,215,0,0.02) 2px, transparent 2px, transparent 20px);
+    animation: goldPulse 5s ease-in-out infinite;
+    z-index: 1;
+    opacity: 0.8; 
+}
+
+/* Content-Wrapper für die Formular-Zentrierung */
+.guestbook-main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    position: absolute; 
+    inset: 0;
+    z-index: 10;
+}
+
+/* Formular Wrapper: Liegt über dem Formular im Bild (Desktop) */
+.guestbook-form-wrapper {
+    background: transparent;
+    border: none;
+    border-radius: 20px;
+    
+    /* Korrigierte Position für YOUR NAME und YOUR MESSAGE */
+    padding: 220px 40px 40px; 
+    
+    max-width: 440px; 
+    height: 520px; 
+    box-shadow: none; 
+    text-align: center;
+    position: relative;
+    z-index: 10;
+    
+    /* Leichte Verschiebung nach unten */
+    transform: translateY(10px); 
+}
+
+/* Formular Felder */
+.guestbook-form-wrapper input[type="text"],
+.guestbook-form-wrapper textarea {
+    width: 100%; 
+    padding: 15px 12px; 
+    margin-bottom: 25px; 
+    
+    background: rgba(80, 80, 80, 0.9); /* Dunkelgrauer Hintergrund */
+    border: none; 
+    border-radius: 5px; 
+    color: #fff; 
+    box-sizing: border-box;
+    box-shadow: none; 
+    
+    font-size: 16px; 
+    font-weight: 400;
+}
+
+/* Platzhalter (YOUR NAME, YOUR MESSAGE) */
+.guestbook-form-wrapper input::placeholder,
+.guestbook-form-wrapper textarea::placeholder {
+    color: #dddddd; 
+    font-size: 16px; 
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    opacity: 1; 
+}
+
+.guestbook-form-wrapper input[type="text"]:focus,
+.guestbook-form-wrapper textarea:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 10px rgba(255,215,0,0.2);
+  outline: none;
+}
+.guestbook-form-wrapper textarea { resize: vertical; min-height: 100px; }
+
+
+/* Sterne-Bewertung */
+.star-rating { 
+    font-size: 35px; 
+    margin: 0 0 35px; 
+    color: #888; 
+    cursor: pointer;
+    display: block; 
+    text-align: center; 
+}
+.star-rating span i { color: #555; transition: color 0.2s; } 
+.star-rating span i.fas { color: var(--gold-light); } 
+
+
+/* Submit Button (SUBMIT ENTRY) */
+.submit-btn { 
+  background: linear-gradient(0deg, #CEB700, var(--gold)); 
+  color: #000; 
+  font-weight: 700; 
+  border: none;
+  border-radius: 30px; 
+  padding: 15px 50px; 
+  cursor: pointer; 
+  transition: all 0.2s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6), 0 0 20px var(--gold-shadow); 
+  width: 90%; 
+  max-width: 300px; 
+  margin-top: 10px; 
+  font-size: 16px; 
+  letter-spacing: 1px;
+}
+.submit-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8), 0 0 35px rgba(255, 215, 0, 0.6); }
+
+
+/* -------------------------------------- */
+/* NACHRICHTEN & KONTAKT STYLES */
+/* -------------------------------------- */
+.guestbook-messages-section { margin-top: 50px; padding-top: 50px; }
 .messages-overview { text-align: center; position: relative; z-index: 10; }
 .messages-overview h3 { font-size: 24px; margin-bottom: 40px; color: var(--gold-light); letter-spacing: 1px; }
 .messages-grid {
@@ -133,11 +265,58 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
 footer{text-align:center;padding:15px 0;background:var(--surface);color:#888;margin-top:50px;border-top:1px solid rgba(255,215,0,0.1);} 
 
 /* -------------------------------------- */
-/* RESPONSIVE ANPASSUNGEN (Mobile) */
+/* RESPONSIVE ANPASSUNGEN (Mobile) - FIX FÜR SICHTBARKEIT */
 /* -------------------------------------- */
 @media(max-width: 768px){
     .header-banner { height: 200px; }
     .image-price-section img { max-width: 100%; }
+
+    /* 1. Gästebuch Sektion: Hintergrundbild ausschalten */
+    .guestbook-section-custom {
+        background-image: none !important; /* Wichtig: Bild auf Mobile entfernen */
+        min-height: auto;
+        padding: 40px 10px;
+        background: var(--bg); /* Stellt sicher, dass der Container schwarz ist */
+    }
+    
+    .guestbook-main-content {
+        position: static; /* Position zurücksetzen */
+        flex-direction: column;
+        height: auto;
+        padding-top: 0;
+    }
+    
+    /* 2. Formular-Wrapper: Hintergrund und Abstand für Mobile setzen */
+    .guestbook-form-wrapper { 
+        background: var(--card); /* Formular erhält Hintergrund, da Bild fehlt */
+        
+        max-width: 95%; 
+        margin: 20px auto; /* Zentriert und Abstand oben/unten */
+        padding: 20px; /* Kompaktes Padding für Mobile */
+        
+        border: 2px solid var(--gold); 
+        box-shadow: 0 0 20px var(--gold-shadow);
+        
+        transform: none; /* Positionierung zurücksetzen */
+        height: auto; 
+    }
+
+    /* 3. Überschrift für Mobile hinzufügen (da sie im Bild versteckt war) */
+    .guestbook-form-wrapper::before {
+        content: "GUESTBOOK";
+        display: block;
+        color: var(--gold-light);
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        text-shadow: 0 0 5px var(--gold-shadow);
+    }
+    
+    .submit-btn {
+        width: 100%;
+        max-width: 250px;
+    }
+    
     .messages-grid { grid-template-columns: 1fr; padding: 0 10px; }
     .contact-section-deluxe { margin: 40px 10px; padding: 30px 15px; }
     .container {padding: 0 10px;}
@@ -163,11 +342,36 @@ für Ihr perfektes Haar- und Bartgefühl.</p> 
   <img src="https://raw.githubusercontent.com/Artonstyle/Barbershop/main/images/Barbershop-preisliste.png" alt="Aktuelle Preisliste"> 
 </div> 
 
+<div class="container guestbook-section-custom">
+    
+    <div class="guestbook-main-content">
+        
+        <div class="guestbook-form-wrapper">
+            <form id="guestbookForm"> 
+              <input type="text" id="guestName" placeholder="YOUR NAME" required> 
+              <textarea id="guestText" placeholder="YOUR MESSAGE" required></textarea> 
+              
+              <div class="star-rating">
+                  <span data-rating="1"><i class="far fa-star"></i></span>
+                  <span data-rating="2"><i class="far fa-star"></i></span>
+                  <span data-rating="3"><i class="far fa-star"></i></span>
+                  <span data-rating="4"><i class="far fa-star"></i></span>
+                  <span data-rating="5"><i class="far fa-star"></i></span>
+              </div>
+
+              <button type="submit" class="submit-btn">SUBMIT ENTRY</button> 
+            </form> 
+            <p id="successMsg" style="display:none; color: var(--gold-light);">✅ Vielen Dank für Ihren Eintrag!</p> 
+        </div>
+    </div>
+</div> 
+
+
 <div class="container guestbook-messages-section">
     <div class="messages-overview">
         <h3>Nachrichten Von Unseren Gästen</h3>
         <div class="messages-grid" id="messagesGrid">
-                    </div>
+            </div>
     </div>
     <div id="guestEntries"></div> 
 </div> 
@@ -207,6 +411,55 @@ für Ihr perfektes Haar- und Bartgefühl.</p> 
 const sheetURL = 
 "https://script.google.com/macros/s/AKfycbzSBO9iha-NH0D4j3GfGjxsOdoko1AqwrEnM2ie-dy1zrfu2OtjNH4TvnZVIkWh0KDB/exec";
  
+const form=document.getElementById("guestbookForm"); 
+const successMsg=document.getElementById("successMsg"); 
+
+// --- Star Rating Funktionalität ---
+document.addEventListener('DOMContentLoaded', () => {
+    const stars = document.querySelectorAll('.star-rating span');
+    let selectedRating = 0;
+
+    // Finde das Rating-Feld aus dem Formular (für den POST-Request)
+    const ratingInput = document.createElement('input');
+    ratingInput.type = 'hidden';
+    ratingInput.name = 'rating';
+    ratingInput.id = 'hiddenRating';
+    ratingInput.value = '0'; // Initialwert 0 setzen
+    form.appendChild(ratingInput);
+
+    stars.forEach(star => {
+        star.addEventListener('click', () => {
+            selectedRating = parseInt(star.dataset.rating);
+            updateStars(selectedRating);
+            ratingInput.value = selectedRating; // Setze den Wert im versteckten Feld
+        });
+
+        star.addEventListener('mouseover', () => {
+            const hoverRating = parseInt(star.dataset.rating);
+            updateStars(hoverRating);
+        });
+
+        star.addEventListener('mouseout', () => {
+            updateStars(selectedRating);
+        });
+    });
+
+    function updateStars(rating) {
+        stars.forEach(s => {
+            const icon = s.querySelector('i');
+            if (parseInt(s.dataset.rating) <= rating) {
+                icon.classList.remove('far');
+                icon.classList.add('fas');
+            } else {
+                icon.classList.remove('fas');
+                icon.classList.add('far');
+            }
+        });
+    }
+});
+// --- Ende Star Rating Funktionalität ---
+
+
 // --- Einträge laden (GET) --- 
 async function loadEntries(){ 
   try{ 
@@ -219,7 +472,7 @@ async function loadEntries(){ 
         dynamicMessagesGrid.innerHTML = ''; 
         
         if(!entries || !entries.length){ 
-            dynamicMessagesGrid.innerHTML='<p style="text-align:center;color:var(--muted); grid-column: 1 / -1;">Noch keine Einträge vorhanden.</p>'; 
+            dynamicMessagesGrid.innerHTML='<p style="text-align:center;color:var(--muted); grid-column: 1 / -1;">Noch keine Einträge vorhanden. Sei der Erste!</p>'; 
             return; 
         } 
         
@@ -260,7 +513,55 @@ async function loadEntries(){ 
     }
   } 
 } 
+// --- Formular absenden (POST) --- 
+form.addEventListener("submit",async e=>{ 
+  e.preventDefault(); 
+  const name=document.getElementById("guestName").value.trim(); 
+  const text=document.getElementById("guestText").value.trim(); 
+  
+  // Rating auslesen
+  const selectedRating = document.getElementById('hiddenRating').value;
+  
+  if(!name||!text||selectedRating === '0' || selectedRating === '') { 
+      alert("Bitte füllen Sie alle Felder aus und geben Sie eine Bewertung ab!");
+      return;
+  }
+  
+  try{ 
+    const data=new FormData(); 
+    data.append("name",name); 
+    data.append("text",text); 
+    data.append("rating", selectedRating); 
+    
+    // Deaktivieren des Buttons, um Mehrfach-Senden zu verhindern
+    const submitBtn = form.querySelector('.submit-btn');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...'; 
+    
+    await fetch(sheetURL,{method:"POST",body:data}); 
+    
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'SUBMIT ENTRY'; 
 
+    form.reset(); 
+    document.querySelectorAll('.star-rating span i').forEach(icon => { 
+        icon.classList.remove('fas');
+        icon.classList.add('far');
+    });
+    document.getElementById('hiddenRating').value = '0'; 
+
+    successMsg.style.display="block"; 
+    setTimeout(()=>successMsg.style.display="none",3000); 
+    
+    loadEntries(); 
+  }catch(err){ 
+    console.error(err); 
+    alert("Fehler beim Senden!");
+    const submitBtn = form.querySelector('.submit-btn');
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'SUBMIT ENTRY'; 
+  } 
+}); 
 document.addEventListener("DOMContentLoaded",loadEntries); 
 </script> 
 </body> 
