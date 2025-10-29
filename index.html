@@ -79,6 +79,7 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
 }
 
 .guestbook-section-custom {
+    /* Wichtig: Nutzt Ihr hochgeladenes Bild als Hintergrund */
     background-image: url('https://raw.githubusercontent.com/Artonstyle/Barbershop/main/images/Gästebuch.png'); 
     background-size: cover; 
     background-position: center center;
@@ -116,76 +117,51 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
     padding-top: 0;
 }
 
-/* Formular Wrapper: TRANSPARENT über dem Bild */
+/* Formular Wrapper: Angepasst an das Designbild */
 .guestbook-form-wrapper {
-    /* Hintergrund und Rahmen des Hauptformulars angepasst an das Bild-Design */
-    background: rgba(10, 10, 10, 0.85); /* Dunkler, leicht durchsichtiger Hintergrund */
+    /* Hintergrund und Rahmen wie im Designbild */
+    background: rgba(10, 10, 10, 0.85); 
     border: 3px solid var(--gold); 
-    border-radius: 18px; /* Runde Ecken wie im Design */
-    padding: 40px 30px; /* Mehr Padding für Innenabstand */
+    border-radius: 18px; 
+    padding: 130px 30px 40px; /* Mehr Platz oben für die Überschrift im Hintergrundbild */
     max-width: 450px; 
-    box-shadow: 0 0 40px rgba(0, 0, 0, 0.8), 0 0 20px var(--gold-shadow); /* Stärkerer Schatten */
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.8), 0 0 20px var(--gold-shadow); 
     text-align: center;
     position: relative;
     z-index: 10;
     margin: 0; 
     transform: translateY(-5px); 
 }
-
-/* Formular Überschrift (GUESTBOOK) hinzugefügt */
-.guestbook-form-wrapper::before {
-    content: "GUESTBOOK";
-    position: absolute;
-    top: 90px; /* Position basierend auf dem Bild */
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 26px; 
-    font-weight: 700;
-    color: var(--text); /* Heller Text */
-    letter-spacing: 2px;
-}
-.guestbook-form-wrapper::after {
-    content: "";
-    position: absolute;
-    top: 25px; 
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 60px;
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="%23FFD700" d="M361.3 151.7c-5-5-11.8-7.8-19-7.8s-14 2.8-19 7.8L288 198.5l-35.3-46.8c-5-5-11.8-7.8-19-7.8s-14 2.8-19 7.8L169.3 268.1c-5 5-7.8 11.8-7.8 19s2.8 14 7.8 19L288 418.5l118.7-131.4c5-5 7.8-11.8 7.8-19s-2.8-14-7.8-19L361.3 151.7zM544 192c0 26.5-10.5 51.9-29.3 70.7L416 362.7l-48 53.3V448c0 17.7-14.3 32-32 32h-16c-17.7 0-32-14.3-32-32v-32H256v32c0 17.7-14.3 32-32 32h-16c-17.7 0-32-14.3-32-32v-32L105.3 331.7 64 288c-18.8-18.8-29.3-44.2-29.3-70.7V192h509.3c1.9 2.5 2.8 5.6 2.7 8.7zM128 64c0-17.7 14.3-32 32-32h32c17.7 0 32 14.3 32 32v32H128V64zM320 64c0-17.7 14.3-32 32-32h32c17.7 0 32 14.3 32 32v32H320V64zM512 64c0-17.7 14.3-32 32-32h32c17.7 0 32 14.3 32 32v32H512V64zM0 64c0-17.7 14.3-32 32-32h32c17.7 0 32 14.3 32 32v32H0V64zM224 0c0-17.7 14.3-32 32-32h32c17.7 0 32 14.3 32 32v32H224V0zM416 0c0-17.7 14.3-32 32-32h32c17.7 0 32 14.3 32 32v32H416V0z"/></svg>');
-    background-size: contain;
-    background-repeat: no-repeat;
-    z-index: 11;
+/* Entfernt die zusätzlichen CSS-Elemente, da der Text "GUESTBOOK" im Hintergrundbild ist */
+.guestbook-form-wrapper::before, .guestbook-form-wrapper::after {
+    content: none;
 }
 
-/* Formular Felder: Dunkel-Transparent */
+/* Formular Felder: Angepasst an das Designbild (grau) */
 .guestbook-form-wrapper input[type="text"],
 .guestbook-form-wrapper textarea {
-    /* Felder auf dunkle Rechtecke im Bild angepasst */
     width: 100%; 
-    padding: 18px 12px; /* Mehr Höhe */
-    margin-bottom: 20px; 
+    padding: 15px 12px; 
+    margin-bottom: 25px; /* Abstand zur nächsten Zeile erhöht */
     
-    background: rgba(50, 50, 50, 0.8); /* Dunkelgrauer Hintergrund */
-    border: none; /* Kein Rand */
-    border-radius: 5px; /* Nur leicht gerundet */
+    background: rgba(80, 80, 80, 0.9); /* Dunkelgrauer Hintergrund */
+    border: none; 
+    border-radius: 5px; 
     color: #fff; 
     box-sizing: border-box;
-    box-shadow: none; /* Kein innerer Schatten */
+    box-shadow: none; 
     
-    font-size: 16px; /* Schriftgröße angepasst */
+    font-size: 16px; 
     font-weight: 400;
-
-    /* Styling für Placeholders (DEIN NAME, DEINE NACHRICHT) */
-    
 }
-/* Style für Placeholders (DEIN NAME, DEINE NACHRICHT) */
+/* Styling für Placeholders (YOUR NAME, YOUR MESSAGE) */
 .guestbook-form-wrapper input::placeholder,
 .guestbook-form-wrapper textarea::placeholder {
-    color: #a0a0a0; /* Dunkleres Grau für den Placeholder Text */
-    font-size: 14px; /* Etwas kleiner als der eingegebene Text */
-    font-weight: 600; /* Halb-fett wie im Bild */
+    color: #dddddd; /* Helleres Grau, um den Text hervorzuheben */
+    font-size: 16px; 
+    font-weight: 500; /* Halb-fett */
     letter-spacing: 0.5px;
+    opacity: 1; /* Sicherstellen, dass der Text sichtbar ist */
 }
 
 .guestbook-form-wrapper input[type="text"]:focus,
@@ -199,32 +175,32 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
 
 /* Sterne-Bewertung: GOLD */
 .star-rating { 
-    font-size: 35px; /* Größer als vorher */
-    margin: 10px 0 30px; /* Vertikaler Abstand angepasst */
+    font-size: 35px; 
+    margin: 0 0 30px; /* Position unter den Feldern */
     color: #888; 
     cursor: pointer;
-    display: block; /* Nimmt die volle Breite ein */
-    text-align: center; /* Sterne zentrieren */
+    display: block; 
+    text-align: center; 
 }
-.star-rating span i { color: #555; transition: color 0.2s; } /* Standardmäßig dunkler */
-.star-rating span i.fas { color: var(--gold-light); } /* Gewählt/Hover Gold */
+.star-rating span i { color: #555; transition: color 0.2s; } 
+.star-rating span i.fas { color: var(--gold-light); } 
 
 
-/* Submit Button: GOLD */
+/* Submit Button: GOLD - Angepasst an das Designbild */
 .submit-btn { 
-  /* Anpassung an das ovale Button-Design im Bild */
-  background: linear-gradient(0deg, #CEB700, var(--gold)); /* Verlauf leicht geändert */
+  /* Ovales Button-Design */
+  background: linear-gradient(0deg, #CEB700, var(--gold)); 
   color: #000; 
   font-weight: 700; 
   border: none;
-  border-radius: 30px; /* Sehr stark gerundet (oval) */
-  padding: 15px 50px; /* Größeres Padding */
+  border-radius: 30px; 
+  padding: 15px 50px; 
   cursor: pointer; 
   transition: all 0.2s ease;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6), 0 0 20px var(--gold-shadow); 
-  width: 90%; /* Etwas schmaler als 100% */
+  width: 90%; 
   max-width: 300px; 
-  margin-top: 20px; 
+  margin-top: 10px; 
   font-size: 16px; 
   letter-spacing: 1px;
 }
@@ -234,13 +210,89 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
 /* ========================================================== */
 /* NACHRICHTEN ÜBERSICHT STYLES (SEPARAT) */
 /* ========================================================== */
-/* ... (unverändert) ... */
+
+.guestbook-messages-section { margin-top: 50px; padding-top: 50px; }
+
+.messages-overview { text-align: center; position: relative; z-index: 10; }
+.messages-overview h3 { font-size: 24px; margin-bottom: 40px; color: var(--gold-light); letter-spacing: 1px; }
+.messages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 20px;
+    padding: 0 50px;
+}
+
+.message-card {
+    background: var(--card); /* Dunkler Karten-Hintergrund */
+    border: 1px solid rgba(255, 215, 0, 0.3); 
+    border-radius: 12px;
+    padding: 20px;
+    text-align: left;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.1); 
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    border-left: 4px solid var(--gold-light); /* Goldene Seitenlinie */
+}
+.message-card:hover { transform: translateY(-4px); box-shadow: 0 0 25px rgba(255, 215, 0, 0.25); }
+.message-card .card-header { font-weight: bold; color: var(--gold-light); margin-bottom: 8px; }
+.message-card .card-info { font-size: 0.9em; color: var(--muted); margin-bottom: 10px; }
+.message-card .card-stars i { color: var(--gold-light); font-size: 16px; margin-right: 2px; }
+.message-card p { font-size: 14px; color: var(--text); line-height: 1.4; margin-top: 10px; }
 
 
 /* ========================================================== */
 /* KONTAKT & ÖFFNUNGSZEITEN DELUXE STYLES */
 /* ========================================================== */
-/* ... (unverändert) ... */
+
+.contact-section-deluxe {
+    text-align: center;
+    padding: 50px 20px;
+    margin: 60px auto; 
+    max-width: 900px;
+    background: var(--card); /* Dunkler Hintergrund */
+    border: 2px solid var(--gold); 
+    border-radius: 20px;
+    box-shadow: 0 0 40px var(--gold-shadow); /* Stärkster Goldschatten */
+    position: relative;
+    z-index: 5;
+}
+
+.contact-section-deluxe h2 { font-size: 28px; margin-bottom: 30px; }
+.contact-info p { font-size: 1.1em; color: var(--text); margin: 10px 0; }
+.contact-info .address-line { color: var(--muted); }
+.contact-info .phone-number { font-weight: bold; color: var(--gold-light); }
+
+.opening-hours-list {
+    list-style: none; padding: 0; display: inline-block; text-align: left; margin-top: 20px;
+}
+.opening-hours-list li {
+    padding: 8px 0; font-size: 1.05em; color: var(--text);
+    border-bottom: 1px solid rgba(255,215,0,0.2); /* Goldene Trennlinie */
+}
+.opening-hours-list li:last-child { border-bottom: none; }
+.opening-hours-list strong { color: var(--gold-light); display: inline-block; width: 150px; }
+.opening-hours-list .closed { color: var(--brand-2); font-weight: 600; }
+
+.contact-section-deluxe a {
+    color: var(--gold-light) !important; text-decoration: none; font-weight: bold;
+    display: block; margin-top: 25px; transition: color 0.2s;
+}
+.contact-section-deluxe a:hover { color: #fff !important; }
+
+/* Social Links */
+.social-links { margin: 30px 0 20px; text-align: center;}
+.social-links a img {
+    width: 32px; height: 32px; margin: 0 10px; vertical-align: middle;
+    border-radius: 50%; box-shadow: 0 0 10px var(--gold-shadow); 
+    transition: transform 0.2s;
+}
+.social-links a img:hover { transform: scale(1.1); }
+
+/* FOOTER */
+footer{
+    text-align:center; padding:20px 0; background:var(--surface); /* Sehr dunkel */
+    color:#555;
+    margin-top:50px; border-top:1px solid rgba(255,215,0,0.1); font-size: 0.9em;
+} 
 
 /* ========================================================== */
 /* RESPONSIVE ANPASSUNGEN (HANDY-ANSICHT) */
@@ -270,7 +322,7 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
         max-width: 95%; 
         margin: 20px auto; 
         padding: 20px 15px; 
-        background: rgba(0, 0, 0, 0.9); /* Noch dunkler für beste Lesbarkeit */
+        background: rgba(0, 0, 0, 0.9); 
         border: 2px solid var(--gold); 
         border-radius: 15px;
         box-shadow: 0 0 20px var(--gold-shadow);
@@ -318,8 +370,8 @@ für Ihr perfektes Haar- und Bartgefühl.</p>
         
         <div class="guestbook-form-wrapper">
             <form id="guestbookForm"> 
-              <input type="text" id="guestName" placeholder="DEIN NAME" required> 
-              <textarea id="guestText" placeholder="DEINE NACHRICHT" required></textarea> 
+              <input type="text" id="guestName" placeholder="YOUR NAME" required> 
+              <textarea id="guestText" placeholder="YOUR MESSAGE" required></textarea> 
               
               <div class="star-rating">
                   <span data-rating="1"><i class="far fa-star"></i></span>
@@ -329,7 +381,7 @@ für Ihr perfektes Haar- und Bartgefühl.</p>
                   <span data-rating="5"><i class="far fa-star"></i></span>
               </div>
 
-              <button type="submit" class="submit-btn">EINTRAG ABSCHICKEN</button> 
+              <button type="submit" class="submit-btn">SUBMIT ENTRY</button> 
             </form> 
             <p id="successMsg" style="display:none; color: var(--gold-light);">✅ Vielen Dank für Ihren Eintrag!</p> 
         </div>
@@ -506,12 +558,12 @@ form.addEventListener("submit",async e=>{
     // Deaktivieren des Buttons, um Mehrfach-Senden zu verhindern
     const submitBtn = form.querySelector('.submit-btn');
     submitBtn.disabled = true;
-    submitBtn.textContent = 'Wird gesendet...';
+    submitBtn.textContent = 'Sending...'; // Angepasster Lade-Text
     
     await fetch(sheetURL,{method:"POST",body:data}); 
     
     submitBtn.disabled = false;
-    submitBtn.textContent = 'EINTRAG ABSCHICKEN';
+    submitBtn.textContent = 'SUBMIT ENTRY'; // Zurück auf Englisch
 
     form.reset(); 
     document.querySelectorAll('.star-rating span i').forEach(icon => { 
@@ -529,7 +581,7 @@ form.addEventListener("submit",async e=>{
     alert("Fehler beim Senden!");
     const submitBtn = form.querySelector('.submit-btn');
     submitBtn.disabled = false;
-    submitBtn.textContent = 'EINTRAG ABSCHICKEN';
+    submitBtn.textContent = 'SUBMIT ENTRY'; // Zurück auf Englisch
   } 
 }); 
 document.addEventListener("DOMContentLoaded",loadEntries); 
