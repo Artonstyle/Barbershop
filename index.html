@@ -101,7 +101,7 @@ h2{text-align:center;margin-bottom:30px;font-weight:700;color:var(--gold-light);
 .guestbook-main-content {
   display: flex;
   justify-content: center;
-  align-items: flex-start; 
+  align-items: flex-start; /* Stellt sicher, dass das Formular an der Spitze beginnt */
   position: absolute;
   inset: 0;
   z-index: 5;
@@ -123,9 +123,9 @@ h2{text-align:center;margin-bottom:30px;font-weight:700;color:var(--gold-light);
 
   /* 🌟🌟 IHRE ANPASSUNG: POSITIONIERUNG 🌟🌟 */
   position: absolute; 
-  top: 65%; /* KORRIGIERT: Auf 65% gesetzt, um sichtbar zu sein. Passen Sie diesen Wert an! */
-  left: 50%; 
-  transform: translate(-50%, -50%); 
+  top: 50%; /* Ändern Sie diesen Wert (z.B. 40% für höher, 65% für tiefer) */
+  left: 50%; /* Ändern Sie diesen Wert (z.B. 30% für links, 70% für rechts) */
+  transform: translate(-50%, -50%); /* Wichtig: hält die Box zentriert am top/left-Punkt */
 }
 
 /* Eingabefelder */
@@ -163,7 +163,7 @@ h2{text-align:center;margin-bottom:30px;font-weight:700;color:var(--gold-light);
 }
 .star-rating span { transition: transform 0.15s; }
 .star-rating span:hover { transform: scale(1.15); }
-.star-rating i.fa-solid { color: var(--gold-light); } 
+.star-rating i.fa-solid { color: var(--gold-light); } /* Korrigiert: fas zu fa-solid, um Konsistenz mit JS zu gewährleisten */
 
 /* Button */
 .submit-btn {
@@ -230,45 +230,6 @@ h2{text-align:center;margin-bottom:30px;font-weight:700;color:var(--gold-light);
 .message-card .card-stars i{color:var(--gold-light);}
 .message-card p{font-size:14px;color:var(--text);line-height:1.4;margin-top:10px;}
 
-
-/* ====================================== */
-/* KONTAKT & SOCIAL MEDIA KORREKTUR */
-/* ====================================== */
-.contact-section-deluxe {
-    text-align: center;
-    padding: 50px 20px;
-    margin: 60px auto; 
-    max-width: 900px;
-    background: var(--card);
-    border: 2px solid var(--gold); 
-    border-radius: 20px;
-    box-shadow: 0 0 40px var(--gold-shadow); 
-    position: relative;
-    z-index: 5;
-}
-.contact-info p { font-size: 1.1em; color: var(--text); margin: 10px 0; }
-.contact-info .address-line { color: var(--muted); }
-.contact-info .phone-number { font-weight: bold; color: var(--gold-light); }
-.opening-hours-list { list-style: none; padding: 0; display: inline-block; text-align: left; margin-top: 20px; }
-.opening-hours-list li { padding: 8px 0; font-size: 1.05em; color: var(--text); border-bottom: 1px solid rgba(255,215,0,0.2); }
-.opening-hours-list li:last-child { border-bottom: none; }
-.opening-hours-list strong { color: var(--gold-light); display: inline-block; width: 150px; }
-.opening-hours-list .closed { color: var(--brand-2); font-weight: 600; }
-.contact-section-deluxe a { color: var(--gold-light) !important; text-decoration: none; font-weight: bold; display: block; margin-top: 25px; transition: color 0.2s; }
-
-/* Social Links - Instagram Icon (32x32px) - GRÖßE KORRIGIERT */
-.social-links { margin: 30px 0 20px; text-align: center;}
-.social-links a img { 
-    width: 32px; /* Setzt die feste Breite */
-    height: 32px; /* Setzt die feste Höhe */
-    margin: 0 10px; 
-    vertical-align: middle; 
-    border-radius: 50%; 
-    box-shadow: 0 0 10px var(--gold-shadow); 
-    transition: transform 0.2s; 
-}
-
-
 /* ====================================== */
 /* MOBILE RESPONSIVE FIX */
 /* ====================================== */
@@ -286,7 +247,7 @@ h2{text-align:center;margin-bottom:30px;font-weight:700;color:var(--gold-light);
     height:auto;
     padding:0;
   }
-  /* Mobile hat KEINE ABSOLUTE POSITION */
+  /* WICHTIG: Mobile hat KEINE ABSOLUTE POSITION, um Scrollen zu erlauben */
   .guestbook-form-wrapper{
     background:var(--card);
     border:2px solid var(--gold);
@@ -295,13 +256,14 @@ h2{text-align:center;margin-bottom:30px;font-weight:700;color:var(--gold-light);
     margin:20px auto;
     width:90%;
     animation:none;
+    /* Positionierung für Mobile zurücksetzen, damit es normal fließt */
     position: relative;
     top: auto; 
     left: auto;
     transform: none; 
   }
   .guestbook-form-wrapper::before{
-    content:"GÄSTEBUCH"; 
+    content:"GÄSTEBUCH"; /* DEUTSCH */
     display:block;
     color:var(--gold-light);
     font-size:22px;
