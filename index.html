@@ -7,7 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet"> 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <style> 
-/* Grundfarben & Typografie */
+/* Dein CSS-Code ist hier unverändert, aber gut strukturiert! */
 :root {
   --brand:#c0392b;
   --brand-2:#ff6b61;
@@ -376,7 +376,7 @@ für Ihr perfektes Haar- und Bartgefühl.</p>
 </div> 
 <div class="container image-price-section"> 
   <h2>💇‍♂️ Unsere Preisliste</h2> 
-  <img src="images/Barbershop-preisliste.png" alt="Aktuelle Preisliste"> 
+  <img src="https://raw.githubusercontent.com/Artonstyle/Barbershop/main/images/Barbershop-preisliste.png" alt="Aktuelle Preisliste"> 
 </div> 
 
 <div class="container guestbook-section-custom">
@@ -389,9 +389,8 @@ für Ihr perfektes Haar- und Bartgefühl.</p>
 
     
 <div class="guestbook-main-content">
-        
-<img src="URL_MANN_LINKS_FREIGESTELLT.png" alt="Inhaber Links" class="barber-figure left">
-        <img src="URL_MANN_RECHTS_FREIGESTELLT.png" alt="Inhaber Rechts" class="barber-figure right">
+        <img src="https://raw.githubusercontent.com/Artonstyle/Barbershop/main/images/URL_MANN_LINKS_FREIGESTELLT.png" alt="Inhaber Links" class="barber-figure left">
+        <img src="https://raw.githubusercontent.com/Artonstyle/Barbershop/main/images/URL_MANN_RECHTS_FREIGESTELLT.png" alt="Inhaber Rechts" class="barber-figure right">
 
         
 <i class="fas fa-cut scissors-icon"></i>
@@ -415,39 +414,14 @@ für Ihr perfektes Haar- und Bartgefühl.</p>
 
               <button type="submit" class="submit-btn">EINTRAG ABSCHICKEN</button> 
             </form> 
-            <p id="successMsg">✅ Vielen Dank für Ihren Eintrag!</p> 
+            <p id="successMsg" style="display:none;">✅ Vielen Dank für Ihren Eintrag!</p> 
         </div>
     </div>
 
     
 <div class="messages-overview">
         <h3>Nachrichten Von Unseren Gästen</h3>
-        <div class="messages-grid">
-            
-<div class="message-card">
-                <div class="card-header">Norer Name</div>
-                <div class="card-info">20.221 / 182-08</div>
-                <div class="card-stars">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-                </div>
-                <p>Super Service, immer freundlich und der Haarschnitt ist jedes Mal perfekt! Ich komme gerne wieder.</p>
-            </div>
-            <div class="message-card">
-                <div class="card-header">Norer Name</div>
-                <div class="card-info">20.221 / 182-02</div>
-                <div class="card-stars">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                </div>
-                <p>Bester Barbershop in der Stadt! Tolle Atmosphäre und top Beratung. Absolut empfehlenswert.</p>
-            </div>
-            <div class="message-card">
-                <div class="card-header">Norer Name</div>
-                <div class="card-info">20.221 / 182-04</div>
-                <div class="card-stars">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-                </div>
-                <p>Schnell, sauber und der Bart ist in Form gebracht. Genau das, was ich erwartet habe. Danke!</p>
-            </div>
+        <div class="messages-grid" id="messagesGrid">
             </div>
     </div>
     <div id="guestEntries"></div> 
@@ -488,10 +462,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const stars = document.querySelectorAll('.star-rating span');
     let selectedRating = 0;
 
+    // Finde das Rating-Feld aus dem Formular (für den POST-Request)
+    const ratingInput = document.createElement('input');
+    ratingInput.type = 'hidden';
+    ratingInput.name = 'rating';
+    ratingInput.id = 'hiddenRating';
+    form.appendChild(ratingInput);
+
     stars.forEach(star => {
         star.addEventListener('click', () => {
             selectedRating = parseInt(star.dataset.rating);
             updateStars(selectedRating);
+            ratingInput.value = selectedRating; // Setze den Wert im versteckten Feld
         });
 
         star.addEventListener('mouseover', () => {
@@ -526,13 +508,13 @@ async function loadEntries(){
     const res=await fetch(sheetURL); 
     const entries=await res.json(); 
     
-    const dynamicMessagesGrid = document.querySelector('.messages-grid');
+    const dynamicMessagesGrid = document.getElementById('messagesGrid'); // ID HINZUGEFÜGT
+    
     if (dynamicMessagesGrid) {
-        // Leert sowohl die statischen als auch die vorherigen dynamischen Einträge
-        dynamicMessagesGrid.innerHTML = '';
+        dynamicMessagesGrid.innerHTML = ''; // Vorherige (statische/dynamische) Einträge löschen
         
         if(!entries || !entries.length){ 
-            dynamicMessagesGrid.innerHTML='<p style="text-align:center;color:#888; grid-column: 1 / -1;">Noch keine Einträge.</p>'; 
+            dynamicMessagesGrid.innerHTML='<p style="text-align:center;color:var(--muted); grid-column: 1 / -1;">Noch keine Einträge vorhanden. Sei der Erste!</p>'; 
             return; 
         } 
         
@@ -543,8 +525,17 @@ async function loadEntries(){
             starHtml += `<i class="${i <= entryRating ? 'fas' : 'far'} fa-star"></i>`;
         }
 
-        const d=new Date(e.date); 
-        const dateString=d.toLocaleString('de-DE',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'});
+        // Korrigierte Datumskonvertierung für robustere Darstellung
+        let dateString;
+        try {
+             // Versucht, das Datum als ISO-String zu parsen (falls vom Sheet korrekt geliefert)
+            const dateValue = isNaN(new Date(e.date).getTime()) ? parseInt(e.date) : e.date;
+            const d = new Date(dateValue);
+            dateString = d.toLocaleString('de-DE',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'});
+        } catch (error) {
+            dateString = 'Unbekanntes Datum';
+        }
+
     
         return `
             <div class="message-card">
@@ -559,9 +550,9 @@ async function loadEntries(){
 
   }catch(err){ 
     console.error(err); 
-    const dynamicMessagesGrid = document.querySelector('.messages-grid');
+    const dynamicMessagesGrid = document.getElementById('messagesGrid');
     if (dynamicMessagesGrid) {
-        dynamicMessagesGrid.innerHTML='<p style="text-align:center;color:red; grid-column: 1 / -1;">Fehler beim Laden der Einträge.</p>'; 
+        dynamicMessagesGrid.innerHTML='<p style="text-align:center;color:var(--brand-2); grid-column: 1 / -1;">Fehler beim Laden der Einträge.</p>'; 
     }
   } 
 } 
@@ -572,9 +563,9 @@ form.addEventListener("submit",async e=>{
   const text=document.getElementById("guestText").value.trim(); 
   
   // Rating auslesen
-  const selectedRating = parseInt(document.querySelector('.star-rating span.fas')?.dataset.rating || '0');
+  const selectedRating = document.getElementById('hiddenRating').value;
   
-  if(!name||!text||selectedRating === 0) { 
+  if(!name||!text||selectedRating === '0' || selectedRating === '') { 
       alert("Bitte füllen Sie alle Felder aus und geben Sie eine Bewertung ab!");
       return;
   }
@@ -585,18 +576,33 @@ form.addEventListener("submit",async e=>{
     data.append("text",text); 
     data.append("rating", selectedRating); 
     
+    // Deaktivieren des Buttons, um Mehrfach-Senden zu verhindern
+    const submitBtn = form.querySelector('.submit-btn');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Wird gesendet...';
+    
     await fetch(sheetURL,{method:"POST",body:data}); 
+    
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'EINTRAG ABSCHICKEN';
+
     form.reset(); 
     document.querySelectorAll('.star-rating span i').forEach(icon => { 
         icon.classList.remove('fas');
         icon.classList.add('far');
     });
+    document.getElementById('hiddenRating').value = '0'; // Rating zurücksetzen
+
     successMsg.style.display="block"; 
     setTimeout(()=>successMsg.style.display="none",3000); 
+    
     loadEntries(); 
   }catch(err){ 
     console.error(err); 
     alert("Fehler beim Senden!");
+    const submitBtn = form.querySelector('.submit-btn');
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'EINTRAG ABSCHICKEN';
   } 
 }); 
 document.addEventListener("DOMContentLoaded",loadEntries); 
