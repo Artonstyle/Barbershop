@@ -105,19 +105,21 @@ h2{text-align:center;margin-bottom:30px;font-weight:700;color:var(--gold-light);
   z-index: 5;
 }
 
-/* Formular-Box - ZURÜCK AUF URSPRÜNGLICHE GRÖSSE */
+/* Formular-Box */
 .guestbook-form-wrapper {
+  /* ÄNDERUNG: Hintergrund für bessere Lesbarkeit und Gold-Rahmen */
   background: rgba(0, 0, 0, 0.75);
   border: 2px solid var(--gold);
   border-radius: 20px;
-  padding: 40px 35px; 
+  padding: 40px 35px;
   width: 100%;
-  max-width: 440px; 
+  max-width: 440px;
   box-shadow: 0 0 45px var(--gold-shadow);
   text-align: center;
   z-index: 10;
   backdrop-filter: blur(3px);
   animation: goldPulse 3s ease-in-out infinite alternate;
+  /* Entfernt die manuelle Verschiebung für perfekte Zentrierung */
   transform: translateY(0); 
 }
 
@@ -134,16 +136,6 @@ h2{text-align:center;margin-bottom:30px;font-weight:700;color:var(--gold-light);
   font-size: 15px;
   transition: all 0.2s ease;
 }
-
-/* SPEZIELLE ANPASSUNG: YOUR NAME kleiner machen */
-.guestbook-form-wrapper input[type="text"] {
-    width: 80%; 
-    margin-left: auto; 
-    margin-right: auto; 
-    display: block; 
-}
-/* ENDE SPEZIELLE ANPASSUNG */
-
 .guestbook-form-wrapper input:focus,
 .guestbook-form-wrapper textarea:focus {
   border-color: var(--gold-light);
@@ -197,13 +189,13 @@ h2{text-align:center;margin-bottom:30px;font-weight:700;color:var(--gold-light);
 /* ====================================== */
 /* GÄSTEBUCH-EINTRÄGE */
 /* ====================================== */
-.guestbook-messages-section { margin-top: 50px; padding-top: 50px; } 
+.guestbook-messages-section { margin-top: 50px; padding-top: 50px; } /* Anpassung: Top Margin für Abstand */
 
 .messages-overview {
   text-align:center;
   position:relative;
   z-index:10;
-  padding-top:0;
+  padding-top:0; /* Entfernt unnötiges Padding */
 }
 .messages-overview h3 {
   font-size:24px;
@@ -261,8 +253,8 @@ h2{text-align:center;margin-bottom:30px;font-weight:700;color:var(--gold-light);
 .contact-section-deluxe a { color: var(--gold-light) !important; text-decoration: none; font-weight: bold; display: block; margin-top: 25px; transition: color 0.2s; }
 .social-links { margin: 30px 0 20px; text-align: center;}
 .social-links a img { 
-    width: 36px; /* NEU VERKLEINERT */ 
-    height: 36px; /* NEU VERKLEINERT */ 
+    width: 32px; 
+    height: 32px; 
     margin: 0 10px; 
     vertical-align: middle; 
     border-radius: 50%; 
@@ -276,7 +268,7 @@ footer{text-align:center;padding:15px 0;background:var(--surface);color:#888;mar
 /* ====================================== */
 @media(max-width:768px){
   .header-banner{height:200px;}
-  .image-price-section img { max-width: 100%; } 
+  .image-price-section img { max-width: 100%; } /* Hinzugefügt */
   
   .guestbook-section-custom{
     background-image:none!important;
@@ -294,11 +286,11 @@ footer{text-align:center;padding:15px 0;background:var(--surface);color:#888;mar
     background:var(--card);
     border:2px solid var(--gold);
     box-shadow:0 0 25px var(--gold-shadow);
-    padding:25px 20px; 
+    padding:25px 20px;
     margin:20px auto;
     width:90%;
     animation:none;
-    transform: none; 
+    transform: none; /* Stellt sicher, dass keine Verschiebung auf Mobile erfolgt */
   }
   .guestbook-form-wrapper::before{
     content:"GUESTBOOK";
@@ -309,20 +301,10 @@ footer{text-align:center;padding:15px 0;background:var(--surface);color:#888;mar
     margin-bottom:20px;
     text-shadow:0 0 5px var(--gold-shadow);
   }
-  .guestbook-form-wrapper input[type="text"] {
-    width: 100%; 
-    margin-left: 0;
-    margin-right: 0;
-  }
   .submit-btn{width:100%;max-width:none;}
   .messages-grid{grid-template-columns:1fr;padding:0 10px;}
-  .contact-section-deluxe { margin: 40px 10px; padding: 30px 15px; } 
-  .container {padding: 0 10px;} 
-  
-  .social-links a img { 
-    width: 30px; /* NEU VERKLEINERT AUF MOBILE */ 
-    height: 30px; /* NEU VERKLEINERT AUF MOBILE */ 
-  }
+  .contact-section-deluxe { margin: 40px 10px; padding: 30px 15px; } /* Hinzugefügt */
+  .container {padding: 0 10px;} /* Hinzugefügt */
 }
 </style> 
 </head> 
@@ -366,14 +348,13 @@ für Ihr perfektes Haar- und Bartgefühl.</p> 
             </form> 
             <p id="successMsg" style="display:none; color: var(--gold-light);">✅ Vielen Dank für Ihren Eintrag!</p> 
         </div>
-      </div>
+    </div>
 </div> 
 
 
 <div class="container guestbook-messages-section">
     <div class="messages-overview">
-        <h3>Nachrichten Von Unseren Gästen 
-        </h3>
+        <h3>Nachrichten Von Unseren Gästen</h3>
         <div class="messages-grid" id="messagesGrid">
             </div>
     </div>
