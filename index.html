@@ -40,6 +40,8 @@ body {
   -moz-osx-font-smoothing:grayscale;
 }
 .container{max-width:var(--max-width);margin:0 auto;padding:0 16px}
+.skip-link{position:absolute;left:-9999px;top:auto;overflow:hidden}
+.skip-link:focus{left:16px;top:16px;z-index:999;background:var(--card);padding:8px;border-radius:6px;color:var(--text)}
 
 /* Allgemeine Styles */
 h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-light); text-shadow: 0 0 15px rgba(253, 216, 53, 0.4);} 
@@ -62,7 +64,7 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
 }
 
 .guestbook-section-custom {
-    /* **WICHTIG: ERSETZEN SIE DIESE URL MIT DER NEUEN GITHUB-URL VON '1000110222.png'** */
+    /* **WICHTIG: ERSETZEN SIE DIESE URL MIT DER KORREKTEN, ÖFFENTLICHEN BILD-URL!** */
     background-image: url('https://raw.githubusercontent.com/Artonstyle/Barbershop/main/images/Gaestebuch_neu.png'); 
     background-size: cover; 
     background-position: center center;
@@ -115,7 +117,7 @@ h2{text-align: center; margin-bottom: 30px; font-weight: 700; color: var(--gold-
     position: relative;
     z-index: 10;
     margin: 0; 
-    transform: translateY(-5px); /* Fein-Tuning für die vertikale Position */
+    transform: translateY(-5px); 
 }
 
 /* Formular Header (Icon, H3, Slogan) sind im Bild und werden ausgeblendet */
@@ -314,8 +316,8 @@ für Ihr perfektes Haar- und Bartgefühl.</p>
         
         <div class="guestbook-form-wrapper">
             <form id="guestbookForm"> 
-              <input type="text" id="guestName" placeholder="YOUR NAME" required> 
-              <textarea id="guestText" placeholder="YOUR MESSAGE" required></textarea> 
+              <input type="text" id="guestName" placeholder="DEIN NAME" required> 
+              <textarea id="guestText" placeholder="DEINE NACHRICHT" required></textarea> 
               
               <div class="star-rating">
                   <span data-rating="1"><i class="far fa-star"></i></span>
@@ -325,7 +327,7 @@ für Ihr perfektes Haar- und Bartgefühl.</p>
                   <span data-rating="5"><i class="far fa-star"></i></span>
               </div>
 
-              <button type="submit" class="submit-btn">SUBMIT ENTRY</button> 
+              <button type="submit" class="submit-btn">EINTRAG ABSCHICKEN</button> 
             </form> 
             <p id="successMsg" style="display:none;">✅ Vielen Dank für Ihren Eintrag!</p> 
         </div>
