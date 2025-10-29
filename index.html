@@ -107,19 +107,19 @@ h2{text-align:center;margin-bottom:30px;font-weight:700;color:var(--gold-light);
 
 /* Formular-Box */
 .guestbook-form-wrapper {
-  /* ÄNDERUNG: Hintergrund für bessere Lesbarkeit und Gold-Rahmen */
   background: rgba(0, 0, 0, 0.75);
   border: 2px solid var(--gold);
   border-radius: 20px;
-  padding: 40px 35px;
+  /* VERKLEINERT: Padding für kompaktes Aussehen */
+  padding: 30px 25px; 
   width: 100%;
-  max-width: 440px;
+  /* VERKLEINERT: Maximale Breite auf 380px */
+  max-width: 380px; 
   box-shadow: 0 0 45px var(--gold-shadow);
   text-align: center;
   z-index: 10;
   backdrop-filter: blur(3px);
   animation: goldPulse 3s ease-in-out infinite alternate;
-  /* Entfernt die manuelle Verschiebung für perfekte Zentrierung */
   transform: translateY(0); 
 }
 
@@ -189,13 +189,13 @@ h2{text-align:center;margin-bottom:30px;font-weight:700;color:var(--gold-light);
 /* ====================================== */
 /* GÄSTEBUCH-EINTRÄGE */
 /* ====================================== */
-.guestbook-messages-section { margin-top: 50px; padding-top: 50px; } /* Anpassung: Top Margin für Abstand */
+.guestbook-messages-section { margin-top: 50px; padding-top: 50px; } 
 
 .messages-overview {
   text-align:center;
   position:relative;
   z-index:10;
-  padding-top:0; /* Entfernt unnötiges Padding */
+  padding-top:0;
 }
 .messages-overview h3 {
   font-size:24px;
@@ -268,7 +268,7 @@ footer{text-align:center;padding:15px 0;background:var(--surface);color:#888;mar
 /* ====================================== */
 @media(max-width:768px){
   .header-banner{height:200px;}
-  .image-price-section img { max-width: 100%; } /* Hinzugefügt */
+  .image-price-section img { max-width: 100%; } 
   
   .guestbook-section-custom{
     background-image:none!important;
@@ -286,11 +286,12 @@ footer{text-align:center;padding:15px 0;background:var(--surface);color:#888;mar
     background:var(--card);
     border:2px solid var(--gold);
     box-shadow:0 0 25px var(--gold-shadow);
-    padding:25px 20px;
+    /* Auch auf Mobile angepasst, aber weniger stark reduziert */
+    padding:25px 20px; 
     margin:20px auto;
     width:90%;
     animation:none;
-    transform: none; /* Stellt sicher, dass keine Verschiebung auf Mobile erfolgt */
+    transform: none; 
   }
   .guestbook-form-wrapper::before{
     content:"GUESTBOOK";
@@ -303,8 +304,8 @@ footer{text-align:center;padding:15px 0;background:var(--surface);color:#888;mar
   }
   .submit-btn{width:100%;max-width:none;}
   .messages-grid{grid-template-columns:1fr;padding:0 10px;}
-  .contact-section-deluxe { margin: 40px 10px; padding: 30px 15px; } /* Hinzugefügt */
-  .container {padding: 0 10px;} /* Hinzugefügt */
+  .contact-section-deluxe { margin: 40px 10px; padding: 30px 15px; } 
+  .container {padding: 0 10px;} 
 }
 </style> 
 </head> 
@@ -354,7 +355,8 @@ für Ihr perfektes Haar- und Bartgefühl.</p> 
 
 <div class="container guestbook-messages-section">
     <div class="messages-overview">
-        <h3>Nachrichten Von Unseren Gästen</h3>
+        <h3>Nachrichten Von Unseren Gästen 
+        </h3>
         <div class="messages-grid" id="messagesGrid">
             </div>
     </div>
