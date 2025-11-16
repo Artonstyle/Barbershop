@@ -1,125 +1,125 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>⚙️ C&D Barbershop – Metallic Gold Edition</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Cinzel:wght@600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Cinzel:wght=600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 <style>
 /* ==========================
-   VARIABLES & GLOBAL V4 (METALLIC GOLD)
-   ========================== */
+    VARIABLES & GLOBAL V4 (METALLIC GOLD)
+    ========================== */
 :root{
-   --main-metallic:#6B7B8E; /* Mittleres Chrom-Grau */
-   --main-metallic-light:#AABBCF;
-   --main-metallic-dark:#3A4A5C;
-   --metallic-shadow:rgba(107, 123, 142, 0.4); /* Schatten für metallische Elemente */
+    --main-metallic:#6B7B8E; /* Mittleres Chrom-Grau */
+    --main-metallic-light:#AABBCF;
+    --main-metallic-dark:#3A4A5C;
+    --metallic-shadow:rgba(107, 123, 142, 0.4); /* Schatten für metallische Elemente */
 
-   --bg:#020205; /* Tiefes Dunkelblau-Schwarz bleibt Basis (für Fallback) */
-   --card:#0e0e12; /* Dunkle, strukturierte Oberfläche */
-   --surface:#15151a;
-   --text:#f0f2f5; /* Weiß/Sehr helles Grau */
-   --muted:#a0aab8;
-   --glass:rgba(255,255,255,0.05);
-   --max-width:1200px;
-   --radius:15px; 
-   --gold:#FFD700;
-   --gold-light:#FFECB3;
-   --gold-shadow:rgba(255, 215, 0, 0.6);
-   --gold-neon:rgba(255, 215, 0, 0.4);
-   --heading-font: "Cinzel", serif;
-   font-family:"Poppins",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+    --bg:#020205; /* Tiefes Dunkelblau-Schwarz bleibt Basis (für Fallback) */
+    --card:#0e0e12; /* Dunkle, strukturierte Oberfläche */
+    --surface:#15151a;
+    --text:#f0f2f5; /* Weiß/Sehr helles Grau */
+    --muted:#a0aab8;
+    --glass:rgba(255,255,255,0.05);
+    --max-width:1200px;
+    --radius:15px; 
+    --gold:#FFD700;
+    --gold-light:#FFECB3;
+    --gold-shadow:rgba(255, 215, 0, 0.6);
+    --gold-neon:rgba(255, 215, 0, 0.4);
+    --heading-font: "Cinzel", serif;
+    font-family:"Poppins",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
 }
 *{box-sizing:border-box}
 html,body{height:100%}
 
 /* ==========================
-   VIDEO HINTERGRUND STYLES (Optimiert)
-   ========================== */
+    VIDEO HINTERGRUND STYLES (Optimiert)
+    ========================== */
 body {
-   margin:0;
-   color:var(--text);
-   line-height:1.6;
-   -webkit-font-smoothing:antialiased;
-   -moz-osx-font-smoothing:grayscale;
-   /* Fallback-Hintergrundfarbe und dient als initiale Farbe */
-   background-color: var(--bg); 
-   position: relative; 
-   overflow-x: hidden; 
+    margin:0;
+    color:var(--text);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    /* Fallback-Hintergrundfarbe und dient als initiale Farbe */
+    background-color: var(--bg); 
+    position: relative; 
+    overflow-x: hidden; 
 }
 
 #background-video {
-   position: fixed;
-   right: 0;
-   bottom: 0;
-   min-width: 100%; 
-   min-height: 100%;
-   width: auto;
-   height: auto;
-   z-index: -3; /* Extrem niedrig */
-   background-size: cover;
-   object-fit: cover; 
-   filter: brightness(0.7) grayscale(0.2); 
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%; 
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -3; /* Extrem niedrig */
+    background-size: cover;
+    object-fit: cover; 
+    filter: brightness(0.7) grayscale(0.2); 
 }
 
 /* Overlay für bessere Lesbarkeit des Textes */
 .video-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* NEU: Hintergrundfarbe, die zu dem Video-Poster passt, um Flimmern zu vermeiden */
-    background-color: rgba(0, 0, 0, 0.7); 
-    z-index: -2; /* Extrem niedrig */
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     /* NEU: Hintergrundfarbe, die zu dem Video-Poster passt, um Flimmern zu vermeiden */
+     background-color: rgba(0, 0, 0, 0.7); 
+     z-index: -2; /* Extrem niedrig */
 }
 
 
 /* GLOBAL ANIMATIONS */
 @keyframes goldPulse {
-   0%, 100% { opacity: 0.6; }
-   50% { opacity: 1; }
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
 }
 @keyframes neonFlicker {
-   0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { text-shadow: 0 0 5px rgba(171, 219, 227, 0.3), 0 0 10px rgba(171, 219, 227, 0.2), 0 0 15px rgba(171, 219, 227, 0.1); }
-   20%, 24%, 55% { text-shadow: none; }
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { text-shadow: 0 0 5px rgba(171, 219, 227, 0.3), 0 0 10px rgba(171, 219, 227, 0.2), 0 0 15px rgba(171, 219, 227, 0.1); }
+    20%, 24%, 55% { text-shadow: none; }
 }
 
 /* TOP CONTROLS (Metallic) */
 .top-controls {
-   display:flex;
-   justify-content:center;
-   align-items:center;
-   gap:15px;
-   padding:15px;
-   background: var(--glass);
-   backdrop-filter: blur(5px);
-   position:sticky;
-   top:0;
-   z-index:999; /* Sehr hoch, damit es über allem sticky bleibt */
-   border-bottom:1px solid rgba(255,255,255,0.05);
-   box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:15px;
+    padding:15px;
+    background: var(--glass);
+    backdrop-filter: blur(5px);
+    position:sticky;
+    top:0;
+    z-index:999; /* Sehr hoch, damit es über allem sticky bleibt */
+    border-bottom:1px solid rgba(255,255,255,0.05);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
 }
 .top-controls .ctrl-btn {
-   background: linear-gradient(180deg, var(--main-metallic-light), var(--main-metallic));
-   border: none;
-   color: #fff; 
-   padding:10px 22px;
-   border-radius:30px;
-   font-weight:700;
-   cursor:pointer;
-   transition: all .3s cubic-bezier(0.25, 0.8, 0.25, 1);
-   box-shadow: 0 4px 15px var(--metallic-shadow);
-   text-transform: uppercase;
-   letter-spacing: 1px;
+    background: linear-gradient(180deg, var(--main-metallic-light), var(--main-metallic));
+    border: none;
+    color: #fff; 
+    padding:10px 22px;
+    border-radius:30px;
+    font-weight:700;
+    cursor:pointer;
+    transition: all .3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 4px 15px var(--metallic-shadow);
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 .top-controls .ctrl-btn:hover {
-   transform: translateY(-5px) scale(1.02);
-   box-shadow: 0 8px 25px var(--metallic-shadow), 0 0 50px rgba(171, 219, 227, 0.2);
-   filter: brightness(1.1);
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 8px 25px var(--metallic-shadow), 0 0 50px rgba(171, 219, 227, 0.2);
+    filter: brightness(1.1);
 }
 
 /* SECTIONS & TYPOGRAPHY */
@@ -134,174 +134,174 @@ body {
 .skip-link:focus{left:16px;top:16px;z-index:999;background:var(--card);padding:8px;border-radius:6px;color:var(--text)}
 
 h2{
-   text-align: center; 
-   margin-bottom: 30px; 
-   font-weight: 800; 
-   /* NEU: H2 Farbe für 'Unsere Handwerkskunst' und 'Kontakt & Öffnungszeiten' auf Weiß/Gold gesetzt */
-   color: var(--text); 
-   text-shadow: 0 0 10px var(--metallic-shadow);
-   font-family: var(--heading-font);
-   letter-spacing: 2px;
-   font-size: 2.2em;
+    text-align: center; 
+    margin-bottom: 30px; 
+    font-weight: 800; 
+    /* NEU: H2 Farbe für 'Unsere Handwerkskunst' und 'Kontakt & Öffnungszeiten' auf Weiß/Gold gesetzt */
+    color: var(--text); 
+    text-shadow: 0 0 10px var(--metallic-shadow);
+    font-family: var(--heading-font);
+    letter-spacing: 2px;
+    font-size: 2.2em;
 }
 
 /* HERO BANNER (Transparent) */
 .header-banner{
-   width: 100%; 
-   height: 450px; 
-   display: flex; 
-   justify-content: center; 
-   align-items: center; 
-   background: transparent; 
-   overflow: hidden; 
-   border-bottom: none; 
-   box-shadow: none; 
-   position: relative;
-   padding: 20px; 
+    width: 100%; 
+    height: 450px; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    background: transparent; 
+    overflow: hidden; 
+    border-bottom: none; 
+    box-shadow: none; 
+    position: relative;
+    padding: 20px; 
 }
 .header-banner::before {
-   content: '';
-   position: absolute;
-   inset: 0;
-   background: transparent;
-   animation: none; 
-   opacity: 0; 
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: transparent;
+    animation: none; 
+    opacity: 0; 
 }
 .header-banner img{
-   max-width: 95%; 
-   max-height: 95%; 
-   object-fit: contain; 
-   filter: drop-shadow(0 0 10px rgba(107, 123, 142, 0.8)) drop-shadow(0 0 20px rgba(107, 123, 142, 0.4)); 
-   transition: transform 0.5s ease;
+    max-width: 95%; 
+    max-height: 95%; 
+    object-fit: contain; 
+    filter: drop-shadow(0 0 10px rgba(107, 123, 142, 0.8)) drop-shadow(0 0 20px rgba(107, 123, 142, 0.4)); 
+    transition: transform 0.5s ease;
 }
 
 /* Welcome & Price Sections (Metallic) */
 .welcome-section, .image-price-section {
-   padding: 40px 25px; 
-   background: var(--card); /* Hintergrund bleibt card */
-   border-radius: var(--radius); 
-   max-width: 950px; 
-   margin: 60px auto; 
-   text-align: center; 
-   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 30px var(--metallic-shadow);
-   border: 1px solid rgba(107, 123, 142, 0.3); 
-   transition: box-shadow 0.3s ease;
+    padding: 40px 25px; 
+    background: var(--card); /* Hintergrund bleibt card */
+    border-radius: var(--radius); 
+    max-width: 950px; 
+    margin: 60px auto; 
+    text-align: center; 
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 30px var(--metallic-shadow);
+    border: 1px solid rgba(107, 123, 142, 0.3); 
+    transition: box-shadow 0.3s ease;
 } 
 /* NEU: Willkommen H1 auf Weiß (var(--text)) gesetzt */
 .welcome-section h1{
-   font-size: 2.5em; 
-   margin-bottom: 10px; 
-   color: var(--text); 
-   font-family: var(--heading-font);
-   text-shadow: 0 0 8px var(--gold-neon);
+    font-size: 2.5em; 
+    margin-bottom: 10px; 
+    color: var(--text); 
+    font-family: var(--heading-font);
+    text-shadow: 0 0 8px var(--gold-neon);
 } 
 .image-price-section img{
-   max-width: 100%; /* Bild nimmt 100% der Container-Breite ein */
-   width: 100%; 
-   height: auto; /* Höhe wird automatisch angepasst, um Seitenverhältnis zu wahren */
-   border-radius: var(--radius); 
-   box-shadow: 0 0 20px var(--metallic-shadow); 
-   border: 2px solid var(--main-metallic-light); 
+    max-width: 100%; /* Bild nimmt 100% der Container-Breite ein */
+    width: 100%; 
+    height: auto; /* Höhe wird automatisch angepasst, um Seitenverhältnis zu wahren */
+    border-radius: var(--radius); 
+    box-shadow: 0 0 20px var(--metallic-shadow); 
+    border: 2px solid var(--main-metallic-light); 
 } 
 
 /* BARBER SHOWCASE SECTION (Metallic) */
 .barber-showcase-section {
-    padding: 60px 20px;
-    margin: 60px auto;
-    max-width: 1200px;
-    background: var(--surface); /* Hintergrund bleibt surface */
-    border-radius: var(--radius);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
-    border-top: 3px solid var(--gold); 
+     padding: 60px 20px;
+     margin: 60px auto;
+     max-width: 1200px;
+     background: var(--surface); /* Hintergrund bleibt surface */
+     border-radius: var(--radius);
+     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+     border-top: 3px solid var(--gold); 
 }
 /* NEU: Beschreibungstext unter "Handwerkskunst" auf Weiß gesetzt */
 .barber-showcase-section p {
-    color: var(--text) !important; 
+     color: var(--text) !important; 
 }
 .barber-showcase-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
+     display: grid;
+     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+     gap: 30px;
 }
 .barber-card {
-    background: var(--card);
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border-top: 5px solid var(--main-metallic); 
+     background: var(--card);
+     border-radius: 12px;
+     overflow: hidden;
+     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
+     transition: transform 0.3s ease, box-shadow 0.3s ease;
+     border-top: 5px solid var(--main-metallic); 
 }
 .barber-card img {
-    width: 100%;
-    height: 350px;
-    object-fit: cover; /* Stellt sicher, dass das Bild den Bereich ausfüllt und zentriert wird */
-    display: block;
-    loading: lazy; 
+     width: 100%;
+     height: 350px;
+     object-fit: cover; /* Stellt sicher, dass das Bild den Bereich ausfüllt und zentriert wird */
+     display: block;
+     loading: lazy; 
 }
 .barber-card-info {
-    padding: 20px;
-    text-align: center;
+     padding: 20px;
+     text-align: center;
 }
 .barber-card-info h4 {
-    color: var(--gold-light); 
-    font-family: var(--heading-font);
+     color: var(--gold-light); 
+     font-family: var(--heading-font);
 }
 
 /* ============================================
-   GÄSTEBUCH STYLES
-   ============================================ */
+    GÄSTEBUCH STYLES
+    ============================================ */
 
 .guestbook-section-custom{
-   /* NEU: Gästebuch2.png */
-   background-image: url('https://raw.githubusercontent.com/Artonstyle/Barbershop/main/images/G%C3%A4stebuch2.png'); 
-   background-size: cover; 
-   background-position: center center;
-   background-repeat: no-repeat;
-   position: relative;
-   padding: 0; 
-   margin: 40px auto 0; 
-   max-width: 1200px; 
-   box-shadow: inset 0 0 0 0vw rgba(0, 0, 0, 0.4); 
-   min-height: 750px; 
-   border-radius: var(--radius);
-   overflow: hidden;
+    /* NEU: Gästebuch2.png */
+    background-image: url('https://raw.githubusercontent.com/Artonstyle/Barbershop/main/images/G%C3%A4stebuch2.png'); 
+    background-size: cover; 
+    background-position: center center;
+    background-repeat: no-repeat;
+    position: relative;
+    padding: 0; 
+    margin: 40px auto 0; 
+    max-width: 1200px; 
+    box-shadow: inset 0 0 0 0vw rgba(0, 0, 0, 0.4); 
+    min-height: 750px; 
+    border-radius: var(--radius);
+    overflow: hidden;
 }
 .guestbook-section-custom::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image: 
-      repeating-linear-gradient(45deg, rgba(255,215,0,0.02) 0px, rgba(255,215,0,0.02) 2px, transparent 2px, transparent 10px),
-      repeating-linear-gradient(-45deg, rgba(255,215,0,0.02) 0px, rgba(255,215,0,0.02) 2px, transparent 2px, transparent 20px);
-    animation: goldPulse 5s ease-in-out infinite;
-    z-index: 1;
-    opacity: 0.8;
+     content: "";
+     position: absolute;
+     inset: 0;
+     background-image: 
+       repeating-linear-gradient(45deg, rgba(255,215,0,0.02) 0px, rgba(255,215,0,0.02) 2px, transparent 2px, transparent 10px),
+       repeating-linear-gradient(-45deg, rgba(255,215,0,0.02) 0px, rgba(255,215,0,0.02) 2px, transparent 2px, transparent 20px);
+     animation: goldPulse 5s ease-in-out infinite;
+     z-index: 1;
+     opacity: 0.8;
 }
 .guestbook-main-content {
-    display: flex;
-    justify-content: center;
-    align-items: center; 
-    position: absolute; 
-    inset: 0;
-    z-index: 10;
+     display: flex;
+     justify-content: center;
+     align-items: center; 
+     position: absolute; 
+     inset: 0;
+     z-index: 10;
 }
 .guestbook-form-wrapper {
-    background: transparent;
-    border: none;
-    padding: 180px 40px 40px; 
-    max-width: 430px; 
-    height: 500px; 
-    box-shadow: none; 
-    text-align: center;
-    position: relative;
-    z-index: 10;
-    transform: translateY(45px); 
+     background: transparent;
+     border: none;
+     padding: 180px 40px 40px; 
+     max-width: 430px; 
+     height: 500px; 
+     box-shadow: none; 
+     text-align: center;
+     position: relative;
+     z-index: 10;
+     transform: translateY(45px); 
 }
 .guestbook-form-wrapper input[type="text"],
 .guestbook-form-wrapper textarea {
-   width: 85%; padding: 10px 10px; margin-bottom: 8px; 
-   background: rgba(80, 80, 80, 0.9); border: none; border-radius: 5px; color: #fff; box-sizing: border-box;
-   font-size: 16px;
+    width: 85%; padding: 10px 10px; margin-bottom: 8px; 
+    background: rgba(80, 80, 80, 0.9); border: none; border-radius: 5px; color: #fff; box-sizing: border-box;
+    font-size: 16px;
 }
 .guestbook-form-wrapper input::placeholder,.guestbook-form-wrapper textarea::placeholder { color: #dddddd; font-size: 16px; font-weight: 400; letter-spacing: 0.5px; opacity: 1; }
 .guestbook-form-wrapper input[type="text"]:focus,.guestbook-form-wrapper textarea:focus{ border-color: var(--gold); box-shadow: 0 0 10px rgba(255,215,0,0.2); outline: none; }
@@ -326,35 +326,35 @@ h2{
 .star-rating span i.fas { color: var(--gold); } 
 
 @keyframes glowing {
-   0% { box-shadow: 0 0 5px var(--metallic-shadow); }
-   50% { box-shadow: 0 0 20px var(--metallic-shadow); }
-   100% { box-shadow: 0 0 5px var(--metallic-shadow); }
+    0% { box-shadow: 0 0 5px var(--metallic-shadow); }
+    50% { box-shadow: 0 0 20px var(--metallic-shadow); }
+    100% { box-shadow: 0 0 5px var(--metallic-shadow); }
 }
 
 /* SUBMIT BUTTON (Golden) */
 .submit-btn { 
-   /* NEU: Hintergrund auf Gold-Verlauf geändert */
-   background: linear-gradient(0deg, var(--gold), var(--gold-light)); 
-   color: var(--card); /* Textfarbe auf Dunkel angepasst */
-   font-weight: 800; 
-   border: none; 
-   border-radius: 40px; 
-   padding: 18px 60px; 
-   cursor: pointer; 
-   transition: all 0.3s ease; 
-   /* Schatten an Gold angepasst */
-   box-shadow: 0 6px 15px rgba(255, 215, 0, 0.4); 
-   width: 90%; max-width: 320px; 
-   margin-top: 10px; 
-   font-size: 18px; 
-   letter-spacing: 2px; 
-   text-transform: uppercase;
+    /* NEU: Hintergrund auf Gold-Verlauf geändert */
+    background: linear-gradient(0deg, var(--gold), var(--gold-light)); 
+    color: var(--card); /* Textfarbe auf Dunkel angepasst */
+    font-weight: 800; 
+    border: none; 
+    border-radius: 40px; 
+    padding: 18px 60px; 
+    cursor: pointer; 
+    transition: all 0.3s ease; 
+    /* Schatten an Gold angepasst */
+    box-shadow: 0 6px 15px rgba(255, 215, 0, 0.4); 
+    width: 90%; max-width: 320px; 
+    margin-top: 10px; 
+    font-size: 18px; 
+    letter-spacing: 2px; 
+    text-transform: uppercase;
 }
 .submit-btn:hover { 
-   transform: translateY(-5px); 
-   animation: glowing 1.5s infinite; 
-   filter: brightness(1.1);
-   box-shadow: 0 8px 25px rgba(255, 215, 0, 0.6);
+    transform: translateY(-5px); 
+    animation: glowing 1.5s infinite; 
+    filter: brightness(1.1);
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.6);
 }
 
 /* MESSAGES (Metallic/Gold) */
@@ -369,9 +369,9 @@ h2{
     text-shadow: 0 0 5px var(--gold-shadow);
 } 
 .messages-scroll-wrapper {
-   max-height: 550px; 
-   overflow-y: auto;
-   padding-right: 15px;
+    max-height: 550px; 
+    overflow-y: auto;
+    padding-right: 15px;
 }
 .messages-scroll-wrapper::-webkit-scrollbar { width: 8px; }
 .messages-scroll-wrapper::-webkit-scrollbar-track { background: var(--card); border-radius: 10px; }
@@ -386,25 +386,25 @@ h2{
 }
 
 .message-card {
-   background: var(--card);
-   border: 1px solid rgba(107, 123, 142, 0.2); 
-   border-radius: 15px;
-   padding: 25px;
-   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5); 
-   border-left: 5px solid var(--gold); 
+    background: var(--card);
+    border: 1px solid rgba(107, 123, 142, 0.2); 
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5); 
+    border-left: 5px solid var(--gold); 
 }
 .message-card .card-stars i { color: var(--gold); font-size: 18px; margin-right: 3px; }
 
 /* CONTACT (Metallic) */
 .contact-section-deluxe {
-   padding: 50px 20px;
-   margin: 80px auto; 
-   max-width: 950px;
-   background: var(--card);
-   border: 3px solid var(--main-metallic); 
-   border-radius: 25px;
-   box-shadow: 0 0 50px var(--metallic-shadow); 
-   text-align: center; /* NEU: Zentriert den gesamten Block */
+    padding: 50px 20px;
+    margin: 80px auto; 
+    max-width: 950px;
+    background: var(--card);
+    border: 3px solid var(--main-metallic); 
+    border-radius: 25px;
+    box-shadow: 0 0 50px var(--metallic-shadow); 
+    text-align: center; /* NEU: Zentriert den gesamten Block */
 }
 /* NEU: Kontakt H2 auf Gold gesetzt */
 .contact-section-deluxe h2 {
@@ -436,74 +436,183 @@ h2{
     text-align: center;
 }
 .social-links a img { 
-   width: 38px; 
-   height: 38px; 
-   margin: 0 12px; 
-   box-shadow: 0 0 10px var(--metallic-shadow);
-   border-radius: 8px; 
-   transition: transform 0.3s, filter 0.3s, box-shadow 0.3s; 
+    width: 38px; 
+    height: 38px; 
+    margin: 0 12px; 
+    box-shadow: 0 0 10px var(--metallic-shadow);
+    border-radius: 8px; 
+    transition: transform 0.3s, filter 0.3s, box-shadow 0.3s; 
 }
 .social-links a img:hover { 
-   transform: scale(1.15) rotate(0deg); 
-   filter: brightness(1.2); 
-   box-shadow: 0 0 20px var(--metallic-shadow);
+    transform: scale(1.15) rotate(0deg); 
+    filter: brightness(1.2); 
+    box-shadow: 0 0 20px var(--metallic-shadow);
 }
 
 /* FOOTER */
 footer{
-   text-align:center;
-   padding:20px 0;
-   background:var(--surface);
-   color:var(--muted);
-   margin-top:80px;
-   border-top:2px solid var(--metallic-shadow); 
-   font-size: 0.9em;
+    text-align:center;
+    padding:20px 0;
+    background:var(--surface);
+    color:var(--muted);
+    margin-top:80px;
+    border-top:2px solid var(--metallic-shadow); 
+    font-size: 0.9em;
 } 
 
 /* Gallery (Metallic) */
 #haarschnitt-section {
-   display: none;
-   padding: 40px 20px;
-   background: var(--bg);
+    display: none;
+    padding: 40px 20px;
+    background: var(--bg);
 }
 .gallery {
-   display: grid;
-   grid-template-columns: repeat(4, 1fr);
-   gap: 20px;
-   max-width: 1200px;
-   margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 .gallery img {
-   width: 100%;
-   height: auto;
-   object-fit: cover; 
-   aspect-ratio: 1 / 1.1; 
-   border-radius: 12px;
-   border: 2px solid rgba(107, 123, 142, 0.2); 
-   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
+    width: 100%;
+    height: auto;
+    object-fit: cover; 
+    aspect-ratio: 1 / 1.1; 
+    border-radius: 12px;
+    border: 2px solid rgba(107, 123, 142, 0.2); 
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
 }
 .gallery img:hover {
-   transform: translateY(-8px) scale(1.05);
-   border-color: var(--main-metallic); 
-   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9), 0 0 25px var(--metallic-shadow);
+    transform: translateY(-8px) scale(1.05);
+    border-color: var(--main-metallic); 
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9), 0 0 25px var(--metallic-shadow);
 }
 
 /* Fade toggle */
 .fade{opacity:0;transition:opacity .5s ease, transform .5s ease}
 .fade.show{opacity:1;transform:translateY(0)}
 
-/* Responsive */
+/* Responsive Mobile Optimierung */
 @media(max-width: 768px){
-   .gallery{grid-template-columns: repeat(2, 1fr);}
-   .header-banner{height:350px;} /* Anpassung der Höhe für responsive Ansicht */
-   .header-banner img{ max-width: 90%; max-height: 90%; } /* Anpassung für responsive Ansicht */
-   /* Gästebuch Responsive Anpassung */
-   .guestbook-section-custom{background-image:none!important;min-height:auto;padding:40px 10px;background:var(--bg);}
-   .guestbook-section-custom::before{opacity:0.05;} 
-   .guestbook-main-content{position:static;flex-direction:column;height:auto;padding-top:0;}
-   .guestbook-form-wrapper{background:var(--card);max-width:95%;margin:20px auto;padding:30px;border:2px solid var(--main-metallic);box-shadow:0 0 30px var(--metallic-shadow);transform:none;height:auto;}
-   .guestbook-form-wrapper::before{content:"GUESTBOOK";display:block;color:var(--main-metallic-light);font-size:28px;font-weight:700;margin-bottom:20px;text-shadow:0 0 8px var(--metallic-shadow);}
-   .messages-grid{padding:0 10px;}
+    /* ALLGEMEINE ANPASSUNGEN */
+    h2 {
+        font-size: 1.8em; /* H2 etwas kleiner für Mobile */
+        margin-bottom: 20px;
+    }
+    .container {
+        padding: 0 10px; /* Weniger horizontaler Abstand im Container */
+    }
+
+    /* TOP CONTROLS */
+    .top-controls {
+        padding: 10px;
+        gap: 10px;
+    }
+    .top-controls .ctrl-btn {
+        padding: 8px 15px;
+        font-size: 0.9em;
+    }
+
+    /* HEADER BANNER */
+    .header-banner{
+        height: 250px; /* Höhe des Banners stark reduziert */
+        padding: 10px;
+    }
+    .header-banner img{
+        max-width: 90%; 
+        max-height: 90%; 
+    }
+
+    /* WILLKOMMEN & PREIS SEKTIONEN */
+    .welcome-section, .image-price-section {
+        padding: 30px 15px; /* Weniger Padding */
+        margin: 40px auto; /* Weniger Margin */
+    }
+    .welcome-section h1 {
+        font-size: 1.8em; /* H1 kleiner */
+    }
+    .image-price-section img {
+        width: 100%;
+    }
+
+    /* BARBER SHOWCASE GRID */
+    .barber-showcase-section {
+        padding: 40px 15px;
+        margin: 40px auto;
+    }
+    .barber-showcase-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .barber-card img {
+        height: 250px; /* Höhe der Bilder reduziert */
+    }
+    
+    /* GÄSTEBUCH (Wichtige responsive Anpassungen) */
+    .guestbook-section-custom{
+        background-image:none!important;
+        min-height:auto;
+        padding:40px 10px;
+        background:var(--bg);
+    }
+    .guestbook-section-custom::before{opacity:0.05;} 
+    .guestbook-main-content{
+        position:static;
+        flex-direction:column;
+        height:auto;
+        padding-top:0;
+    }
+    .guestbook-form-wrapper{
+        background:var(--card);
+        max-width:95%;
+        margin:20px auto;
+        padding:30px;
+        border:2px solid var(--main-metallic);
+        box-shadow:0 0 30px var(--metallic-shadow);
+        transform:none;
+        height:auto;
+    }
+    .guestbook-form-wrapper::before{content:"GUESTBOOK";display:block;color:var(--main-metallic-light);font-size:28px;font-weight:700;margin-bottom:20px;text-shadow:0 0 8px var(--metallic-shadow);}
+    
+    .guestbook-form-wrapper input[type="text"],
+    .guestbook-form-wrapper textarea,
+    .submit-btn {
+        width: 100%; /* Eingabefelder und Button auf volle Breite setzen */
+        max-width: 100%;
+    }
+    .submit-btn {
+        padding: 15px 30px; /* Button etwas kleiner */
+    }
+
+    /* GÄSTEBUCH NACHRICHTEN */
+    .messages-grid{
+        grid-template-columns: 1fr; 
+        padding:0 10px;
+    }
+    .messages-scroll-wrapper {
+        max-height: 400px; /* Max-Höhe für besseren Scroll-Effekt auf Mobile */
+    }
+
+    /* KONTAKT SEKTION */
+    .contact-section-deluxe {
+        padding: 30px 15px;
+        margin: 50px auto;
+    }
+    .opening-hours-list strong { 
+        width: 120px; /* Breite für Wochentage reduzieren */
+        display: block; /* Auf eigene Zeile, um Platz zu sparen */
+        margin-right: 0;
+    }
+    .opening-hours-list li {
+        display: flex; /* Flexbox für bessere Ausrichtung der Öffnungszeiten */
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 5px;
+    }
+    
+    /* GALERIE */
+    .gallery{grid-template-columns: repeat(2, 1fr);} /* 2 Spalten für die Galerie */
 }
 </style>
 </head>
@@ -511,127 +620,128 @@ footer{
 
 <video muted loop id="background-video" preload="auto" poster="https://raw.githubusercontent.com/Artonstyle/Barbershop/main/images/fallback_bg.jpg">
   <source src="https://raw.githubusercontent.com/Artonstyle/Barbershop/main/images/effekt3.mp4" type="video/mp4">
-  </video>
+</video>
 <div class="video-overlay"></div>
 
 <div class="top-controls">
-   <button id="btnStartseite" class="ctrl-btn">🏠 Startseite</button>
-   <button id="btnHaarschnitt" class="ctrl-btn">⚙️ Galerie</button>
+    <button id="btnStartseite" class="ctrl-btn">🏠 Startseite</button>
+    <button id="btnHaarschnitt" class="ctrl-btn">⚙️ Galerie</button>
 </div>
 
 <div id="siteContent" class="fade" style="transform: translateY(20px);"> 
 
-   <a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
+    <a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
 
-   <div class="header-banner">
-     <img src="https://raw.githubusercontent.com/Artonstyle/Barbershop/main/images/Barbershop-logo7.png" alt="C&D Barbershop Banner" loading="lazy">
-   </div>
+    <div class="header-banner">
+        <img src="https://raw.githubusercontent.com/Artonstyle/Barbershop/main/images/Barbershop-logo7.png" alt="C&D Barbershop Banner" loading="lazy">
+    </div>
 
-   <div class="welcome-section" id="main-content">
-     <h1>Willkommen bei C&D Barbershop</h1>
-     <p>Schön, dass Sie hier sind! C&D Barbershop steht für Qualität, Stil und Persönlichkeit. In einer modernen Atmosphäre bieten wir individuelle Beratung, trendige Schnitte und hochwertige Pflege – für Ihr perfektes Haar- und Bartgefühl.</p>
-   </div>
-   
-   <div class="container barber-showcase-section">
-       <h2>Unsere Handwerkskunst in Aktion</h2>
-       <p style="text-align: center; color: var(--text); max-width: 800px; margin: 0 auto 40px;">Erleben Sie die Präzision und Leidenschaft unserer Barbiere. Jeder Schnitt, jede Rasur – ein Meisterwerk.</p>
-       <div class="barber-showcase-grid">
-           <div class="barber-card">
-               <img src="https://raw.githubusercontent.com/Artonstyle/Barbershop/main/images/bart1.png" alt="Detailaufnahme eines perfekt getrimmten Bartes" loading="lazy">
-               <div class="barber-card-info">
-                   <h4>Die Perfekte Rasur</h4>
-                   <p>Traditionell mit heißem Handtuch.</p>
-               </div>
-           </div>
-           <div class="barber-card">
-               <img src="https://raw.githubusercontent.com/Artonstyle/Barbershop/main/images/bart2.png" alt="Ein Barber arbeitet an den Konturen eines Bartes" loading="lazy">
-               <div class="barber-card-info">
-                   <h4>Bart-Design nach Maß</h4>
-                   <p>Konturierung für den modernen Mann.</p>
-               </div>
-           </div>
-           <div class="barber-card">
-               <img src="https://raw.githubusercontent.com/Artonstyle/Barbershop/main/images/bart3.png" alt="Ein Kunde mit einem frischen, modernen Haarschnitt und Bart" loading="lazy">
-               <div class="barber-card-info">
-                   <h4>Der Makellose Fade</h4>
-                   <p>Übergänge, die begeistern.</p>
-               </div>
-           </div>
-       </div>
-   </div>
+    <div class="welcome-section" id="main-content">
+        <h1>Willkommen bei C&D Barbershop</h1>
+        <p>Schön, dass Sie hier sind! C&D Barbershop steht für Qualität, Stil und Persönlichkeit. In einer modernen Atmosphäre bieten wir individuelle Beratung, trendige Schnitte und hochwertige Pflege – für Ihr perfektes Haar- und Bartgefühl.</p>
+    </div>
+    
+    <div class="container barber-showcase-section">
+        <h2>Unsere Handwerkskunst in Aktion</h2>
+        <p style="text-align: center; color: var(--text); max-width: 800px; margin: 0 auto 40px;">Erleben Sie die Präzision und Leidenschaft unserer Barbiere. Jeder Schnitt, jede Rasur – ein Meisterwerk.</p>
+        <div class="barber-showcase-grid">
+            <div class="barber-card">
+                <img src="https://raw.githubusercontent.com/Artonstyle/Barbershop/main/images/bart1.png" alt="Detailaufnahme eines perfekt getrimmten Bartes" loading="lazy">
+                <div class="barber-card-info">
+                    <h4>Die Perfekte Rasur</h4>
+                    <p>Traditionell mit heißem Handtuch.</p>
+                </div>
+            </div>
+            <div class="barber-card">
+                <img src="https://raw.githubusercontent.com/Artonstyle/Barbershop/main/images/bart2.png" alt="Ein Barber arbeitet an den Konturen eines Bartes" loading="lazy">
+                <div class="barber-card-info">
+                    <h4>Bart-Design nach Maß</h4>
+                    <p>Konturierung für den modernen Mann.</p>
+                </div>
+            </div>
+            <div class="barber-card">
+                <img src="https://raw.githubusercontent.com/Artonstyle/Barbershop/main/images/bart3.png" alt="Ein Kunde mit einem frischen, modernen Haarschnitt und Bart" loading="lazy">
+                <div class="barber-card-info">
+                    <h4>Der Makellose Fade</h4>
+                    <p>Übergänge, die begeistern.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
-   <div class="container image-price-section">
-     <h2>💰 Unsere Preisliste</h2>
-     <img src="https://raw.githubusercontent.com/Artonstyle/Barbershop/main/images/Barbershop-preisliste.png" alt="Aktuelle Preisliste" loading="lazy">
-   </div>
+    <div class="container image-price-section">
+        <h2>💰 Unsere Preisliste</h2>
+        <img src="https://raw.githubusercontent.com/Artonstyle/Barbershop/main/images/Barbershop-preisliste.png" alt="Aktuelle Preisliste" loading="lazy">
+    </div>
 
-   <div class="container guestbook-section-custom">
-     <div class="guestbook-main-content">
-       <div class="guestbook-form-wrapper">
-         <form id="guestbookForm">
-           <input type="text" id="guestName" placeholder="IHR NAME" required>
-           <textarea id="guestText" placeholder="IHRE NACHRICHT" required></textarea>
-           
-           <div class="star-rating">
-             <span data-rating="1"><i class="far fa-star"></i></span>
-             <span data-rating="2"><i class="far fa-star"></i></span>
-             <span data-rating="3"><i class="far fa-star"></i></span>
-             <span data-rating="4"><i class="far fa-star"></i></span>
-             <span data-rating="5"><i class="far fa-star"></i></span>
-           </div>
-           
-           <button type="submit" class="submit-btn">EINTRAG SENDEN</button>
-         </form>
-         <p id="successMsg" style="display:none;color:var(--gold);margin-top:15px;text-shadow: 0 0 5px var(--gold-shadow);">✅ Eintrag erfolgreich gesendet!</p>
-       </div>
-     </div>
-   </div>
+    <div class="container guestbook-section-custom">
+        <div class="guestbook-main-content">
+            <div class="guestbook-form-wrapper">
+                <form id="guestbookForm">
+                    <input type="text" id="guestName" placeholder="IHR NAME" required>
+                    <textarea id="guestText" placeholder="IHRE NACHRICHT" required></textarea>
+                    
+                    <div class="star-rating">
+                        <span data-rating="1"><i class="far fa-star"></i></span>
+                        <span data-rating="2"><i class="far fa-star"></i></span>
+                        <span data-rating="3"><i class="far fa-star"></i></span>
+                        <span data-rating="4"><i class="far fa-star"></i></span>
+                        <span data-rating="5"><i class="far fa-star"></i></span>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">EINTRAG SENDEN</button>
+                </form>
+                <p id="successMsg" style="display:none;color:var(--gold);margin-top:15px;text-shadow: 0 0 5px var(--gold-shadow);">✅ Eintrag erfolgreich gesendet!</p>
+            </div>
+        </div>
+    </div>
 
-   <div class="container guestbook-messages-section">
-     <div class="messages-overview">
-       <h3>Nachrichten Von Unseren Gästen</h3>
-       <div class="messages-scroll-wrapper">
-         <div class="messages-grid" id="messagesGrid"></div>
-       </div>
-     </div>
-     <div id="guestEntries"></div>
-   </div>
+    <div class="container guestbook-messages-section">
+        <div class="messages-overview">
+            <h3>Nachrichten Von Unseren Gästen</h3>
+            <div class="messages-scroll-wrapper">
+                <div class="messages-grid" id="messagesGrid"></div>
+            </div>
+        </div>
+        <div id="guestEntries"></div>
+    </div>
 
-   <div class="container contact-section-deluxe">
-     <h2>📍 Kontakt & Öffnungszeiten</h2>
-     <div class="contact-info">
-       <p class="address-line">Bachgasse 68, 69502 Hemsbach</p>
-       <p class="phone-number">📞 0176 70794224</p>
-     </div>
+    <div class="container contact-section-deluxe">
+        <h2>📍 Kontakt & Öffnungszeiten</h2>
+        <div class="contact-info">
+            <p class="address-line">Bachgasse 68, 69502 Hemsbach</p>
+            <p class="phone-number">📞 0176 70794224</p>
+        </div>
 
-     <h3 style="color:var(--gold-light);margin-top:20px;">Öffnungszeiten</h3>
-     <ul class="opening-hours-list" aria-label="Öffnungszeiten">
-       <li><strong>Montag–Freitag:</strong> 09:00 – 19:00 Uhr</li>
-       <li><strong>Samstag:</strong> 09:00 – 18:00 Uhr</li>
-       <li><strong>Sonntag:</strong> <span class="closed">Geschlossen ⛔</span></li>
-     </ul>
+        <h3 style="color:var(--gold-light);margin-top:20px;">Öffnungszeiten</h3>
+        <ul class="opening-hours-list" aria-label="Öffnungszeiten">
+            <li><strong>Montag–Freitag:</strong> 09:00 – 19:00 Uhr</li>
+            <li><strong>Samstag:</strong> 09:00 – 18:00 Uhr</li>
+            <li><strong>Sonntag:</strong> <span class="closed">Geschlossen ⛔</span></li>
+        </ul>
 
-     <div class="social-links">
-       <a href="https://www.instagram.com/cd_barbershop_/" target="_blank" rel="noopener">
-         <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" loading="lazy">
-       </a>
-     </div>
+        <div class="social-links">
+            <a href="https://www.instagram.com/cd_barbershop_/" target="_blank" rel="noopener">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" loading="lazy">
+            </a>
+        </div>
 
-     <p style="margin-top:18px;"><a href="https://www.google.com/maps/dir/?api=1&destination=Bachgasse+68,+69502+Hemsbach" target="_blank" rel="noopener" style="color:var(--gold-light);text-decoration:none;font-weight:700;transition:color 0.3s;" onmouseover="this.style.color='var(--gold-light)'" onmouseout="this.style.color='var(--gold-light)'">Route auf Google Maps öffnen</a></p>
-   </div>
+        <p style="margin-top:18px;"><a href="https://www.google.com/maps/dir/?api=1&destination=Bachgasse+68,+69502+Hemsbach" target="_blank" rel="noopener" style="color:var(--gold-light);text-decoration:none;font-weight:700;transition:color 0.3s;" onmouseover="this.style.color='var(--gold-light)'" onmouseout="this.style.color='var(--gold-light)'">Route auf Google Maps öffnen</a></p>
+    </div>
 
-   <footer>© 2025 C&D Barbershop | Metallic Gold Edition</footer>
+    <footer>© 2025 C&D Barbershop | Metallic Gold Edition</footer>
 
-</div> <section id="haarschnitt-section" class="fade" style="transform: translateY(20px);">
-   <h2 style="text-align:center;color:var(--gold-light);margin-top:20px;">⚙️ Haarschnitt Galerie</h2>
-   <div id="haarschnitt-loader" class="loader" style="display:none;color:var(--gold);text-align:center;padding:25px 0;font-size:1.1em;text-shadow:0 0 5px var(--gold-neon);">✨ Bilder werden geladen...</div>
-   <div id="haarschnitt-gallery" class="gallery" aria-live="polite"></div>
+</div> 
+<section id="haarschnitt-section" class="fade" style="transform: translateY(20px);">
+    <h2 style="text-align:center;color:var(--gold-light);margin-top:20px;">⚙️ Haarschnitt Galerie</h2>
+    <div id="haarschnitt-loader" class="loader" style="display:none;color:var(--gold);text-align:center;padding:25px 0;font-size:1.1em;text-shadow:0 0 5px var(--gold-neon);">✨ Bilder werden geladen...</div>
+    <div id="haarschnitt-gallery" class="gallery" aria-live="polite"></div>
 </section>
 
 <script>
 /* ---------------------------
-   Gästebuch + Google Sheet
-   --------------------------- */
+    Gästebuch + Google Sheet
+    --------------------------- */
 const sheetURL = "https://script.google.com/macros/s/AKfycbzSBO9iha-NH0D4j3GfGjxsOdoko1AqwrEnM2ie-dy1zrfu2OtjNH4TvnZVIkWh0KDB/exec";
 
 const form = document.getElementById("guestbookForm");
@@ -641,146 +751,146 @@ const backgroundVideo = document.getElementById('background-video');
 
 // NEU: Verzögert das Starten des Videos, bis der Rest der Seite geladen ist
 window.addEventListener('load', () => {
-    if (backgroundVideo) {
-        // Stellt sicher, dass das Video geladen wird, wenn der Rest der Seite bereit ist
-        backgroundVideo.play().catch(error => {
-            console.error("Video konnte nicht automatisch abgespielt werden (Browsereinschränkung).", error);
-            // Fallback: Bei Fehlern wird nur das statische Poster-Bild angezeigt.
-        });
-    }
+     if (backgroundVideo) {
+         // Stellt sicher, dass das Video geladen wird, wenn der Rest der Seite bereit ist
+         backgroundVideo.play().catch(error => {
+             console.error("Video konnte nicht automatisch abgespielt werden (Browsereinschränkung).", error);
+             // Fallback: Bei Fehlern wird nur das statische Poster-Bild angezeigt.
+         });
+     }
 });
 
 
 // Star rating logic
 document.addEventListener("DOMContentLoaded", () => {
-   const stars = document.querySelectorAll('.star-rating span');
-   let rating = 0;
-   const ratingInput = document.createElement('input');
-   ratingInput.type = 'hidden';
-   ratingInput.name = 'rating';
-   ratingInput.id = 'hiddenRating';
-   ratingInput.value = '0';
-   form.appendChild(ratingInput);
+    const stars = document.querySelectorAll('.star-rating span');
+    let rating = 0;
+    const ratingInput = document.createElement('input');
+    ratingInput.type = 'hidden';
+    ratingInput.name = 'rating';
+    ratingInput.id = 'hiddenRating';
+    ratingInput.value = '0';
+    form.appendChild(ratingInput);
 
-   function updateStars(r) {
-      stars.forEach(s => {
-         const icon = s.querySelector('i');
-         if (parseInt(s.dataset.rating) <= r) {
-            icon.classList.remove('far'); 
-            icon.classList.add('fas');
-         } else {
-            icon.classList.remove('fas'); 
-            icon.classList.add('far');
-         }
-      });
-   }
-   
-   stars.forEach(star => {
-      // Click: Setzt die permanente Bewertung
-      star.addEventListener('click', () => {
-         rating = parseInt(star.dataset.rating);
-         updateStars(rating);
-         ratingInput.value = rating;
-      });
-      // Mouseover: Zeigt die temporäre Bewertung an
-      star.addEventListener('mouseover', () => {
-         updateStars(parseInt(star.dataset.rating)); 
-      });
-      // Mouseout: Stellt die permanente (geklickte) Bewertung wieder her
-      star.addEventListener('mouseout', () => {
-         updateStars(rating);
-      });
-   });
+    function updateStars(r) {
+       stars.forEach(s => {
+          const icon = s.querySelector('i');
+          if (parseInt(s.dataset.rating) <= r) {
+             icon.classList.remove('far'); 
+             icon.classList.add('fas');
+          } else {
+             icon.classList.remove('fas'); 
+             icon.classList.add('far');
+          }
+       });
+    }
+    
+    stars.forEach(star => {
+       // Click: Setzt die permanente Bewertung
+       star.addEventListener('click', () => {
+          rating = parseInt(star.dataset.rating);
+          updateStars(rating);
+          ratingInput.value = rating;
+       });
+       // Mouseover: Zeigt die temporäre Bewertung an
+       star.addEventListener('mouseover', () => {
+          updateStars(parseInt(star.dataset.rating)); 
+       });
+       // Mouseout: Stellt die permanente (geklickte) Bewertung wieder her
+       star.addEventListener('mouseout', () => {
+          updateStars(rating);
+       });
+    });
 });
 
 // Load entries from Google Script
 async function loadEntries(){
-   // Verhindert das Blockieren des Seitenaufbaus
-   setTimeout(async () => {
-      try{
-         messagesGrid.innerHTML = '<p style="text-align:center;color:var(--gold-light); grid-column: 1 / -1; animation: goldPulse 1s infinite;">Lade Einträge...</p>';
-         const res = await fetch(sheetURL);
-         const entries = await res.json();
-         
-         if (!entries || !entries.length) {
-            messagesGrid.innerHTML = '<p style="text-align:center;color:var(--muted); grid-column: 1 / -1;">Noch keine Einträge vorhanden. Sei der Erste!</p>';
-            return;
-         }
+    // Verhindert das Blockieren des Seitenaufbaus
+    setTimeout(async () => {
+       try{
+          messagesGrid.innerHTML = '<p style="text-align:center;color:var(--gold-light); grid-column: 1 / -1; animation: goldPulse 1s infinite;">Lade Einträge...</p>';
+          const res = await fetch(sheetURL);
+          const entries = await res.json();
+          
+          if (!entries || !entries.length) {
+             messagesGrid.innerHTML = '<p style="text-align:center;color:var(--muted); grid-column: 1 / -1;">Noch keine Einträge vorhanden. Sei der Erste!</p>';
+             return;
+          }
 
-         const cardsHtml = entries.reverse().map(e => {
-            const entryRating = e.rating ? parseInt(e.rating) : 0;
-            let starHtml = '';
-            for (let i = 1; i <= 5; i++) {
-               starHtml += `<i class="${i <= entryRating ? 'fas' : 'far'} fa-star"></i>`;
-            }
-            let dateString;
-            try {
-               const dateValue = isNaN(new Date(e.date).getTime()) ? parseInt(e.date) : e.date;
-               const d = new Date(dateValue);
-               // Nur Datum anzeigen, da genaue Zeit bei Google Sheets schwer zu garantieren ist
-               dateString = d.toLocaleString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' });
-            } catch { dateString = 'Unbekanntes Datum'; }
+          const cardsHtml = entries.reverse().map(e => {
+             const entryRating = e.rating ? parseInt(e.rating) : 0;
+             let starHtml = '';
+             for (let i = 1; i <= 5; i++) {
+                starHtml += `<i class="${i <= entryRating ? 'fas' : 'far'} fa-star"></i>`;
+             }
+             let dateString;
+             try {
+                const dateValue = isNaN(new Date(e.date).getTime()) ? parseInt(e.date) : e.date;
+                const d = new Date(dateValue);
+                // Nur Datum anzeigen, da genaue Zeit bei Google Sheets schwer zu garantieren ist
+                dateString = d.toLocaleString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' });
+             } catch { dateString = 'Unbekanntes Datum'; }
 
-            return `<div class="message-card">
-                      <div class="card-header">${e.name || 'Anonym'}</div>
-                      <div class="card-info">${dateString}</div>
-                      <div class="card-stars">${starHtml}</div>
-                      <p>${e.text}</p>
-                    </div>`;
-         }).join('');
+             return `<div class="message-card">
+                       <div class="card-header">${e.name || 'Anonym'}</div>
+                       <div class="card-info">${dateString}</div>
+                       <div class="card-stars">${starHtml}</div>
+                       <p>${e.text}</p>
+                     </div>`;
+          }).join('');
 
-         messagesGrid.innerHTML = cardsHtml;
-      } catch (err) {
-         console.error("Fehler beim Laden der Einträge:", err);
-         messagesGrid.innerHTML = '<p style="text-align:center;color:var(--main-metallic-light); grid-column: 1 / -1;">Fehler beim Laden der Einträge. Bitte versuchen Sie es später erneut.</p>';
-      }
-   }, 500); // Verzögerung von 500ms, um den Hauptinhalt zuerst zu laden.
+          messagesGrid.innerHTML = cardsHtml;
+       } catch (err) {
+          console.error("Fehler beim Laden der Einträge:", err);
+          messagesGrid.innerHTML = '<p style="text-align:center;color:var(--main-metallic-light); grid-column: 1 / -1;">Fehler beim Laden der Einträge. Bitte versuchen Sie es später erneut.</p>';
+       }
+    }, 500); // Verzögerung von 500ms, um den Hauptinhalt zuerst zu laden.
 }
 
 // Submit handler (POST to Google Script)
 form.addEventListener("submit", async e => {
-   e.preventDefault();
-   const name = document.getElementById("guestName").value.trim();
-   const text = document.getElementById("guestText").value.trim();
-   const ratingEl = document.getElementById("hiddenRating");
-   const rating = ratingEl ? ratingEl.value : '0';
+    e.preventDefault();
+    const name = document.getElementById("guestName").value.trim();
+    const text = document.getElementById("guestText").value.trim();
+    const ratingEl = document.getElementById("hiddenRating");
+    const rating = ratingEl ? ratingEl.value : '0';
 
-   if (!name || !text || rating === '0') { 
-      alert("Bitte füllen Sie alle Felder aus und geben Sie eine Bewertung ab!"); 
-      return; 
-   }
+    if (!name || !text || rating === '0') { 
+       alert("Bitte füllen Sie alle Felder aus und geben Sie eine Bewertung ab!"); 
+       return; 
+    }
 
-   const btn = form.querySelector('.submit-btn');
-   btn.disabled = true; 
-   btn.textContent = 'Wird gesendet...';
+    const btn = form.querySelector('.submit-btn');
+    btn.disabled = true; 
+    btn.textContent = 'Wird gesendet...';
 
-   try{
-      const data = new FormData();
-      data.append("name", name);
-      data.append("text", text);
-      data.append("rating", rating);
+    try{
+       const data = new FormData();
+       data.append("name", name);
+       data.append("text", text);
+       data.append("rating", rating);
 
-      await fetch(sheetURL, { method: "POST", body: data });
-      
-      // Success Feedback
-      form.reset();
-      document.querySelectorAll('.star-rating span i').forEach(icon => { icon.classList.remove('fas'); icon.classList.add('far'); });
-      if(ratingEl) ratingEl.value='0';
-      successMsg.style.display = 'block';
-      setTimeout(() => { successMsg.style.display = 'none'; }, 4000);
-      loadEntries();
-   }catch(err){
-      console.error(err);
-      alert("Fehler beim Senden des Eintrags!");
-   } finally {
-      btn.disabled = false; 
-      btn.textContent = 'EINTRAG SENDEN';
-   }
+       await fetch(sheetURL, { method: "POST", body: data });
+       
+       // Success Feedback
+       form.reset();
+       document.querySelectorAll('.star-rating span i').forEach(icon => { icon.classList.remove('fas'); icon.classList.add('far'); });
+       if(ratingEl) ratingEl.value='0';
+       successMsg.style.display = 'block';
+       setTimeout(() => { successMsg.style.display = 'none'; }, 4000);
+       loadEntries();
+    }catch(err){
+       console.error(err);
+       alert("Fehler beim Senden des Eintrags!");
+    } finally {
+       btn.disabled = false; 
+       btn.textContent = 'EINTRAG SENDEN';
+    }
 });
 
 /* ---------------------------
-   Gallery toggle & GitHub loader
-   --------------------------- */
+    Gallery toggle & GitHub loader
+    --------------------------- */
 const btnStartseite = document.getElementById('btnStartseite');
 const btnHaarschnitt = document.getElementById('btnHaarschnitt');
 const siteContent = document.getElementById('siteContent');
@@ -791,33 +901,33 @@ const loaderElm = document.getElementById('haarschnitt-loader');
 let imagesLoadedOnce = false;
 
 function showStartseite(){
-   // hide gallery (Fade-Out + Move Up)
-   haarschnittSection.classList.remove('show');
-   haarschnittSection.style.transform = 'translateY(20px)';
-   setTimeout(()=>{ haarschnittSection.style.display='none'; },500);
-   
-   // show site content (Fade-In + Move Down)
-   siteContent.style.display='block';
-   setTimeout(()=>{ 
-      siteContent.classList.add('show'); 
-      siteContent.style.transform = 'translateY(0)';
-   },50);
+    // hide gallery (Fade-Out + Move Up)
+    haarschnittSection.classList.remove('show');
+    haarschnittSection.style.transform = 'translateY(20px)';
+    setTimeout(()=>{ haarschnittSection.style.display='none'; },500);
+    
+    // show site content (Fade-In + Move Down)
+    siteContent.style.display='block';
+    setTimeout(()=>{ 
+        siteContent.classList.add('show'); 
+        siteContent.style.transform = 'translateY(0)';
+    },50);
 }
 
 function showHaarschnitt(){
-   // hide site content (Fade-Out + Move Up)
-   siteContent.classList.remove('show');
-   siteContent.style.transform = 'translateY(20px)';
-   setTimeout(()=>{ siteContent.style.display='none'; },500);
+    // hide site content (Fade-Out + Move Up)
+    siteContent.classList.remove('show');
+    siteContent.style.transform = 'translateY(20px)';
+    setTimeout(()=>{ siteContent.style.display='none'; },500);
 
-   // show gallery (Fade-In + Move Down)
-   haarschnittSection.style.display='block';
-   setTimeout(()=>{ 
-      haarschnittSection.classList.add('show'); 
-      haarschnittSection.style.transform = 'translateY(0)';
-   },50);
+    // show gallery (Fade-In + Move Down)
+    haarschnittSection.style.display='block';
+    setTimeout(()=>{ 
+        haarschnittSection.classList.add('show'); 
+        haarschnittSection.style.transform = 'translateY(0)';
+    },50);
 
-   if(!imagesLoadedOnce) loadGithubImages();
+    if(!imagesLoadedOnce) loadGithubImages();
 }
 
 btnStartseite.addEventListener('click', showStartseite);
@@ -825,41 +935,41 @@ btnHaarschnitt.addEventListener('click', showHaarschnitt);
 
 /* Load images from GitHub repo folder (haarschnitte) using GitHub API */
 async function loadGithubImages(){
-   loaderElm.style.display = 'block';
-   gallery.innerHTML = '';
-   try {
-      const apiUrl = 'https://api.github.com/repos/Artonstyle/Barbershop/contents/haarschnitte';
-      const res = await fetch(apiUrl);
-      if(!res.ok) throw new Error('GitHub API Fehler ' + res.status);
-      const files = await res.json();
-      const images = files.filter(f => f.name.match(/\.(jpg|jpeg|png|webp)$/i));
-      images.sort((a,b)=> a.name.localeCompare(b.name, undefined, {numeric:true, sensitivity:'base'}));
+    loaderElm.style.display = 'block';
+    gallery.innerHTML = '';
+    try {
+        const apiUrl = 'https://api.github.com/repos/Artonstyle/Barbershop/contents/haarschnitte';
+        const res = await fetch(apiUrl);
+        if(!res.ok) throw new Error('GitHub API Fehler ' + res.status);
+        const files = await res.json();
+        const images = files.filter(f => f.name.match(/\.(jpg|jpeg|png|webp)$/i));
+        images.sort((a,b)=> a.name.localeCompare(b.name, undefined, {numeric:true, sensitivity:'base'}));
 
-      if(images.length === 0){
-         loaderElm.textContent = 'Keine Bilder gefunden.';
-         imagesLoadedOnce = true;
-         return;
-      }
-      
-      images.forEach(f=>{
-         const img = document.createElement('img');
-         img.src = f.download_url;
-         img.alt = f.name.replace(/\.[^/.]+$/, ""); // Dateiendung entfernen
-         img.loading = 'lazy'; // Lädt Bilder erst, wenn sie in den sichtbaren Bereich kommen.
-         gallery.appendChild(img);
-      });
-      imagesLoadedOnce = true;
-      loaderElm.style.display = 'none';
-   } catch (err) {
-      console.error(err);
-      loaderElm.textContent = 'Fehler beim Laden der Bilder.';
-   }
+        if(images.length === 0){
+           loaderElm.textContent = 'Keine Bilder gefunden.';
+           imagesLoadedOnce = true;
+           return;
+        }
+        
+        images.forEach(f=>{
+           const img = document.createElement('img');
+           img.src = f.download_url;
+           img.alt = f.name.replace(/\.[^/.]+$/, ""); // Dateiendung entfernen
+           img.loading = 'lazy'; // Lädt Bilder erst, wenn sie in den sichtbaren Bereich kommen.
+           gallery.appendChild(img);
+        });
+        imagesLoadedOnce = true;
+        loaderElm.style.display = 'none';
+    } catch (err) {
+        console.error(err);
+        loaderElm.textContent = 'Fehler beim Laden der Bilder.';
+    }
 }
 
 // Ensure siteContent shows on load with animation
 window.addEventListener('load', ()=>{
-   siteContent.classList.add('show');
-   siteContent.style.transform = 'translateY(0)';
+    siteContent.classList.add('show');
+    siteContent.style.transform = 'translateY(0)';
 });
 
 // Load entries after the main content has loaded
