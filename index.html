@@ -2,10 +2,10 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 <title>⚙️ C&D Barbershop – Metallic Gold Edition</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Cinzel:wght=600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Cinzel:wght@600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 <style>
@@ -16,15 +16,15 @@
     --main-metallic:#6B7B8E; /* Mittleres Chrom-Grau */
     --main-metallic-light:#AABBCF;
     --main-metallic-dark:#3A4A5C;
-    --metallic-shadow:rgba(107, 123, 142, 0.4); /* Schatten für metallische Elemente */
+    --metallic-shadow:rgba(107, 123, 142, 0.4); 
 
-    --bg:#020205; /* Tiefes Dunkelblau-Schwarz bleibt Basis (für Fallback) */
-    --card:#0e0e12; /* Dunkle, strukturierte Oberfläche */
+    --bg:#020205; 
+    --card:#0e0e12; 
     --surface:#15151a;
-    --text:#f0f2f5; /* Weiß/Sehr helles Grau */
+    --text:#f0f2f5; 
     --muted:#a0aab8;
     --glass:rgba(255,255,255,0.05);
-    --max-width:1200px;
+    --max-width:1100px; /* ANGEPASST: Max. Breite für PC-Ansicht leicht reduziert */
     --radius:15px; 
     --gold:#FFD700;
     --gold-light:#FFECB3;
@@ -37,7 +37,7 @@
 html,body{height:100%}
 
 /* ==========================
-    VIDEO HINTERGRUND STYLES (Optimiert)
+    VIDEO HINTERGRUND STYLES
     ========================== */
 body {
     margin:0;
@@ -45,7 +45,6 @@ body {
     line-height:1.6;
     -webkit-font-smoothing:antialiased;
     -moz-osx-font-smoothing:grayscale;
-    /* Fallback-Hintergrundfarbe und dient als initiale Farbe */
     background-color: var(--bg); 
     position: relative; 
     overflow-x: hidden; 
@@ -59,22 +58,21 @@ body {
     min-height: 100%;
     width: auto;
     height: auto;
-    z-index: -3; /* Extrem niedrig */
+    z-index: -3; 
     background-size: cover;
     object-fit: cover; 
     filter: brightness(0.7) grayscale(0.2); 
 }
 
-/* Overlay für bessere Lesbarkeit des Textes */
+/* Overlay */
 .video-overlay {
      position: fixed;
      top: 0;
      left: 0;
      width: 100%;
      height: 100%;
-     /* NEU: Hintergrundfarbe, die zu dem Video-Poster passt, um Flimmern zu vermeiden */
      background-color: rgba(0, 0, 0, 0.7); 
-     z-index: -2; /* Extrem niedrig */
+     z-index: -2; 
 }
 
 
@@ -99,7 +97,7 @@ body {
     backdrop-filter: blur(5px);
     position:sticky;
     top:0;
-    z-index:999; /* Sehr hoch, damit es über allem sticky bleibt */
+    z-index:999; 
     border-bottom:1px solid rgba(255,255,255,0.05);
     box-shadow: 0 4px 12px rgba(0,0,0,0.4);
 }
@@ -123,10 +121,9 @@ body {
 }
 
 /* SECTIONS & TYPOGRAPHY */
-/* WICHTIG: Z-INDEX für den Hauptinhalt erhöht */
 #siteContent, #haarschnitt-section {
     z-index: 100; 
-    position: relative; /* Muss für z-index gesetzt werden */
+    position: relative; 
 }
 
 .container{max-width:var(--max-width);margin:0 auto;padding:0 16px}
@@ -137,7 +134,6 @@ h2{
     text-align: center; 
     margin-bottom: 30px; 
     font-weight: 800; 
-    /* NEU: H2 Farbe für 'Unsere Handwerkskunst' und 'Kontakt & Öffnungszeiten' auf Weiß/Gold gesetzt */
     color: var(--text); 
     text-shadow: 0 0 10px var(--metallic-shadow);
     font-family: var(--heading-font);
@@ -145,7 +141,7 @@ h2{
     font-size: 2.2em;
 }
 
-/* HERO BANNER (Transparent) */
+/* HERO BANNER */
 .header-banner{
     width: 100%; 
     height: 450px; 
@@ -154,18 +150,8 @@ h2{
     align-items: center; 
     background: transparent; 
     overflow: hidden; 
-    border-bottom: none; 
-    box-shadow: none; 
     position: relative;
     padding: 20px; 
-}
-.header-banner::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: transparent;
-    animation: none; 
-    opacity: 0; 
 }
 .header-banner img{
     max-width: 95%; 
@@ -178,7 +164,7 @@ h2{
 /* Welcome & Price Sections (Metallic) */
 .welcome-section, .image-price-section {
     padding: 40px 25px; 
-    background: var(--card); /* Hintergrund bleibt card */
+    background: var(--card); 
     border-radius: var(--radius); 
     max-width: 950px; 
     margin: 60px auto; 
@@ -187,7 +173,6 @@ h2{
     border: 1px solid rgba(107, 123, 142, 0.3); 
     transition: box-shadow 0.3s ease;
 } 
-/* NEU: Willkommen H1 auf Weiß (var(--text)) gesetzt */
 .welcome-section h1{
     font-size: 2.5em; 
     margin-bottom: 10px; 
@@ -196,9 +181,9 @@ h2{
     text-shadow: 0 0 8px var(--gold-neon);
 } 
 .image-price-section img{
-    max-width: 100%; /* Bild nimmt 100% der Container-Breite ein */
+    max-width: 100%; 
     width: 100%; 
-    height: auto; /* Höhe wird automatisch angepasst, um Seitenverhältnis zu wahren */
+    height: auto; 
     border-radius: var(--radius); 
     box-shadow: 0 0 20px var(--metallic-shadow); 
     border: 2px solid var(--main-metallic-light); 
@@ -208,13 +193,12 @@ h2{
 .barber-showcase-section {
      padding: 60px 20px;
      margin: 60px auto;
-     max-width: 1200px;
-     background: var(--surface); /* Hintergrund bleibt surface */
+     max-width: var(--max-width); /* Nutzt die neue, kompaktere max-width */
+     background: var(--surface); 
      border-radius: var(--radius);
      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
      border-top: 3px solid var(--gold); 
 }
-/* NEU: Beschreibungstext unter "Handwerkskunst" auf Weiß gesetzt */
 .barber-showcase-section p {
      color: var(--text) !important; 
 }
@@ -234,7 +218,7 @@ h2{
 .barber-card img {
      width: 100%;
      height: 350px;
-     object-fit: cover; /* Stellt sicher, dass das Bild den Bereich ausfüllt und zentriert wird */
+     object-fit: cover; 
      display: block;
      loading: lazy; 
 }
@@ -252,7 +236,6 @@ h2{
     ============================================ */
 
 .guestbook-section-custom{
-    /* NEU: Gästebuch2.png */
     background-image: url('https://raw.githubusercontent.com/Artonstyle/Barbershop/main/images/G%C3%A4stebuch2.png'); 
     background-size: cover; 
     background-position: center center;
@@ -260,7 +243,7 @@ h2{
     position: relative;
     padding: 0; 
     margin: 40px auto 0; 
-    max-width: 1200px; 
+    max-width: var(--max-width); /* Nutzt die neue, kompaktere max-width */
     box-shadow: inset 0 0 0 0vw rgba(0, 0, 0, 0.4); 
     min-height: 750px; 
     border-radius: var(--radius);
@@ -309,7 +292,7 @@ h2{
 
 /* KORREKTUR DER STERNE: Abstände und Größe */
 .star-rating { 
-    font-size: 0; /* Entfernt ungewollte Leerzeichen zwischen Inline-Elementen */
+    font-size: 0; 
     margin: 0 0 35px; 
     color: #888; 
     cursor: pointer; 
@@ -317,9 +300,9 @@ h2{
     text-align: center; 
 }
 .star-rating span {
-    display: inline-block; /* Ermöglicht korrekte Abstände und Zentrierung */
-    font-size: 30px; /* Setzt die Schriftgröße für die Sterne zurück */
-    padding: 0 2px; /* Fügt minimalen horizontalen Abstand zwischen den Sternen hinzu */
+    display: inline-block; 
+    font-size: 30px; 
+    padding: 0 2px; 
 }
 .star-rating span i { color: #555; transition: color 0.2s; } 
 /* Goldene Farbe für aktive Sterne */
@@ -333,16 +316,14 @@ h2{
 
 /* SUBMIT BUTTON (Golden) */
 .submit-btn { 
-    /* NEU: Hintergrund auf Gold-Verlauf geändert */
     background: linear-gradient(0deg, var(--gold), var(--gold-light)); 
-    color: var(--card); /* Textfarbe auf Dunkel angepasst */
+    color: var(--card); 
     font-weight: 800; 
     border: none; 
     border-radius: 40px; 
     padding: 18px 60px; 
     cursor: pointer; 
     transition: all 0.3s ease; 
-    /* Schatten an Gold angepasst */
     box-shadow: 0 6px 15px rgba(255, 215, 0, 0.4); 
     width: 90%; max-width: 320px; 
     margin-top: 10px; 
@@ -359,12 +340,11 @@ h2{
 
 /* MESSAGES (Metallic/Gold) */
 .guestbook-messages-section { margin-top: 50px; padding-top: 50px; }
-/* NEU: h3 ist gold, zentriert und größer */
 .messages-overview h3 { 
     font-family: var(--heading-font); 
     color: var(--gold); 
     text-align: center;
-    font-size: 1.8em; /* Schriftgröße erhöht */
+    font-size: 1.8em; 
     margin-bottom: 25px;
     text-shadow: 0 0 5px var(--gold-shadow);
 } 
@@ -404,9 +384,8 @@ h2{
     border: 3px solid var(--main-metallic); 
     border-radius: 25px;
     box-shadow: 0 0 50px var(--metallic-shadow); 
-    text-align: center; /* NEU: Zentriert den gesamten Block */
+    text-align: center; 
 }
-/* NEU: Kontakt H2 auf Gold gesetzt */
 .contact-section-deluxe h2 {
     color: var(--gold);
     text-shadow: 0 0 10px var(--gold-shadow);
@@ -415,14 +394,12 @@ h2{
     margin-bottom: 20px;
 }
 .contact-info .address-line { 
-    /* NEU: Adresse weiß und zentriert */
     color: var(--text);
     text-align: center; 
     margin-bottom: 5px;
     font-size: 1.1em;
 }
 .contact-info .phone-number { 
-    /* NEU: Telefonnummer weiß und zentriert */
     font-weight: 700; 
     color: var(--text); 
     font-size: 1.4em; 
@@ -467,9 +444,10 @@ footer{
     background: var(--bg);
 }
 .gallery {
+    /* ANGEPASST: 3 Spalten auf großen Bildschirmen für größere Bilder */
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 25px; /* Etwas größerer Abstand */
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -481,6 +459,7 @@ footer{
     border-radius: 12px;
     border: 2px solid rgba(107, 123, 142, 0.2); 
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
+    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
 }
 .gallery img:hover {
     transform: translateY(-8px) scale(1.05);
@@ -492,15 +471,23 @@ footer{
 .fade{opacity:0;transition:opacity .5s ease, transform .5s ease}
 .fade.show{opacity:1;transform:translateY(0)}
 
-/* Responsive Mobile Optimierung */
+
+/* RESPONSIVE ANPASSUNGEN (Wieder eingefügt und angepasst) */
+@media(max-width: 1000px){
+    /* ANPASSUNG: Bei kleineren Desktops oder großen Tablets */
+    .gallery {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
 @media(max-width: 768px){
     /* ALLGEMEINE ANPASSUNGEN */
     h2 {
-        font-size: 1.8em; /* H2 etwas kleiner für Mobile */
+        font-size: 1.8em; 
         margin-bottom: 20px;
     }
     .container {
-        padding: 0 10px; /* Weniger horizontaler Abstand im Container */
+        padding: 0 10px; 
     }
 
     /* TOP CONTROLS */
@@ -515,24 +502,17 @@ footer{
 
     /* HEADER BANNER */
     .header-banner{
-        height: 250px; /* Höhe des Banners stark reduziert */
+        height: 250px; 
         padding: 10px;
-    }
-    .header-banner img{
-        max-width: 90%; 
-        max-height: 90%; 
     }
 
     /* WILLKOMMEN & PREIS SEKTIONEN */
     .welcome-section, .image-price-section {
-        padding: 30px 15px; /* Weniger Padding */
-        margin: 40px auto; /* Weniger Margin */
+        padding: 30px 15px; 
+        margin: 40px auto; 
     }
     .welcome-section h1 {
-        font-size: 1.8em; /* H1 kleiner */
-    }
-    .image-price-section img {
-        width: 100%;
+        font-size: 1.8em; 
     }
 
     /* BARBER SHOWCASE GRID */
@@ -545,10 +525,10 @@ footer{
         gap: 20px;
     }
     .barber-card img {
-        height: 250px; /* Höhe der Bilder reduziert */
+        height: 250px; 
     }
     
-    /* GÄSTEBUCH (Wichtige responsive Anpassungen) */
+    /* GÄSTEBUCH (Mobile Anpassungen beibehalten) */
     .guestbook-section-custom{
         background-image:none!important;
         min-height:auto;
@@ -577,11 +557,8 @@ footer{
     .guestbook-form-wrapper input[type="text"],
     .guestbook-form-wrapper textarea,
     .submit-btn {
-        width: 100%; /* Eingabefelder und Button auf volle Breite setzen */
+        width: 100%; 
         max-width: 100%;
-    }
-    .submit-btn {
-        padding: 15px 30px; /* Button etwas kleiner */
     }
 
     /* GÄSTEBUCH NACHRICHTEN */
@@ -590,7 +567,7 @@ footer{
         padding:0 10px;
     }
     .messages-scroll-wrapper {
-        max-height: 400px; /* Max-Höhe für besseren Scroll-Effekt auf Mobile */
+        max-height: 400px; 
     }
 
     /* KONTAKT SEKTION */
@@ -599,12 +576,12 @@ footer{
         margin: 50px auto;
     }
     .opening-hours-list strong { 
-        width: 120px; /* Breite für Wochentage reduzieren */
-        display: block; /* Auf eigene Zeile, um Platz zu sparen */
+        width: 120px; 
+        display: block; 
         margin-right: 0;
     }
     .opening-hours-list li {
-        display: flex; /* Flexbox für bessere Ausrichtung der Öffnungszeiten */
+        display: flex; 
         justify-content: center;
         align-items: center;
         gap: 10px;
@@ -612,7 +589,13 @@ footer{
     }
     
     /* GALERIE */
-    .gallery{grid-template-columns: repeat(2, 1fr);} /* 2 Spalten für die Galerie */
+    /* Mobile-Galerie bleibt bei 2 Spalten, um Platz zu sparen */
+    .gallery{grid-template-columns: repeat(2, 1fr); gap: 15px;} 
+}
+
+@media(max-width: 480px){
+    /* Zusätzliche Optimierung für sehr kleine Handys */
+    .gallery{grid-template-columns: 1fr; gap: 10px;} /* Nur 1 Spalte auf sehr kleinen Bildschirmen */
 }
 </style>
 </head>
@@ -755,7 +738,6 @@ window.addEventListener('load', () => {
          // Stellt sicher, dass das Video geladen wird, wenn der Rest der Seite bereit ist
          backgroundVideo.play().catch(error => {
              console.error("Video konnte nicht automatisch abgespielt werden (Browsereinschränkung).", error);
-             // Fallback: Bei Fehlern wird nur das statische Poster-Bild angezeigt.
          });
      }
 });
