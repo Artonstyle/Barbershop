@@ -13,7 +13,7 @@
     VARIABLES & GLOBAL V4 (METALLIC GOLD)
     ========================== */
 :root{
-    --main-metallic:#6B7B8E; /* Mittleres Chrom-Grau */
+    --main-metallic:#6B7B8E; 
     --main-metallic-light:#AABBCF;
     --main-metallic-dark:#3A4A5C;
     --metallic-shadow:rgba(107, 123, 142, 0.4); 
@@ -24,7 +24,7 @@
     --text:#f0f2f5; 
     --muted:#a0aab8;
     --glass:rgba(255,255,255,0.05);
-    --max-width:1100px; /* ANGEPASST: Max. Breite für PC-Ansicht leicht reduziert */
+    --max-width:1100px; 
     --radius:15px; 
     --gold:#FFD700;
     --gold-light:#FFECB3;
@@ -32,6 +32,9 @@
     --gold-neon:rgba(255, 215, 0, 0.4);
     --heading-font: "Cinzel", serif;
     font-family:"Poppins",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+    
+    /* 🛠️ GÄSTEBUCH-POSITIONIERUNG (DESKTOP) 🛠️ */
+    --form-desktop-y: 45px; 
 }
 *{box-sizing:border-box}
 html,body{height:100%}
@@ -81,9 +84,10 @@ body {
     0%, 100% { opacity: 0.6; }
     50% { opacity: 1; }
 }
-@keyframes neonFlicker {
-    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { text-shadow: 0 0 5px rgba(171, 219, 227, 0.3), 0 0 10px rgba(171, 219, 227, 0.2), 0 0 15px rgba(171, 219, 227, 0.1); }
-    20%, 24%, 55% { text-shadow: none; }
+@keyframes glowing {
+    0% { box-shadow: 0 0 5px var(--metallic-shadow); }
+    50% { box-shadow: 0 0 20px var(--metallic-shadow); }
+    100% { box-shadow: 0 0 5px var(--metallic-shadow); }
 }
 
 /* TOP CONTROLS (Metallic) */
@@ -101,23 +105,29 @@ body {
     border-bottom:1px solid rgba(255,255,255,0.05);
     box-shadow: 0 4px 12px rgba(0,0,0,0.4);
 }
+
+/* --- BUTTON DESIGN (Dunkel/Elegant) --- */
+
 .top-controls .ctrl-btn {
-    background: linear-gradient(180deg, var(--main-metallic-light), var(--main-metallic));
-    border: none;
-    color: #fff; 
-    padding:10px 22px;
-    border-radius:30px;
-    font-weight:700;
-    cursor:pointer;
-    transition: all .3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    box-shadow: 0 4px 15px var(--metallic-shadow);
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    background: linear-gradient(180deg, #1f1f1f, #0a0a0a); /* Dunkler Grau-Schwarz-Gradient */
+    border: 2px solid #ddd; /* Hellerer grauer Rahmen */
+    color: var(--text); /* Textfarbe weiß */
+    padding: 12px 25px; /* Innenabstand */
+    border-radius: 40px; /* Stark abgerundete Ecken (Pill-Form) */
+    font-weight: 700; /* Fettgedruckter Text */
+    cursor: pointer; /* Mauszeiger als Hand */
+    transition: all .4s cubic-bezier(0.25, 0.8, 0.25, 1); /* Sanfte Animation */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.6); /* Dezenter Schatten */
+    text-transform: uppercase; /* Text in Großbuchstaben */
+    letter-spacing: 1px; /* Leichter Zeichenabstand */
+    font-size: 1em; /* Schriftgröße */
 }
+
 .top-controls .ctrl-btn:hover {
-    transform: translateY(-5px) scale(1.02);
-    box-shadow: 0 8px 25px var(--metallic-shadow), 0 0 50px rgba(171, 219, 227, 0.2);
-    filter: brightness(1.1);
+    background: linear-gradient(180deg, #2a2a2a, #1a1a1a); /* Etwas hellerer Hover-Hintergrund */
+    transform: translateY(-4px) scale(1.02); /* Leichtes Anheben und Vergrößern */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.8), 0 0 20px rgba(255,255,255,0.4); /* Kräftigerer Schatten und leichter weißer Schein */
+    filter: brightness(1.1); /* Helligkeit leicht erhöhen */
 }
 
 /* SECTIONS & TYPOGRAPHY */
@@ -193,7 +203,7 @@ h2{
 .barber-showcase-section {
      padding: 60px 20px;
      margin: 60px auto;
-     max-width: var(--max-width); /* Nutzt die neue, kompaktere max-width */
+     max-width: var(--max-width); 
      background: var(--surface); 
      border-radius: var(--radius);
      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
@@ -232,9 +242,8 @@ h2{
 }
 
 /* ============================================
-    GÄSTEBUCH STYLES
+    GÄSTEBUCH STYLES (Desktop Basis)
     ============================================ */
-
 .guestbook-section-custom{
     background-image: url('https://raw.githubusercontent.com/Artonstyle/Barbershop/main/images/G%C3%A4stebuch2.png'); 
     background-size: cover; 
@@ -243,7 +252,7 @@ h2{
     position: relative;
     padding: 0; 
     margin: 40px auto 0; 
-    max-width: var(--max-width); /* Nutzt die neue, kompaktere max-width */
+    max-width: var(--max-width); 
     box-shadow: inset 0 0 0 0vw rgba(0, 0, 0, 0.4); 
     min-height: 750px; 
     border-radius: var(--radius);
@@ -278,7 +287,7 @@ h2{
      text-align: center;
      position: relative;
      z-index: 10;
-     transform: translateY(45px); 
+     transform: translateY(var(--form-desktop-y)); 
 }
 .guestbook-form-wrapper input[type="text"],
 .guestbook-form-wrapper textarea {
@@ -290,7 +299,7 @@ h2{
 .guestbook-form-wrapper input[type="text"]:focus,.guestbook-form-wrapper textarea:focus{ border-color: var(--gold); box-shadow: 0 0 10px rgba(255,215,0,0.2); outline: none; }
 .guestbook-form-wrapper textarea { resize: vertical; min-height: 100px; }
 
-/* KORREKTUR DER STERNE: Abstände und Größe */
+/* STERNE */
 .star-rating { 
     font-size: 0; 
     margin: 0 0 35px; 
@@ -305,14 +314,7 @@ h2{
     padding: 0 2px; 
 }
 .star-rating span i { color: #555; transition: color 0.2s; } 
-/* Goldene Farbe für aktive Sterne */
 .star-rating span i.fas { color: var(--gold); } 
-
-@keyframes glowing {
-    0% { box-shadow: 0 0 5px var(--metallic-shadow); }
-    50% { box-shadow: 0 0 20px var(--metallic-shadow); }
-    100% { box-shadow: 0 0 5px var(--metallic-shadow); }
-}
 
 /* SUBMIT BUTTON (Golden) */
 .submit-btn { 
@@ -338,7 +340,7 @@ h2{
     box-shadow: 0 8px 25px rgba(255, 215, 0, 0.6);
 }
 
-/* MESSAGES (Metallic/Gold) */
+/* MESSAGES */
 .guestbook-messages-section { margin-top: 50px; padding-top: 50px; }
 .messages-overview h3 { 
     font-family: var(--heading-font); 
@@ -375,7 +377,7 @@ h2{
 }
 .message-card .card-stars i { color: var(--gold); font-size: 18px; margin-right: 3px; }
 
-/* CONTACT (Metallic) */
+/* CONTACT */
 .contact-section-deluxe {
     padding: 50px 20px;
     margin: 80px auto; 
@@ -390,43 +392,56 @@ h2{
     color: var(--gold);
     text-shadow: 0 0 10px var(--gold-shadow);
 }
-.contact-info {
-    margin-bottom: 20px;
+.contact-info .address-line,
+.contact-info .phone-number {
+    font-size: 1.25em; /* Deutlich größer */
+    font-weight: 600;
+    margin-bottom: 8px;
 }
-.contact-info .address-line { 
+.contact-section-deluxe h3 { 
+    color: var(--text) !important; 
+    font-size: 1.8em;            
+    margin-top: 25px; 
+}
+.opening-hours-list {
+    list-style-type: none; 
+    padding-left: 0; 
+}
+.opening-hours-list li {
     color: var(--text);
-    text-align: center; 
-    margin-bottom: 5px;
-    font-size: 1.1em;
+    font-size: 1.1em; 
+    margin-bottom: 5px; 
 }
-.contact-info .phone-number { 
-    font-weight: 700; 
-    color: var(--text); 
-    font-size: 1.4em; 
-    text-align: center;
+.opening-hours-list strong { 
+    color: var(--gold); 
+    display: inline-block; 
+    width: 160px; 
 }
-.opening-hours-list strong { color: var(--main-metallic-light); display: inline-block; width: 160px; }
+/* Styling für den WhatsApp-Link */
+.phone-number a {
+    color: var(--text); /* Textfarbe beibehalten */
+    text-decoration: none;
+    transition: color 0.3s;
+}
+.phone-number a:hover {
+    color: var(--gold); /* Gold-Hover-Effekt */
+}
+.phone-number .fab.fa-whatsapp {
+    color: #25D366; /* WhatsApp-Grün */
+    margin-right: 8px;
+}
 
-/* Instagram Logo Größe */
-.social-links {
-    margin-top: 20px;
-    text-align: center;
-}
+/* INSTAGRAM LOGO GRÖSSE */
 .social-links a img { 
-    width: 38px; 
-    height: 38px; 
+    width: 32px; 
+    height: 32px; 
     margin: 0 12px; 
     box-shadow: 0 0 10px var(--metallic-shadow);
     border-radius: 8px; 
     transition: transform 0.3s, filter 0.3s, box-shadow 0.3s; 
 }
-.social-links a img:hover { 
-    transform: scale(1.15) rotate(0deg); 
-    filter: brightness(1.2); 
-    box-shadow: 0 0 20px var(--metallic-shadow);
-}
 
-/* FOOTER */
+/* FOOTER & GALLERY */
 footer{
     text-align:center;
     padding:20px 0;
@@ -436,166 +451,151 @@ footer{
     border-top:2px solid var(--metallic-shadow); 
     font-size: 0.9em;
 } 
-
-/* Gallery (Metallic) */
 #haarschnitt-section {
     display: none;
     padding: 40px 20px;
     background: var(--bg);
 }
+/* WEISSE ÜBERSCHRIFT GALERIE */
+#haarschnitt-section h2 { 
+    color: var(--text); /* Setzt die Farbe auf Weiß */
+    margin-top:20px;
+}
+
 .gallery {
-    /* ANGEPASST: 3 Spalten auf großen Bildschirmen für größere Bilder */
     display: grid;
     grid-template-columns: repeat(3, 1fr); 
-    gap: 25px; /* Etwas größerer Abstand */
+    gap: 25px; 
     max-width: 1200px;
     margin: 0 auto;
 }
+/* NEU: Entfernt Aspect-Ratio, um Originalgröße zu erhalten */
 .gallery img {
     width: 100%;
-    height: auto;
+    height: auto; 
     object-fit: cover; 
-    aspect-ratio: 1 / 1.1; 
     border-radius: 12px;
     border: 2px solid rgba(107, 123, 142, 0.2); 
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
     transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
 }
-.gallery img:hover {
-    transform: translateY(-8px) scale(1.05);
-    border-color: var(--main-metallic); 
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9), 0 0 25px var(--metallic-shadow);
-}
 
-/* Fade toggle */
+/* FADE TOGGLE LOGIK */
 .fade{opacity:0;transition:opacity .5s ease, transform .5s ease}
 .fade.show{opacity:1;transform:translateY(0)}
 
 
-/* RESPONSIVE ANPASSUNGEN (Wieder eingefügt und angepasst) */
-@media(max-width: 1000px){
-    /* ANPASSUNG: Bei kleineren Desktops oder großen Tablets */
-    .gallery {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
+/* ============================================
+    RESPONSIVE ANPASSUNGEN (Mobile Final)
+    ============================================ */
 @media(max-width: 768px){
     /* ALLGEMEINE ANPASSUNGEN */
-    h2 {
-        font-size: 1.8em; 
-        margin-bottom: 20px;
-    }
-    .container {
-        padding: 0 10px; 
-    }
+    /* Button-Anpassung für Mobile */
+    .top-controls .ctrl-btn {padding: 10px 15px; font-size: 0.85em; margin: 3px;} 
+    
+    .header-banner{height: 250px; padding: 10px;}
+    .welcome-section, .image-price-section, .barber-showcase-section { margin: 40px auto; }
+    .barber-showcase-grid {grid-template-columns: 1fr; gap: 20px;}
+    .barber-card img {height: 250px;}
 
-    /* TOP CONTROLS */
-    .top-controls {
-        padding: 10px;
-        gap: 10px;
-    }
-    .top-controls .ctrl-btn {
-        padding: 8px 15px;
-        font-size: 0.9em;
-    }
-
-    /* HEADER BANNER */
-    .header-banner{
-        height: 250px; 
-        padding: 10px;
-    }
-
-    /* WILLKOMMEN & PREIS SEKTIONEN */
-    .welcome-section, .image-price-section {
-        padding: 30px 15px; 
-        margin: 40px auto; 
-    }
-    .welcome-section h1 {
-        font-size: 1.8em; 
-    }
-
-    /* BARBER SHOWCASE GRID */
-    .barber-showcase-section {
-        padding: 40px 15px;
-        margin: 40px auto;
-    }
-    .barber-showcase-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-    .barber-card img {
-        height: 250px; 
+    /* Anpassung der Schriftgröße für Adresse/Telefon auf Mobilgeräten */
+    .contact-info .address-line,
+    .contact-info .phone-number {
+        font-size: 1.1em;
     }
     
-    /* GÄSTEBUCH (Mobile Anpassungen beibehalten) */
+    /* 🛠️ GÄSTEBUCH KORREKTUREN FÜR MOBILE 🛠️ */
     .guestbook-section-custom{
-        background-image:none!important;
-        min-height:auto;
-        padding:40px 10px;
-        background:var(--bg);
+        /* Abschnitt behält die geringe Höhe */
+        min-height: 420px; 
+        height: 220px; 
+        background-size: cover; 
     }
-    .guestbook-section-custom::before{opacity:0.05;} 
     .guestbook-main-content{
-        position:static;
-        flex-direction:column;
-        height:auto;
-        padding-top:0;
+        padding: 0; 
+        align-items: flex-start; 
     }
     .guestbook-form-wrapper{
-        background:var(--card);
-        max-width:95%;
-        margin:20px auto;
-        padding:30px;
-        border:2px solid var(--main-metallic);
-        box-shadow:0 0 30px var(--metallic-shadow);
-        transform:none;
-        height:auto;
-    }
-    .guestbook-form-wrapper::before{content:"GUESTBOOK";display:block;color:var(--main-metallic-light);font-size:28px;font-weight:700;margin-bottom:20px;text-shadow:0 0 8px var(--metallic-shadow);}
-    
-    .guestbook-form-wrapper input[type="text"],
-    .guestbook-form-wrapper textarea,
-    .submit-btn {
-        width: 100%; 
-        max-width: 100%;
-    }
+        /* Formular maximal kompakter machen und neu positionieren */
+        background: rgba(0, 0, 0, 0.75); 
+        border:2px solid var(--gold-light);
+        box-shadow:0 0 20px var(--gold-shadow);
+        
+        /* Absolute Zentrierung im 320px hohen Container */
+        position: absolute; 
+        top: 59%; 
+        left: 51%; 
+        transform: translate(-52%, -51%); 
 
-    /* GÄSTEBUCH NACHRICHTEN */
-    .messages-grid{
-        grid-template-columns: 1fr; 
-        padding:0 10px;
-    }
-    .messages-scroll-wrapper {
-        max-height: 400px; 
-    }
-
-    /* KONTAKT SEKTION */
-    .contact-section-deluxe {
-        padding: 30px 15px;
-        margin: 50px auto;
-    }
-    .opening-hours-list strong { 
-        width: 120px; 
-        display: block; 
-        margin-right: 0;
-    }
-    .opening-hours-list li {
-        display: flex; 
-        justify-content: center;
+        max-width:214px; /* SCHMALER */
+        width: 95%; 
+        height: 260px; /* KÜRZER */
+        margin:0;
+        padding:5px 8px; 
+        border-radius: 15px;
+        
+        display: flex;
+        flex-direction: column;
         align-items: center;
-        gap: 10px;
-        margin-bottom: 5px;
+        justify-content: center; 
     }
-    
+    .guestbook-form-wrapper::before{
+        content:"Gästebuch";
+        font-size:1.9em; 
+        margin-bottom:6px; 
+    }
+    .guestbook-form-wrapper input[type="text"],
+    .guestbook-form-wrapper textarea {
+        width: 75%; 
+        max-width: 230px; /* SCHMALER */
+        font-size: 12px; 
+        padding: 4px 8px; 
+        margin-bottom: 5px; 
+    }
+    .guestbook-form-wrapper input::placeholder,.guestbook-form-wrapper textarea::placeholder {
+        font-size: 12px;
+    }
+    .guestbook-form-wrapper textarea { 
+        resize: vertical; 
+        min-height: 40px; /* KÜRZER */
+    }
+    .star-rating {
+        margin: 5px 0 8px; 
+    }
+    .star-rating span {
+        font-size: 18px; 
+    }
+    .submit-btn {
+        width: 75%; 
+        padding: 2px 30px; 
+        font-size: 10px; 
+    }
+
+    /* NACHRICHTEN */
+    .guestbook-messages-section { margin-top: 0; padding-top: 20px; }
+    .messages-grid{grid-template-columns: 1fr; padding:0 10px;}
+    .messages-scroll-wrapper {max-height: 400px;}
+
     /* GALERIE */
-    /* Mobile-Galerie bleibt bei 2 Spalten, um Platz zu sparen */
+    .gallery img {
+        height: auto;
+        object-fit: contain; 
+    }
     .gallery{grid-template-columns: repeat(2, 1fr); gap: 15px;} 
+    
+    /* INSTAGRAM LOGO (Mobile Anpassung) */
+    .social-links a img {
+        width: 38px;
+        height: 38px;
+    }
 }
 
 @media(max-width: 480px){
-    /* Zusätzliche Optimierung für sehr kleine Handys */
-    .gallery{grid-template-columns: 1fr; gap: 10px;} /* Nur 1 Spalte auf sehr kleinen Bildschirmen */
+    /* Bei sehr kleinen Bildschirmen */
+    .guestbook-form-wrapper {
+        max-width: 98%; 
+    }
+    .gallery{grid-template-columns: 1fr; gap: 10px;} 
 }
 </style>
 </head>
@@ -608,7 +608,7 @@ footer{
 
 <div class="top-controls">
     <button id="btnStartseite" class="ctrl-btn">🏠 Startseite</button>
-    <button id="btnHaarschnitt" class="ctrl-btn">⚙️ Galerie</button>
+    <button id="btnHaarschnitt" class="ctrl-btn">✂️ Haarschnitte</button>
 </div>
 
 <div id="siteContent" class="fade" style="transform: translateY(20px);"> 
@@ -670,11 +670,12 @@ footer{
                         <span data-rating="3"><i class="far fa-star"></i></span>
                         <span data-rating="4"><i class="far fa-star"></i></span>
                         <span data-rating="5"><i class="far fa-star"></i></span>
+                        <input type="hidden" id="hiddenRating" name="rating" value="0">
                     </div>
                     
                     <button type="submit" class="submit-btn">EINTRAG SENDEN</button>
                 </form>
-                <p id="successMsg" style="display:none;color:var(--gold);margin-top:15px;text-shadow: 0 0 5px var(--gold-shadow);">✅ Eintrag erfolgreich gesendet!</p>
+                <p id="successMsg" style="display:none;color:var(--gold);margin-top:10px;text-shadow: 0 0 5px var(--gold-shadow);">✅ Eintrag erfolgreich gesendet!</p>
             </div>
         </div>
     </div>
@@ -683,7 +684,9 @@ footer{
         <div class="messages-overview">
             <h3>Nachrichten Von Unseren Gästen</h3>
             <div class="messages-scroll-wrapper">
-                <div class="messages-grid" id="messagesGrid"></div>
+                <div class="messages-grid" id="messagesGrid">
+                    <p style="text-align:center;color:var(--gold-light); grid-column: 1 / -1;">Einträge werden geladen...</p>
+                </div>
             </div>
         </div>
         <div id="guestEntries"></div>
@@ -693,10 +696,14 @@ footer{
         <h2>📍 Kontakt & Öffnungszeiten</h2>
         <div class="contact-info">
             <p class="address-line">Bachgasse 68, 69502 Hemsbach</p>
-            <p class="phone-number">📞 0176 70794224</p>
+            <p class="phone-number">
+                <a href="https://wa.me/4917670794224" target="_blank" rel="noopener">
+                    <i class="fab fa-whatsapp"></i> 0176 70794224
+                </a>
+            </p>
         </div>
 
-        <h3 style="color:var(--gold-light);margin-top:20px;">Öffnungszeiten</h3>
+        <h3 style="color:var(--text); font-size: 1.8em; margin-top: 25px;">Öffnungszeiten</h3>
         <ul class="opening-hours-list" aria-label="Öffnungszeiten">
             <li><strong>Montag–Freitag:</strong> 09:00 – 19:00 Uhr</li>
             <li><strong>Samstag:</strong> 09:00 – 18:00 Uhr</li>
@@ -709,35 +716,48 @@ footer{
             </a>
         </div>
 
-        <p style="margin-top:18px;"><a href="https://www.google.com/maps/dir/?api=1&destination=Bachgasse+68,+69502+Hemsbach" target="_blank" rel="noopener" style="color:var(--gold-light);text-decoration:none;font-weight:700;transition:color 0.3s;" onmouseover="this.style.color='var(--gold-light)'" onmouseout="this.style.color='var(--gold-light)'">Route auf Google Maps öffnen</a></p>
+        <p style="margin-top:18px;">
+            <a href="https://www.google.com/maps/dir/?api=1&destination=Bachgasse+68,+69502+Hemsbach" target="_blank" rel="noopener" 
+               style="color:var(--text);text-decoration:none;font-weight:700;transition:color 0.3s;" 
+               onmouseover="this.style.color='var(--text)'" 
+               onmouseout="this.style.color='var(--text)'">
+                Route auf Google Maps öffnen
+            </a>
+        </p>
+        
+        <p id="visitor-counter-text" style="color: var(--muted); font-size: 0.9em; margin-top: 10px;">
+           Besucher gesamt: 
+           <script language="JavaScript" src="https://www.besucherzaehler-kostenlos.de/js/counter.js.php?count=1&id=artonstyle.github.ioBarbershop&start=0000000&design=3e"></script>
+        </p>
     </div>
 
     <footer>© 2025 C&D Barbershop | Metallic Gold Edition</footer>
 
 </div> 
 <section id="haarschnitt-section" class="fade" style="transform: translateY(20px);">
-    <h2 style="text-align:center;color:var(--gold-light);margin-top:20px;">⚙️ Haarschnitt Galerie</h2>
+    <h2 style="text-align:center;">✂️ Haarschnitt Galerie</h2>
     <div id="haarschnitt-loader" class="loader" style="display:none;color:var(--gold);text-align:center;padding:25px 0;font-size:1.1em;text-shadow:0 0 5px var(--gold-neon);">✨ Bilder werden geladen...</div>
-    <div id="haarschnitt-gallery" class="gallery" aria-live="polite"></div>
+    <div id="haarschnitt-gallery" class="gallery" aria-live="polite">
+        <p style="text-align:center;color:var(--muted); grid-column: 1 / -1;">Hier erscheinen die Bilder der Haarschnitte, sobald sie von GitHub geladen werden (funktioniert nur auf einem Webserver).</p>
+    </div>
 </section>
 
 <script>
 /* ---------------------------
     Gästebuch + Google Sheet
     --------------------------- */
-const sheetURL = "https://script.google.com/macros/s/AKfycbzSBO9iha-NH0D4j3GfGjxsOdoko1AqwrEnM2ie-dy1zrfu2OtjNH4TvnZVIkWh0KDB/exec";
+const sheetURL = "https://script.google.com/macros/s/AKfycbzSBO9iha-NH0D4j3GfGjxsOdoko1AqwrEnM2ie-dy1zrfu2OtjNH4TvnZVIkWh0KDB/exec"; 
 
 const form = document.getElementById("guestbookForm");
 const successMsg = document.getElementById("successMsg");
 const messagesGrid = document.getElementById('messagesGrid');
 const backgroundVideo = document.getElementById('background-video');
 
-// NEU: Verzögert das Starten des Videos, bis der Rest der Seite geladen ist
+// Video Autoplay
 window.addEventListener('load', () => {
      if (backgroundVideo) {
-         // Stellt sicher, dass das Video geladen wird, wenn der Rest der Seite bereit ist
          backgroundVideo.play().catch(error => {
-             console.error("Video konnte nicht automatisch abgespielt werden (Browsereinschränkung).", error);
+             console.error("Video konnte nicht automatisch abgespielt werden.", error);
          });
      }
 });
@@ -747,12 +767,7 @@ window.addEventListener('load', () => {
 document.addEventListener("DOMContentLoaded", () => {
     const stars = document.querySelectorAll('.star-rating span');
     let rating = 0;
-    const ratingInput = document.createElement('input');
-    ratingInput.type = 'hidden';
-    ratingInput.name = 'rating';
-    ratingInput.id = 'hiddenRating';
-    ratingInput.value = '0';
-    form.appendChild(ratingInput);
+    const ratingInput = document.getElementById('hiddenRating'); 
 
     function updateStars(r) {
        stars.forEach(s => {
@@ -768,30 +783,31 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     
     stars.forEach(star => {
-       // Click: Setzt die permanente Bewertung
        star.addEventListener('click', () => {
           rating = parseInt(star.dataset.rating);
           updateStars(rating);
           ratingInput.value = rating;
        });
-       // Mouseover: Zeigt die temporäre Bewertung an
        star.addEventListener('mouseover', () => {
           updateStars(parseInt(star.dataset.rating)); 
        });
-       // Mouseout: Stellt die permanente (geklickte) Bewertung wieder her
        star.addEventListener('mouseout', () => {
           updateStars(rating);
        });
     });
 });
 
-// Load entries from Google Script
+// Load entries from Google Script (Lädt alle abgeschickten Beiträge)
 async function loadEntries(){
-    // Verhindert das Blockieren des Seitenaufbaus
     setTimeout(async () => {
        try{
           messagesGrid.innerHTML = '<p style="text-align:center;color:var(--gold-light); grid-column: 1 / -1; animation: goldPulse 1s infinite;">Lade Einträge...</p>';
           const res = await fetch(sheetURL);
+          
+          if (!res.ok) {
+             throw new Error(`HTTP Fehler: ${res.status}`);
+          }
+          
           const entries = await res.json();
           
           if (!entries || !entries.length) {
@@ -799,6 +815,7 @@ async function loadEntries(){
              return;
           }
 
+          // Einträge umkehren, damit die neuesten oben stehen.
           const cardsHtml = entries.reverse().map(e => {
              const entryRating = e.rating ? parseInt(e.rating) : 0;
              let starHtml = '';
@@ -807,9 +824,9 @@ async function loadEntries(){
              }
              let dateString;
              try {
+                // Konvertiert das Datum, das als String oder Zahl kommen kann
                 const dateValue = isNaN(new Date(e.date).getTime()) ? parseInt(e.date) : e.date;
                 const d = new Date(dateValue);
-                // Nur Datum anzeigen, da genaue Zeit bei Google Sheets schwer zu garantieren ist
                 dateString = d.toLocaleString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' });
              } catch { dateString = 'Unbekanntes Datum'; }
 
@@ -826,7 +843,7 @@ async function loadEntries(){
           console.error("Fehler beim Laden der Einträge:", err);
           messagesGrid.innerHTML = '<p style="text-align:center;color:var(--main-metallic-light); grid-column: 1 / -1;">Fehler beim Laden der Einträge. Bitte versuchen Sie es später erneut.</p>';
        }
-    }, 500); // Verzögerung von 500ms, um den Hauptinhalt zuerst zu laden.
+    }, 500);
 }
 
 // Submit handler (POST to Google Script)
@@ -852,7 +869,11 @@ form.addEventListener("submit", async e => {
        data.append("text", text);
        data.append("rating", rating);
 
-       await fetch(sheetURL, { method: "POST", body: data });
+       const response = await fetch(sheetURL, { method: "POST", body: data });
+       
+       if (!response.ok) {
+           throw new Error(`Fehler beim Senden: ${response.status}`);
+       }
        
        // Success Feedback
        form.reset();
@@ -860,10 +881,13 @@ form.addEventListener("submit", async e => {
        if(ratingEl) ratingEl.value='0';
        successMsg.style.display = 'block';
        setTimeout(() => { successMsg.style.display = 'none'; }, 4000);
+       
+       // Beiträge neu laden, um den neuen Eintrag anzuzeigen
        loadEntries();
+       
     }catch(err){
        console.error(err);
-       alert("Fehler beim Senden des Eintrags!");
+       alert("Fehler beim Senden des Eintrags! Bitte prüfen Sie die Netzwerkeinstellungen.");
     } finally {
        btn.disabled = false; 
        btn.textContent = 'EINTRAG SENDEN';
@@ -920,6 +944,7 @@ async function loadGithubImages(){
     loaderElm.style.display = 'block';
     gallery.innerHTML = '';
     try {
+        // Dies ist die API-URL, um den Inhalt des Ordners abzurufen
         const apiUrl = 'https://api.github.com/repos/Artonstyle/Barbershop/contents/haarschnitte';
         const res = await fetch(apiUrl);
         if(!res.ok) throw new Error('GitHub API Fehler ' + res.status);
@@ -935,16 +960,16 @@ async function loadGithubImages(){
         
         images.forEach(f=>{
            const img = document.createElement('img');
-           img.src = f.download_url;
-           img.alt = f.name.replace(/\.[^/.]+$/, ""); // Dateiendung entfernen
-           img.loading = 'lazy'; // Lädt Bilder erst, wenn sie in den sichtbaren Bereich kommen.
+           img.src = f.download_url; // Der direkte Link zur Datei
+           img.alt = f.name.replace(/\.[^/.]+$/, ""); 
+           img.loading = 'lazy'; 
            gallery.appendChild(img);
         });
         imagesLoadedOnce = true;
         loaderElm.style.display = 'none';
     } catch (err) {
         console.error(err);
-        loaderElm.textContent = 'Fehler beim Laden der Bilder.';
+        loaderElm.textContent = 'Fehler beim Laden der Bilder. (API-Fehler)';
     }
 }
 
