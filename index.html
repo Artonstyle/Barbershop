@@ -3,258 +3,258 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-<title>⚙️ C&D Barbershop – Metallic Gold Edition</title>
+<title>C&D Barbershop – Metallic Gold Edition</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Cinzel:wght@600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 <style>
 /* ==========================
-    VARIABLES & GLOBAL V4 (METALLIC GOLD)
+    VARIABLES & GLOBAL V5
     ========================== */
 :root{
-    --main-metallic:#6B7B8E; 
-    --main-metallic-light:#AABBCF;
-    --main-metallic-dark:#3A4A5C;
-    --metallic-shadow:rgba(107, 123, 142, 0.4); 
-
-    --bg:#020205; 
-    --card:#0e0e12; 
-    --surface:#15151a;
-    --text:#f0f2f5; 
-    --muted:#a0aab8;
-    --glass:rgba(255,255,255,0.05);
-    --max-width:1100px; 
-    --radius:15px; 
-    --gold:#FFD700;
-    --gold-light:#FFECB3;
-    --gold-shadow:rgba(255, 215, 0, 0.6);
-    --gold-neon:rgba(255, 215, 0, 0.4);
+    --main-metallic:#8a93a0;
+    --main-metallic-light:#c3ccd8;
+    --main-metallic-dark:#4a5563;
+    --metallic-shadow:rgba(138, 147, 160, 0.28);
+    --bg:#07080c;
+    --bg-alt:#0d1016;
+    --card:rgba(16, 19, 27, 0.88);
+    --surface:rgba(21, 25, 34, 0.82);
+    --text:#f4f6f9;
+    --muted:#a7b0bc;
+    --glass:rgba(255,255,255,0.06);
+    --max-width:1100px;
+    --radius:18px;
+    --gold:#e0b85a;
+    --gold-light:#f8e39a;
+    --gold-shadow:rgba(224, 184, 90, 0.42);
+    --gold-neon:rgba(224, 184, 90, 0.24);
     --heading-font: "Cinzel", serif;
     font-family:"Poppins",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
-    
-    /* 🛠️ GÄSTEBUCH-POSITIONIERUNG (DESKTOP) 🛠️ */
-    --form-desktop-y: 45px; 
+    --form-desktop-y: 18px;
 }
 *{box-sizing:border-box}
 html,body{height:100%}
-
-/* ==========================
-    VIDEO HINTERGRUND STYLES
-    ========================== */
+html{scroll-behavior:smooth}
 body {
     margin:0;
     color:var(--text);
     line-height:1.6;
     -webkit-font-smoothing:antialiased;
     -moz-osx-font-smoothing:grayscale;
-    background-color: var(--bg); 
-    position: relative; 
-    overflow-x: hidden; 
+    background:#080808;
+    position: relative;
+    overflow-x: hidden;
 }
-
-#background-video {
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    min-width: 100%; 
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    z-index: -3; 
-    background-size: cover;
-    object-fit: cover; 
-    filter: brightness(0.7) grayscale(0.2); 
+body::before{
+    content:none;
 }
-
-/* Overlay */
-.video-overlay {
-     position: fixed;
-     top: 0;
-     left: 0;
-     width: 100%;
-     height: 100%;
-     background-color: rgba(0, 0, 0, 0.7); 
-     z-index: -2; 
-}
-
-
-/* GLOBAL ANIMATIONS */
-@keyframes goldPulse {
-    0%, 100% { opacity: 0.6; }
-    50% { opacity: 1; }
-}
-@keyframes glowing {
-    0% { box-shadow: 0 0 5px var(--metallic-shadow); }
-    50% { box-shadow: 0 0 20px var(--metallic-shadow); }
-    100% { box-shadow: 0 0 5px var(--metallic-shadow); }
-}
-
-/* TOP CONTROLS (Metallic) */
+@keyframes goldPulse { 0%, 100% { opacity: 0.45; } 50% { opacity: 0.9; } }
+@keyframes glowing { 0% { box-shadow: 0 0 5px var(--metallic-shadow); } 50% { box-shadow: 0 0 20px var(--metallic-shadow); } 100% { box-shadow: 0 0 5px var(--metallic-shadow); } }
+@keyframes floatIn { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
 .top-controls {
     display:flex;
     justify-content:center;
     align-items:center;
-    gap:15px;
-    padding:15px;
-    background: var(--glass);
-    backdrop-filter: blur(5px);
+    gap:12px;
+    padding:14px 16px;
+    background: linear-gradient(180deg, rgba(7,7,10,0.96), rgba(10,10,12,0.90));
+    backdrop-filter: blur(8px);
     position:sticky;
     top:0;
-    z-index:999; 
-    border-bottom:1px solid rgba(255,255,255,0.05);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    z-index:999;
+    border-bottom:1px solid rgba(248,227,154,0.26);
+    box-shadow:0 10px 26px rgba(0,0,0,0.30), 0 0 24px rgba(224,184,90,0.14);
 }
-
-/* --- BUTTON DESIGN (Dunkel/Elegant) --- */
-
 .top-controls .ctrl-btn {
-    background: linear-gradient(180deg, #1f1f1f, #0a0a0a); /* Dunkler Grau-Schwarz-Gradient */
-    border: 2px solid #ddd; /* Hellerer grauer Rahmen */
-    color: var(--text); /* Textfarbe weiß */
-    padding: 12px 25px; /* Innenabstand */
-    border-radius: 40px; /* Stark abgerundete Ecken (Pill-Form) */
-    font-weight: 700; /* Fettgedruckter Text */
-    cursor: pointer; /* Mauszeiger als Hand */
-    transition: all .4s cubic-bezier(0.25, 0.8, 0.25, 1); /* Sanfte Animation */
-    box-shadow: 0 4px 10px rgba(0,0,0,0.6); /* Dezenter Schatten */
-    text-transform: uppercase; /* Text in Großbuchstaben */
-    letter-spacing: 1px; /* Leichter Zeichenabstand */
-    font-size: 1em; /* Schriftgröße */
+    background: linear-gradient(180deg, rgba(18,14,10,0.98), rgba(7,7,10,0.98));
+    border: 1px solid rgba(248,227,154,0.62);
+    color: var(--text);
+    padding: 12px 22px;
+    border-radius: 999px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease, background .25s ease;
+    box-shadow:0 0 0 1px rgba(224,184,90,0.16), 0 0 22px rgba(224,184,90,0.16);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.95em;
+    position: relative;
+    overflow:hidden;
 }
-
+.top-controls .ctrl-btn::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background: linear-gradient(120deg, transparent 18%, rgba(248,227,154,0.22) 50%, transparent 82%);
+    transform: translateX(-120%);
+    transition: transform 0.55s ease;
+}
 .top-controls .ctrl-btn:hover {
-    background: linear-gradient(180deg, #2a2a2a, #1a1a1a); /* Etwas hellerer Hover-Hintergrund */
-    transform: translateY(-4px) scale(1.02); /* Leichtes Anheben und Vergrößern */
-    box-shadow: 0 8px 20px rgba(0,0,0,0.8), 0 0 20px rgba(255,255,255,0.4); /* Kräftigerer Schatten und leichter weißer Schein */
-    filter: brightness(1.1); /* Helligkeit leicht erhöhen */
+    background:
+      linear-gradient(180deg, rgba(224,184,90,0.24), rgba(248,227,154,0.12)),
+      linear-gradient(180deg, rgba(18,14,10,0.98), rgba(7,7,10,0.98));
+    transform: translateY(-2px) scale(1.02);
+    border-color: rgba(248,227,154,0.92);
+    box-shadow:
+      0 12px 30px rgba(0,0,0,0.38),
+      0 0 0 1px rgba(224,184,90,0.24),
+      0 0 28px rgba(224,184,90,0.24),
+      0 0 40px rgba(248,227,154,0.14);
 }
-
-/* SECTIONS & TYPOGRAPHY */
-#siteContent, #haarschnitt-section {
-    z-index: 100; 
-    position: relative; 
+.top-controls .ctrl-btn:hover::before{
+    transform: translateX(120%);
 }
-
+#siteContent, #haarschnitt-section { z-index: 100; position: relative; }
 .container{max-width:var(--max-width);margin:0 auto;padding:0 16px}
 .skip-link{position:absolute;left:-9999px;top:auto;overflow:hidden}
-.skip-link:focus{left:16px;top:16px;z-index:999;background:var(--card);padding:8px;border-radius:6px;color:var(--text)}
-
+.skip-link:focus{left:16px;top:16px;z-index:999;background:var(--card);padding:8px 12px;border-radius:10px;color:var(--text);box-shadow:0 10px 30px rgba(0,0,0,.35)}
 h2{
-    text-align: center; 
-    margin-bottom: 30px; 
-    font-weight: 800; 
-    color: var(--text); 
-    text-shadow: 0 0 10px var(--metallic-shadow);
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: 800;
+    color: var(--text);
+    text-shadow: 0 0 12px rgba(224,184,90,0.26), 0 0 22px rgba(248,227,154,0.08);
     font-family: var(--heading-font);
-    letter-spacing: 2px;
-    font-size: 2.2em;
+    letter-spacing: 1.5px;
+    font-size: 2.1em;
 }
-
-/* HERO BANNER */
 .header-banner{
-    width: 100%; 
-    height: 450px; 
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    background: transparent; 
-    overflow: hidden; 
+    width: 100%;
+    max-width: none;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background:#080808;
+    overflow: hidden;
     position: relative;
-    padding: 20px; 
+    z-index: 0;
+    padding: 0;
+    margin: 18px 0 0;
+    transition: background 0.35s ease;
+}
+.header-banner::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:0;
+    border:none;
+    box-shadow:none;
+    pointer-events:none;
 }
 .header-banner img{
-    max-width: 95%; 
-    max-height: 95%; 
-    object-fit: contain; 
-    filter: drop-shadow(0 0 10px rgba(107, 123, 142, 0.8)) drop-shadow(0 0 20px rgba(107, 123, 142, 0.4)); 
-    transition: transform 0.5s ease;
+    width: 100%;
+    max-width: none;
+    height: auto;
+    max-height: none;
+    object-fit: contain;
+    object-position: center center;
+    border-radius: 0;
+    filter:none;
+    transition: transform 0.45s ease, filter 0.45s ease;
+    animation: floatIn .8s ease both;
 }
-
-/* Welcome & Price Sections (Metallic) */
+.header-banner img:hover{transform: scale(1.02)}
 .welcome-section, .image-price-section {
-    padding: 40px 25px; 
-    background: var(--card); 
-    border-radius: var(--radius); 
-    max-width: 950px; 
-    margin: 60px auto; 
-    text-align: center; 
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 30px var(--metallic-shadow);
-    border: 1px solid rgba(107, 123, 142, 0.3); 
-    transition: box-shadow 0.3s ease;
-} 
-.welcome-section h1{
-    font-size: 2.5em; 
-    margin-bottom: 10px; 
-    color: var(--text); 
-    font-family: var(--heading-font);
-    text-shadow: 0 0 8px var(--gold-neon);
-} 
+    padding: 42px 26px;
+    max-width: 950px;
+    margin: 48px auto;
+    text-align: center;
+    transition: transform 0.25s ease, opacity 0.25s ease, box-shadow 0.25s ease;
+}
+.welcome-section, .image-price-section, .barber-showcase-section, .guestbook-section-custom, .guestbook-messages-section, .contact-section-deluxe, footer, #haarschnitt-section { position: relative; z-index: 2; }
+.welcome-section{ background: transparent; border: none; box-shadow: none; }
+.welcome-section:hover{ box-shadow: none; }
+.image-price-section:hover, .barber-showcase-section:hover, .guestbook-section-custom:hover, .guestbook-messages-section:hover, .contact-section-deluxe:hover, footer:hover, #haarschnitt-section:hover { box-shadow: 0 18px 40px rgba(0,0,0,0.38), 0 0 34px rgba(224,184,90,0.20), 0 0 50px rgba(248,227,154,0.08); }
+.welcome-section h1{ font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 10px; color: var(--text); font-family: var(--heading-font); text-shadow: 0 0 18px rgba(224,184,90,0.42), 0 0 34px rgba(248,227,154,0.14); }
+.welcome-section p{max-width: 780px;margin: 0 auto;color: #d9dee6;font-size: 1.05rem}
 .image-price-section img{
-    max-width: 100%; 
-    width: 100%; 
-    height: auto; 
-    border-radius: var(--radius); 
-    box-shadow: 0 0 20px var(--metallic-shadow); 
-    border: 2px solid var(--main-metallic-light); 
-} 
-
-/* BARBER SHOWCASE SECTION (Metallic) */
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    border-radius: 0;
+    box-shadow: none;
+    border: 1px solid rgba(248,227,154,0.24);
+    box-shadow: 0 0 24px rgba(0,0,0,0.34), 0 0 26px rgba(224,184,90,0.18), 0 0 40px rgba(248,227,154,0.08);
+}
 .barber-showcase-section {
-     padding: 60px 20px;
-     margin: 60px auto;
-     max-width: var(--max-width); 
-     background: var(--surface); 
-     border-radius: var(--radius);
-     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
-     border-top: 3px solid var(--gold); 
+    padding: 44px 18px;
+    margin: 56px auto;
+    max-width: var(--max-width);
+    background: linear-gradient(180deg, rgba(12,15,21,0.92), rgba(8,10,15,0.96));
+    border-radius:0;
+    box-shadow: 0 14px 32px rgba(0,0,0,0.28);
+    border: 1px solid rgba(248,227,154,0.18);
+    position: relative;
+    box-shadow: 0 14px 32px rgba(0,0,0,0.30), 0 0 26px rgba(224,184,90,0.14);
 }
-.barber-showcase-section p {
-     color: var(--text) !important; 
+.barber-showcase-section::before{
+    content:none;
 }
+.barber-showcase-section p { color: #d8dbe1 !important; }
 .barber-showcase-grid {
-     display: grid;
-     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-     gap: 30px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
 }
 .barber-card {
-     background: var(--card);
-     border-radius: 12px;
-     overflow: hidden;
-     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
-     transition: transform 0.3s ease, box-shadow 0.3s ease;
-     border-top: 5px solid var(--main-metallic); 
+    background: linear-gradient(180deg, rgba(8,10,15,0.96), rgba(13,16,22,0.96));
+    border-radius:0;
+    overflow: hidden;
+    box-shadow:
+      0 10px 24px rgba(0, 0, 0, 0.42),
+      0 0 0 1px rgba(224,184,90,0.24),
+      0 0 34px rgba(224,184,90,0.30);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    border: 1px solid rgba(248,227,154,0.26);
+    position: relative;
+}
+.barber-card::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background: linear-gradient(135deg, rgba(248,227,154,0.32), transparent 30%, transparent 70%, rgba(224,184,90,0.16));
+    pointer-events:none;
+    mix-blend-mode: screen;
+    opacity: 1;
 }
 .barber-card img {
-     width: 100%;
-     height: 350px;
-     object-fit: cover; 
-     display: block;
-     loading: lazy; 
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    filter: saturate(1.04) contrast(1.04);
 }
 .barber-card-info {
-     padding: 20px;
-     text-align: center;
+    padding: 12px 10px 14px;
+    text-align: center;
 }
 .barber-card-info h4 {
-     color: var(--gold-light); 
-     font-family: var(--heading-font);
+    color: #f8e39a;
+    font-family: var(--heading-font);
+    margin-bottom: 6px;
+    font-size: 0.98rem;
+    text-shadow: 0 0 14px rgba(224,184,90,0.32), 0 0 20px rgba(248,227,154,0.10);
 }
-
-/* ============================================
-    GÄSTEBUCH STYLES (Desktop Basis)
-    ============================================ */
+.barber-card-info p{
+    color:#d5d9df;
+    font-size: 0.86rem;
+    line-height: 1.35;
+}
 .guestbook-section-custom{
-    background-image: url('https://raw.githubusercontent.com/Artonstyle/Barbershop/main/images/G%C3%A4stebuch2.png'); 
-    background-size: cover; 
+    background-image: url('https://raw.githubusercontent.com/Artonstyle/Barbershop/main/images/G%C3%A4stebuch2.png');
+    background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
     position: relative;
-    padding: 0; 
-    margin: 40px auto 0; 
-    max-width: var(--max-width); 
-    box-shadow: inset 0 0 0 0vw rgba(0, 0, 0, 0.4); 
-    min-height: 750px; 
+    padding: 0;
+    margin: 40px auto 0;
+    max-width: var(--max-width);
+    box-shadow: inset 0 0 0 0vw rgba(0, 0, 0, 0.4);
+    min-height: 750px;
     border-radius: var(--radius);
     overflow: hidden;
 }
@@ -262,7 +262,7 @@ h2{
      content: "";
      position: absolute;
      inset: 0;
-     background-image: 
+     background-image:
        repeating-linear-gradient(45deg, rgba(255,215,0,0.02) 0px, rgba(255,215,0,0.02) 2px, transparent 2px, transparent 10px),
        repeating-linear-gradient(-45deg, rgba(255,215,0,0.02) 0px, rgba(255,215,0,0.02) 2px, transparent 2px, transparent 20px);
      animation: goldPulse 5s ease-in-out infinite;
@@ -272,339 +272,269 @@ h2{
 .guestbook-main-content {
      display: flex;
      justify-content: center;
-     align-items: center; 
-     position: absolute; 
+     align-items: center;
+     position: absolute;
      inset: 0;
      z-index: 10;
 }
 .guestbook-form-wrapper {
      background: transparent;
      border: none;
-     padding: 180px 40px 40px; 
-     max-width: 430px; 
-     height: 500px; 
-     box-shadow: none; 
+     padding: 180px 40px 40px;
+     max-width: 430px;
+     height: 500px;
+     box-shadow: none;
      text-align: center;
      position: relative;
      z-index: 10;
-     transform: translateY(var(--form-desktop-y)); 
+     transform: translateY(var(--form-desktop-y));
 }
 .guestbook-form-wrapper input[type="text"],
 .guestbook-form-wrapper textarea {
-    width: 85%; padding: 10px 10px; margin-bottom: 8px; 
-    background: rgba(80, 80, 80, 0.9); border: none; border-radius: 5px; color: #fff; box-sizing: border-box;
+    width: 85%;
+    padding: 10px 10px;
+    margin-bottom: 8px;
+    background: rgba(80, 80, 80, 0.9);
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    box-sizing: border-box;
     font-size: 16px;
 }
 .guestbook-form-wrapper input::placeholder,.guestbook-form-wrapper textarea::placeholder { color: #dddddd; font-size: 16px; font-weight: 400; letter-spacing: 0.5px; opacity: 1; }
-.guestbook-form-wrapper input[type="text"]:focus,.guestbook-form-wrapper textarea:focus{ border-color: var(--gold); box-shadow: 0 0 10px rgba(255,215,0,0.2); outline: none; }
+.guestbook-form-wrapper input[type="text"]:focus,.guestbook-form-wrapper textarea:focus{ border-color: #444; box-shadow: none; outline: none; }
 .guestbook-form-wrapper textarea { resize: vertical; min-height: 100px; }
 
 /* STERNE */
-.star-rating { 
-    font-size: 0; 
-    margin: 0 0 35px; 
-    color: #888; 
-    cursor: pointer; 
-    display: block; 
-    text-align: center; 
+.star-rating {
+    font-size: 0;
+    margin: 0 0 35px;
+    color: #888;
+    cursor: pointer;
+    display: block;
+    text-align: center;
 }
 .star-rating span {
-    display: inline-block; 
-    font-size: 30px; 
-    padding: 0 2px; 
+    display: inline-block;
+    font-size: 30px;
+    padding: 0 2px;
 }
-.star-rating span i { color: #555; transition: color 0.2s; } 
-.star-rating span i.fas { color: var(--gold); } 
+.star-rating span i { color: #555; transition: color 0.2s; }
+.star-rating span i.fas { color: var(--gold); }
 
 /* SUBMIT BUTTON (Golden) */
-.submit-btn { 
-    background: linear-gradient(0deg, var(--gold), var(--gold-light)); 
-    color: var(--card); 
-    font-weight: 800; 
-    border: none; 
-    border-radius: 40px; 
-    padding: 18px 60px; 
-    cursor: pointer; 
-    transition: all 0.3s ease; 
-    box-shadow: 0 6px 15px rgba(255, 215, 0, 0.4); 
-    width: 90%; max-width: 320px; 
-    margin-top: -3px; 
-    font-size: 18px; 
-    letter-spacing: 2px; 
+.submit-btn {
+    background:#c8c8c8;
+    color:#101010;
+    font-weight: 800;
+    border: none;
+    border-radius: 40px;
+    padding: 18px 60px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow:none;
+    width: 90%;
+    max-width: 320px;
+    margin-top: -3px;
+    font-size: 18px;
+    letter-spacing: 2px;
     text-transform: uppercase;
 }
-.submit-btn:hover { 
-    transform: translateY(-5px); 
-    animation: glowing 1.5s infinite; 
-    filter: brightness(1.1);
-    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.6);
+.submit-btn:hover {
+    transform:none;
+    animation:none;
+    filter:none;
+    box-shadow:none;
 }
 
 /* MESSAGES */
 .guestbook-messages-section { margin-top: 50px; padding-top: 50px; }
-.messages-overview h3 { 
-    font-family: var(--heading-font); 
-    color: var(--gold); 
+.messages-overview h3 {
+    font-family: var(--heading-font);
+    color: var(--gold);
     text-align: center;
-    font-size: 1.8em; 
+    font-size: 1.8em;
     margin-bottom: 25px;
-    text-shadow: 0 0 5px var(--gold-shadow);
-} 
+    text-shadow: 0 0 18px rgba(224,184,90,0.42), 0 0 30px rgba(248,227,154,0.14);
+}
 .messages-scroll-wrapper {
-    max-height: 550px; 
+    max-height: 620px;
     overflow-y: auto;
     padding-right: 15px;
 }
 .messages-scroll-wrapper::-webkit-scrollbar { width: 8px; }
-.messages-scroll-wrapper::-webkit-scrollbar-track { background: var(--card); border-radius: 10px; }
-.messages-scroll-wrapper::-webkit-scrollbar-thumb { background: var(--main-metallic); border-radius: 10px; border: 2px solid var(--card); } 
-.messages-scroll-wrapper::-webkit-scrollbar-thumb:hover { background: var(--main-metallic-light); }
+.messages-scroll-wrapper::-webkit-scrollbar-track { background: #101010; border-radius: 10px; }
+.messages-scroll-wrapper::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 10px; border: 2px solid #101010; }
+.messages-scroll-wrapper::-webkit-scrollbar-thumb:hover { background: #3a3a3a; }
 
 .messages-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 20px;
     padding: 0 50px;
 }
 
 .message-card {
-    background: var(--card);
-    border: 1px solid rgba(107, 123, 142, 0.2); 
-    border-radius: 15px;
+    background:#080808;
+    border: 1px solid rgba(248,227,154,0.24);
+    border-radius: 0;
     padding: 25px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5); 
-    border-left: 5px solid var(--gold); 
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5), 0 0 26px rgba(224,184,90,0.18);
+    border-left: 5px solid var(--gold);
 }
-.message-card .card-stars i { color: var(--gold); font-size: 18px; margin-right: 3px; }
-
-/* CONTACT */
-.contact-section-deluxe {
-    padding: 50px 20px;
-    margin: 80px auto; 
-    max-width: 950px;
-    background: var(--card);
-    border: 3px solid var(--main-metallic); 
-    border-radius: 25px;
-    box-shadow: 0 0 50px var(--metallic-shadow); 
-    text-align: center; 
-}
-.contact-section-deluxe h2 {
-    color: var(--gold);
-    text-shadow: 0 0 10px var(--gold-shadow);
-}
-.contact-info .address-line,
-.contact-info .phone-number {
-    font-size: 1.25em; /* Deutlich größer */
-    font-weight: 600;
-    margin-bottom: 8px;
-}
-.contact-section-deluxe h3 { 
-    color: var(--text) !important; 
-    font-size: 1.8em;            
-    margin-top: 25px; 
-}
-.opening-hours-list {
-    list-style-type: none; 
-    padding-left: 0; 
-}
-.opening-hours-list li {
-    color: var(--text);
-    font-size: 1.1em; 
-    margin-bottom: 5px; 
-}
-.opening-hours-list strong { 
-    color: var(--gold); 
-    display: inline-block; 
-    width: 160px; 
-}
-/* Styling für den WhatsApp-Link */
-.phone-number a {
-    color: var(--text); /* Textfarbe beibehalten */
-    text-decoration: none;
-    transition: color 0.3s;
-}
-.phone-number a:hover {
-    color: var(--gold); /* Gold-Hover-Effekt */
-}
-.phone-number .fab.fa-whatsapp {
-    color: #25D366; /* WhatsApp-Grün */
-    margin-right: 8px;
-}
-
-/* INSTAGRAM LOGO GRÖSSE */
-.social-links a img { 
-    width: 32px; 
-    height: 32px; 
-    margin: 0 12px; 
-    box-shadow: 0 0 10px var(--metallic-shadow);
-    border-radius: 8px; 
-    transition: transform 0.3s, filter 0.3s, box-shadow 0.3s; 
-}
-
-/* FOOTER & GALLERY */
-footer{
-    text-align:center;
-    padding:20px 0;
-    background:var(--surface);
-    color:var(--muted);
-    margin-top:80px;
-    border-top:2px solid var(--metallic-shadow); 
-    font-size: 0.9em;
-} 
-#haarschnitt-section {
-    display: none;
-    padding: 40px 20px;
-    background: var(--bg);
-}
-/* WEISSE ÜBERSCHRIFT GALERIE */
-#haarschnitt-section h2 { 
-    color: var(--text); /* Setzt die Farbe auf Weiß */
-    margin-top:20px;
-}
-
-.gallery {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 25px; 
-    max-width: 1200px;
-    margin: 0 auto;
-}
-/* NEU: Entfernt Aspect-Ratio, um Originalgröße zu erhalten */
-.gallery img {
-    width: 100%;
-    height: auto; 
-    object-fit: cover; 
-    border-radius: 12px;
-    border: 2px solid rgba(107, 123, 142, 0.2); 
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
-    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
-}
-
-/* FADE TOGGLE LOGIK */
+.message-card .card-stars i { color: var(--gold); font-size: 18px; margin-right: 3px; text-shadow: 0 0 18px rgba(224,184,90,0.50); }
+.contact-section-deluxe { padding: 50px 22px; margin: 80px auto; max-width: 950px; background: linear-gradient(180deg, rgba(18,22,30,0.93), rgba(10,13,18,0.95)); border: 1px solid rgba(248,227,154,0.24); border-radius: 25px; box-shadow: 0 0 40px rgba(0,0,0,0.28), 0 0 30px rgba(224,184,90,0.18), 0 0 48px rgba(248,227,154,0.08); text-align: center; }
+.contact-section-deluxe h2 { color: var(--gold); text-shadow: 0 0 18px rgba(224,184,90,0.52), 0 0 30px rgba(248,227,154,0.16); }
+.contact-info .address-line, .contact-info .phone-number { font-size: 1.2em; font-weight: 600; margin-bottom: 8px; }
+.contact-section-deluxe h3 { color: var(--text) !important; font-size: 1.8em; margin-top: 25px; }
+.opening-hours-list { list-style-type: none; padding-left: 0; }
+.opening-hours-list li { color: var(--text); font-size: 1.08em; margin-bottom: 6px; }
+.opening-hours-list strong { color: var(--gold); display: inline-block; width: 160px; }
+.phone-number a { color: var(--text); text-decoration: none; transition: color 0.3s; }
+.phone-number a:hover { color: var(--gold); }
+.phone-number .fab.fa-whatsapp { color: #25D366; margin-right: 8px; }
+#haarschnitt-section { display: none; padding: 40px 20px; background: linear-gradient(180deg, rgba(7,8,12,0.96), rgba(11,13,18,0.98)); border: 1px solid rgba(248,227,154,0.24); border-radius: var(--radius); box-shadow: 0 14px 32px rgba(0,0,0,0.30), 0 0 30px rgba(224,184,90,0.18), 0 0 48px rgba(248,227,154,0.08); }
+.social-links a img { width: 34px; height: 34px; margin: 0 12px; box-shadow: 0 0 18px rgba(224,184,90,0.20); border-radius: 8px; transition: transform 0.3s, filter 0.3s, box-shadow 0.3s; }
+footer{ text-align:center; padding:20px 0; background:rgba(10, 13, 18, 0.9); color:var(--muted); margin-top:80px; border-top:1px solid rgba(248,227,154,0.18); font-size: 0.9em; box-shadow: 0 -10px 24px rgba(0,0,0,0.20), 0 0 18px rgba(224,184,90,0.10);  }
+#haarschnitt-section h2 { color: var(--text); margin-top:20px; }
+.gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; max-width: 1200px; margin: 0 auto; }
+.gallery img { width: 100%; height: auto; object-fit: cover; border-radius: 12px; border: 1px solid rgba(248,227,154,0.26); box-shadow: 0 10px 28px rgba(0, 0, 0, 0.55), 0 0 28px rgba(224,184,90,0.16); transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s; }
 .fade{opacity:0;transition:opacity .5s ease, transform .5s ease}
 .fade.show{opacity:1;transform:translateY(0)}
-
-
-/* ============================================
-    RESPONSIVE ANPASSUNGEN (Mobile Final)
-    ============================================ */
 @media(max-width: 768px){
-    /* ALLGEMEINE ANPASSUNGEN */
-    /* Button-Anpassung für Mobile */
-    .top-controls .ctrl-btn {padding: 10px 15px; font-size: 0.85em; margin: 3px;} 
-    
-    .header-banner{height: 250px; padding: 10px;}
-    .welcome-section, .image-price-section, .barber-showcase-section { margin: 40px auto; }
-    .barber-showcase-grid {grid-template-columns: 1fr; gap: 20px;}
-    .barber-card img {height: 250px;}
-
-    /* Anpassung der Schriftgröße für Adresse/Telefon auf Mobilgeräten */
-    .contact-info .address-line,
-    .contact-info .phone-number {
-        font-size: 1.1em;
-    }
-    
-    /* 🛠️ GÄSTEBUCH KORREKTUREN FÜR MOBILE 🛠️ */
+    .top-controls{padding:12px 10px;gap:8px;flex-wrap:wrap}
+    .top-controls .ctrl-btn {padding: 10px 14px; font-size: 0.8em; margin: 2px;}
+    .header-banner{width: 100%; max-width: none; height: auto; padding: 0; margin: 12px 0 0;}
+    .header-banner::after{border-radius:0}
+    .header-banner img{width: 100%; max-width: none; height: auto; max-height: none; object-fit: contain; border-radius: 0;}
+    .welcome-section{position: relative; z-index: 2; margin-top: 34px;}
+    .welcome-section, .image-price-section, .barber-showcase-section { margin: 34px auto; padding: 26px 18px; }
+    .barber-showcase-section {padding: 28px 12px;}
+    .barber-showcase-grid {grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px;}
+    .barber-card img {height: 120px;}
+    .barber-card-info {padding: 8px 6px 10px;}
+    .barber-card-info h4 {font-size: 0.72rem; margin-bottom: 4px; line-height: 1.1;}
+    .barber-card-info p {font-size: 0.62rem; line-height: 1.2; margin: 0;}
+    .contact-info .address-line, .contact-info .phone-number { font-size: 1.08em; }
     .guestbook-section-custom{
         /* Abschnitt behält die geringe Höhe */
-        min-height: 320px; 
-        height: 320px; 
-        background-size: cover; 
+        min-height: 320px;
+        height: 320px;
+        background-size: cover;
     }
     .guestbook-main-content{
-        padding: 0; 
-        align-items: flex-start; 
+        padding: 0;
+        align-items: flex-start;
     }
     .guestbook-form-wrapper{
         /* Formular maximal kompakter machen und neu positionieren */
-        background: rgba(0, 0, 0, 0.0); 
+        background: rgba(0, 0, 0, 0.0);
         border:0px solid var(--gold-light);
         box-shadow:0 0 0px var(--gold-shadow);
-        
+
         /* Absolute Zentrierung im 320px hohen Container */
-        position: absolute; 
-        top: 69%; 
-        left: 51%; 
-        transform: translate(-52%, -51%); 
+        position: absolute;
+        top: 69%;
+        left: 51%;
+        transform: translate(-52%, -51%);
 
         max-width:174px; /* SCHMALER */
-        width: 45%; 
+        width: 45%;
         height: 210px; /* KÜRZER */
         margin:0;
-        padding:5px 8px; 
+        padding:5px 8px;
         border-radius: 15px;
-        
+
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center; 
+        justify-content: center;
     }
     .guestbook-form-wrapper::before{
         content:"";
-        font-size:1.9em; 
-        margin-bottom:6px; 
+        font-size:1.9em;
+        margin-bottom:6px;
     }
     .guestbook-form-wrapper input[type="text"],
     .guestbook-form-wrapper textarea {
-        width: 75%; 
+        width: 75%;
         max-width: 150px; /* SCHMALER */
-        font-size: 12px; 
-        padding: 4px 8px; 
-        margin-bottom: 5px; 
+        font-size: 12px;
+        padding: 4px 8px;
+        margin-bottom: 5px;
     }
     .guestbook-form-wrapper input::placeholder,.guestbook-form-wrapper textarea::placeholder {
         font-size: 12px;
     }
-    .guestbook-form-wrapper textarea { 
-        resize: vertical; 
+    .guestbook-form-wrapper textarea {
+        resize: vertical;
         min-height: 40px; /* KÜRZER */
     }
     .star-rating {
-        margin: 5px 0 8px; 
+        margin: 5px 0 8px;
     }
     .star-rating span {
-        font-size: 21px; 
+        font-size: 21px;
     }
     .submit-btn {
-        width: 65%; 
-        padding: 3px 10px; 
-        font-size: 9px; 
+        width: 65%;
+        padding: 3px 10px;
+        font-size: 9px;
     }
 
     /* NACHRICHTEN */
     .guestbook-messages-section { margin-top: 0; padding-top: 10px; }
-    .messages-grid{grid-template-columns: 1fr; padding:0 10px;}
-    .messages-scroll-wrapper {max-height: 200px;}
-
-    /* GALERIE */
-    .gallery img {
-        height: auto;
-        object-fit: contain; 
+    .messages-overview h3{font-size:1.35em;margin-bottom:16px;}
+    .messages-grid{
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding: 0 6px;
     }
-    .gallery{grid-template-columns: repeat(2, 1fr); gap: 15px;} 
-    
-    /* INSTAGRAM LOGO (Mobile Anpassung) */
-    .social-links a img {
-        width: 38px;
-        height: 38px;
+    .messages-scroll-wrapper {max-height: 540px; overflow-y: auto; padding-right: 6px;}
+    .message-card{
+        padding: 16px 12px;
+        border-radius: 12px;
+        border-left-width: 3px;
+        min-height: 170px;
+    }
+    .message-card .card-header{font-size: 0.92rem; font-weight: 700; margin-bottom: 4px;}
+    .message-card .card-info{font-size: 0.72rem; color: var(--muted); margin-bottom: 6px;}
+    .message-card .card-stars i{font-size: 13px; margin-right: 2px;}
+    .message-card p{font-size: 0.8rem; line-height: 1.35; margin: 6px 0 0;}
+    .gallery img {height: auto; object-fit: contain;}
+    .gallery{grid-template-columns: repeat(2, 1fr); gap: 14px;}
+    .social-links a img { width: 38px; height: 38px; }
+}
+@media(min-width: 769px){
+    .image-price-section img{
+        width: min(100%, 520px);
     }
 }
-
 @media(max-width: 480px){
     /* Bei sehr kleinen Bildschirmen */
     .guestbook-form-wrapper {
-        max-width: 98%; 
+        max-width: 98%;
     }
-    .gallery{grid-template-columns: 1fr; gap: 10px;} 
+    .messages-grid{
+        grid-template-columns: 1fr;
+        gap: 8px;
+        padding: 0 4px;
+    }
+    .messages-scroll-wrapper {max-height: 520px; overflow-y: auto;}
+    .message-card{
+        padding: 14px 10px;
+        min-height: 160px;
+    }
+    .message-card .card-header{font-size: 0.88rem;}
+    .message-card .card-info{font-size: 0.68rem;}
+    .message-card p{font-size: 0.76rem;}
+    .gallery{grid-template-columns: 1fr; gap: 10px;}
 }
 </style>
 </head>
 <body>
 
-<video muted loop id="background-video" preload="auto" poster="https://raw.githubusercontent.com/Artonstyle/Barbershop/main/images/fallback_bg.jpg">
-  <source src="https://raw.githubusercontent.com/Artonstyle/Barbershop/main/images/effekt3.mp4" type="video/mp4">
-</video>
-<div class="video-overlay"></div>
+<div class="background-ambient" aria-hidden="true"></div>
 
 <div class="top-controls">
     <button id="btnStartseite" class="ctrl-btn">🏠 Startseite</button>
@@ -616,7 +546,7 @@ footer{
     <a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
 
     <div class="header-banner">
-        <img src="https://raw.githubusercontent.com/Artonstyle/Barbershop/main/images/Barbershop-logo7.png" alt="C&D Barbershop Banner" loading="lazy">
+        <img src="https://raw.githubusercontent.com/Artonstyle/Barbershop/main/images/hero1.png" alt="C&D Barbershop Banner" loading="lazy">
     </div>
 
     <div class="welcome-section" id="main-content">
@@ -751,7 +681,7 @@ const sheetURL = "https://script.google.com/macros/s/AKfycbzSBO9iha-NH0D4j3GfGjx
 const form = document.getElementById("guestbookForm");
 const successMsg = document.getElementById("successMsg");
 const messagesGrid = document.getElementById('messagesGrid');
-const backgroundVideo = document.getElementById('background-video');
+const backgroundVideo = null;
 
 // Video Autoplay
 window.addEventListener('load', () => {
@@ -761,7 +691,6 @@ window.addEventListener('load', () => {
          });
      }
 });
-
 
 // Star rating logic
 document.addEventListener("DOMContentLoaded", () => {
@@ -985,3 +914,7 @@ document.addEventListener("DOMContentLoaded", loadEntries);
 
 </body>
 </html>
+
+
+
+
