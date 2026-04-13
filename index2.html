@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<title>⚙️ C&D Barbershop – Metallic Gold Edition</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Cinzel:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<style>
+/* ==========================
+    VARIABLES & GLOBAL V4 (METALLIC GOLD)
+    ========================== */
+:root{
+    --main-metallic:#6B7B8E; 
+    --main-metallic-light:#AABBCF;
+    --main-metallic-dark:#3A4A5C;
+    --metallic-shadow:rgba(107, 123, 142, 0.4); 
+
+    --bg:#020205; 
+    --card:#0e0e12; 
+    --surface:#15151a;
+    --text:#f0f2f5; 
+    --muted:#a0aab8;
+    --glass:rgba(255,255,255,0.05);
+    --max-width:1100px; 
+    --radius:15px; 
+    --gold:#FFD700;
+    --gold-light:#FFECB3;
+    --gold-shadow:rgba(255, 215, 0, 0.6);
+    --gold-neon:rgba(255, 215, 0, 0.4);
+    --heading-font: "Cinzel", serif;
+    font-family:"Poppins",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+    
+    /* 🛠️ GÄSTEBUCH-POSITIONIERUNG (DESKTOP) 🛠️ */
+    --form-desktop-y: 45px; 
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+
+/* ==========================
+    VIDEO HINTERGRUND STYLES
+    ========================== */
+body {
+    margin:0;
+    color:var(--text);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    background-color: var(--bg); 
+    position: relative; 
+    overflow-x: hidden; 
+}
+
+#background-video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%; 
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -3; 
+    background-size: cover;
+    object-fit: cover; 
+    filter: brightness(0.7) grayscale(0.2); 
+}
+
+/* Overlay */
+.video-overlay {
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     background-color: rgba(0, 0, 0, 0.7); 
+     z-index: -2; 
+}
+
+
+/* GLOBAL ANIMATIONS */
+@keyframes goldPulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+}
+@keyframes glowing {
+    0% { box-shadow: 0 0 5px var(--metallic-shadow); }
+    50% { box-shadow: 0 0 20px var(--metallic-shadow); }
+    100% { box-shadow: 0 0 5px var(--metallic-shadow); }
+}
+
+/* TOP CONTROLS (Metallic) */
+.top-controls {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:15px;
+    padding:15px;
+    background: var(--glass);
+    backdrop-filter: blur(5px);
+    position:sticky;
+    top:0;
+    z-index:999; 
+    border-bottom:1px solid rgba(255,255,255,0.05);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+/* --- BUTTON DESIGN (Dunkel/Elegant) --- */
+
+.top-controls .ctrl-btn {
+    background: linear-gradient(180deg, #1f1f1f, #0a0a0a); /* Dunkler Grau-Schwarz-Gradient */
+    border: 2px solid #ddd; /* Hellerer grauer Rahmen */
+    color: var(--text); /* Textfarbe weiß */
+    padding: 12px 25px; /* Innenabstand */
+    border-radius: 40px; /* Stark abgerundete Ecken (Pill-Form) */
+    font-weight: 700; /* Fettgedruckter Text */
+    cursor: pointer; /* Mauszeiger als Hand */
+    transition: all .4s cubic-bezier(0.25, 0.8, 0.25, 1); /* Sanfte Animation */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.6); /* Dezenter Schatten */
+    text-transform: uppercase; /* Text in Großbuchstaben */
+    letter-spacing: 1px; /* Leichter Zeichenabstand */
+    font-size: 1em; /* Schriftgröße */
+}
+
+.top-controls .ctrl-btn:hover {
+    background: linear-gradient(180deg, #2a2a2a, #1a1a1a); /* Etwas hellerer Hover-Hintergrund */
+    transform: translateY(-4px) scale(1.02); /* Leichtes Anheben und Vergrößern */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.8), 0 0 20px rgba(255,255,255,0.4); /* Kräftigerer Schatten und leichter weißer Schein */
+    filter: brightness(1.1); /* Helligkeit leicht erhöhen */
+}
+
+/* SECTIONS & TYPOGRAPHY */
+#siteContent, #haarschnitt-section {
+    z-index: 100; 
+    position: relative; 
+}
+
+.container{max-width:var(--max-width);margin:0 auto;padding:0 16px}
+.skip-link{position:absolute;left:-9999px;top:auto;overflow:hidden}
+.skip-link:focus{left:16px;top:16px;z-index:999;background:var(--card);padding:8px;border-radius:6px;color:var(--text)}
+
+h2{
+    text-align: center; 
+    margin-bottom: 30px; 
+    font-weight: 800; 
+    color: var(--text); 
+    text-shadow: 0 0 10px var(--metallic-shadow);
+    font-family: var(--heading-font);
+    letter-spacing: 2px;
+    font-size: 2.2em;
+}
+
+/* HERO BANNER */
+.header-banner{
+    width: 100%; 
+    height: 450px; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    background: transparent; 
+    overflow: hidden; 
+    position: relative;
+    padding: 20px; 
+}
+.header-banner img{
+    max-width: 95%; 
+    max-height: 95%; 
+    object-fit: contain; 
+    filter: drop-shadow(0 0 10px rgba(107, 123, 142, 0.8)) drop-shadow(0 0 20px rgba(107, 123, 142, 0.4)); 
+    transition: transform 0.5s ease;
+}
+
+/* Welcome & Price Sections (Metallic) */
+.welcome-section, .image-price-section {
+    padding: 40px 25px; 
+    background: var(--card); 
+    border-radius: var(--radius); 
+    max-width: 950px; 
+    margin: 60px auto; 
+    text-align: center; 
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 30px var(--metallic-shadow);
+    border: 1px solid rgba(107, 123, 142, 0.3); 
+    transition: box-shadow 0.3s ease;
+} 
+.welcome-section h1{
+    font-size: 2.5em; 
+    margin-bottom: 10px; 
+    color: var(--text); 
+    font-family: var(--heading-font);
+    text-shadow: 0 0 8px var(--gold-neon);
+} 
+.image-price-section img{
+    max-width: 100%; 
+    width: 100%; 
+    height: auto; 
+    border-radius: var(--radius); 
+    box-shadow: 0 0 20px var(--metallic-shadow); 
+    border: 2px solid var(--main-metallic-light); 
+} 
+
+/* BARBER SHOWCASE SECTION (Metallic) */
+.barber-showcase-section {
+     padding: 60px 20px;
+     margin: 60px auto;
+     max-width: var(--max-width); 
+     background: var(--surface); 
+     border-radius: var(--radius);
+     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+     border-top: 3px solid var(--gold); 
+}
+.barber-showcase-section p {
+     color: var(--text) !important; 
+}
+.barber-showcase-grid {
+     display: grid;
+     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+     gap: 30px;
+}
+.barber-card {
+     background: var(--card);
+     border-radius: 12px;
+     overflow: hidden;
+     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
+     transition: transform 0.3s ease, box-shadow 0.3s ease;
+     border-top: 5px solid var(--main-metallic); 
+}
+.barber-card img {
+     width: 100%;
+     height: 350px;
+     object-fit: cover; 
+     display: block;
+     loading: lazy; 
+}
+.barber-card-info {
+     padding: 20px;
+     text-align: center;
+}
+.barber-card-info h4 {
+     color: var(--gold-light); 
+     font-family: var(--heading-font);
+}
+
+/* ============================================
+    GÄSTEBUCH STYLES (Desktop Basis)
+    ============================================ */
+.guestbook-section-custom{
+    background-image: url('https://raw.githubusercontent.com/Artonstyle/Barbershop/main/images/G%C3%A4stebuch2.png'); 
+    background-size: cover; 
+    background-position: center center;
+    background-repeat: no-repeat;
+    position: relative;
+    padding: 0; 
+    margin: 40px auto 0; 
+    max-width: var(--max-width); 
+    box-shadow: inset 0 0 0 0vw rgba(0, 0, 0, 0.4); 
+    min-height: 750px; 
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+.guestbook-section-custom::before {
+     content: "";
+     position: absolute;
+     inset: 0;
+     background-image: 
+       repeating-linear-gradient(45deg, rgba(255,215,0,0.02) 0px, rgba(255,215,0,0.02) 2px, transparent 2px, transparent 10px),
+       repeating-linear-gradient(-45deg, rgba(255,215,0,0.02) 0px, rgba(255,215,0,0.02) 2px, transparent 2px, transparent 20px);
+     animation: goldPulse 5s ease-in-out infinite;
+     z-index: 1;
+     opacity: 0.8;
+}
+.guestbook-main-content {
+     display: flex;
+     justify-content: center;
+     align-items: center; 
+     position: absolute; 
+     inset: 0;
+     z-index: 10;
+}
+.guestbook-form-wrapper {
+     background: transparent;
+     border: none;
+     padding: 180px 40px 40px; 
+     max-width: 430px; 
+     height: 500px; 
+     box-shadow: none; 
+     text-align: center;
+     position: relative;
+     z-index: 10;
+     transform: translateY(var(--form-desktop-y)); 
+}
+.guestbook-form-wrapper input[type="text"],
+.guestbook-form-wrapper textarea {
+    width: 85%; padding: 10px 10px; margin-bottom: 8px; 
+    background: rgba(80, 80, 80, 0.9); border: none; border-radius: 5px; color: #fff; box-sizing: border-box;
+    font-size: 16px;
+}
+.guestbook-form-wrapper input::placeholder,.guestbook-form-wrapper textarea::placeholder { color: #dddddd; font-size: 16px; font-weight: 400; letter-spacing: 0.5px; opacity: 1; }
+.guestbook-form-wrapper input[type="text"]:focus,.guestbook-form-wrapper textarea:focus{ border-color: var(--gold); box-shadow: 0 0 10px rgba(255,215,0,0.2); outline: none; }
+.guestbook-form-wrapper textarea { resize: vertical; min-height: 100px; }
+
+/* STERNE */
+.star-rating { 
+    font-size: 0; 
+    margin: 0 0 35px; 
+    color: #888; 
+    cursor: pointer; 
+    display: block; 
+    text-align: center; 
+}
+.star-rating span {
+    display: inline-block; 
+    font-size: 30px; 
+    padding: 0 2px; 
+}
+.star-rating span i { color: #555; transition: color 0.2s; } 
+.star-rating span i.fas { color: var(--gold); } 
+
+/* SUBMIT BUTTON (Golden) */
+.submit-btn { 
+    background: linear-gradient(0deg, var(--gold), var(--gold-light)); 
+    color: var(--card); 
+    font-weight: 800; 
+    border: none; 
+    border-radius: 40px; 
+    padding: 18px 60px; 
+    cursor: pointer; 
+    transition: all 0.3s ease; 
+    box-shadow: 0 6px 15px rgba(255, 215, 0, 0.4); 
+    width: 90%; max-width: 320px; 
+    margin-top: -3px; 
+    font-size: 18px; 
+    letter-spacing: 2px; 
+    text-transform: uppercase;
+}
+.submit-btn:hover { 
+    transform: translateY(-5px); 
+    animation: glowing 1.5s infinite; 
+    filter: brightness(1.1);
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.6);
+}
+
+/* MESSAGES */
+.guestbook-messages-section { margin-top: 50px; padding-top: 50px; }
+.messages-overview h3 { 
+    font-family: var(--heading-font); 
+    color: var(--gold); 
+    text-align: center;
+    font-size: 1.8em; 
+    margin-bottom: 25px;
+    text-shadow: 0 0 5px var(--gold-shadow);
+} 
+.messages-scroll-wrapper {
+    max-height: 550px; 
+    overflow-y: auto;
+    padding-right: 15px;
+}
+.messages-scroll-wrapper::-webkit-scrollbar { width: 8px; }
+.messages-scroll-wrapper::-webkit-scrollbar-track { background: var(--card); border-radius: 10px; }
+.messages-scroll-wrapper::-webkit-scrollbar-thumb { background: var(--main-metallic); border-radius: 10px; border: 2px solid var(--card); } 
+.messages-scroll-wrapper::-webkit-scrollbar-thumb:hover { background: var(--main-metallic-light); }
+
+.messages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 20px;
+    padding: 0 50px;
+}
+
+.message-card {
+    background: var(--card);
+    border: 1px solid rgba(107, 123, 142, 0.2); 
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5); 
+    border-left: 5px solid var(--gold); 
+}
+.message-card .card-stars i { color: var(--gold); font-size: 18px; margin-right: 3px; }
+
+/* CONTACT */
+.contact-section-deluxe {
+    padding: 50px 20px;
+    margin: 80px auto; 
+    max-width: 950px;
+    background: var(--card);
+    border: 3px solid var(--main-metallic); 
+    border-radius: 25px;
+    box-shadow: 0 0 50px var(--metallic-shadow); 
+    text-align: center; 
+}
+.contact-section-deluxe h2 {
+    color: var(--gold);
+    text-shadow: 0 0 10px var(--gold-shadow);
+}
+.contact-info .address-line,
+.contact-info .phone-number {
+    font-size: 1.25em; /* Deutlich größer */
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+.contact-section-deluxe h3 { 
+    color: var(--text) !important; 
+    font-size: 1.8em;            
+    margin-top: 25px; 
+}
+.opening-hours-list {
+    list-style-type: none; 
+    padding-left: 0; 
+}
+.opening-hours-list li {
+    color: var(--text);
+    font-size: 1.1em; 
+    margin-bottom: 5px; 
+}
+.opening-hours-list strong { 
+    color: var(--gold); 
+    display: inline-block; 
+    width: 160px; 
+}
+/* Styling für den WhatsApp-Link */
+.phone-number a {
+    color: var(--text); /* Textfarbe beibehalten */
+    text-decoration: none;
+    transition: color 0.3s;
+}
+.phone-number a:hover {
+    color: var(--gold); /* Gold-Hover-Effekt */
+}
+.phone-number .fab.fa-whatsapp {
+    color: #25D366; /* WhatsApp-Grün */
+    margin-right: 8px;
+}
+
+/* INSTAGRAM LOGO GRÖSSE */
+.social-links a img { 
+    width: 32px; 
+    height: 32px; 
+    margin: 0 12px; 
+    box-shadow: 0 0 10px var(--metallic-shadow);
+    border-radius: 8px; 
+    transition: transform 0.3s, filter 0.3s, box-shadow 0.3s; 
+}
+
+/* FOOTER & GALLERY */
+footer{
+    text-align:center;
+    padding:20px 0;
+    background:var(--surface);
+    color:var(--muted);
+    margin-top:80px;
+    border-top:2px solid var(--metallic-shadow); 
+    font-size: 0.9em;
+} 
+#haarschnitt-section {
+    display: none;
+    padding: 40px 20px;
+    background: var(--bg);
+}
+/* WEISSE ÜBERSCHRIFT GALERIE */
+#haarschnitt-section h2 { 
+    color: var(--text); /* Setzt die Farbe auf Weiß */
+    margin-top:20px;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 25px; 
+    max-width: 1200px;
+    margin: 0 auto;
+}
+/* NEU: Entfernt Aspect-Ratio, um Originalgröße zu erhalten */
+.gallery img {
+    width: 100%;
+    height: auto; 
+    object-fit: cover; 
+    border-radius: 12px;
+    border: 2px solid rgba(107, 123, 142, 0.2); 
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
+    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+
+/* FADE TOGGLE LOGIK */
+.fade{opacity:0;transition:opacity .5s ease, transform .5s ease}
+.fade.show{opacity:1;transform:translateY(0)}
+
+
+/* ============================================
+    RESPONSIVE ANPASSUNGEN (Mobile Final)
+    ============================================ */
+@media(max-width: 768px){
+    /* ALLGEMEINE ANPASSUNGEN */
+    /* Button-Anpassung für Mobile */
+    .top-controls .ctrl-btn {padding: 10px 15px; font-size: 0.85em; margin: 3px;} 
+    
+    .header-banner{height: 250px; padding: 10px;}
+    .welcome-section, .image-price-section, .barber-showcase-section { margin: 40px auto; }
+    .barber-showcase-grid {grid-template-columns: 1fr; gap: 20px;}
+    .barber-card img {height: 250px;}
+
+    /* Anpassung der Schriftgröße für Adresse/Telefon auf Mobilgeräten */
+    .contact-info .address-line,
+    .contact-info .phone-number {
+        font-size: 1.1em;
+    }
+    
+    /* 🛠️ GÄSTEBUCH KORREKTUREN FÜR MOBILE 🛠️ */
+    .guestbook-section-custom{
+        /* Abschnitt behält die geringe Höhe */
+        min-height: 320px; 
+        height: 320px; 
+        background-size: cover; 
+    }
+    .guestbook-main-content{
+        padding: 0; 
+        align-items: flex-start; 
+    }
+    .guestbook-form-wrapper{
+        /* Formular maximal kompakter machen und neu positionieren */
+        background: rgba(0, 0, 0, 0.0); 
+        border:0px solid var(--gold-light);
+        box-shadow:0 0 0px var(--gold-shadow);
+        
+        /* Absolute Zentrierung im 320px hohen Container */
+        position: absolute; 
+        top: 69%; 
+        left: 51%; 
+        transform: translate(-52%, -51%); 
+
+        max-width:174px; /* SCHMALER */
+        width: 45%; 
+        height: 210px; /* KÜRZER */
+        margin:0;
+        padding:5px 8px; 
+        border-radius: 15px;
+        
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center; 
+    }
+    .guestbook-form-wrapper::before{
+        content:"";
+        font-size:1.9em; 
+        margin-bottom:6px; 
+    }
+    .guestbook-form-wrapper input[type="text"],
+    .guestbook-form-wrapper textarea {
+        width: 75%; 
+        max-width: 150px; /* SCHMALER */
+        font-size: 12px; 
+        padding: 4px 8px; 
+        margin-bottom: 5px; 
+    }
+    .guestbook-form-wrapper input::placeholder,.guestbook-form-wrapper textarea::placeholder {
+        font-size: 12px;
+    }
+    .guestbook-form-wrapper textarea { 
+        resize: vertical; 
+        min-height: 40px; /* KÜRZER */
+    }
+    .star-rating {
+        margin: 5px 0 8px; 
+    }
+    .star-rating span {
+        font-size: 21px; 
+    }
+    .submit-btn {
+        width: 65%; 
+        padding: 3px 10px; 
+        font-size: 9px; 
+    }
+
+    /* NACHRICHTEN */
+    .guestbook-messages-section { margin-top: 0; padding-top: 10px; }
+    .messages-grid{grid-template-columns: 1fr; padding:0 10px;}
+    .messages-scroll-wrapper {max-height: 200px;}
+
+    /* GALERIE */
+    .gallery img {
+        height: auto;
+        object-fit: contain; 
+    }
+    .gallery{grid-template-columns: repeat(2, 1fr); gap: 15px;} 
+    
+    /* INSTAGRAM LOGO (Mobile Anpassung) */
+    .social-links a img {
+        width: 38px;
+        height: 38px;
+    }
+}
+
+@media(max-width: 480px){
+    /* Bei sehr kleinen Bildschirmen */
+    .guestbook-form-wrapper {
+        max-width: 98%; 
+    }
+    .gallery{grid-template-columns: 1fr; gap: 10px;} 
+}
+</style>
+</head>
+<body>
+
+<video muted loop id="background-video" preload="auto" poster="https://raw.githubusercontent.com/Artonstyle/Barbershop/main/images/fallback_bg.jpg">
+  <source src="https://raw.githubusercontent.com/Artonstyle/Barbershop/main/images/effekt3.mp4" type="video/mp4">
+</video>
+<div class="video-overlay"></div>
+
+<div class="top-controls">
+    <button id="btnStartseite" class="ctrl-btn">🏠 Startseite</button>
+    <button id="btnHaarschnitt" class="ctrl-btn">✂️ Haarschnitte</button>
+</div>
+
+<div id="siteContent" class="fade" style="transform: translateY(20px);"> 
+
+    <a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
+
+    <div class="header-banner">
+        <img src="https://raw.githubusercontent.com/Artonstyle/Barbershop/main/images/Barbershop-logo7.png" alt="C&D Barbershop Banner" loading="lazy">
+    </div>
+
+    <div class="welcome-section" id="main-content">
+        <h1>Willkommen bei C&D Barbershop</h1>
+        <p>Schön, dass Sie hier sind! C&D Barbershop steht für Qualität, Stil und Persönlichkeit. In einer modernen Atmosphäre bieten wir individuelle Beratung, trendige Schnitte und hochwertige Pflege – für Ihr perfektes Haar- und Bartgefühl.</p>
+    </div>
+    
+    <div class="container barber-showcase-section">
+        <h2>Unsere Handwerkskunst in Aktion</h2>
+        <p style="text-align: center; color: var(--text); max-width: 800px; margin: 0 auto 40px;">Erleben Sie die Präzision und Leidenschaft unserer Barbiere. Jeder Schnitt, jede Rasur – ein Meisterwerk.</p>
+        <div class="barber-showcase-grid">
+            <div class="barber-card">
+                <img src="https://raw.githubusercontent.com/Artonstyle/Barbershop/main/images/bart1.png" alt="Detailaufnahme eines perfekt getrimmten Bartes" loading="lazy">
+                <div class="barber-card-info">
+                    <h4>Die Perfekte Rasur</h4>
+                    <p>Traditionell mit heißem Handtuch.</p>
+                </div>
+            </div>
+            <div class="barber-card">
+                <img src="https://raw.githubusercontent.com/Artonstyle/Barbershop/main/images/bart2.png" alt="Ein Barber arbeitet an den Konturen eines Bartes" loading="lazy">
+                <div class="barber-card-info">
+                    <h4>Bart-Design nach Maß</h4>
+                    <p>Konturierung für den modernen Mann.</p>
+                </div>
+            </div>
+            <div class="barber-card">
+                <img src="https://raw.githubusercontent.com/Artonstyle/Barbershop/main/images/bart3.png" alt="Ein Kunde mit einem frischen, modernen Haarschnitt und Bart" loading="lazy">
+                <div class="barber-card-info">
+                    <h4>Der Makellose Fade</h4>
+                    <p>Übergänge, die begeistern.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container image-price-section">
+        <h2>💰 Unsere Preisliste</h2>
+        <img src="https://raw.githubusercontent.com/Artonstyle/Barbershop/main/images/Barbershop-preisliste.png" alt="Aktuelle Preisliste" loading="lazy">
+    </div>
+
+    <div class="container guestbook-section-custom">
+        <div class="guestbook-main-content">
+            <div class="guestbook-form-wrapper">
+                <form id="guestbookForm">
+                    <input type="text" id="guestName" placeholder="IHR NAME" required>
+                    <textarea id="guestText" placeholder="IHRE NACHRICHT" required></textarea>
+                    
+                    <div class="star-rating">
+                        <span data-rating="1"><i class="far fa-star"></i></span>
+                        <span data-rating="2"><i class="far fa-star"></i></span>
+                        <span data-rating="3"><i class="far fa-star"></i></span>
+                        <span data-rating="4"><i class="far fa-star"></i></span>
+                        <span data-rating="5"><i class="far fa-star"></i></span>
+                        <input type="hidden" id="hiddenRating" name="rating" value="0">
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">EINTRAG SENDEN</button>
+                </form>
+                <p id="successMsg" style="display:none;color:var(--gold);margin-top:10px;text-shadow: 0 0 5px var(--gold-shadow);">✅ Eintrag erfolgreich gesendet!</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container guestbook-messages-section">
+        <div class="messages-overview">
+            <h3>Nachrichten Von Unseren Gästen</h3>
+            <div class="messages-scroll-wrapper">
+                <div class="messages-grid" id="messagesGrid">
+                    <p style="text-align:center;color:var(--gold-light); grid-column: 1 / -1;">Einträge werden geladen...</p>
+                </div>
+            </div>
+        </div>
+        <div id="guestEntries"></div>
+    </div>
+
+    <div class="container contact-section-deluxe">
+        <h2>📍 Kontakt & Öffnungszeiten</h2>
+        <div class="contact-info">
+            <p class="address-line">Bachgasse 68, 69502 Hemsbach</p>
+            <p class="phone-number">
+                <a href="https://wa.me/4917670794224" target="_blank" rel="noopener">
+                    <i class="fab fa-whatsapp"></i> 0176 70794224
+                </a>
+            </p>
+        </div>
+
+        <h3 style="color:var(--text); font-size: 1.8em; margin-top: 25px;">Öffnungszeiten</h3>
+        <ul class="opening-hours-list" aria-label="Öffnungszeiten">
+            <li><strong>Montag–Freitag:</strong> 09:00 – 19:00 Uhr</li>
+            <li><strong>Samstag:</strong> 09:00 – 18:00 Uhr</li>
+            <li><strong>Sonntag:</strong> <span class="closed">Geschlossen ⛔</span></li>
+        </ul>
+
+        <div class="social-links">
+            <a href="https://www.instagram.com/cd_barbershop_/" target="_blank" rel="noopener">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" loading="lazy">
+            </a>
+        </div>
+
+        <p style="margin-top:18px;">
+            <a href="https://www.google.com/maps/dir/?api=1&destination=Bachgasse+68,+69502+Hemsbach" target="_blank" rel="noopener" 
+               style="color:var(--text);text-decoration:none;font-weight:700;transition:color 0.3s;" 
+               onmouseover="this.style.color='var(--text)'" 
+               onmouseout="this.style.color='var(--text)'">
+                Route auf Google Maps öffnen
+            </a>
+        </p>
+        
+        <p id="visitor-counter-text" style="color: var(--muted); font-size: 0.9em; margin-top: 10px;">
+           Besucher gesamt: 
+           <script language="JavaScript" src="https://www.besucherzaehler-kostenlos.de/js/counter.js.php?count=1&id=artonstyle.github.ioBarbershop&start=0000000&design=3e"></script>
+        </p>
+    </div>
+
+    <footer>© 2025 C&D Barbershop | Metallic Gold Edition</footer>
+
+</div> 
+<section id="haarschnitt-section" class="fade" style="transform: translateY(20px);">
+    <h2 style="text-align:center;">✂️ Haarschnitt Galerie</h2>
+    <div id="haarschnitt-loader" class="loader" style="display:none;color:var(--gold);text-align:center;padding:25px 0;font-size:1.1em;text-shadow:0 0 5px var(--gold-neon);">✨ Bilder werden geladen...</div>
+    <div id="haarschnitt-gallery" class="gallery" aria-live="polite">
+        <p style="text-align:center;color:var(--muted); grid-column: 1 / -1;">Hier erscheinen die Bilder der Haarschnitte, sobald sie von GitHub geladen werden (funktioniert nur auf einem Webserver).</p>
+    </div>
+</section>
+
+<script>
+/* ---------------------------
+    Gästebuch + Google Sheet
+    --------------------------- */
+const sheetURL = "https://script.google.com/macros/s/AKfycbzSBO9iha-NH0D4j3GfGjxsOdoko1AqwrEnM2ie-dy1zrfu2OtjNH4TvnZVIkWh0KDB/exec"; 
+
+const form = document.getElementById("guestbookForm");
+const successMsg = document.getElementById("successMsg");
+const messagesGrid = document.getElementById('messagesGrid');
+const backgroundVideo = document.getElementById('background-video');
+
+// Video Autoplay
+window.addEventListener('load', () => {
+     if (backgroundVideo) {
+         backgroundVideo.play().catch(error => {
+             console.error("Video konnte nicht automatisch abgespielt werden.", error);
+         });
+     }
+});
+
+
+// Star rating logic
+document.addEventListener("DOMContentLoaded", () => {
+    const stars = document.querySelectorAll('.star-rating span');
+    let rating = 0;
+    const ratingInput = document.getElementById('hiddenRating'); 
+
+    function updateStars(r) {
+       stars.forEach(s => {
+          const icon = s.querySelector('i');
+          if (parseInt(s.dataset.rating) <= r) {
+             icon.classList.remove('far'); 
+             icon.classList.add('fas');
+          } else {
+             icon.classList.remove('fas'); 
+             icon.classList.add('far');
+          }
+       });
+    }
+    
+    stars.forEach(star => {
+       star.addEventListener('click', () => {
+          rating = parseInt(star.dataset.rating);
+          updateStars(rating);
+          ratingInput.value = rating;
+       });
+       star.addEventListener('mouseover', () => {
+          updateStars(parseInt(star.dataset.rating)); 
+       });
+       star.addEventListener('mouseout', () => {
+          updateStars(rating);
+       });
+    });
+});
+
+// Load entries from Google Script (Lädt alle abgeschickten Beiträge)
+async function loadEntries(){
+    setTimeout(async () => {
+       try{
+          messagesGrid.innerHTML = '<p style="text-align:center;color:var(--gold-light); grid-column: 1 / -1; animation: goldPulse 1s infinite;">Lade Einträge...</p>';
+          const res = await fetch(sheetURL);
+          
+          if (!res.ok) {
+             throw new Error(`HTTP Fehler: ${res.status}`);
+          }
+          
+          const entries = await res.json();
+          
+          if (!entries || !entries.length) {
+             messagesGrid.innerHTML = '<p style="text-align:center;color:var(--muted); grid-column: 1 / -1;">Noch keine Einträge vorhanden. Sei der Erste!</p>';
+             return;
+          }
+
+          // Einträge umkehren, damit die neuesten oben stehen.
+          const cardsHtml = entries.reverse().map(e => {
+             const entryRating = e.rating ? parseInt(e.rating) : 0;
+             let starHtml = '';
+             for (let i = 1; i <= 5; i++) {
+                starHtml += `<i class="${i <= entryRating ? 'fas' : 'far'} fa-star"></i>`;
+             }
+             let dateString;
+             try {
+                // Konvertiert das Datum, das als String oder Zahl kommen kann
+                const dateValue = isNaN(new Date(e.date).getTime()) ? parseInt(e.date) : e.date;
+                const d = new Date(dateValue);
+                dateString = d.toLocaleString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' });
+             } catch { dateString = 'Unbekanntes Datum'; }
+
+             return `<div class="message-card">
+                       <div class="card-header">${e.name || 'Anonym'}</div>
+                       <div class="card-info">${dateString}</div>
+                       <div class="card-stars">${starHtml}</div>
+                       <p>${e.text}</p>
+                     </div>`;
+          }).join('');
+
+          messagesGrid.innerHTML = cardsHtml;
+       } catch (err) {
+          console.error("Fehler beim Laden der Einträge:", err);
+          messagesGrid.innerHTML = '<p style="text-align:center;color:var(--main-metallic-light); grid-column: 1 / -1;">Fehler beim Laden der Einträge. Bitte versuchen Sie es später erneut.</p>';
+       }
+    }, 500);
+}
+
+// Submit handler (POST to Google Script)
+form.addEventListener("submit", async e => {
+    e.preventDefault();
+    const name = document.getElementById("guestName").value.trim();
+    const text = document.getElementById("guestText").value.trim();
+    const ratingEl = document.getElementById("hiddenRating");
+    const rating = ratingEl ? ratingEl.value : '0';
+
+    if (!name || !text || rating === '0') { 
+       alert("Bitte füllen Sie alle Felder aus und geben Sie eine Bewertung ab!"); 
+       return; 
+    }
+
+    const btn = form.querySelector('.submit-btn');
+    btn.disabled = true; 
+    btn.textContent = 'Wird gesendet...';
+
+    try{
+       const data = new FormData();
+       data.append("name", name);
+       data.append("text", text);
+       data.append("rating", rating);
+
+       const response = await fetch(sheetURL, { method: "POST", body: data });
+       
+       if (!response.ok) {
+           throw new Error(`Fehler beim Senden: ${response.status}`);
+       }
+       
+       // Success Feedback
+       form.reset();
+       document.querySelectorAll('.star-rating span i').forEach(icon => { icon.classList.remove('fas'); icon.classList.add('far'); });
+       if(ratingEl) ratingEl.value='0';
+       successMsg.style.display = 'block';
+       setTimeout(() => { successMsg.style.display = 'none'; }, 4000);
+       
+       // Beiträge neu laden, um den neuen Eintrag anzuzeigen
+       loadEntries();
+       
+    }catch(err){
+       console.error(err);
+       alert("Fehler beim Senden des Eintrags! Bitte prüfen Sie die Netzwerkeinstellungen.");
+    } finally {
+       btn.disabled = false; 
+       btn.textContent = 'EINTRAG SENDEN';
+    }
+});
+
+/* ---------------------------
+    Gallery toggle & GitHub loader
+    --------------------------- */
+const btnStartseite = document.getElementById('btnStartseite');
+const btnHaarschnitt = document.getElementById('btnHaarschnitt');
+const siteContent = document.getElementById('siteContent');
+const haarschnittSection = document.getElementById('haarschnitt-section');
+const gallery = document.getElementById('haarschnitt-gallery');
+const loaderElm = document.getElementById('haarschnitt-loader');
+
+let imagesLoadedOnce = false;
+
+function showStartseite(){
+    // hide gallery (Fade-Out + Move Up)
+    haarschnittSection.classList.remove('show');
+    haarschnittSection.style.transform = 'translateY(20px)';
+    setTimeout(()=>{ haarschnittSection.style.display='none'; },500);
+    
+    // show site content (Fade-In + Move Down)
+    siteContent.style.display='block';
+    setTimeout(()=>{ 
+        siteContent.classList.add('show'); 
+        siteContent.style.transform = 'translateY(0)';
+    },50);
+}
+
+function showHaarschnitt(){
+    // hide site content (Fade-Out + Move Up)
+    siteContent.classList.remove('show');
+    siteContent.style.transform = 'translateY(20px)';
+    setTimeout(()=>{ siteContent.style.display='none'; },500);
+
+    // show gallery (Fade-In + Move Down)
+    haarschnittSection.style.display='block';
+    setTimeout(()=>{ 
+        haarschnittSection.classList.add('show'); 
+        haarschnittSection.style.transform = 'translateY(0)';
+    },50);
+
+    if(!imagesLoadedOnce) loadGithubImages();
+}
+
+btnStartseite.addEventListener('click', showStartseite);
+btnHaarschnitt.addEventListener('click', showHaarschnitt);
+
+/* Load images from GitHub repo folder (haarschnitte) using GitHub API */
+async function loadGithubImages(){
+    loaderElm.style.display = 'block';
+    gallery.innerHTML = '';
+    try {
+        // Dies ist die API-URL, um den Inhalt des Ordners abzurufen
+        const apiUrl = 'https://api.github.com/repos/Artonstyle/Barbershop/contents/haarschnitte';
+        const res = await fetch(apiUrl);
+        if(!res.ok) throw new Error('GitHub API Fehler ' + res.status);
+        const files = await res.json();
+        const images = files.filter(f => f.name.match(/\.(jpg|jpeg|png|webp)$/i));
+        images.sort((a,b)=> a.name.localeCompare(b.name, undefined, {numeric:true, sensitivity:'base'}));
+
+        if(images.length === 0){
+           loaderElm.textContent = 'Keine Bilder gefunden.';
+           imagesLoadedOnce = true;
+           return;
+        }
+        
+        images.forEach(f=>{
+           const img = document.createElement('img');
+           img.src = f.download_url; // Der direkte Link zur Datei
+           img.alt = f.name.replace(/\.[^/.]+$/, ""); 
+           img.loading = 'lazy'; 
+           gallery.appendChild(img);
+        });
+        imagesLoadedOnce = true;
+        loaderElm.style.display = 'none';
+    } catch (err) {
+        console.error(err);
+        loaderElm.textContent = 'Fehler beim Laden der Bilder. (API-Fehler)';
+    }
+}
+
+// Ensure siteContent shows on load with animation
+window.addEventListener('load', ()=>{
+    siteContent.classList.add('show');
+    siteContent.style.transform = 'translateY(0)';
+});
+
+// Load entries after the main content has loaded
+document.addEventListener("DOMContentLoaded", loadEntries);
+</script>
+
+</body>
+</html>
